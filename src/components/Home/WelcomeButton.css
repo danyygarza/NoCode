@@ -1,0 +1,16 @@
+button {
+    background: black;
+    color: white;
+    writing-mode: horizontal-tb !important;
+    word-spacing: 5px;
+    text-shadow: none;
+    /*display: inline-block;*/
+    text-align: center;
+    align-items: flex-start;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 20em;
+    margin-left: 45%;
+    margin-right: auto;
+    padding: 2em 7em;
+}
