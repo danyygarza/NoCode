@@ -7,7 +7,7 @@ import { Button } from 'antd';
 export default function WelcomeButton() {
     return (
         <>
-            <Button type="primary">Primary Button</Button>
+            <Button type="primary" className='button'>Iniciar Sesión</Button>
         </>
     )
 }

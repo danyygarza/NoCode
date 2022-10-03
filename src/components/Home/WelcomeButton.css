@@ -1,16 +1,19 @@
-button {
-    background: black;
-    color: white;
+.button {
+    background: black !important;
+    color: white !important;
     writing-mode: horizontal-tb !important;
-    word-spacing: 5px;
+    /*word-spacing: 5px; */
     text-shadow: none;
     /*display: inline-block;*/
-    text-align: center;
-    align-items: flex-start;
+    border-color: black !important;
+    text-align: center !important;
+    align-items: flex-start !important;
     cursor: pointer;
-    border-radius: 10px;
-    margin: 20em;
-    margin-left: 45%;
-    margin-right: auto;
-    padding: 2em 7em;
+    border-radius: 40px !important;
+    margin: 10em !important;
+    margin-left: 40% !important;
+    padding-bottom: 0.5em !important;
+    margin-right: auto !important;
+    padding: 2em 7em !important;
+    font-size: 20px !important;
 }
