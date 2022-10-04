@@ -8,8 +8,12 @@ export default function Inicio() {
   console.log(user);
   
   const handleLogout = async () => {
-    await logout();
-  }
+    try{
+      await logout();
+    }catch(error){
+      console.log(error);
+    }
+  };
 
   if(loading) {
     return <h1>loading</h1>
@@ -17,7 +21,7 @@ export default function Inicio() {
 
   return (
     <>
-      <h1>Welcome {user.email}</h1>
+      <h1>Welcome {user.displayName || user.email}</h1>
       <button onClick={handleLogout}>logout</button>
     </>
   )
