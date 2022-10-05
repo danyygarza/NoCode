@@ -1,11 +1,12 @@
 import React from 'react';
 import { Layout } from 'antd';
-import './VideoTutoriales.css';
+import './Cards/Video.css';
 import 'antd/dist/antd.css';
 
 
 //components
 import Navbar from '../Shared/Navbar';
+import Video from './Cards/Video';
 
 export default function Inicio() {
  
@@ -17,9 +18,8 @@ export default function Inicio() {
       <Navbar />
       <Layout>
         <Header className='header'>VIDEO TUTORIALES</Header>
-        <hr />
         <Content>
-          <p className='content'>cartas con video tutoriales</p>
+          <Video />
         </Content>
       </Layout>
      </Layout>

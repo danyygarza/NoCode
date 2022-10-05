@@ -11,8 +11,9 @@ import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
 //import Card from "./components/Inicio/Card";
 import Navbar from './components/Shared/Navbar';
-import VideoTutoriales from "./components/Shared/VideoTutoriales";
+import VideoTutoriales from "./components/Inicio/VideoTutoriales";
 import ProcesoNuevo from "./components/Inicio/ProcesoNuevo";
+import CrearProceso from "./components/ProcesoNuevo/CrearProceso";
 import ResetPassword from './components/Login/ResetPassword';
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -61,6 +62,12 @@ export default function App() {
        <Route path='/proceso-nuevo' element={
           <ProtectedRoute>
             <ProcesoNuevo />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/crear-proceso' element={
+          <ProtectedRoute>
+            <CrearProceso />
           </ProtectedRoute>
         } />
 
