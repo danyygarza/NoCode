@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
-import './Inicio.css';
+import './VideoTutoriales.css';
 import 'antd/dist/antd.css';
 
 
@@ -16,10 +16,10 @@ export default function Inicio() {
      <Layout>
       <Navbar />
       <Layout>
-        <Header className='header'>MI ESPACIO</Header>
+        <Header className='header'>VIDEO TUTORIALES</Header>
         <hr />
         <Content>
-          <p className='content'>MIS CARPETAS</p>
+          <p className='content'>cartas con video tutoriales</p>
         </Content>
       </Layout>
      </Layout>

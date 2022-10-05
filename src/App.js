@@ -9,7 +9,8 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
-import Navbar from './components/Shared/Navbar'
+import Navbar from './components/Shared/Navbar';
+import VideoTutoriales from "./components/Shared/VideoTutoriales";
 import ResetPassword from './components/Login/ResetPassword';
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -38,6 +39,11 @@ export default function App() {
         <Route path='/navbar' element={
           <ProtectedRoute>
         <Navbar />
+        </ProtectedRoute>
+        } />
+        <Route path='/video-tutoriales' element={
+          <ProtectedRoute>
+        <VideoTutoriales />
         </ProtectedRoute>
         } />
       </Routes>

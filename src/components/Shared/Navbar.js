@@ -1,27 +1,21 @@
 import {
-    UserOutlined,
-    LogoutOutlined
+  HomeOutlined,
+  PlayCircleOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
 import './Navbar.css'
 import { useAuth } from '../../context/authContext'
+import { Link } from 'react-router-dom';
 
 
 
 export default function Navbar() {
     const { user, logout, loading } = useAuth();
-    const { Header, Content, Footer, Sider } = Layout;
-    const items = [
-        UserOutlined
-    ].map((icon, index) => ({
-        key: String(index + 1),
-        icon: React.createElement(icon),
-        label: `nav ${index + 1}`,
-    }));
-
-
+    const { Sider, Content } = Layout;
+    
     console.log(user);
 
     const handleLogout = async () => {
@@ -51,53 +45,13 @@ export default function Navbar() {
                 >
                     <div className="logo" /> 
                     <p>Welcome {user.displayName || user.email}</p>
-                    <Menu style={{ backgroundColor: 'black', color: 'white', borderColor: 'black' }} mode="inline" defaultSelectedKeys={['4']} items={items} />
+                    <div><img className='frida' src='favicon.ico' alt='logo' /></div>
+                    <Menu style={{ backgroundColor: 'black', color: 'white', borderColor: 'black' }} mode="inline" defaultSelectedKeys={['1']}>
+                      <Link to='/inicio'><Menu.Item><HomeOutlined className='homeoutlined'/> Inicio</Menu.Item></Link>
+                      <Link to='/video-tutoriales'><Menu.Item><PlayCircleOutlined className='homeoutlined'/> Video Tutoriales</Menu.Item></Link>
+                    </Menu>
                     <div className="logout"><LogoutOutlined style={{color:'white', marginLeft: '2'}} onClick={handleLogout} /></div>
                 </Sider>
-                <Layout
-                    className="site-layout"
-                    style={{
-                        marginLeft: 200,
-                    }}
-                >
-                    <Header
-                        className="site-layout-background"
-                        style={{
-                            padding: 0,
-                        }}
-                    >
-                    </Header>
-                    <Content
-                        style={{
-                            margin: '24px 16px 0',
-                            overflow: 'initial',
-                        }}
-                    >
-                        <div
-                            className="site-layout-background"
-                            style={{
-                                padding: 24,
-                                textAlign: 'center',
-                            }}
-                        >
-                            <p>long content</p>
-                            {
-                                // indicates very long content
-                                Array.from(
-                                    {
-                                        length: 100,
-                                    },
-                                    (_, index) => (
-                                        <React.Fragment key={index}>
-                                            {index % 20 === 0 && index ? 'more' : '...'}
-                                            <br />
-                                        </React.Fragment>
-                                    ),
-                                )
-                            }
-                        </div>
-                    </Content>
-                </Layout>
             </Layout>
 
         </>
