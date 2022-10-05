@@ -2,6 +2,9 @@ import React from 'react'
 import { useAuth } from '../../context/authContext'
 
 
+//components
+import Navbar from '../Shared/Navbar';
+
 export default function Inicio() {
   const { user, logout, loading } = useAuth();
   
@@ -21,9 +24,13 @@ export default function Inicio() {
 
   return (
     <>
-      <h1>Welcome {user.displayName || user.email}</h1>
-      <button onClick={handleLogout}>logout</button>
+     <p>Welcome {user.displayName || user.email}</p>
+     <button onClick={handleLogout}>logout</button>
     </>
   )
 }
+/*
+<p>Welcome {user.displayName || user.email}</p>
+<button onClick={handleLogout}>logout</button>
 
+*/

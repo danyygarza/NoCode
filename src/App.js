@@ -9,6 +9,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
+import Navbar from './components/Shared/Navbar'
 import ResetPassword from './components/Login/ResetPassword';
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -32,6 +33,11 @@ export default function App() {
         <Route path='/inicio' element={
           <ProtectedRoute>
         <Inicio />
+        </ProtectedRoute>
+        } />
+        <Route path='/navbar' element={
+          <ProtectedRoute>
+        <Navbar />
         </ProtectedRoute>
         } />
       </Routes>
