@@ -6,10 +6,11 @@ import 'antd/dist/antd.css';
 
 //components
 import Navbar from '../Shared/Navbar';
+import Card from '../Inicio/Card';
 
 export default function Inicio() {
  
-  const { Header, Footer, Sider, Content } = Layout;
+  const { Header, Content } = Layout;
 
   return (
     <>
@@ -20,6 +21,7 @@ export default function Inicio() {
         <hr />
         <Content>
           <p className='content'>MIS CARPETAS</p>
+          <Card />
         </Content>
       </Layout>
      </Layout>

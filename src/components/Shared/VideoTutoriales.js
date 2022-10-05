@@ -9,7 +9,7 @@ import Navbar from '../Shared/Navbar';
 
 export default function Inicio() {
  
-  const { Header, Footer, Sider, Content } = Layout;
+  const { Header, Content } = Layout;
 
   return (
     <>

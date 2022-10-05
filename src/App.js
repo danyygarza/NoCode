@@ -9,13 +9,21 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
+//import Card from "./components/Inicio/Card";
 import Navbar from './components/Shared/Navbar';
 import VideoTutoriales from "./components/Shared/VideoTutoriales";
+import ProcesoNuevo from "./components/Inicio/ProcesoNuevo";
 import ResetPassword from './components/Login/ResetPassword';
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
-
+/* 
+<Route path='/card' element={
+  <ProtectedRoute>
+    <Card />
+  </ProtectedRoute>
+} /> 
+*/
 
 export default function App() {
 
@@ -23,29 +31,39 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path='/' element={
-         
-            <Home />
-          
+
+          <Home />
+
         }
         />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+
         <Route path='/inicio' element={
           <ProtectedRoute>
-        <Inicio />
-        </ProtectedRoute>
+            <Inicio />
+          </ProtectedRoute>
         } />
+
         <Route path='/navbar' element={
           <ProtectedRoute>
-        <Navbar />
-        </ProtectedRoute>
+            <Navbar />
+          </ProtectedRoute>
         } />
+
         <Route path='/video-tutoriales' element={
           <ProtectedRoute>
-        <VideoTutoriales />
-        </ProtectedRoute>
+            <VideoTutoriales />
+          </ProtectedRoute>
         } />
+       
+       <Route path='/proceso-nuevo' element={
+          <ProtectedRoute>
+            <ProcesoNuevo />
+          </ProtectedRoute>
+        } />
+
       </Routes>
     </AuthProvider>
   )

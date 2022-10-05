@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const { user, logout, loading } = useAuth();
-    const { Sider, Content } = Layout;
+    const { Sider } = Layout;
     
     console.log(user);
 
