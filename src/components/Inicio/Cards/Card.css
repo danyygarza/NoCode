@@ -45,8 +45,42 @@
 .card5{
     padding-top: 2.7em;
     padding-bottom: 2.7em;
-    padding-left: 8em;
-    padding-right: 8em;
+    padding-left: 8.5em !important;
+    padding-right: 8.5em !important;
 }
 
 /*paddingTop: 5, paddingBottom: 4.5, paddingLeft:9, paddingRight:9*/
+
+@media(max-width:1834.44px){
+    .card-5 { 
+        margin-top: 16em;
+        margin-left: -96em;
+        display: flex;
+    }
+}
+
+@media(max-width:1553.33px){
+    .card-4{
+        margin-top: 16em;
+        margin-left: -72em;
+        display: flex;
+    }
+    .card-5 { 
+        margin-top: 16em;
+        margin-left: 0em;
+        display: flex;
+    }
+}
+
+@media(max-width:1199.26px){
+    .card-4{
+        margin-top: 16em;
+        margin-left: -72em;
+        display: flex;
+    }
+    .card-5 { 
+        margin-top: 16em;
+        margin-left: 0em;
+        display: flex;
+    }
+}

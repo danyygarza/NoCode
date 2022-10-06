@@ -3,9 +3,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './CardNuevoProceso.css';
-import {
-    PlusOutlined
-} from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 

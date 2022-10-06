@@ -93,7 +93,7 @@ export default function MediaCard() {
                                 <b>300</b>
                             </div>
                             <span>
-                                <div class="vl"></div>
+                                <div className="vl"></div>
                                 <div className='div2'>
                                     Procesos<br />
                                     <b>2</b>

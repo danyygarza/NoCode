@@ -7,6 +7,8 @@ import 'antd/dist/antd.css';
 //components
 import Navbar from '../Shared/Navbar';
 import CardNuevoProceso from './Cards/CardNuevoProceso';
+import Plantillas from './Cards/Plantillas';
+import Marketplace from './Cards/Marketplace';
 
 export default function ProcesoNuevo() {
  
@@ -27,7 +29,12 @@ export default function ProcesoNuevo() {
         <Content>
           <p className='content'>PLANTILLAS</p>
           <p className='vermas'>Ver Más</p>
-          <CardNuevoProceso />
+          <Plantillas />
+        </Content>
+        <Content>
+          <p className='content'>MARKETPLACE</p>
+          <p className='vermas'>Ver Más</p>
+          <Marketplace />
         </Content>
       </Layout>
      </Layout>

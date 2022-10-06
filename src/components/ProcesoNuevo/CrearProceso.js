@@ -1,10 +1,12 @@
 import React from 'react'
+import { Layout } from 'antd'
+import { Content } from 'antd/lib/layout/layout'
 import './CrearProceso.css'
 
 //components
 import Navbar from '../Shared/Navbar'
-import { Layout } from 'antd'
-import { Content } from 'antd/lib/layout/layout'
+import Forms from '../Forms/Forms'
+
 
 export default function CrearProceso() {
   return (
@@ -12,9 +14,8 @@ export default function CrearProceso() {
      <Layout>
       <Navbar />
       <Layout>
-        
-        <Content>
-          
+        <Content className='crear-proceso-content'>
+          <Forms />
         </Content>
       </Layout>
      </Layout>

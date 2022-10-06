@@ -9,14 +9,19 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
-//import Card from "./components/Inicio/Card";
+import ResetPassword from './components/Login/ResetPassword';
 import Navbar from './components/Shared/Navbar';
 import VideoTutoriales from "./components/Inicio/VideoTutoriales";
 import ProcesoNuevo from "./components/Inicio/ProcesoNuevo";
 import CrearProceso from "./components/ProcesoNuevo/CrearProceso";
-import ResetPassword from './components/Login/ResetPassword';
+import Forms from "./components/Forms/Forms";
+import ProcesoExcel from "./components/ProcesoNuevo/ProcesoExcel";
+import SubirArchivo from './components/ProcesoNuevo/CartasProcesos/SubirArchivo';
+//import MostUsedFunctions from './components/Forms/MostUsedFunctions';
+import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
+
 
 /* 
 <Route path='/card' element={
@@ -58,8 +63,8 @@ export default function App() {
             <VideoTutoriales />
           </ProtectedRoute>
         } />
-       
-       <Route path='/proceso-nuevo' element={
+
+        <Route path='/proceso-nuevo' element={
           <ProtectedRoute>
             <ProcesoNuevo />
           </ProtectedRoute>
@@ -68,6 +73,30 @@ export default function App() {
         <Route path='/crear-proceso' element={
           <ProtectedRoute>
             <CrearProceso />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/forms' element={
+          <ProtectedRoute>
+            <Forms />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/all-functions' element={
+          <ProtectedRoute>
+            <AllFunctions />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/proceso-excel' element={
+          <ProtectedRoute>
+            <ProcesoExcel />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/subir-archivo' element={
+          <ProtectedRoute>
+            <SubirArchivo />
           </ProtectedRoute>
         } />
 
