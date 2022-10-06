@@ -11,8 +11,10 @@ import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
 import Navbar from './components/Shared/Navbar'
 import ResetPassword from './components/Login/ResetPassword';
+
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Code from './Pages/SandBox/code';
 
 
 
@@ -22,24 +24,27 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path='/' element={
-         
-            <Home />
-          
+          <Home />
         }
         />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/inicio' element={
+
           <ProtectedRoute>
-        <Inicio />
-        </ProtectedRoute>
+            <Inicio />
+          </ProtectedRoute>
         } />
         <Route path='/navbar' element={
           <ProtectedRoute>
-        <Navbar />
-        </ProtectedRoute>
+            <Navbar />
+          </ProtectedRoute>
         } />
+
+
+        <Route path='/code' element={<Code />} />
+
       </Routes>
     </AuthProvider>
   )
