@@ -74,7 +74,9 @@ function ExcelWrite(props) {
 
     return (
         <div>
-            <Form>
+            <Form
+                onFinish={props.finish}
+            >
                 {inputs.map((input) => {
                     return (input)
                 })}
