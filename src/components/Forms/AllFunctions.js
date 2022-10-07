@@ -3,11 +3,11 @@ import { Menu, } from 'antd';
 import React, { useState } from 'react';
 import './AllFunctions.css';
 
-function getItem(label, key, icon, children, type) {
+function getItem(label, key, icon, items, type) {
   return {
     key,
     icon,
-    children,
+    items,
     label,
     type,
   };

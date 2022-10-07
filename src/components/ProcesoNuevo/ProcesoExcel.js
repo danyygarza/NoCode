@@ -5,7 +5,7 @@ import './CrearProceso.css'
 
 //components
 import Navbar from '../Shared/Navbar'
-import SubirArchivo from './CartasProcesos/SubirArchivo'
+import SubirArchivo from '../CartasProcesos/SubirArchivo'
 
 
 export default function CrearProceso() {

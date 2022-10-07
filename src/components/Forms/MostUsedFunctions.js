@@ -5,16 +5,55 @@ import './MostUsedFunctions.css'
 export default function MostUsedFunctions() {
     return (
         <>
-            
-                <span style={{ float:'left'}}>
-                    <Link to='/proceso-excel'>
+
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
                     <div className="imgp">
-                        <img src="favicon.ico" alt="logo" style={{ width: 70}} />
-                        <p style={{ color: 'black', marginRight:26  }}><b>InsertRow</b></p>
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
                     </div>
-                    </Link>
-                </span>
-            
+                </Link>
+            </span>
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
+                    </div>
+                </Link>
+            </span>
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
+                    </div>
+                </Link>
+            </span>
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
+                    </div>
+                </Link>
+            </span>
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
+                    </div>
+                </Link>
+            </span>
+            <span style={{ float: 'left' }}>
+                <Link to='/proceso-excel'>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginRight: 26 }}><b>InsertRow</b></p>
+                    </div>
+                </Link>
+            </span>
         </>
     )
 }

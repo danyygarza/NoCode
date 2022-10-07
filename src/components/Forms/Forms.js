@@ -41,7 +41,7 @@ export default function Forms() {
         <span style={{display:'inline-block', textAlign:'center', wordSpacing:140, paddingTop:15}}>
             <p>
                 <a style={{color: 'black', textDecoration:'none'}}>All</a> <a style={{color: 'black', textDecoration:'none'}}>Readers</a> <a style={{color: 'black', textDecoration:'underline'}}>Function</a> <a style={{color: 'black', textDecoration:'none'}}>Conditions</a> <a style={{color: 'black', textDecoration:'none'}}>Scripts</a>
-                <div className="most-used-functions" ><span><MostUsedFunctions /><MostUsedFunctions /><MostUsedFunctions /><MostUsedFunctions /><MostUsedFunctions /><MostUsedFunctions /></span></div>
+                <div className="most-used-functions" ><span><MostUsedFunctions /></span></div>
 
             </p>
         </span>

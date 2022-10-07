@@ -32,7 +32,7 @@ export default function SubirArchivo() {
                 }}>
                     <Button icon={<UploadOutlined />}>Upload</Button>
                 </Upload>
-                <Link to='/proceso-excel'><Button>Confirm</Button></Link>
+                <Link to='/proceso-excel'><Button className='confirm-button'>Confirm</Button></Link>
             </Card>
         </>
     )
