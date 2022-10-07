@@ -4,16 +4,14 @@ import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from '
 
 
 
-function templateExcel(){
-    return(
+function templateExcel(props) {
+    return (
         <Form>
-            
+            {props.inputs.lenght === 0 ? <h1>Empty</h1> : props.inputs.map((input) => {
+                return ({ input })
+            })}
         </Form>
-
     )
-
-
-
 }
 
 export default templateExcel
