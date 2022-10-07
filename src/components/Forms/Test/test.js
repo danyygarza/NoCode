@@ -1,7 +1,5 @@
-import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
-import { Spa } from '@mui/icons-material';
-import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
-import React, { useState } from 'react';
+import { Form, Input,  Col, Row } from 'antd'
+import React from 'react';
 
 const change = (event) => {
     console.log(event.target.value);

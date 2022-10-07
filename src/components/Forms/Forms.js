@@ -1,27 +1,19 @@
-import { Button, Modal, Input, Space } from 'antd';
+import { Button, Modal, Input} from 'antd';
 import React, { useState } from 'react';
-import { AudioOutlined } from '@ant-design/icons';
 import './Forms.css';
 
 //components
-import MostUsedFunctions from './MostUsedFunctions';
+import MostUsedFunctions from './MostUsedFunctions/MostUsedFunctions'
 import AllFunctions from './AllFunctions'
 
+
 export default function Forms() {
-    //modal
+  //modal
   const [open, setOpen] = useState(false);
 
   //search
   const { Search } = Input;
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
-  
+
   const onSearch = (value) => console.log(value);
 
   return (
@@ -41,7 +33,7 @@ export default function Forms() {
         <span style={{display:'inline-block', textAlign:'center', wordSpacing:140, paddingTop:15}}>
             <p>
                 <a style={{color: 'black', textDecoration:'none'}}>All</a> <a style={{color: 'black', textDecoration:'none'}}>Readers</a> <a style={{color: 'black', textDecoration:'underline'}}>Function</a> <a style={{color: 'black', textDecoration:'none'}}>Conditions</a> <a style={{color: 'black', textDecoration:'none'}}>Scripts</a>
-                <div className="most-used-functions" ><span><MostUsedFunctions /></span></div>
+                <div className="most-used-functions"><span><MostUsedFunctions /></span></div>
 
             </p>
         </span>

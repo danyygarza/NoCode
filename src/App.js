@@ -21,8 +21,8 @@ import SubirArchivo from './components/CartasProcesos/SubirArchivo';
 //import MostUsedFunctions from './components/Forms/MostUsedFunctions';
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
-import ProtectedRoute from './components/ProtectedRoute';
 import Code from './Pages/SandBox/code';
+import Excel from './components/Forms/Excel/Excel';
 
 /* 
 <Route path='/card' element={
@@ -35,76 +35,82 @@ import Code from './Pages/SandBox/code';
 export default function App() {
 
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path='/' element={
-          <Home />
-        }
-        />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/reset-password' element={<ResetPassword />} />
 
-        <Route path='/inicio' element={
+    <Routes>
+      <Route path='/' element={
+        <Home />
+      }
+      />
+      <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} />
+      <Route path='/reset-password' element={<ResetPassword />} />
 
-          <ProtectedRoute>
-                <Inicio />
-            </ProtectedRoute>
-        } />
-
-        <Route path='/navbar' element={
-          <ProtectedRoute>
-                <Navbar />
-            </ProtectedRoute>
-        } />
+      <Route path='/inicio' element={
 
 
-        <Route path='/code' element={<Code />} />
+        <Inicio />
+
+      } />
+
+      <Route path='/navbar' element={
+
+        <Navbar />
+
+      } />
 
 
-        <Route path='/video-tutoriales' element={
-          <ProtectedRoute>
-            <VideoTutoriales />
-          </ProtectedRoute>
-        } />
+      <Route path='/code' element={<Code />} />
 
-        <Route path='/proceso-nuevo' element={
-          <ProtectedRoute>
-            <ProcesoNuevo />
-          </ProtectedRoute>
-        } />
 
-        <Route path='/crear-proceso' element={
-          <ProtectedRoute>
-            <CrearProceso />
-          </ProtectedRoute>
-        } />
+      <Route path='/video-tutoriales' element={
 
-        <Route path='/forms' element={
-          <ProtectedRoute>
-            <Forms />
-          </ProtectedRoute>
-        } />
+        <VideoTutoriales />
 
-        <Route path='/all-functions' element={
-          <ProtectedRoute>
-            <AllFunctions />
-          </ProtectedRoute>
-        } />
+      } />
 
-        <Route path='/proceso-excel' element={
-          <ProtectedRoute>
-            <ProcesoExcel />
-          </ProtectedRoute>
-        } />
+      <Route path='/proceso-nuevo' element={
 
-        <Route path='/subir-archivo' element={
-          <ProtectedRoute>
-            <SubirArchivo />
-          </ProtectedRoute>
-        } />
+        <ProcesoNuevo />
 
-      </Routes>
-    </AuthProvider>
+      } />
+
+      <Route path='/crear-proceso' element={
+
+        <CrearProceso />
+
+      } />
+
+      <Route path='/forms' element={
+
+        <Forms />
+
+      } />
+
+      <Route path='/all-functions' element={
+
+        <AllFunctions />
+
+      } />
+
+      <Route path='/proceso-excel' element={
+
+        <ProcesoExcel />
+
+      } />
+
+      <Route path='/subir-archivo' element={
+
+        <SubirArchivo />
+
+      } />
+
+      <Route path='/excel' element={
+
+        <Excel />
+
+      } />
+
+    </Routes>
+
   )
 }
