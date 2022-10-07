@@ -63,12 +63,12 @@ function Excel(props) {
     const addFields = (key) => {
         switch (key) {
             case 1:
-                setFormFields([...formFields, <ExcelWrite onChange={change} />]);
+                setFormFields([...formFields, <ExcelWrite onChange={change} finish={props.finish} />]);
                 console.log("key 1 was choosen");
                 console.log(formFields)
                 break;
             case 2:
-                setFormFields([...formFields, <Test/>]);
+                setFormFields([...formFields, <Test />]);
                 console.log("key 2 was choosen");
                 console.log(formFields)
                 break;
@@ -85,7 +85,7 @@ function Excel(props) {
     console.log(formFields)
     return (
         <div className="main">
-            <Form onSubmit={submit}>
+            <Form onSubmit={props.finish}>
                 {formFields.lenght === 0 ? <h1>Empty</h1> : formFields.map((form) => {
                     return (
                         <Space
@@ -100,17 +100,26 @@ function Excel(props) {
                     )
                 })}
             </Form>
-            <Dropdown overlay={menu}>
-                <a onClick={(event) => {
-                    event.preventDefault();
-                    console.log(event)
-                }}>
-                    <Space>
-                        Hover me
-                        <DownOutlined />
-                    </Space>
-                </a>
-            </Dropdown>
+            <Row>
+                <Col span={12}>
+                    <Dropdown overlay={menu}>
+                        <a onClick={(event) => {
+                            event.preventDefault();
+                            console.log(event)
+                        }}>
+                            <Space>
+                                Hover me
+                                <DownOutlined />
+                            </Space>
+                        </a>
+                    </Dropdown>
+                </Col>
+                <Col span={12}>
+                    <Button type="primary" htmlType="submit">
+                        Submit
+                    </Button>
+                </Col>
+            </Row>
         </div >
     );
 

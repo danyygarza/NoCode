@@ -8,11 +8,11 @@ function ExcelWrite(props) {
         <Row>
             <Col span={8}>
                 < Form.Item
-                    label="username"
-                    name="username"
+                    label="write"
+                    name="Write"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input type="text" placeholder={"testing1"} onChange={props.onChange} />
+                    <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
                 </Form.Item >
             </Col>
 
@@ -42,11 +42,11 @@ function ExcelWrite(props) {
         setInputs([...inputs, <Row>
             <Col span={8}>
                 < Form.Item
-                    label="username"
-                    name="username"
+                    label="write"
+                    name="Write"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input type="text" placeholder={"testing1"} onChange={props.onChange} />
+                    <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
                 </Form.Item >
             </Col>
 
