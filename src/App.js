@@ -17,13 +17,12 @@ import ProcesoNuevo from "./components/Inicio/ProcesoNuevo";
 import CrearProceso from "./components/ProcesoNuevo/CrearProceso";
 import Forms from "./components/Forms/Forms";
 import ProcesoExcel from "./components/ProcesoNuevo/ProcesoExcel";
-import SubirArchivo from './components/ProcesoNuevo/CartasProcesos/SubirArchivo';
+import SubirArchivo from './components/CartasProcesos/SubirArchivo';
 //import MostUsedFunctions from './components/Forms/MostUsedFunctions';
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Code from './Pages/SandBox/code';
-
 
 /* 
 <Route path='/card' element={
