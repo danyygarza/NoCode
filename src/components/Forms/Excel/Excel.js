@@ -4,7 +4,7 @@ import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '
 
 //!Testing 
 import Test from '../Test/test';
-
+import ExcelWrite from './Write/ExcelWrite';
 const change = (event) => {
     console.log(event.target.value);
 }
@@ -13,7 +13,6 @@ function Excel(props) {
     const [formFields, setFormFields] = useState([
 
     ])
-
 
     //!Drop down
     const menu = (
@@ -64,7 +63,7 @@ function Excel(props) {
     const addFields = (key) => {
         switch (key) {
             case 1:
-                setFormFields([...formFields, <Input type="text" placeholder={"testing:" + key} onChange={change} />]);
+                setFormFields([...formFields, <ExcelWrite onChange={change} />]);
                 console.log("key 1 was choosen");
                 console.log(formFields)
                 break;

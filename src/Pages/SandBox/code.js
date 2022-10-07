@@ -10,9 +10,11 @@ const [forms, setForms] = useState([]);
     return (
         forms.lenght === 0 ? <h1>Empty</h1> : forms.map((form) =>{
             return({form}); 
-        })
+        }),
         //!this will be the component of dany
+        <Excel/>
     )
+
 }
 
 export default Code;
