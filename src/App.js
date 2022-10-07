@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Login/Signup";
 import Inicio from "./components/Inicio/Inicio";
 import ResetPassword from './components/Login/ResetPassword';
+
 import Navbar from './components/Shared/Navbar';
 import VideoTutoriales from "./components/Inicio/VideoTutoriales";
 import ProcesoNuevo from "./components/Inicio/ProcesoNuevo";
@@ -21,6 +22,7 @@ import SubirArchivo from './components/ProcesoNuevo/CartasProcesos/SubirArchivo'
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Code from './Pages/SandBox/code';
 
 
 /* 
@@ -37,9 +39,7 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path='/' element={
-
           <Home />
-
         }
         />
         <Route path='/login' element={<Login />} />
@@ -47,16 +47,21 @@ export default function App() {
         <Route path='/reset-password' element={<ResetPassword />} />
 
         <Route path='/inicio' element={
+
           <ProtectedRoute>
-            <Inicio />
-          </ProtectedRoute>
+                <Inicio />
+            </ProtectedRoute>
         } />
 
         <Route path='/navbar' element={
           <ProtectedRoute>
-            <Navbar />
-          </ProtectedRoute>
+                <Navbar />
+            </ProtectedRoute>
         } />
+
+
+        <Route path='/code' element={<Code />} />
+
 
         <Route path='/video-tutoriales' element={
           <ProtectedRoute>
