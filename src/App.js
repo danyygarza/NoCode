@@ -59,7 +59,7 @@ export default function App() {
         } />
 
 
-        <Route path='/code' element={<Code />} />
+        <Route path='/code' element={<ProtectedRoute><Code /></ProtectedRoute>} />
 
 
         <Route path='/video-tutoriales' element={
