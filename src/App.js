@@ -24,6 +24,7 @@ import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
 import Excel from './components/Forms/Excel/Excel';
 
+
 /* 
 <Route path='/card' element={
   <ProtectedRoute>
@@ -35,7 +36,7 @@ import Excel from './components/Forms/Excel/Excel';
 export default function App() {
 
   return (
-
+    <AuthProvider>
     <Routes>
       <Route path='/' element={
         <Home />
@@ -47,9 +48,8 @@ export default function App() {
 
       <Route path='/inicio' element={
 
-
         <Inicio />
-
+      
       } />
 
       <Route path='/navbar' element={
@@ -58,59 +58,58 @@ export default function App() {
 
       } />
 
-
       <Route path='/code' element={<Code />} />
-
+   
 
       <Route path='/video-tutoriales' element={
-
+     
         <VideoTutoriales />
 
       } />
 
       <Route path='/proceso-nuevo' element={
-
+     
         <ProcesoNuevo />
 
       } />
 
       <Route path='/crear-proceso' element={
-
+      
         <CrearProceso />
 
       } />
 
       <Route path='/forms' element={
-
+     
         <Forms />
 
       } />
 
       <Route path='/all-functions' element={
-
+      
         <AllFunctions />
 
       } />
 
       <Route path='/proceso-excel' element={
-
+      
         <ProcesoExcel />
 
       } />
 
       <Route path='/subir-archivo' element={
-
+       
         <SubirArchivo />
 
       } />
 
       <Route path='/excel' element={
-
+      
         <Excel />
 
       } />
 
     </Routes>
-
+    </AuthProvider>
   )
 }

@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import './Forms.css';
 
 //components
-import MostUsedFunctions from './MostUsedFunctions/MostUsedFunctions'
+import MostUsedFunctions from './MostUsedFunctions'
 import AllFunctions from './AllFunctions'
+import Code from '../../Pages/SandBox/code';
 
 
-export default function Forms() {
+
+
+
+export default function Forms(props) {
   //modal
   const [open, setOpen] = useState(false);
 
@@ -33,7 +37,7 @@ export default function Forms() {
         <span style={{display:'inline-block', textAlign:'center', wordSpacing:140, paddingTop:15}}>
             <p>
                 <a style={{color: 'black', textDecoration:'none'}}>All</a> <a style={{color: 'black', textDecoration:'none'}}>Readers</a> <a style={{color: 'black', textDecoration:'underline'}}>Function</a> <a style={{color: 'black', textDecoration:'none'}}>Conditions</a> <a style={{color: 'black', textDecoration:'none'}}>Scripts</a>
-                <div className="most-used-functions"><span><MostUsedFunctions /></span></div>
+                <div className="most-used-functions"><span><MostUsedFunctions setForms={props.setForms} forms = {props.forms} /></span></div>
 
             </p>
         </span>
@@ -45,6 +49,7 @@ export default function Forms() {
             </p>
         </span>
       </Modal>
+      
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Form, Input, Button, Col, Row } from 'antd'
-import {  PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
 
 
 function ExcelWrite(props) {
@@ -95,7 +95,6 @@ function ExcelWrite(props) {
 
         </div>
     )
-
 }
 
 export default ExcelWrite
