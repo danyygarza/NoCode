@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useForm, forwardRef, useRef, useImperativeHandle } from 'react'
+import React, { useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -8,20 +8,26 @@ import ExcelWrite from './Write/ExcelWrite';
 import ExcelWriteTest from './Write/ExcelWriteTest';
 import { FormLabel } from '@mui/material';
 import { ThirtyFpsSelect } from '@mui/icons-material';
+
+import { useForm } from "react"
+
 const change = (event) => {
     console.log(event.target.value);
 }
 
 const ExcelTest = forwardRef((props, ref) => {
-    const [formFields, setFormFields] = useState([
 
-    ])
+    const [formFields, setFormFields] = useState([]);
+    const [form] = Form.useForm();
 
-    useImperativeHandle(ref, () => {
-        const onFinish = (values) => {
-            console.log('Received values of form:', values);
-        };
-    })
+    useImperativeHandle(ref, () => ({
+        showAlert(values) {
+            console.log("testing")
+            console.log('Received values of form: ', values);
+            console.log(form.getFieldsValue()); 
+        },
+
+    }))
 
     //!Drop down
     const menu = (
@@ -62,11 +68,6 @@ const ExcelTest = forwardRef((props, ref) => {
     );
 
 
-
-    const submit = () => {
-
-    }
-
     const addFields = (key) => {
         switch (key) {
             case 1:
@@ -89,11 +90,14 @@ const ExcelTest = forwardRef((props, ref) => {
         }
     }
 
-    const done = props.submit();
+    // const done = props.submit();
 
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
     return (
         <div className="main">
-            <Form>
+            <Form form={form}>
                 {formFields.lenght === 0 ? <h1>Empty</h1> : formFields.map((form) => {
                     return (
                         <Space
@@ -107,7 +111,7 @@ const ExcelTest = forwardRef((props, ref) => {
                         </Space>
                     )
                 })}
-            </Form``>
+            </Form>
             <Row>
                 <Col span={12}>
                     <Dropdown overlay={menu}>
@@ -123,17 +127,15 @@ const ExcelTest = forwardRef((props, ref) => {
                     </Dropdown>
                 </Col>
                 <Col span={12}>
-                    {/* <Button type="primary" onClick={(event) => {
-                        console.log("button is being pressed")
-                    }}
-                        htmlType="submit"
-                    > */}
-                    {/* Submit from code from ExcelTest */}
-                    {/* </Button> */}
+                    <Button type="primary" htmlType="submit" hidden="true" ref={this}>
+                        Submit
+                    </Button>
                 </Col>
             </Row>
         </div >
     );
+
+
 })
 
 

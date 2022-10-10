@@ -83,22 +83,9 @@ function ExcelWriteTest(props) {
 
     return (
         <div>
-
-            <Form.Item
-                label="Username"
-                name="username"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your username!',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-            {/* {inputs.map((input) => {
-                    return (input)
-                })} */}
+            {inputs.map((input) => {
+                return (input)
+            })}
             <Row>
                 <Col offset={12}>
                     <Button

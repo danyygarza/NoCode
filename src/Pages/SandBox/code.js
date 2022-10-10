@@ -10,8 +10,6 @@ import { useForm } from 'antd/lib/form/Form';
 
 
 function Code() {
-    const [form] = useForm();
-
     const [forms, setForms] = useState([]);
     const finish = (values) => {
         console.log("inside the finish function")
@@ -27,10 +25,12 @@ function Code() {
 
     const submitRef = useRef(null);
 
-    const handleForm = () => {
-        console.log(submitRef)
-        submitRef.current.onFinish();
-    }
+    console.log(submitRef);
+    // const handleForm = () => {
+    //     // console.log(submitRef)
+    //     submitRef.current.onFinish();
+    //     console.log("button is pressing handleForm")
+    // }
 
     return (
         forms.lenght === 0 ? <h1>Empty</h1> : forms.map((form) => {
@@ -39,12 +39,17 @@ function Code() {
         //!this will be the component of dany
         <Row>
             <Col offset={8}>
-                <ExcelTest finish={finish} submit={handleSubmit} ref = {submitRef}/>
+                <ExcelTest finish={finish} submit={handleSubmit} ref={submitRef} />
             </Col>
 
             <Col offset={8}>
-                <Button type="primary" htmlType='submit'
-                >
+                <Button type="primary"   onClick={(event) =>{
+                    // handleForm()
+                    // submitRef.current.click();  
+                    submitRef.current.showAlert()
+                    console.log("button from code is being pressed")
+                    submitRef.current.showAlert(); 
+                }}>
                     Submit from code!!
                 </Button>
             </Col>
