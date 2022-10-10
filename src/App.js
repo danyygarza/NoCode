@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 
-
-
 //components
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
