@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useForm } from 'react'
+import React, { useEffect, useState, useForm, forwardRef, useRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -12,10 +12,16 @@ const change = (event) => {
     console.log(event.target.value);
 }
 
-function Excel(props) {
+const ExcelTest = forwardRef((props, ref) => {
     const [formFields, setFormFields] = useState([
 
     ])
+
+    useImperativeHandle(ref, () => {
+        const onFinish = (values) => {
+            console.log('Received values of form:', values);
+        };
+    })
 
     //!Drop down
     const menu = (
@@ -54,9 +60,7 @@ function Excel(props) {
             ]}
         />
     );
-    const onFinish = (values) => {
-        console.log('Received values of form:', values);
-    };
+
 
 
     const submit = () => {
@@ -85,17 +89,11 @@ function Excel(props) {
         }
     }
 
-    useEffect(() => {
-        props.setDone(false);
-        { console.log("testing") }
-
-    }, [props.done])
-
-
+    const done = props.submit();
 
     return (
         <div className="main">
-            <Form onFinish={onFinish} >
+            <Form>
                 {formFields.lenght === 0 ? <h1>Empty</h1> : formFields.map((form) => {
                     return (
                         <Space
@@ -109,7 +107,7 @@ function Excel(props) {
                         </Space>
                     )
                 })}
-            </Form>
+            </Form``>
             <Row>
                 <Col span={12}>
                     <Dropdown overlay={menu}>
@@ -125,15 +123,19 @@ function Excel(props) {
                     </Dropdown>
                 </Col>
                 <Col span={12}>
-                    <Button type="primary" htmlType='submit'
-                    >
-                        Submit from code from Excel
-                    </Button>
+                    {/* <Button type="primary" onClick={(event) => {
+                        console.log("button is being pressed")
+                    }}
+                        htmlType="submit"
+                    > */}
+                    {/* Submit from code from ExcelTest */}
+                    {/* </Button> */}
                 </Col>
             </Row>
         </div >
     );
+})
 
-}
 
-export default Excel
+
+export default ExcelTest; 
