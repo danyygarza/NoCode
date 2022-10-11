@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } from 'react'
+import React, { useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -8,11 +8,14 @@ import ExcelWrite from './Write/ExcelWrite';
 import ExcelWriteTest from './Write/ExcelWriteTest';
 import { FormLabel } from '@mui/material';
 import { ThirtyFpsSelect } from '@mui/icons-material';
+
+import { useForm } from "react"
+
 const change = (event) => {
     console.log(event.target.value);
 }
 
-const Excel = forwardRef((props, ref) => {
+const ExcelTest = forwardRef((props, ref) => {
 
     const [formFields, setFormFields] = useState([]);
     const [form] = Form.useForm();
@@ -20,7 +23,7 @@ const Excel = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         showAlert(values) {
             console.log("testing")
-            console.log(Object.values(form.getFieldsValue()));
+            console.log(Object.values(form.getFieldsValue())); 
         },
 
     }))
@@ -77,13 +80,16 @@ const Excel = forwardRef((props, ref) => {
                 console.log(formFields)
                 break;
             case 3:
-             
+                // setFormFields([...formFields, { name: "test2", label: "test2", value: "test2" }, {name: "test2", label: "test2", value: "test2"}]);
+                // console.log("key 2 was choosen");
                 console.log(formFields)
                 break;
             default:
                 break;
         }
     }
+
+    // const done = props.submit();
 
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -99,11 +105,13 @@ const Excel = forwardRef((props, ref) => {
                                 marginBottom: 8,
                             }}
                             align="baseline">
+                            {/* <Input placeholder={form.value} /> */}
                             {form}
                         </Space>
                     )
                 })}
             </Form>
+           
             <Row>
                 <Col span={12}>
                     <Dropdown overlay={menu}>
@@ -126,6 +134,10 @@ const Excel = forwardRef((props, ref) => {
             </Row>
         </div >
     );
+
+
 })
 
-export default Excel
+
+
+export default ExcelTest; 

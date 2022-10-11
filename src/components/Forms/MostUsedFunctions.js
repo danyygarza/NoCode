@@ -1,4 +1,4 @@
-import { Button, Modal } from 'antd'
+import { Button, Modal, Space} from 'antd'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -13,24 +13,26 @@ import { render } from '@testing-library/react'
 //! Forms
 import ExcelWrite from './Excel/Write/ExcelWrite'
 
-export default function MostUsedFunctions(props) {
+function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
         { text: "write", form: <ExcelWrite /> }
     ])
-
+    
     const add = (form) =>{
         console.log(form)
-        props.setForms([...props.forms, <ExcelWrite />])
+        props.setForms( [...props.forms, <ExcelWrite />])
+        console.log("forms",props.forms)
     }
     
 
     return (
+
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
             return (
                 <> <Button style={{ height: 120, borderRadius: 40, width: 124, borderColor: 'white' }}
                     onClick={(event) => {
-                        console.log(data.form)
+                        console.log("button is being pressed from MOF")
                         add(data.form); 
                     }
                     }>
@@ -45,3 +47,4 @@ export default function MostUsedFunctions(props) {
     )
 }
 
+export default MostUsedFunctions    
