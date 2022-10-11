@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useForm } from 'react'
+import React, { useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
 
@@ -8,14 +8,25 @@ import ExcelWrite from './Write/ExcelWrite';
 import ExcelWriteTest from './Write/ExcelWriteTest';
 import { FormLabel } from '@mui/material';
 import { ThirtyFpsSelect } from '@mui/icons-material';
+
+import { useForm } from "react"
+
 const change = (event) => {
     console.log(event.target.value);
 }
 
-function Excel(props) {
-    const [formFields, setFormFields] = useState([
+const ExcelTest = forwardRef((props, ref) => {
 
-    ])
+    const [formFields, setFormFields] = useState([]);
+    const [form] = Form.useForm();
+
+    useImperativeHandle(ref, () => ({
+        showAlert(values) {
+            console.log("testing")
+            console.log(Object.values(form.getFieldsValue())); 
+        },
+
+    }))
 
     //!Drop down
     const menu = (
@@ -54,14 +65,7 @@ function Excel(props) {
             ]}
         />
     );
-    const onFinish = (values) => {
-        console.log('Received values of form:', values);
-    };
 
-
-    const submit = () => {
-
-    }
 
     const addFields = (key) => {
         switch (key) {
@@ -85,17 +89,14 @@ function Excel(props) {
         }
     }
 
-    useEffect(() => {
-        props.setDone(false);
-        { console.log("testing") }
+    // const done = props.submit();
 
-    }, [props.done])
-
-
-
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
     return (
         <div className="main">
-            <Form onFinish={onFinish} >
+            <Form form={form}>
                 {formFields.lenght === 0 ? <h1>Empty</h1> : formFields.map((form) => {
                     return (
                         <Space
@@ -125,15 +126,17 @@ function Excel(props) {
                     </Dropdown>
                 </Col>
                 <Col span={12}>
-                    <Button type="primary" htmlType='submit'
-                    >
-                        Submit from code from Excel
+                    <Button type="primary" htmlType="submit" hidden="true" ref={this}>
+                        Submit
                     </Button>
                 </Col>
             </Row>
         </div >
     );
 
-}
 
-export default Excel
+})
+
+
+
+export default ExcelTest; 

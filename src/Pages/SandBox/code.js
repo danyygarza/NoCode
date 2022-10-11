@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Test from '../../components/Forms/Test/test'
 import Excel from '../../components/Forms/Excel/Excel';
 import templateExcel from '../../components/Forms/TemplateForm/templateExcel';
-import Button from 'antd'
+import { Button, Row, Col } from 'antd'
+import ExcelTest from '../../components/Forms/Excel/ExcelTest';
+import { useForm } from 'antd/lib/form/Form';
 
 
-//components
-import Navbar from '../../components/Shared/Navbar';
-import Forms from '../../components/Forms/Forms';
-import MostUsedFunctions from '../../components/Forms/MostUsedFunctions';
 
 
-export default function Code() {
-
+function Code() {
     const [forms, setForms] = useState([]);
-    
 
     const finish = (values) => {
         console.log("inside the finish function")
         console.log(values);
     }
+
+    const handleSubmit = () => {
+        // alert('A name was submitted' + );
+        console.log("form submitted")
+    }
+
+
+
+    const submitRef = useRef(null);
+
+    console.log(submitRef);
+    // const handleForm = () => {
+    //     // console.log(submitRef)
+    //     submitRef.current.onFinish();
+    //     console.log("button is pressing handleForm")
+    // }
 
     return (
         
@@ -28,9 +40,10 @@ export default function Code() {
             return ({form});
             
         }),
-            //!this will be the component of dany
-            // <Excel finish={finish} />
-            <Forms setForms={setForms} forms = {forms}/>
+        //!this will be the component of dany
+        <Excel finish={finish} />
     )
 }
 
+
+export default Code;
