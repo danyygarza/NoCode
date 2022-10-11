@@ -17,20 +17,12 @@ function Code() {
     }
 
     const handleSubmit = () => {
-        // alert('A name was submitted' + );
         console.log("form submitted")
     }
 
 
 
     const submitRef = useRef(null);
-
-    console.log(submitRef);
-    // const handleForm = () => {
-    //     // console.log(submitRef)
-    //     submitRef.current.onFinish();
-    //     console.log("button is pressing handleForm")
-    // }
 
     return (
         forms.lenght === 0 ? <h1>Empty</h1> : forms.map((form) => {
@@ -44,9 +36,6 @@ function Code() {
 
             <Col offset={8}>
                 <Button type="primary"   onClick={(event) =>{
-                    // handleForm()
-                    // submitRef.current.click();  
-                    submitRef.current.showAlert()
                     console.log("button from code is being pressed")
                     submitRef.current.showAlert(); 
                 }}>
