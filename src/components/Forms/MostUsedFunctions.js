@@ -9,11 +9,17 @@ import './MostUsedFunctions.css'
 
 //! Forms
 import ExcelWrite from './Excel/Write/ExcelWrite'
+import Upload from './Excel/Upload/Upload'
+import RemoveDuplicate from './Excel/RemoveDuplicate/RemoveDuplicate'
+
+
 
 function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
-        { text: "write", form: <ExcelWrite /> }
+        { text: "UploadFile", form: <Upload /> },
+        { text: "Write", form: <ExcelWrite /> },
+        { text: "RemoveDuplicate", form: <RemoveDuplicate /> }
     ])
 
     const [form] = Form.useForm();
