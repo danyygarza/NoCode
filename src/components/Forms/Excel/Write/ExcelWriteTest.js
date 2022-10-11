@@ -12,7 +12,7 @@ function ExcelWriteTest(props) {
         <Row>
             <Col span={8}>
                 < Form.Item
-                    name={`write` + id}
+                    name={[`write` + id, "write"]}
                     label="Write"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -22,7 +22,7 @@ function ExcelWriteTest(props) {
 
             <Col span={8}>
                 < Form.Item
-                    name={`in` + id}
+                    name={[`in` + id, "in"]}
                     label="in"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -31,7 +31,7 @@ function ExcelWriteTest(props) {
             </Col>
             <Col span={8}>
                 < Form.Item
-                    name={`cell` + id}
+                    name={[`cell` + id, "cell"]}
                     label="Cell"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -46,7 +46,7 @@ function ExcelWriteTest(props) {
         setInputs([...inputs, <Row>
             <Col span={8}>
                 < Form.Item
-                    name={`write` + id}
+                    name={[`write` + id, "write"]}
                     label="Write"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -56,7 +56,7 @@ function ExcelWriteTest(props) {
 
             <Col span={8}>
                 < Form.Item
-                    name={`in` + id}
+                    name={[`in` + id, "in"]}
                     label="in"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -65,7 +65,7 @@ function ExcelWriteTest(props) {
             </Col>
             <Col span={8}>
                 < Form.Item
-                    name={`cell` + id}
+                    name={[`cell` + id, "cell"]}
                     label="Cell"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
@@ -96,19 +96,6 @@ function ExcelWriteTest(props) {
                     >
                     </Button>
                 </Col>
-            </Row>
-            <Row>
-                <Button type="primary" htmlType="submit" >
-                    Submit!!
-                </Button>
-                <Button type="primary" onClick={(event) => {
-                    // console.log(event)
-                    props.finish(Form.onFinish);
-                }
-                } >
-                    test!!
-                </Button>
-
             </Row>
         </div>
     )

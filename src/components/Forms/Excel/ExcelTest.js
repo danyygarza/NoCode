@@ -23,8 +23,7 @@ const ExcelTest = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         showAlert(values) {
             console.log("testing")
-            console.log('Received values of form: ', values);
-            console.log(form.getFieldsValue()); 
+            console.log(Object.values(form.getFieldsValue())); 
         },
 
     }))
