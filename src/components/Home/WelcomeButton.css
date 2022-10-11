@@ -1,0 +1,19 @@
+.button {
+    background: black !important;
+    color: white !important;
+    writing-mode: horizontal-tb !important;
+    /*word-spacing: 5px; */
+    text-shadow: none;
+    /*display: inline-block;*/
+    border-color: black !important;
+    text-align: center !important;
+    align-items: flex-start !important;
+    cursor: pointer;
+    border-radius: 40px !important;
+    margin: 10em !important;
+    margin-left: 40% !important;
+    padding-bottom: 0em !important;
+    margin-right: auto !important;
+    padding: 2em 7em !important;
+    font-size: 20px !important;
+}

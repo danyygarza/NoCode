@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=IBM+Plex+Mono:wght@300&display=swap');
+
+.header{
+    color: black !important;
+    display: flex;
+    padding-left:8em !important;
+    padding-top: 1em !important;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left !important;
+    font-size: 30px;
+}
+
+.content{
+    color: black !important;
+    font-size: 30px;
+    padding-top: 2em;
+    padding-left: 6em;
+}
+
+.ant-layout-content {
+    flex: auto;
+    min-height: 0;
+    text-align: left;
+}
+
+hr{
+position: absolute;
+width: 85%;
+height: 0px;
+left: 17em;
+top: 6.2em;
+background: #D9D9D9;
+/* Gris 2 */
+border: 1px solid #BFBFBF;
+}

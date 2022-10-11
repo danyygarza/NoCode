@@ -1,0 +1,20 @@
+.most-used-functions{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 1em;
+    align-content:stretch;
+    display: inline-block ;
+}
+
+.imgp{
+    margin-top: 1em;
+}
+
+.upload-button{
+    margin-top: 2em;
+}
+
+html {
+    --antd-wave-shadow-color: #D64488;
+    --scroll-bar: 0;
+}
