@@ -17,17 +17,6 @@ const Forms = forwardRef((props, ref) => {
   const [form] = Form.useForm();
 
   const onSearch = (value) => console.log(value);
-
-  // * this is used to call the function from child component
-  // useImperativeHandle(ref, () => ({
-  //   showAlert(values) {
-  //     console.log("testing")
-  //     console.log(Object.values(form.getFieldsValue()));
-  //   },
-
-  // }))
-
-
   
   return (
     <>

@@ -10,7 +10,7 @@ import './MostUsedFunctions.css'
 //! Forms
 import ExcelWrite from './Excel/Write/ExcelWrite'
 
-const MostUsedFunctions = forwardRef((props, ref) => {
+function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
         { text: "write", form: <ExcelWrite /> }
@@ -19,26 +19,14 @@ const MostUsedFunctions = forwardRef((props, ref) => {
     const [form] = Form.useForm();
 
     const add = (data) => {
-        // console.log(form)
+        console.log('adding to form from MOF', form)
+
         props.setForms([...props.forms,
-        <Form form = {form}>
-            {/* <ExcelWrite /> */}
-            {data}
-        </Form>
-
-
+            data
         ])
         console.log("forms", props.forms)
     }
 
-    useImperativeHandle(ref, () => ({
-        showAlert(values) {
-            console.log("testing from MOF")
-            console.log(Object.values(form.getFieldsValue()));
-            console.log(form.getFieldValue())
-        },
-
-    }))
 
     return (
 
@@ -59,6 +47,6 @@ const MostUsedFunctions = forwardRef((props, ref) => {
         })
 
     )
-})
+}
 
 export default MostUsedFunctions    

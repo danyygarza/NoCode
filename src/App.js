@@ -22,7 +22,6 @@ import SubirArchivo from './components/CartasProcesos/SubirArchivo';
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
-import Excel from './components/Forms/Excel/Excel';
 
 
 /* 
@@ -37,79 +36,73 @@ export default function App() {
 
   return (
     <AuthProvider>
-    <Routes>
-      <Route path='/' element={
-        <Home />
-      }
-      />
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
-      <Route path='/reset-password' element={<ResetPassword />} />
+      <Routes>
+        <Route path='/' element={
+          <Home />
+        }
+        />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
 
-      <Route path='/inicio' element={
+        <Route path='/inicio' element={
 
-        <Inicio />
-      
-      } />
+          <Inicio />
 
-      <Route path='/navbar' element={
+        } />
 
-        <Navbar />
+        <Route path='/navbar' element={
 
-      } />
+          <Navbar />
 
-      <Route path='/code' element={<Code />} />
-   
+        } />
 
-      <Route path='/video-tutoriales' element={
-     
-        <VideoTutoriales />
+        <Route path='/code' element={<Code />} />
 
-      } />
 
-      <Route path='/proceso-nuevo' element={
-     
-        <ProcesoNuevo />
+        <Route path='/video-tutoriales' element={
 
-      } />
+          <VideoTutoriales />
 
-      <Route path='/crear-proceso' element={
-      
-        <CrearProceso />
+        } />
 
-      } />
+        <Route path='/proceso-nuevo' element={
 
-      <Route path='/forms' element={
-     
-        <Forms />
+          <ProcesoNuevo />
 
-      } />
+        } />
 
-      <Route path='/all-functions' element={
-      
-        <AllFunctions />
+        <Route path='/crear-proceso' element={
 
-      } />
+          <CrearProceso />
 
-      <Route path='/proceso-excel' element={
-      
-        <ProcesoExcel />
+        } />
 
-      } />
+        <Route path='/forms' element={
 
-      <Route path='/subir-archivo' element={
-       
-        <SubirArchivo />
+          <Forms />
 
-      } />
+        } />
 
-      <Route path='/excel' element={
-      
-        <Excel />
+        <Route path='/all-functions' element={
 
-      } />
+          <AllFunctions />
 
-    </Routes>
+        } />
+
+        <Route path='/proceso-excel' element={
+
+          <ProcesoExcel />
+
+        } />
+
+        <Route path='/subir-archivo' element={
+
+          <SubirArchivo />
+
+        } />
+
+      </Routes>
     </AuthProvider>
   )
 }
