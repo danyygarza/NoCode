@@ -17,17 +17,19 @@ const Frida = forwardRef((props, ref) => {
         showAlert(values) {
             console.log("testing", form.getFieldValue())
             console.log(Object.values(form.getFieldsValue()));
-            const array = Object.values(form.getFieldsValue())
-            console.log("array"+ array); 
-            console.log(array.length); 
-            const tempArr = []; 
-            for (let i = array.length-1; i>= 0; i = Math.round(i/3)) {
-                const temp = new ExcelWriteModel(); 
-                console.log(getValue(array[i - 2]));
-                temp.setcode(getValue(array[i-2]),getValue(array[i-1]), getValue(array[i])); 
-                console.log(temp);  
+            
+            //!this has to be implemented for each Model
+            // const array = Object.values(form.getFieldsValue())
+            // console.log("array"+ array); 
+            // console.log(array.length); 
+            // const tempArr = []; 
+            // for (let i = array.length-1; i>= 0; i = Math.round(i/3)) {
+            //     const temp = new ExcelWriteModel(); 
+            //     console.log(getValue(array[i - 2]));
+            //     temp.setcode(getValue(array[i-2]),getValue(array[i-1]), getValue(array[i])); 
+            //     console.log(temp);  
                 
-            }
+            // }
         },
     }))
 
