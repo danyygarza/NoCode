@@ -4,16 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 import './MostUsedFunctions.css'
-
 //components
 
 //! Forms
+// import ExcelWrite from './Excel/Write/ExcelWrite'
+import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 import ExcelWrite from './Excel/Write/ExcelWrite'
-
 function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
-        { text: "write", form: <ExcelWrite /> }
+        { text: "write", form: new ExcelWrite() }
     ])
 
     const [form] = Form.useForm();
