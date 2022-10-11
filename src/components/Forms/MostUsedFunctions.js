@@ -1,30 +1,44 @@
-import { Button, Modal, Space} from 'antd'
-import React, { useState } from 'react'
+import { Button, Modal, Space, Form } from 'antd'
+import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
 import './MostUsedFunctions.css'
 
 //components
-import Code from "../../Pages/SandBox/code"
-import Forms from './Forms'
-import { render } from '@testing-library/react'
 
 //! Forms
 import ExcelWrite from './Excel/Write/ExcelWrite'
 
-function MostUsedFunctions(props) {
+const MostUsedFunctions = forwardRef((props, ref) => {
 
     const [formArray, setFormArray] = useState([
         { text: "write", form: <ExcelWrite /> }
     ])
-    
-    const add = (form) =>{
-        console.log(form)
-        props.setForms( [...props.forms, <ExcelWrite />])
-        console.log("forms",props.forms)
+
+    const [form] = Form.useForm();
+
+    const add = (data) => {
+        // console.log(form)
+        props.setForms([...props.forms,
+        <Form form = {form}>
+            {/* <ExcelWrite /> */}
+            {data}
+        </Form>
+
+
+        ])
+        console.log("forms", props.forms)
     }
-    
+
+    useImperativeHandle(ref, () => ({
+        showAlert(values) {
+            console.log("testing from MOF")
+            console.log(Object.values(form.getFieldsValue()));
+            console.log(form.getFieldValue())
+        },
+
+    }))
 
     return (
 
@@ -33,7 +47,7 @@ function MostUsedFunctions(props) {
                 <> <Button style={{ height: 120, borderRadius: 40, width: 124, borderColor: 'white' }}
                     onClick={(event) => {
                         console.log("button is being pressed from MOF")
-                        add(data.form); 
+                        add(data.form);
                     }
                     }>
                     <div className="imgp">
@@ -45,6 +59,6 @@ function MostUsedFunctions(props) {
         })
 
     )
-}
+})
 
 export default MostUsedFunctions    

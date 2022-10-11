@@ -17,13 +17,13 @@ const Excel = forwardRef((props, ref) => {
     const [formFields, setFormFields] = useState([]);
     const [form] = Form.useForm();
 
-    useImperativeHandle(ref, () => ({
-        showAlert(values) {
-            console.log("testing")
-            console.log(Object.values(form.getFieldsValue()));
-        },
+    // useImperativeHandle(ref, () => ({
+    //     showAlert(values) {
+    //         console.log("testing")
+    //         console.log(Object.values(form.getFieldsValue()));
+    //     },
 
-    }))
+    // }))
 
     //!Drop down
     const menu = (

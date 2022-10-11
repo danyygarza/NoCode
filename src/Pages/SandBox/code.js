@@ -21,8 +21,6 @@ function Code() {
         console.log("form submitted")
     }
 
-
-
     const submitRef = useRef(null);
 
     return (
@@ -41,7 +39,7 @@ function Code() {
             <Row>
                 <Col offset={4}>
                     {/* <ExcelTest finish={finish} submit={handleSubmit} ref={submitRef} /> */}
-                    <Forms setForms={setForms} forms={forms} />
+                    <Forms setForms={setForms} forms={forms} ref ={submitRef} />
                 </Col>
 
                 <Col offset={2}>
@@ -52,7 +50,7 @@ function Code() {
                         Submit from code!!
                     </Button>
                 </Col>
-                
+
             </Row>
         </>
     )

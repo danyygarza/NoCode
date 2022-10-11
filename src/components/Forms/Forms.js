@@ -19,13 +19,13 @@ const Forms = forwardRef((props, ref) => {
   const onSearch = (value) => console.log(value);
 
   // * this is used to call the function from child component
-  useImperativeHandle(ref, () => ({
-    showAlert(values) {
-      console.log("testing")
-      console.log(Object.values(form.getFieldsValue()));
-    },
+  // useImperativeHandle(ref, () => ({
+  //   showAlert(values) {
+  //     console.log("testing")
+  //     console.log(Object.values(form.getFieldsValue()));
+  //   },
 
-  }))
+  // }))
 
 
   
@@ -46,7 +46,7 @@ const Forms = forwardRef((props, ref) => {
         <span style={{ display: 'inline-block', textAlign: 'center', wordSpacing: 140, paddingTop: 15 }}>
           <p>
             <a style={{ color: 'black', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
-            <div className="most-used-functions"><span><MostUsedFunctions setForms={props.setForms} forms={props.forms} /></span></div>
+            <div className="most-used-functions"><span><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></span></div>
 
           </p>
         </span>
