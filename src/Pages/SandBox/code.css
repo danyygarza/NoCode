@@ -1,0 +1,11 @@
+.ant-row {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 0;
+    padding-top: .5em;
+}
+
+.forms-button{
+    justify-content: center;
+    margin-left: 11em;
+}

@@ -1,40 +1,49 @@
-import React, { useState } from "react"
-import { Form, Input, Button, Col, Row } from 'antd'
-import { PlusOutlined } from '@ant-design/icons';
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react"
+import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row, Typography } from 'antd'
+import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
+import { Done } from "@mui/icons-material";
+import Test from "../../Test/test";
+import "../RemoveDuplicate/RemoveDuplicate.css";
+
+let id = Date.now();
+const { Title } = Typography;
 
 
 function ExcelWrite(props) {
+    const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
-        <Row>
-            <Col span={8}>
-                < Form.Item
-                    label="write"
-                    name="Write"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
-                >
-                    <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
-                </Form.Item >
-            </Col>
+        <>
+            
+            <Row>
+                <Col span={8}>
+                    <Form.Item
+                        name={[`write` + id, "write"]}
+                        label="Write"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+                        <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
+                    </Form.Item>
+                </Col>
 
-            <Col span={8}>
-                < Form.Item
-                    label="in"
-                    name="in"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
-                >
-                    <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
-                </Form.Item >
-            </Col>
-            <Col span={8}>
-                < Form.Item
-                    label="cell"
-                    name="Cell"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
-                >
-                    <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
-                </Form.Item >
-            </Col>
-        </Row>
+                <Col span={8}>
+                    <Form.Item
+                        name={[`in` + id, "in"]}
+                        label="in"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+                        <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
+                    </Form.Item>
+                </Col>
+                <Col span={8}>
+                    <Form.Item
+                        name={[`cell` + id, "cell"]}
+                        label="Cell"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+                        <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
+                    </Form.Item>
+                </Col>
+            </Row></>
     ]);
 
 
@@ -42,8 +51,8 @@ function ExcelWrite(props) {
         setInputs([...inputs, <Row>
             <Col span={8}>
                 < Form.Item
-                    label="write"
-                    name="Write"
+                    name={[`write` + id, "write"]}
+                    label="Write"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
                     <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
@@ -52,8 +61,8 @@ function ExcelWrite(props) {
 
             <Col span={8}>
                 < Form.Item
+                    name={[`in` + id, "in"]}
                     label="in"
-                    name="in"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
                     <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
@@ -61,26 +70,33 @@ function ExcelWrite(props) {
             </Col>
             <Col span={8}>
                 < Form.Item
-                    label="cell"
-                    name="Cell"
+                    name={[`cell` + id, "cell"]}
+                    label="Cell"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
                     <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
                 </Form.Item >
             </Col>
         </Row>])
+        setClick(true);
     }
 
+    useEffect(() => {
+        id = Date.now();
+        setClick(false);
+    }, [click])
 
     return (
         <div>
-            <Form
-                onFinish={props.finish}
-            >
-                {inputs.map((input) => {
-                    return (input)
-                })}
-            </Form>
+            <Row justify="center">
+        <Col>
+          <Title level={5}>ExcelWrite</Title>
+        </Col>
+      </Row>
+            {inputs.map((input) => {
+                return (input)
+            })}
+            
             <Row>
                 <Col offset={12}>
                     <Button
@@ -92,9 +108,10 @@ function ExcelWrite(props) {
                     </Button>
                 </Col>
             </Row>
-
         </div>
     )
+
 }
+
 
 export default ExcelWrite

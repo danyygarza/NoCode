@@ -5,7 +5,8 @@ import './CrearProceso.css'
 
 //components
 import Navbar from '../Shared/Navbar'
-import Forms from '../Forms/Forms'
+import Code from '../../Pages/SandBox/code'
+
 
 
 export default function CrearProceso() {
@@ -15,7 +16,7 @@ export default function CrearProceso() {
       <Navbar />
       <Layout>
         <Content className='crear-proceso-content'>
-          <Forms />
+          <Code />
         </Content>
       </Layout>
      </Layout>

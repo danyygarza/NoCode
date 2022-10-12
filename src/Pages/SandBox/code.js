@@ -3,10 +3,12 @@ import Test from '../../components/Forms/Test/test'
 import Excel from '../../components/Forms/Excel/Excel';
 import templateExcel from '../../components/Forms/TemplateForm/templateExcel';
 import { Button, Row, Col } from 'antd'
-import ExcelTest from '../../components/Forms/Excel/ExcelTest';
 import { useForm } from 'antd/lib/form/Form';
 
+import Forms from "../../components/Forms/Forms";
+import Frida from '../../components/FRIDA/FRIDA';
 
+import './code.css';
 
 
 function Code() {
@@ -25,13 +27,6 @@ function Code() {
 
 
     const submitRef = useRef(null);
-
-    console.log(submitRef);
-    // const handleForm = () => {
-    //     // console.log(submitRef)
-    //     submitRef.current.onFinish();
-    //     console.log("button is pressing handleForm")
-    // }
 
     return (
         
