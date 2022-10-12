@@ -74,7 +74,7 @@ function ExcelWrite(props) {
                     label="Cell"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
+                    <Input required type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
                 </Form.Item >
             </Col>
         </Row>])

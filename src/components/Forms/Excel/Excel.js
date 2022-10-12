@@ -86,7 +86,7 @@ function Excel(props) {
     }
 
     useEffect(() => {
-        props.setDone(false);
+        //props.setDone(false);
         { console.log("testing") }
 
     }, [props.done])
