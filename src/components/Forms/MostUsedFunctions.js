@@ -34,6 +34,7 @@ function MostUsedFunctions(props) {
         { text: "InsertColumn", form: <InsertColumn /> },
         { text: "CopyColumn", form: <CopyColumn /> },
         { text: "ApplyFilter", form: <ApplyFilter /> },
+        { text: "ApplyFilter", form: <ApplyFilter /> },
     ])
 
     const [form] = Form.useForm();
