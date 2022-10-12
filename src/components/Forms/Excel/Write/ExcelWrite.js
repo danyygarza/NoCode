@@ -13,7 +13,6 @@ function ExcelWrite(props) {
     const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
         <>
-            
             <Row>
                 <Col span={8}>
                     <Form.Item
