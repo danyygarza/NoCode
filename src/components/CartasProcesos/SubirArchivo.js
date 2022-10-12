@@ -5,6 +5,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 
+
 export default function SubirArchivo() {
 
     const props = {
@@ -19,7 +20,7 @@ export default function SubirArchivo() {
     return (
         <>
             <Card
-                title="InsertRow"
+                title="UploadFile"
                 style={{
                     width: 500,
                     marginLeft:500,

@@ -10,3 +10,11 @@
     margin-top: 1em;
 }
 
+.upload-button{
+    margin-top: 2em;
+}
+
+html {
+    --antd-wave-shadow-color: #D64488;
+    --scroll-bar: 0;
+}

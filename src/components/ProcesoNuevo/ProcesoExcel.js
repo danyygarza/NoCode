@@ -5,7 +5,9 @@ import './CrearProceso.css'
 
 //components
 import Navbar from '../Shared/Navbar'
-import SubirArchivo from '../CartasProcesos/SubirArchivo'
+import Forms from '../Forms/Forms'
+//import SubirArchivo from '../CartasProcesos/SubirArchivo'
+
 
 
 export default function CrearProceso() {
@@ -15,7 +17,7 @@ export default function CrearProceso() {
       <Navbar />
       <Layout>
         <Content className='crear-proceso-content'>
-            <SubirArchivo />
+            <Forms />
         </Content>
       </Layout>
      </Layout>

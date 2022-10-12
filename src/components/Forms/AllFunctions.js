@@ -1,20 +1,19 @@
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu, } from 'antd';
 import React, { useState } from 'react';
 import './AllFunctions.css';
 
-function getItem(label, key, icon, items, type) {
+function getItem(label, key, icon, children, type) {
   return {
     key,
     icon,
-    items,
+    children,
     label,
     type,
   };
 }
 
 const items = [
-  getItem( 'AppendTableRows', 'sub1', <img src="favicon.ico" alt="logo" style={{width:50}}/>, [
+  getItem( 'AppendTableRows', 'sub1', <img src="favicon.ico" alt="logo" style={{width:50, color:'black'}}/>, [
     getItem('AppendTableRows from ', '1'),
     getItem('Option 3', '2'),
     getItem('Option 4', '3'),
