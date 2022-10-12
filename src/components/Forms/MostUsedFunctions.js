@@ -4,16 +4,37 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 import './MostUsedFunctions.css'
+
 //components
 
 //! Forms
-// import ExcelWrite from './Excel/Write/ExcelWrite'
-import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 import ExcelWrite from './Excel/Write/ExcelWrite'
+import Upload from './Excel/Upload/Upload'
+import RemoveDuplicate from './Excel/RemoveDuplicate/RemoveDuplicate'
+import NewWorkBook from './Excel/NewWorkBook/NewWorkBook'
+import SortColumns from './Excel/SortColumns/SortColumns'
+import CountElements from './Excel/CountElements/CountElements'
+import Substring from './Excel/Substring/Substring'
+import InsertColumn from './Excel/InsertColumn/InsertColumn'
+import CopyColumn from './Excel/CopyColumn/CopyColumn'
+import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
+
+
+
 function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
-        { text: "write", form: new ExcelWrite() }
+        { text: "UploadFile", form: <Upload /> },
+        { text: "Write", form: <ExcelWrite /> },
+        { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
+        { text: "NewWorkBook", form: <NewWorkBook /> },
+        { text: "SortColumns", form: <SortColumns /> },
+        { text: "CountElements", form: <CountElements /> },
+        { text: "Substring", form: <Substring /> },
+        { text: "InsertColumn", form: <InsertColumn /> },
+        { text: "CopyColumn", form: <CopyColumn /> },
+        { text: "ApplyFilter", form: <ApplyFilter /> },
+        { text: "ApplyFilter", form: <ApplyFilter /> },
     ])
 
     const [form] = Form.useForm();
@@ -27,12 +48,11 @@ function MostUsedFunctions(props) {
         console.log("forms", props.forms)
     }
 
-
     return (
 
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
             return (
-                <> <Button style={{ height: 120, borderRadius: 40, width: 124, borderColor: 'white' }}
+                <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white'}}
                     onClick={(event) => {
                         console.log("button is being pressed from MOF")
                         add(data.form);

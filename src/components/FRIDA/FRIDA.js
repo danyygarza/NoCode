@@ -2,7 +2,6 @@ import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } 
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
 import { ExcelWriteModel } from '../Forms/Excel/Write/ExcelWriteModel';
-import { map } from '@firebase/util';
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();

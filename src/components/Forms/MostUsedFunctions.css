@@ -2,8 +2,9 @@
     border: 1px solid black;
     border-radius: 20px;
     margin-top: 1em;
-    align-content:stretch;
-    display: inline-block ;
+    justify-content:center;
+    display: inline-block;
+    overflow-x: scroll;
 }
 
 .imgp{
@@ -17,4 +18,8 @@
 html {
     --antd-wave-shadow-color: #D64488;
     --scroll-bar: 0;
+}
+
+p{
+    text-align: center;
 }
