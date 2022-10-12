@@ -1,6 +1,6 @@
-import { Button, Modal, Space, Form } from 'antd'
-import React, { useState, forwardRef, useImperativeHandle } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Button, Form } from 'antd'
+import React, { useState } from 'react'
+
 
 
 import './MostUsedFunctions.css'
@@ -18,6 +18,7 @@ import Substring from './Excel/Substring/Substring'
 import InsertColumn from './Excel/InsertColumn/InsertColumn'
 import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
+import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
 
 
 
@@ -34,7 +35,7 @@ function MostUsedFunctions(props) {
         { text: "InsertColumn", form: <InsertColumn /> },
         { text: "CopyColumn", form: <CopyColumn /> },
         { text: "ApplyFilter", form: <ApplyFilter /> },
-        { text: "ApplyFilter", form: <ApplyFilter /> },
+        { text: "RemoveColumn", form: <RemoveColumn /> },
     ])
 
     const [form] = Form.useForm();

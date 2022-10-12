@@ -1,4 +1,7 @@
 import React, { useRef, useState } from 'react'
+import Test from '../../components/Forms/Test/test'
+import Excel from '../../components/Forms/Excel/Excel';
+import templateExcel from '../../components/Forms/TemplateForm/templateExcel';
 import { Button, Row, Col } from 'antd'
 import { useForm } from 'antd/lib/form/Form';
 
@@ -41,4 +44,5 @@ function Code() {
     )
 }
 
-export default Code; 
+
+export default Code;
