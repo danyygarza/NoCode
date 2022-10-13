@@ -3,7 +3,7 @@
         "Name": "ExcelWrite",
         "Description": "Write something in a given cell in a worksheet. ColRow can take values such as A1, D15, etc. RowIndex and colIndex must take numerical values and it starts from 1, or either 'lastrow' or 'lastcol'. Format will be applied to the cell after writting the text. Original format is mainly intended for dates, to identify the origin date parts in the text. Excel formats are different from this, refer to https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-stringsfor further information. ",
         "Parameters": "something, worksheetKey, ColRow, rowIndex, colIndex, format, originalFormat",
-        "Syntax1": "Write <someting> in <worksheetKey> cell <ColRow",
+        "Syntax1": "Write <someting> in <worksheetKey> cell <ColRow>",
         "Syntax2": "Write <something> in <worksheetKey> cell <ColRow> with format <format>",
         "Syntax3": "Write <something> in <worksheetKey> cell <ColRow> with format <format> source <originalFormat>",
         "Syntax4": "Write <something> in <worksheetKey> row <rowIndex> and column <colIndex>",

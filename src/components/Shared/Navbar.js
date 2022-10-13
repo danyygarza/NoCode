@@ -3,14 +3,16 @@ import {
   PlayCircleOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Switch } from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css';
 import './Navbar.css'
 import { useAuth } from '../../context/authContext'
 import { Link } from 'react-router-dom';
 
-
+const onChange = (checked) => {
+  console.log(`switch to ${checked}`);
+};
 
 export default function Navbar() {
     const { user, logout, loading } = useAuth();
@@ -46,6 +48,7 @@ export default function Navbar() {
                     <div className="logo" /> 
                     <p>Welcome {user.displayName || user.email}</p>
                     <div><img className='frida' src='favicon.ico' alt='logo' /></div>
+                    <Switch defaultChecked onChange={onChange} style={{marginLeft:80, marginBottom:10}}/>
                     <Menu style={{ backgroundColor: 'black', color: 'white', borderColor: 'black' }} mode="inline" defaultSelectedKeys={['1']}>
                       <Link to='/inicio'><Menu.Item><HomeOutlined className='homeoutlined'/> Inicio</Menu.Item></Link>
                       <Link to='/video-tutoriales'><Menu.Item><PlayCircleOutlined className='homeoutlined'/> Video Tutoriales</Menu.Item></Link>

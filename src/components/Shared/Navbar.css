@@ -90,3 +90,8 @@ p {
 .homeoutlined{
     padding-left: 1em !important;
 }
+
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
+}
