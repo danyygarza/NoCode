@@ -2,7 +2,7 @@
     "fridaExcelReadersSyntaxWrite": {
         "Name": "ExcelWrite",
         "Description": "Write something in a given cell in a worksheet. ColRow can take values such as A1, D15, etc. RowIndex and colIndex must take numerical values and it starts from 1, or either 'lastrow' or 'lastcol'. Format will be applied to the cell after writting the text. Original format is mainly intended for dates, to identify the origin date parts in the text. Excel formats are different from this, refer to https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-stringsfor further information. ",
-        "Parameters": "something, worksheetKey, ColRow, rowIndex, colIndex, format, originalFormat",
+        "Parameters": "<something> <worksheetKey> <ColRow> <rowIndex> <colIndex> <format> <originalFormat>",
         "Syntax1": "Write <someting> in <worksheetKey> cell <ColRow>",
         "Syntax2": "Write <something> in <worksheetKey> cell <ColRow> with format <format>",
         "Syntax3": "Write <something> in <worksheetKey> cell <ColRow> with format <format> source <originalFormat>",
@@ -18,7 +18,7 @@
     "fridaExcelReadersSyntaxRemoveDuplicate":{
         "Name": "RemoveDuplicate",
         "Description": "Removes the duplicate rows from a given sheet. When many column indexes are specified, the deletion will be based on the repetition of values in all those columns. Indexes start with 1. ",
-        "Parameters": "worksheetKey, columnIndex, hasReader",
+        "Parameters": "<worksheetKey> <columnIndex> <hasReader>",
         "Syntax1": "RemoveDuplicates from <worksheetKey>",
         "Syntax2": "RemoveDuplicates from <worksheetKey> with_header <hasHeader>",
         "Syntax3": "RemoveDuplicates from <worksheetKey> at [<columnIdnex1, columnIndex2,...,columnIndex>]",
@@ -30,7 +30,7 @@
     "fridaExcelReadersSyntaxNewWorkbook":{
         "Name": "NewWorkbook",
         "Description": "Creates a new Workbook in a path where the client wants (only creates file of type 'xlsx'). You CANNOT use special characters that Windows does NOT allow. WorkbookName is also saved as a variable. 'Create i' syntax will save the workbook without saving a variable. ",
-        "Parameters": "path, workbookName, pathWithName",
+        "Parameters": "<path> <workbookName> <pathWithName>",
         "Syntax1": "NewWB in '<path>' as <workbookName>",
         "Syntax2": "NewWB in {<path>} as {<workbookName>}",
         "Syntax3": "NewWB create in {<pathWithName>}",
@@ -40,7 +40,7 @@
     "fridaExcelReadersSyntaxSortColumns":{
         "Name": "SortColumns",
         "Description": "Sort by a Column. Maximum 3 columns to sort in a worksheet. Order direction must be set (ascending/descending). If header is Yes, it will not sort the first value, since it considers it to be a header.",
-        "Parameters": "worksheetKey, colIndex, order, isHeader",
+        "Parameters": "<worksheetKey> <colIndex> <order> <isHeader>",
         "Syntax1": "SortColumns in <worksheetKey> by column {<colindex>} <order> header <isHeader>",
         "Syntax2": "SortColumns in <worksheetKey> in usedRange by columns {<colindex|order1>, <colindex2|order2>, <colindex3|order3>} header <isHeader> -Function still under development",
         "Example1": "SortColumns in WSName1 by column {10} ascending header Yes",
@@ -50,7 +50,7 @@
     "fridaExcelReadersSyntaxInsertColumn":{
         "Name": "InsertColumn",
         "Description": "Inserts a Column at index (1-based). ",
-        "Parameters": "WorksheetKey, colIndex",
+        "Parameters": "<worksheetKey> <colIndex>",
         "Syntax1": "InsertCol in <worksheetKey> at <colIndex>",
         "Example1": "InsertCol in Sheet1 at 6"
     }

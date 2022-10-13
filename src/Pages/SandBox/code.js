@@ -4,19 +4,25 @@ import Excel from '../../components/Forms/Excel/Excel';
 import templateExcel from '../../components/Forms/TemplateForm/templateExcel';
 import { Button, Row, Col } from 'antd'
 import { useForm } from 'antd/lib/form/Form';
+import {SaveOutlined} from '@ant-design/icons'
 
 import Forms from "../../components/Forms/Forms";
 import Frida from '../../components/FRIDA/FRIDA';
+import Tutorial from '../../components/ProcesoNuevo/Tutorial';
 
 
 function Code() {
     const [forms, setForms] = useState([]);
-    const [code, setCode] = useState([]); 
+    const [code, setCode] = useState([]);
     //! this to call functions from Frida (child component) // 
     const submitRef = useRef(null);
 
     return (
         <>
+            <Row>
+                <Tutorial />
+                <SaveOutlined />
+            </Row>
             <Row>
                 <Col offset={8}>
                     {/* //!this is the place where all the form will be stored */}
@@ -40,6 +46,7 @@ function Code() {
                     </Button>
                 </Col>
             </Row>
+
         </>
     )
 }
