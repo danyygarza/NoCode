@@ -7,6 +7,7 @@ import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json';
 import "./ExcelWrite.css"
 
+
 let id = Date.now();
 const { Title } = Typography;
 
@@ -46,9 +47,10 @@ const examples = (
 
 
 
-function ExcelWrite(props) {
+
+export default function ExcelWrite(props) {
     const [click, setClick] = useState(false);
-    const [inputs, setInputs] = useState([
+    const [inputs, setInputs] = useState([ 
         <>
 
             <Row>
@@ -171,6 +173,3 @@ function ExcelWrite(props) {
     )
 
 }
-
-
-export default ExcelWrite
