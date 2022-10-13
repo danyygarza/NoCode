@@ -32,7 +32,7 @@ const Forms = forwardRef((props, ref) => {
         width={900}
       >
         <Search placeholder="Búsqueda" onSearch={onSearch} className='search' enterButton />
-        <span style={{ display: 'inline-block',  wordSpacing: 30, paddingTop: 15 }}>
+        <span style={{ display: 'inline-block',  wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
           <p>
             <a style={{ color: 'black', textAlign:'center', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textAlign:'center', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
           </p>

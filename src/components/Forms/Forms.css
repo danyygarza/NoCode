@@ -48,8 +48,7 @@
     border: 1px solid black;
     border-radius: 20px;
     margin-top: 1em;
-    align-content:stretch;
-    display: inline-block ;
+    display: flex ;
 }
 
 .forms-button{

@@ -30,12 +30,12 @@ function MostUsedFunctions(props) {
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
-        { text: "CountElements", form: <CountElements /> },
-        { text: "Substring", form: <Substring /> },
+        //{ text: "CountElements", form: <CountElements /> },
+        //{ text: "Substring", form: <Substring /> },
         { text: "InsertColumn", form: <InsertColumn /> },
-        { text: "CopyColumn", form: <CopyColumn /> },
-        { text: "ApplyFilter", form: <ApplyFilter /> },
-        { text: "RemoveColumn", form: <RemoveColumn /> },
+        //{ text: "CopyColumn", form: <CopyColumn /> },
+        //{ text: "ApplyFilter", form: <ApplyFilter /> },
+        //{ text: "RemoveColumn", form: <RemoveColumn /> },
     ])
 
     const [form] = Form.useForm();
