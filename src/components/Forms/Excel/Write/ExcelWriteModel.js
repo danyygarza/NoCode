@@ -1,6 +1,5 @@
 import React from "react";
 import ExcelWrite from "./ExcelWrite";
-import React from "react";
 
 export class ExcelWriteModel {
     constructor() {
