@@ -10,9 +10,11 @@ function ChildForm(props) {
   }
   const onFinish = (values) => {
     console.log("Success:", values);
+    props.setSubmit(false)
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
+    props.setSubmit(false)
   };
   return (
     <Form
