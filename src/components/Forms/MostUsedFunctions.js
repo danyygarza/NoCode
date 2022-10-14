@@ -1,5 +1,5 @@
 import { Button, Form } from 'antd'
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 
 
@@ -19,14 +19,15 @@ import InsertColumn from './Excel/InsertColumn/InsertColumn'
 import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
 import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
+import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 
 
 
-function MostUsedFunctions(props) {
+const MostUsedFunctions = forwardRef((props, ref) => {
 
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
-        { text: "Write", form: <ExcelWrite /> },
+        { text: "Write", form: new ExcelWriteModel(ref) },
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
@@ -49,11 +50,12 @@ function MostUsedFunctions(props) {
         console.log("forms", props.forms)
     }
 
+    console.log("ref from MOF", ref); 
     return (
 
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
             return (
-                <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white'}}
+                <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
                         console.log("button is being pressed from MOF")
                         add(data.form);
@@ -68,6 +70,6 @@ function MostUsedFunctions(props) {
         })
 
     )
-}
+})
 
 export default MostUsedFunctions    
