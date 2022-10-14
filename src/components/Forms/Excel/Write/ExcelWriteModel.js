@@ -1,9 +1,11 @@
 import ExcelWrite from "./ExcelWrite";
+import { Form } from 'antd'
+import React from "react";
 
 
 export class ExcelWriteModel {
     constructor() {
-        this.component = <ExcelWrite />
+        this.component = <ExcelWrite/>
         this.code = ``
     }
 
@@ -12,9 +14,8 @@ export class ExcelWriteModel {
     }
 
     setcode(Text, In, Cell) {
-        this.code = "write " + Text + " in " + In + " cell " + Cell; 
+        this.code = "write " + Text + " in " + In + " cell " + Cell;
     }
-
 
 }
 

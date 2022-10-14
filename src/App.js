@@ -22,7 +22,7 @@ import SubirArchivo from './components/CartasProcesos/SubirArchivo';
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
-
+import ParentSubmit from './components/Forms/Test/ParentSubmit';
 
 /* 
 <Route path='/card' element={
@@ -44,6 +44,7 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/submit' element={< ParentSubmit />} />
 
         <Route path='/inicio' element={
 

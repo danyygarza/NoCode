@@ -9,7 +9,7 @@ let id = Date.now();
 const { Title } = Typography;
 
 
-function ExcelWrite(props) {
+const ExcelWrite = forwardRef((props, ref) => {
     const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
         <>
@@ -64,7 +64,7 @@ function ExcelWrite(props) {
                     label="in"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input type="text" placeholder={"<WorksheetKey>"}  />
+                    <Input type="text" placeholder={"<WorksheetKey>"} />
                 </Form.Item >
             </Col>
             <Col span={8}>
@@ -80,37 +80,58 @@ function ExcelWrite(props) {
         setClick(true);
     }
 
+    //
+    useImperativeHandle(ref, () => ({
+        showAlert(values) {
+            console.log("pressing button from Excel write")
+            form.submit()
+        },
+    }))
+
+    const onFinish = (values) => {
+        form.validateFields().then((test) => {
+            console.log('Success:', values);
+            console.log(Object.values(values))
+            //! Logic to generate the FRIDA code from the component
+
+        })
+    };
     useEffect(() => {
         id = Date.now();
         setClick(false);
     }, [click])
 
+    const [form] = Form.useForm();
+    console.log(ref)
     return (
         <div>
-            <Row justify="center">
-        <Col>
-          <Title level={5}>ExcelWrite</Title>
-        </Col>
-      </Row>
-            {inputs.map((input) => {
-                return (input)
-            })}
-            
-            <Row>
-                <Col offset={12}>
-                    <Button
-                        type="dashed"
-                        onClick={() => add()}
-                        shape="circle"
-                        icon={<PlusOutlined />}
-                    >
-                    </Button>
-                </Col>
-            </Row>
+            <Form form={form} onFinish={onFinish}>
+                <Row justify="center">
+                    <Col>
+                        <Title level={5}>ExcelWrite</Title>
+                    </Col>
+                </Row>
+                {inputs.map((input) => {
+                    return (input)
+                })}
+
+                <Row>
+                    <Col offset={12}>
+                        <Button
+                            type="dashed"
+                            onClick={() => add()}
+                            shape="circle"
+                            icon={<PlusOutlined />}
+                        >
+                        </Button>
+                    </Col>
+                </Row>
+            </Form>
         </div>
+
     )
 
-}
+});
 
 
 export default ExcelWrite

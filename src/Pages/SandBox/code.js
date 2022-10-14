@@ -8,13 +8,15 @@ import { useForm } from 'antd/lib/form/Form';
 import Forms from "../../components/Forms/Forms";
 import Frida from '../../components/FRIDA/FRIDA';
 
-
+//TODO: create an alert and show in which from is not completed 
 function Code() {
     const [forms, setForms] = useState([]);
     const [code, setCode] = useState([]); 
+    const [method, setMethod] = useState([])
     //! this to call functions from Frida (child component) // 
-    const submitRef = useRef(null);
-
+    const callFrida = useRef(null);
+    
+    const submitRef = useRef(null); 
     return (
         <>
             <Row>

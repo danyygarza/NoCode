@@ -42,9 +42,7 @@ export default function AllFunctions(props) {
       [
         getItem("AppendTableRows from ", "1"),
         getItem(
-          <Button type="primary" onClick={testFunc("eoo")}>
-            ExcelWrite Button
-          </Button>,
+          "ExcelWrite",
           "2"
         ),
         getItem("Option 4", "3"),
@@ -64,16 +62,15 @@ export default function AllFunctions(props) {
         getItem("Option 9", "9"),
         getItem("Option 10", "10"),
         getItem("Option 11", "11"),
-        getItem("Option 12", "12"),
+        getItem(
+          <Button type="primary" onClick={() =>add(<ExcelWrite></ExcelWrite>)}>
+            excel
+          </Button>,
+          <LinkOutlined/>,
+        ),
       ]
     ),
-    getItem(
-      <a >
-        text
-      </a>,
-      'button',
-      <LinkOutlined />,
-    ),
+    
   ]; // submenu keys of first level
 
   const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
@@ -94,6 +91,7 @@ export default function AllFunctions(props) {
   
   return (
     <Menu
+     
       mode="inline"
       openKeys={openKeys}
       onOpenChange={onOpenChange}

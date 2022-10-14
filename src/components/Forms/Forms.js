@@ -18,6 +18,8 @@ const Forms = forwardRef((props, ref) => {
 
   const onSearch = (value) => console.log(value);
   
+  console.log(ref)
+
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)} className='forms-button'>
@@ -41,7 +43,7 @@ const Forms = forwardRef((props, ref) => {
         <span style={{ display: 'inline-block', marginLeft: 50 }}>
           <p>
             <div className="most-used-functions">
-              <AllFunctions />
+              <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
             </div>
           </p>
         </span>
