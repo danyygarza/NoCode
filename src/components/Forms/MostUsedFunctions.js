@@ -20,13 +20,14 @@ import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
 import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
 
-
+//! Testing with models
+import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 
 function MostUsedFunctions(props) {
 
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
-        { text: "Write", form: <ExcelWrite /> },
+        { text: "Write", form: new ExcelWriteModel()},
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
