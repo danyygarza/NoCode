@@ -20,7 +20,6 @@ function Code() {
     return (
         <>
             <Row>
-                <Tutorial />
                 <SaveOutlined />
             </Row>
             <Row>
