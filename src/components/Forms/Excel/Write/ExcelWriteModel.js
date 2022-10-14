@@ -4,7 +4,6 @@ import React from "react";
 
 
 export class ExcelWriteModel {
-
     constructor(reference) {
         this.component = <ExcelWrite ref = {reference}/>
         this.code = ``

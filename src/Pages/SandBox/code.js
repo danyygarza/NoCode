@@ -15,6 +15,7 @@ function Code() {
     const [method, setMethod] = useState([])
     //! this to call functions from Frida (child component) // 
     const callFrida = useRef(null);
+    
     const submitRef = useRef(null); 
     return (
         <>
@@ -35,7 +36,7 @@ function Code() {
                 <Col offset={21}>
                     <Button type="primary" onClick={(event) => {
                         console.log("button from code is being pressed")
-                        callFrida.current.showAlert();
+                        submitRef.current.showAlert();
                     }}>
                         Submit from code!!
                     </Button>

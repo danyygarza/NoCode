@@ -5,8 +5,6 @@ import { ExcelWriteModel } from '../Forms/Excel/Write/ExcelWriteModel';
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();
-    const submitRef = useRef(null);
-
 
     //! this is used to pass the function to code(parent component) //
     // useImperativeHandle(ref, () => ({
