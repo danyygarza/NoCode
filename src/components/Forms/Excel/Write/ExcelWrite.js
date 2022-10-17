@@ -126,7 +126,7 @@ export default function ExcelWrite(props) {
                     type="solid"
                     onClick={() => remove()}
                     shape="circle"
-                    icon={<MinusCircleOutlined />}
+                    icon={<MinusCircleOutlined className="hover"/>}
                 >
                 </Button>
                 </Row>

@@ -58,6 +58,8 @@
 }
 
 .forms-button:hover{
-    background: #f683b9;
-    border-color: #f683b9;
+    color: #f683b9 !important;
+    border-color: #f683b9 !important;
 }
+
+

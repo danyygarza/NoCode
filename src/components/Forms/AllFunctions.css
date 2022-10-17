@@ -3,7 +3,7 @@
     width: 100%;
     background-color: none;
     overflow-x: scroll;
-    height: 10%;
+    height: 10% !important;
 }
 
 

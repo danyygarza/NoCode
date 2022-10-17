@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=IBM+Plex+Mono:wght@300&display=swap');
 
 .header{
-    color: black !important;
+    color: #f0f2f5 !important;
     display: flex;
     padding-left:8em !important;
     padding-top: 1em !important;
@@ -10,11 +10,20 @@
     font-size: 30px;
 }
 
+.ant-layout-header {
+    height: 64px;
+    padding: 0px 50px;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 64px;
+    background: rgb(240 242 245) !important;
+}
+
 .content{
     color: black !important;
     font-size: 30px;
     padding-top: 2em;
     padding-left: 6em;
+    text-align: left !important;
 }
 
 .ant-layout-content {

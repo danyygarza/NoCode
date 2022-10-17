@@ -16,3 +16,8 @@
 .demo{
     margin-left: 117px;
 }
+
+Button:hover{
+    color: #f683b9 !important;
+    border-color: #f683b9 !important;
+}

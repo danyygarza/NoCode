@@ -9,7 +9,7 @@ import "antd/dist/antd.css";
 import "./Navbar.css";
 import { useAuth } from "../../context/authContext";
 import { Link } from "react-router-dom";
-import { useThemeSwitcher } from "react-css-theme-switcher";
+//import { useThemeSwitcher } from "react-css-theme-switcher";
 import { useState } from "react";
 
 const onChange = (checked) => {
@@ -22,12 +22,14 @@ export default function Navbar() {
 
   console.log(user);
 
+  /*
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { switcher, themes } = useThemeSwitcher();
   const switchTheme = (isDarkMode) => {
     setIsDarkMode(isDarkMode);
     switcher({ theme: isDarkMode ? themes.dark : themes.light });
   };
+  */
 
   const handleLogout = async () => {
     try {
@@ -59,12 +61,6 @@ export default function Navbar() {
           <div>
             <img className="frida" src="favicon.ico" alt="logo" />
           </div>
-          <Switch
-            checkedChildren={"Dark Theme"}
-            unCheckedChildren={"Light Theme"}
-            checked={isDarkMode}
-            onChange={switchTheme}
-          />
           <Menu
             style={{
               backgroundColor: "black",
