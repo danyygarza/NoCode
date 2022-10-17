@@ -18,6 +18,8 @@ import CopyColumn from "../Excel/CopyColumn/CopyColumn";
 import ApplyFilter from "../Excel/ApplyFilter/ApplyFilter";
 import RemoveColumn from "../Excel/RemoveColumn/RemoveColumn";
 import { ExcelWriteModel } from "../Excel/Write/ExcelWriteModel";
+import "../../../index.css"
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const contentStyle = {
   height: "160px",
   color: "#fff",
@@ -58,7 +60,7 @@ const CarouselTest = forwardRef((props, ref) => {
     <h1>empty</h1>
   ) : (
     <>
-      <Carousel afterChange={onChange} slidesToShow={5} style={{height: 190}}>
+      <Carousel afterChange={onChange} slidesToShow={3} style={{height: 190, maxWidth: 500, marginLeft: 400}} arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />} >
         {formArray.map((data) => {
           return (
             <div>
