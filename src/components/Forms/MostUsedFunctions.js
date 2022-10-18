@@ -20,69 +20,71 @@ import RemoveColumn from "./Excel/RemoveColumn/RemoveColumn";
 import { ExcelWriteModel } from "./Excel/Write/ExcelWriteModel";
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const contentStyle = {
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
+    height: "160px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    background: "#364d79",
 };
 
 const onChange = (currentSlide) => {
-  console.log(currentSlide);
+    console.log(currentSlide);
 };
 const MostUsedFunctions = forwardRef((props, ref) => {
-  const [formArray, setFormArray] = useState([
-    { text: "UploadFile", form: <Upload /> },
-    { text: "Write", form: new ExcelWriteModel(ref) },
-    { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
-    { text: "NewWorkBook", form: <NewWorkBook /> },
-    { text: "SortColumns", form: <SortColumns /> },
-    { text: "CountElements", form: <CountElements /> },
-    { text: "Substring", form: <Substring /> },
-    { text: "InsertColumn", form: <InsertColumn /> },
-    { text: "CopyColumn", form: <CopyColumn /> },
-    { text: "ApplyFilter", form: <ApplyFilter /> },
-    { text: "RemoveColumn", form: <RemoveColumn /> },
-  ]);
+    const [formArray, setFormArray] = useState([
+        { text: "UploadFile", form: <Upload /> },
+        { text: "Write", form: new ExcelWriteModel(ref) },
+        { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
+        { text: "NewWorkBook", form: <NewWorkBook /> },
+        { text: "SortColumns", form: <SortColumns /> },
+        { text: "CountElements", form: <CountElements /> },
+        { text: "Substring", form: <Substring /> },
+        { text: "InsertColumn", form: <InsertColumn /> },
+        { text: "CopyColumn", form: <CopyColumn /> },
+        { text: "ApplyFilter", form: <ApplyFilter /> },
+        { text: "RemoveColumn", form: <RemoveColumn /> },
+    ]);
 
-  const [form] = Form.useForm();
+    console.log("log of ref from MOF", ref); 
 
-  const add = (data) => {
-    console.log("adding to form from MOF", form);
+    const [form] = Form.useForm();
 
-    props.setForms([...props.forms, data]);
-    console.log("forms", props.forms);
-  };
+    const add = (data) => {
+        console.log("adding to form from MOF", form);
+        console.log("index of elRefs : ",props.index)
+        props.setForms([...props.forms, data]);
+        console.log("forms", props.forms);
+    };
 
-  console.log("ref from MOF", ref);
-  return formArray.lenght === 0 ? (
-    <h1>empty</h1>
-  ) : (
-    <>
-      <Carousel afterChange={onChange} style={{maxWidth: 850, height: 400}} slidesToShow={3} arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />} >
-        {formArray.map((data) => {
-          return (
-            <div>
-              <Button
-                style={{ height: 120, borderRadius: 40, borderColor: "white" }}
-                onClick={(event) => {
-                  console.log("button is being pressed from MOF");
-                  add(data.form);
-                }}
-              >
-                <div className="imgp">
-                  <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
-                  <p style={{ color: "black", marginLeft: 0 }}>
-                    <b>{data.text}</b>
-                  </p>
-                </div>
-              </Button>
-            </div>
-          );
-        })}
-      </Carousel>
-    </>
-  );
+    console.log("ref from MOF", ref);
+    return formArray.lenght === 0 ? (
+        <h1>empty</h1>
+    ) : (
+        <>
+            {/* <Carousel afterChange={onChange} style={{maxWidth: 850, height: 400}} slidesToShow={3} arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />} > */}
+            {formArray.map((data) => {
+                return (
+                    <div>
+                        <Button
+                            style={{ height: 120, borderRadius: 40, borderColor: "white" }}
+                            onClick={(event) => {
+                                console.log("button is being pressed from MOF");
+                                add(data.form);
+                            }}
+                        >
+                            <div className="imgp">
+                                <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                                <p style={{ color: "black", marginLeft: 0 }}>
+                                    <b>{data.text}</b>
+                                </p>
+                            </div>
+                        </Button>
+                    </div>
+                );
+            })}
+            {/* </Carousel> */}
+        </>
+    );
 });
 
 export default MostUsedFunctions;

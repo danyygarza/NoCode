@@ -82,20 +82,20 @@ const ExcelWrite = forwardRef((props, ref) => {
 
     //
     useImperativeHandle(ref, () => ({
-        showAlert(values) {
+        submit() {
             console.log("pressing button from Excel write")
             form.submit()
         },
     }))
 
-    const onFinish = (values) => {
-        form.validateFields().then((test) => {
-            console.log('Success:', values);
-            console.log(Object.values(values))
-            //! Logic to generate the FRIDA code from the component
-
-        })
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
     };
+
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
+    
     useEffect(() => {
         id = Date.now();
         setClick(false);
@@ -105,7 +105,7 @@ const ExcelWrite = forwardRef((props, ref) => {
     console.log(ref)
     return (
         <div>
-            <Form form={form} onFinish={onFinish}>
+            <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
                 <Row justify="center">
                     <Col>
                         <Title level={5}>ExcelWrite</Title>
