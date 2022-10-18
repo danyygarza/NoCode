@@ -7,6 +7,8 @@ import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json';
 import "./ExcelWrite.css"
 import { width } from "@mui/system";
+import Forms from "../../Forms";
+import CrearProceso from "../../../ProcesoNuevo/CrearProceso";
 
 
 let id = Date.now();
@@ -53,37 +55,39 @@ export default function ExcelWrite(props) {
     const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
         <>
+            <Form>
+                <Row >
+                    <Col span={8}>
+                        <Form.Item
+                            name={[`write` + id, "write"]}
+                            label="Write"
+                            rules={[{ required: true, message: 'Please input the text!' }]}
+                        >
+                            <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
+                        </Form.Item>
+                    </Col>
+                    <Col span={8}>
+                        <Form.Item
+                            name={[`in` + id, "in"]}
+                            label="in"
+                            rules={[{ required: true, message: 'Please input the worksheet!' }]}
+                        >
+                            <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
+                        </Form.Item>
+                    </Col>
+                    <Col span={8}>
+                        <Form.Item
+                            name={[`cell` + id, "cell"]}
+                            label="Cell"
+                            rules={[{ required: true, message: 'Please input the column row!' }]}
+                        >
+                            <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
 
-            <Row >
-                <Col span={8}>
-                    <Form.Item
-                        name={[`write` + id, "write"]}
-                        label="Write"
-                        rules={[{ required: true, message: 'Please input the text!' }]}
-                    >
-                        <Input type="text" placeholder={"<Something>"} onChange={props.onChange} />
-                    </Form.Item>
-                </Col>
-                <Col span={8}>
-                    <Form.Item
-                        name={[`in` + id, "in"]}
-                        label="in"
-                        rules={[{ required: true, message: 'Please input the worksheet!' }]}
-                    >
-                        <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
-                    </Form.Item>
-                </Col>
-                <Col span={8}>
-                    <Form.Item
-                        name={[`cell` + id, "cell"]}
-                        label="Cell"
-                        rules={[{ required: true, message: 'Please input the column row!' }]}
-                    >
-                        <Input type="text" placeholder={"<ColRow>"} onChange={props.onChange} />
-
-                    </Form.Item>
-                </Col>
-            </Row></>
+                        </Form.Item>
+                    </Col>
+                </Row>
+            </Form>
+        </>
     ]);
 
     const remove = () => {
@@ -92,11 +96,18 @@ export default function ExcelWrite(props) {
         setInputs(values);
     }
 
+    const removeForm = () => {
+        const values = [add];
+        values.splice(Date.now() > -1);
+        setInputs(values);
+    }
+
+
     const add = () => {
         setInputs([...inputs,
         <>
             <span>
-                <Row style={{flexWrap:'nowrap', marginLeft: 3}}>
+                <Row style={{ flexWrap: 'nowrap', marginLeft: 3 }}>
                     <Col span={8}>
                         <Form.Item
                             name={[`write` + id, "write"]}
@@ -123,14 +134,14 @@ export default function ExcelWrite(props) {
                         </Form.Item>
                     </Col>
                     <Button
-                    type="solid"
-                    onClick={() => remove()}
-                    shape="circle"
-                    icon={<MinusCircleOutlined className="hover"/>}
-                >
-                </Button>
+                        type="solid"
+                        onClick={() => remove()}
+                        shape="circle"
+                        icon={<MinusCircleOutlined className="hover" />}
+                    >
+                    </Button>
                 </Row>
-                
+
             </span>
         </>
 
@@ -150,6 +161,14 @@ export default function ExcelWrite(props) {
                     <Title level={5}>ExcelWrite</Title>
                 </Col>
             </Row>
+            <Button
+                type="solid"
+                removeForms={inputs.slice}
+                shape="circle"
+                onClick={() => removeForm()}
+                icon={<MinusCircleOutlined className="hover" />}
+            >
+            </Button>
             <Row>
                 <Col>
                     <div className="demo">

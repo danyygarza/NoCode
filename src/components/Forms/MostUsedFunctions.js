@@ -1,6 +1,7 @@
-import { Button, Form } from 'antd'
+import { Button, Form, Carousel } from 'antd'
 import React, { useState } from 'react'
-
+import ReactDOM from "react-dom";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 
 import './MostUsedFunctions.css'
@@ -30,12 +31,12 @@ function MostUsedFunctions(props) {
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
-        //{ text: "CountElements", form: <CountElements /> },
-        //{ text: "Substring", form: <Substring /> },
+        { text: "CountElements", form: <CountElements /> },
+        { text: "Substring", form: <Substring /> },
         { text: "InsertColumn", form: <InsertColumn /> },
-        //{ text: "CopyColumn", form: <CopyColumn /> },
-        //{ text: "ApplyFilter", form: <ApplyFilter /> },
-        //{ text: "RemoveColumn", form: <RemoveColumn /> },
+        { text: "CopyColumn", form: <CopyColumn /> },
+        { text: "ApplyFilter", form: <ApplyFilter /> },
+        { text: "RemoveColumn", form: <RemoveColumn /> },
     ])
 
     const [form] = Form.useForm();
@@ -50,10 +51,9 @@ function MostUsedFunctions(props) {
     }
 
     return (
-
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
             return (
-                <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white'}}
+                <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
                         console.log("button is being pressed from MOF")
                         add(data.form);
@@ -63,10 +63,9 @@ function MostUsedFunctions(props) {
                         <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
                         <p style={{ color: 'black', marginLeft: 0 }}><b>{data.text}</b></p>
                     </div>
-                </Button></>
+                </Button>
             )
         })
-
     )
 }
 

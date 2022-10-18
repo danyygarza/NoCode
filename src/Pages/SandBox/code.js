@@ -37,7 +37,7 @@ function Code() {
             </Row>
             <Row>
                 <Col offset={21}>
-                    <Button className='forms-button' onClick={(event) => {
+                    <Button className='forms-button2' onClick={(event) => {
                         console.log("button from code is being pressed")
                         submitRef.current.showAlert();
                     }}>

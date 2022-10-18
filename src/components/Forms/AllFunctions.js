@@ -18,9 +18,6 @@ function getItem(label, key, icon, children, type) {
 }
 
 export default function AllFunctions(props) {
-  const testFunc = (text) => {
-    console.log(text)
-  }
 
   const add = (data) => {
     console.log("adding to form from MOF");

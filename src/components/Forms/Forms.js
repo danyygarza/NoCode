@@ -10,6 +10,7 @@ import Code from '../../Pages/SandBox/code';
 const Forms = forwardRef((props, ref) => {
   //modal
   const [open, setOpen] = useState(false);
+  const [closed, setClosed] = useState(false);
 
   //search 
   const { Search } = Input;
@@ -41,7 +42,7 @@ const Forms = forwardRef((props, ref) => {
         <span style={{ display: 'inline-block', marginLeft: 50 }}>
           <p>
             <div className="most-used-functions">
-              <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
+              <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref}  />
             </div>
           </p>
         </span>
