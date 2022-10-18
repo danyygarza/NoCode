@@ -53,5 +53,17 @@
         "Parameters": "<worksheetKey> <colIndex>",
         "Syntax1": "InsertCol in <worksheetKey> at <colIndex>",
         "Example1": "InsertCol in Sheet1 at 6"
+    },
+    "fridaExcelReadersSyntaxUploadFile":{
+        "Name": "LoadWBook",
+        "Description": "Opens a given workbook and saves a variable for future reference. Optional parameters are: Password'<password>', UpdateLinks:yes|no  ",
+        "Parameters": "<workbookPath> <workbookKey> <password> <updateLinksAnswer> <updLinks>",
+        "Syntax1": "LoadWBook <workbookPath> as <workbookKey>",
+        "Syntax2": "LoadWBook <workbookPath> as <workbookKey> with_parameters Password: <password>",
+        "Syntax3": "LoadWBook <workbookPath> as <workbookKey> with_parameters UpdateLinks: <updLinks>",
+        "Syntax4": "LoadWBook <workbookPath> as <workbookKey> with_parameters Password: <password> UpdateLinks: <updLinks>",
+        "Example1": "LoadWBook 'C:/Users/productivity/Desktop/Book1.xlsx' as book1",
+        "Example2": "LoadWBook 'C:/Users/productivity/Desktop/SecretBook.xlsx' as book1 with_parameters Password: '1234'",
+        "Example3": "LoadWBook 'C:/Users/productivity/Desktop/Summary.xlsx' as book1 with_parameters UpdateLinks: yes"
     }
 }
