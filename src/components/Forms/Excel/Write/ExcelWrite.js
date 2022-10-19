@@ -87,7 +87,8 @@ function ExcelWrite(props) {
     }
 
     const add = () => {
-        setInputs([...inputs, <Row>
+        setInputs([...inputs, 
+        <Row>
             <Col span={8}>
                 < Form.Item
                     name={[`write` + id, "write"]}
@@ -116,15 +117,15 @@ function ExcelWrite(props) {
                     <Input type="text" placeholder={"<ColRow>"} />
                 </Form.Item >
             </Col>
-            <Col offset={12}>
-                <Button
-                    type="solid"
-                    onClick={() => remove()}
-                    shape="circle"
-                    icon={<MinusCircleOutlined />}
-                >
-                </Button>
-            </Col>
+                <Form.Item>
+                    <Button
+                        type="solid"
+                        onClick={() => remove()}
+                        shape="circle"
+                        icon={<MinusCircleOutlined />}
+                    >
+                    </Button>
+                </Form.Item>
         </Row>])
         setClick(true);
     }
