@@ -1,6 +1,37 @@
 import React from "react";
-import { Button, Checkbox, Form, Input, Col, Row, Typography, InputNumber  } from "antd";
+import { Button, Checkbox, Form, Input, Col, Row, Typography, InputNumber, Popover } from "antd";
+import data from '../../syntax.json'
+import "../Write/ExcelWrite.css"
+
 const { Title } = Typography;
+const buttonWidth = 70;
+
+const description = (
+  <>
+    {data.fridaExcelReadersSyntaxNewWorkbook.Description}
+  </>
+);
+
+const parameters = (
+  <>
+    {data.fridaExcelReadersSyntaxNewWorkbook.Parameters}
+  </>
+);
+
+const syntax = (
+  <>
+    {data.fridaExcelReadersSyntaxNewWorkbook.Syntax1}<br />
+    {data.fridaExcelReadersSyntaxNewWorkbook.Syntax2}<br />
+    {data.fridaExcelReadersSyntaxNewWorkbook.Syntax3}<br />
+  </>
+);
+
+const examples = (
+  <>
+    {data.fridaExcelReadersSyntaxNewWorkbook.Example1}<br />
+    {data.fridaExcelReadersSyntaxNewWorkbook.Example2}<br />
+  </>
+)
 
 function NewWorkBook() {
   const onFinish = (values) => {
@@ -32,7 +63,26 @@ function NewWorkBook() {
           <Title level={5}>New Workbook</Title>
         </Col>
       </Row>
-
+      <Row>
+        <Col>
+          <div className="demo">
+            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                <Button>Description</Button>
+              </Popover>
+              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                <Button>Parameters</Button>
+              </Popover>
+              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                <Button>Syntax</Button>
+              </Popover>
+              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                <Button>Examples</Button>
+              </Popover>
+            </div>
+          </div>
+        </Col>
+      </Row>
       <Form.Item
         label="Path"
         name="Path"
@@ -69,9 +119,9 @@ function NewWorkBook() {
           },
         ]}
       >
-        <Input/>
+        <Input />
       </Form.Item>
-      
+
 
       <Form.Item
         wrapperCol={{
@@ -79,7 +129,7 @@ function NewWorkBook() {
           span: 16,
         }}
       >
-        
+
       </Form.Item>
     </Form>
   );

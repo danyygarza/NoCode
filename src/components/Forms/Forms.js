@@ -9,6 +9,7 @@ import AllFunctions from './AllFunctions'
 const Forms = forwardRef((props, ref) => {
   //modal
   const [open, setOpen] = useState(false);
+  const [closed, setClosed] = useState(false);
 
   //search 
   const { Search } = Input;
@@ -19,7 +20,7 @@ const Forms = forwardRef((props, ref) => {
 
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)} className='forms-button'>
+      <Button onClick={() => setOpen(true)} className='forms-button'>
         Create New Function
       </Button>
       <Modal
@@ -30,8 +31,8 @@ const Forms = forwardRef((props, ref) => {
         onCancel={() => setOpen(false)}
         width={900}
       >
-        <Search placeholder="Búsqueda" onSearch={onSearch} className='search' enterButton />
-        <span style={{ display: 'inline-block', wordSpacing: 30, paddingTop: 15 }}>
+        <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
+        <span style={{ display: 'inline-block',  wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
           <p>
             <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
           </p>
@@ -40,7 +41,7 @@ const Forms = forwardRef((props, ref) => {
         <span style={{ display: 'inline-block', marginLeft: 50 }}>
           <p>
             <div className="most-used-functions">
-              <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
+              <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref}  />
             </div>
           </p>
         </span>

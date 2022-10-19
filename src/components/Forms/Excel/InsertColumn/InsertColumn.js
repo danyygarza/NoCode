@@ -8,10 +8,41 @@ import {
   Typography,
   DatePicker,
   Select,
-  Space
+  Space,
+  Popover
 } from "antd";
+import data from '../../syntax.json'
+import "../Write/ExcelWrite.css"
+
+
 const { Title } = Typography;
 const { Option } = Select;
+const buttonWidth = 70;
+
+const description = (
+  <>
+    {data.fridaExcelReadersSyntaxInsertColumn.Description}
+  </>
+);
+
+const parameters = (
+  <>
+    {data.fridaExcelReadersSyntaxInsertColumn.Parameters}
+  </>
+);
+
+const syntax = (
+  <>
+    {data.fridaExcelReadersSyntaxInsertColumn.Syntax1}
+  </>
+);
+
+const examples = (
+  <>
+    {data.fridaExcelReadersSyntaxInsertColumn.Example1}
+  </>
+);
+
 
 function InsertColumn() {
   const onFinish = (values) => {
@@ -43,10 +74,28 @@ function InsertColumn() {
           <Title level={5}>Insertar Columna</Title>
         </Col>
       </Row>
-      <Row>       
-
-        
-      <Col span={8}>
+      <Row>
+        <Col>
+          <div className="demo">
+            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                <Button>Description</Button>
+              </Popover>
+              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                <Button>Parameters</Button>
+              </Popover>
+              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                <Button>Syntax</Button>
+              </Popover>
+              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                <Button>Examples</Button>
+              </Popover>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={8}>
           <Form.Item
             label="Hoja de Excel"
             name="sheetName"
@@ -57,11 +106,11 @@ function InsertColumn() {
               },
             ]}
           >
-            
+
             <Input />
           </Form.Item>
         </Col>
-        
+
         <Col span={8}>
           <Form.Item
             label="Indice de columna"
@@ -73,11 +122,11 @@ function InsertColumn() {
               },
             ]}
           >
-            
+
             <Input />
           </Form.Item>
         </Col>
-        
+
       </Row>
 
       <Form.Item
@@ -86,7 +135,7 @@ function InsertColumn() {
           span: 16,
         }}
       >
-        
+
       </Form.Item>
     </Form>
   );

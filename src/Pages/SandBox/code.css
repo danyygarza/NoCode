@@ -9,3 +9,8 @@
     justify-content: center;
     margin-left: 11em;
 }
+
+.forms-button:hover{
+    color: #f683b9 !important;
+    border-color: #f683b9 !important;
+}

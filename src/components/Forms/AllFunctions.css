@@ -1,6 +1,9 @@
 
-.ant-menu-submenu-selected {
-    color: #D64488;
+.all-functions-button{
+    width: 100%;
+    background-color: none;
+    overflow-x: scroll;
+    height: 10% !important;
 }
 
 

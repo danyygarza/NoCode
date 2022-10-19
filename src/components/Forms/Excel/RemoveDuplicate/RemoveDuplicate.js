@@ -8,13 +8,46 @@ import {
     Typography,
     DatePicker,
     Select,
-    Space
+    Space,
+    Popover
 } from "antd";
 import "./RemoveDuplicate.css"
+import "../Write/ExcelWrite.css"
+import data from '../../syntax.json'
 
 
 const { Title } = Typography;
 const { Option } = Select;
+const buttonWidth = 70;
+
+const description = (
+    <>
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Description}
+    </>
+);
+
+const parameters = (
+    <>
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Parameters}
+    </>
+);
+
+const syntax = (
+    <>
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Syntax1}<br />
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Syntax2}<br />
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Syntax3}<br />
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Syntax4}<br />
+    </>
+);
+
+const examples = (
+    <>
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Example1}<br />
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Example2}<br />
+        {data.fridaExcelReadersSyntaxRemoveDuplicate.Example3}<br />
+    </>
+);
 
 function RemoveDuplicate() {
     const onFinish = (values) => {
@@ -30,6 +63,26 @@ function RemoveDuplicate() {
             <Row justify="center">
                 <Col span={8}>
                     <Title level={5}>RemoveDuplicate</Title>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <div className="demo">
+                        <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                            <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                                <Button>Description</Button>
+                            </Popover>
+                            <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                                <Button>Parameters</Button>
+                            </Popover>
+                            <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                                <Button>Syntax</Button>
+                            </Popover>
+                            <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                                <Button>Examples</Button>
+                            </Popover>
+                        </div>
+                    </div>
                 </Col>
             </Row>
             <Form
