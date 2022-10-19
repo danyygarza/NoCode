@@ -80,7 +80,7 @@ const ExcelWrite = forwardRef((props, ref) => {
         setClick(true);
     }
 
-    //
+    // ! this is what will bind the ref to the submit finction of this component
     useImperativeHandle(ref, () => ({
         submit() {
             console.log("pressing button from Excel write")
@@ -128,9 +128,7 @@ const ExcelWrite = forwardRef((props, ref) => {
                 </Row>
             </Form>
         </div>
-
     )
-
 });
 
 

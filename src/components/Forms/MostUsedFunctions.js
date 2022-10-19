@@ -6,7 +6,6 @@ import "./MostUsedFunctions.css";
 //components
 
 //! Forms
-import ExcelWrite from "./Excel/Write/ExcelWrite";
 import Upload from "./Excel/Upload/Upload";
 import RemoveDuplicate from "./Excel/RemoveDuplicate/RemoveDuplicate";
 import NewWorkBook from "./Excel/NewWorkBook/NewWorkBook";
@@ -18,7 +17,6 @@ import CopyColumn from "./Excel/CopyColumn/CopyColumn";
 import ApplyFilter from "./Excel/ApplyFilter/ApplyFilter";
 import RemoveColumn from "./Excel/RemoveColumn/RemoveColumn";
 import { ExcelWriteModel } from "./Excel/Write/ExcelWriteModel";
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const contentStyle = {
     height: "160px",
     color: "#fff",
@@ -33,7 +31,7 @@ const onChange = (currentSlide) => {
 const MostUsedFunctions = forwardRef((props, ref) => {
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
-        { text: "Write", form: new ExcelWriteModel(ref) },
+        { text: "Write", form: new ExcelWriteModel(ref) }, //! you have to use this reference for the rest of the components ! //
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
@@ -69,7 +67,7 @@ const MostUsedFunctions = forwardRef((props, ref) => {
                             style={{ height: 120, borderRadius: 40, borderColor: "white" }}
                             onClick={(event) => {
                                 console.log("button is being pressed from MOF");
-                                add(data.form);
+                                add(data.form); // * here you are passing the object component of form from the array of forArray
                             }}
                         >
                             <div className="imgp">

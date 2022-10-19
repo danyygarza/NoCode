@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } from 'react'
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
-import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined, ConsoleSqlOutlined } from '@ant-design/icons';
-import { ExcelWriteModel } from '../Forms/Excel/Write/ExcelWriteModel';
 import Forms from "../../components/Forms/Forms";
 
 
@@ -10,17 +8,16 @@ const { createRef } = React;
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();
-    const [forms, setForms] = useState([]); // array de formularios / componentes
-    const [elRefs, setElRefs] = React.useState([]); // array de referencias
-    const [test, setTest] = useState();
-    // const [items, setItems] = useState(-1); 
+    const [forms, setForms] = useState([]); // forms array
+    const [elRefs, setElRefs] = React.useState([]); // reference array
     useImperativeHandle(ref, () => ({
         validate() {
-            console.log("trigger from Code")
+            // ! This binds validate function to Codes' reference  
             return handleValidate();
         },
     }));
 
+    //! Function  which is triggered by the imperative handle
     const handleValidate = () => {
         console.log('elRef lenght', elRefs.length);
         console.log(elRefs)
@@ -30,7 +27,7 @@ const Frida = forwardRef((props, ref) => {
     }
 
     React.useEffect(() => {
-        // add or remove refs
+        // *add or remove refs
         console.log("use effect is triggered");
 
         setElRefs((elRefs) =>
@@ -38,11 +35,6 @@ const Frida = forwardRef((props, ref) => {
                 .fill()
                 .map((_, i) => elRefs[i] || createRef()),
         );
-
-        // setTest(elRefs[forms.length]);
-        // setItems(items+1); 
-        // console.log("useEffect itet", items+1); 
-        // console.log("ref array", elRefs)
     }, [forms]);
     //! this is used to pass the function to code(parent component) //
 
@@ -51,7 +43,6 @@ const Frida = forwardRef((props, ref) => {
     return (
         <>
             < div className="main" >
-
                 {
                     forms.length === 0 ? <h1>Empty</h1> : forms.map((form) => {
                         return (
@@ -70,21 +61,18 @@ const Frida = forwardRef((props, ref) => {
                 < Row >
                     <Col >
                         {
-
                             elRefs.length > 0 &&
                             elRefs.map((ref, index) => (
                                 <>
-                                    {/* <Forms setForms={setForms} forms={forms} ref={ref} /> */}
-                                    {index === elRefs.length - 1 && <Forms setForms={setForms} forms={forms} ref={ref} />}
+                                    {
+                                        //! this is a temporary solution that whill only render the last button from the map
+                                        //! for some aparent reason it doesn't work by just assgning the last element of the ref array 
+                                        index === elRefs.length - 1 && <Forms setForms={setForms} forms={forms} ref={ref} />
+                                    }
                                     {console.log(ref)}
                                 </>
                             ))
                         }
-                        {/*                                                                        index = array.length -1,   [null] -> ref.current.submit() */}
-                        {/* <Forms setForms={setForms} forms={forms} ref={test} />
-                        <h3>index: {elRefs.length - 1}</h3>
-                        {console.log('testing', elRefs[elRefs.length - 2])} */}
-                        {/* <Forms setForms={setForms} forms={forms} elRefs={elRefs} setElRefs={setElRefs} ref={temp} index={elRefs.length} /> */}
                     </Col>
                 </Row >
             </div >

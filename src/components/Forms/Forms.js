@@ -1,11 +1,10 @@
 import { Button, Modal, Input, Form } from 'antd';
-import React, { forwardRef, useState, useImperativeHandle } from 'react';
+import React, { forwardRef, useState } from 'react';
 import './Forms.css';
 
 //components
 import MostUsedFunctions from './MostUsedFunctions'
 import AllFunctions from './AllFunctions'
-import Code from '../../Pages/SandBox/code';
 
 const Forms = forwardRef((props, ref) => {
   //modal
@@ -13,8 +12,6 @@ const Forms = forwardRef((props, ref) => {
 
   //search 
   const { Search } = Input;
-
-  const [form] = Form.useForm();
 
   const onSearch = (value) => console.log(value);
 
