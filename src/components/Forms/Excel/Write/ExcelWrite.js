@@ -49,7 +49,7 @@ function ExcelWrite(props) {
     const [inputs, setInputs] = useState([
         <>
             <Row>
-                <Col span={8}>
+                <Col span={7}>
                     <Form.Item
                         name={[`write` + id, "write"]}
                         label="Write"
@@ -59,7 +59,7 @@ function ExcelWrite(props) {
                     </Form.Item>
                 </Col>
 
-                <Col span={8}>
+                <Col span={7}>
                     <Form.Item
                         name={[`in` + id, "in"]}
                         label="in"
@@ -68,7 +68,7 @@ function ExcelWrite(props) {
                         <Input type="text" placeholder={"<WorksheetKey>"} onChange={props.onChange} />
                     </Form.Item>
                 </Col>
-                <Col span={8}>
+                <Col span={7}>
                     <Form.Item
                         name={[`cell` + id, "cell"]}
                         label="Cell"
@@ -90,7 +90,7 @@ function ExcelWrite(props) {
     const add = () => {
         setInputs([...inputs,
         <Row>
-            <Col span={8}>
+            <Col span={7}>
                 < Form.Item
                     name={[`write` + id, "write"]}
                     label="Write"
@@ -100,7 +100,7 @@ function ExcelWrite(props) {
                 </Form.Item >
             </Col>
 
-            <Col span={8}>
+            <Col span={7}>
                 < Form.Item
                     name={[`in` + id, "in"]}
                     label="in"
@@ -109,7 +109,7 @@ function ExcelWrite(props) {
                     <Input type="text" placeholder={"<WorksheetKey>"} />
                 </Form.Item >
             </Col>
-            <Col span={8}>
+            <Col span={7}>
                 < Form.Item
                     name={[`cell` + id, "cell"]}
                     label="Cell"
@@ -118,15 +118,13 @@ function ExcelWrite(props) {
                     <Input type="text" placeholder={"<ColRow>"} />
                 </Form.Item >
             </Col>
-            <Form.Item>
-                <Button
-                    type="solid"
-                    onClick={() => remove()}
-                    shape="circle"
-                    icon={<MinusCircleOutlined />}
-                >
-                </Button>
-            </Form.Item>
+            <Button
+                type="solid"
+                onClick={() => remove()}
+                shape="circle"
+                icon={<MinusCircleOutlined />}
+            >
+            </Button>
         </Row>])
         setClick(true);
     }

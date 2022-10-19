@@ -65,5 +65,14 @@
         "Example1": "LoadWBook 'C:/Users/productivity/Desktop/Book1.xlsx' as book1",
         "Example2": "LoadWBook 'C:/Users/productivity/Desktop/SecretBook.xlsx' as book1 with_parameters Password: '1234'",
         "Example3": "LoadWBook 'C:/Users/productivity/Desktop/Summary.xlsx' as book1 with_parameters UpdateLinks: yes"
+    },
+    "fridaExcelReadersSyntaxCountElements":{
+        "Name": "CountElements",
+        "Description": "Counts the elements inside a list or dictionary variable. For strings it counts the number of chars. Angle brackets (<>) are not required.",
+        "Parameters": "<varName> <varName2>",
+        "Syntax1": "CountItems in <varName> and save_as <varName2>",
+        "Example1": "CountItems in list and save_as users",
+        "Example2": "CountItems in string and save_as numChars",
+        "Example3": "CountItems in rows and save_as filas"
     }
 }

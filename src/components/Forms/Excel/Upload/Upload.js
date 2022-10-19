@@ -71,15 +71,7 @@ function Upload() {
                         <Input type="text" placeholder={"<workbookKey>"} />
                     </Form.Item>
                 </Col>
-                <Col span={8}>
-                    <Form.Item
-                        name={[`cell` + id, "cell"]}
-                        label="Cell"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
-                    >
-                        <Input type="text" placeholder={"<ColRow>"} />
-                    </Form.Item>
-                </Col>
+
             </Row>
         </>
 
@@ -94,7 +86,7 @@ function Upload() {
 
     const add = () => {
         setInputs([...inputs,
-            <Row>
+        <Row>
             <Col span={8}>
                 <Form.Item
                     name={[`path` + id, "path"]}
@@ -114,18 +106,18 @@ function Upload() {
                     <Input type="text" placeholder={"<workbookKey>"} />
                 </Form.Item>
             </Col>
-            <Col span={8}>
-                <Form.Item
-                    name={[`cell` + id, "cell"]}
-                    label="Cell"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
-                >
-                    <Input type="text" placeholder={"<ColRow>"} />
-                </Form.Item>
-            </Col>
+            <Button
+                type="solid"
+                onClick={() => remove()}
+                shape="circle"
+                icon={<MinusCircleOutlined />}
+            >
+            </Button>
         </Row>])
-        setClick(true);
+        
     }
+
+
     const [form] = Form.useForm();
     useEffect(() => {
         id = Date.now();
