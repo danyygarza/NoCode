@@ -10,11 +10,7 @@ let id = Date.now();
 const { Title } = Typography;
 const buttonWidth = 70;
 
-const description = (
-    <>
-        {data.fridaExcelReadersSyntaxWrite.Description}
-    </>
-);
+
 
 const parameters = (
     <>
@@ -165,9 +161,6 @@ function ExcelWrite(props) {
                     <Col>
                         <div className="demo">
                             <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-                                <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
-                                    <Button>Description</Button>
-                                </Popover>
                                 <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
                                     <Button>Parameters</Button>
                                 </Popover>
