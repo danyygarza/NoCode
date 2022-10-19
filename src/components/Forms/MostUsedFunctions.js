@@ -45,19 +45,19 @@ const MostUsedFunctions = forwardRef((props, ref) => {
         { text: "RemoveColumn", form: <RemoveColumn /> },
     ]);
 
-    console.log("log of ref from MOF", ref); 
+    console.log("log of ref from MOF", ref);
 
     const [form] = Form.useForm();
 
     const add = (data) => {
         console.log("adding to form from MOF", form);
-        console.log("index of elRefs : ",props.index)
+        console.log("index of elRefs : ", props.index)
         props.setForms([...props.forms, data]);
         console.log("forms", props.forms);
     };
 
     console.log("ref from MOF", ref);
-    return formArray.lenght === 0 ? (
+    return formArray.length === 0 ? (
         <h1>empty</h1>
     ) : (
         <>

@@ -10,11 +10,10 @@ const { createRef } = React;
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();
-    const [forms, setForms] = useState([]);
-    const [elRefs, setElRefs] = React.useState([]);
-    let temp = elRefs[elRefs.length - 1];
-    let size = forms.length;
-
+    const [forms, setForms] = useState([]); // array de formularios / componentes
+    const [elRefs, setElRefs] = React.useState([]); // array de referencias
+    const [test, setTest] = useState();
+    // const [items, setItems] = useState(-1); 
     useImperativeHandle(ref, () => ({
         validate() {
             console.log("trigger from Code")
@@ -29,12 +28,10 @@ const Frida = forwardRef((props, ref) => {
             return item.current.submit();
         });
     }
-    // temp = elRefs[elRefs.length - 1]; 
+
     React.useEffect(() => {
         // add or remove refs
-        // console.log(forms);
-        // console.log("use effect is triggered")
-        // console.log("forms lengt :", forms.length)
+        console.log("use effect is triggered");
 
         setElRefs((elRefs) =>
             Array(forms.length + 1)
@@ -42,11 +39,10 @@ const Frida = forwardRef((props, ref) => {
                 .map((_, i) => elRefs[i] || createRef()),
         );
 
-        // console.log("after setting elRefs: ", elRefs);
-        // console.log("what is size of forms: ", forms.length + 1);
-        // console.log("what is size of elRefs: ", elRefs.length + 1);
-        // console.log("what is inside Ref arr at index of size: ", elRefs[elRefs.length-1]);
-        // console.log("what is inside Ref arr at index with temp var ",temp);
+        // setTest(elRefs[forms.length]);
+        // setItems(items+1); 
+        // console.log("useEffect itet", items+1); 
+        // console.log("ref array", elRefs)
     }, [forms]);
     //! this is used to pass the function to code(parent component) //
 
@@ -57,7 +53,7 @@ const Frida = forwardRef((props, ref) => {
             < div className="main" >
 
                 {
-                    forms.lenght === 0 ? <h1>Empty</h1> : forms.map((form) => {
+                    forms.length === 0 ? <h1>Empty</h1> : forms.map((form) => {
                         return (
                             <Space
                                 style={{
@@ -78,11 +74,16 @@ const Frida = forwardRef((props, ref) => {
                             elRefs.length > 0 &&
                             elRefs.map((ref, index) => (
                                 <>
-                                    <Forms setForms={setForms} forms={forms} ref={ref} />
+                                    {/* <Forms setForms={setForms} forms={forms} ref={ref} /> */}
+                                    {index === elRefs.length - 1 && <Forms setForms={setForms} forms={forms} ref={ref} />}
                                     {console.log(ref)}
                                 </>
                             ))
                         }
+                        {/*                                                                        index = array.length -1,   [null] -> ref.current.submit() */}
+                        {/* <Forms setForms={setForms} forms={forms} ref={test} />
+                        <h3>index: {elRefs.length - 1}</h3>
+                        {console.log('testing', elRefs[elRefs.length - 2])} */}
                         {/* <Forms setForms={setForms} forms={forms} elRefs={elRefs} setElRefs={setElRefs} ref={temp} index={elRefs.length} /> */}
                     </Col>
                 </Row >
