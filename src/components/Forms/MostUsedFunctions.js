@@ -1,7 +1,9 @@
 import { Button, Form } from 'antd'
 import React, { forwardRef, useState } from 'react'
 
-import "./MostUsedFunctions.css";
+
+
+import './MostUsedFunctions.css'
 
 //components
 
@@ -38,9 +40,7 @@ function MostUsedFunctions(props) {
         { text: "CopyColumn", form: <CopyColumn /> },
         { text: "ApplyFilter", form: <ApplyFilter /> },
         { text: "RemoveColumn", form: <RemoveColumn /> },
-    ]);
-
-    console.log("log of ref from MOF", ref);
+    ])
 
     const [form] = Form.useForm();
 
@@ -57,36 +57,23 @@ function MostUsedFunctions(props) {
 
     return (
 
-    console.log("ref from MOF", ref);
-    return formArray.length === 0 ? (
-        <h1>empty</h1>
-    ) : (
-        <>
-            {/* <Carousel afterChange={onChange} style={{maxWidth: 850, height: 400}} slidesToShow={3} arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />} > */}
-            {formArray.map((data) => {
-                return (
-                    <div>
-                        <Button
-                            style={{ height: 120, borderRadius: 40, borderColor: "white"  }}
-                            onClick={(event) => {
-                                console.log("button is being pressed from MOF");
-                                add(data.form); // * here you are passing the object component of form from the array of forArray
-                            }}
-                        >
-                            <div className="imgp">
-                                <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
-                                <p style={{ color: "black", marginLeft: 0 }}>
-                                    <b>{data.text}</b>
-                                </p>
-                            </div>
-                        </Button>
+        formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
+            return (
+                <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
+                    onClick={(event) => {
+                        console.log("button is being pressed from MOF")
+                        add(data.form);
+                    }
+                    }>
+                    <div className="imgp">
+                        <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                        <p style={{ color: 'black', marginLeft: 0 }}><b>{data.text}</b></p>
                     </div>
-                );
-            })}
-            {/* </Carousel> */}
-        </>
-    );
-});
+                </Button></>
+            )
+        })
 
     )
 };
+
+export default MostUsedFunctions    
