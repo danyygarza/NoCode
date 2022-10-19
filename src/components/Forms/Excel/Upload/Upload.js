@@ -54,44 +54,30 @@ function Upload() {
             <Row>
                 <Col span={8}>
                     <Form.Item
-                        name={[`name` + id, "name"]}
+                        name={[`path` + id, "path"]}
                         label="Path"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Porfavor indicar el path",
-                            },
-                        ]}
+                        rules={[{ required: true, message: 'Please input the workbook path!' }]}
                     >
-                        <Input type="text" placeholder=""/>
+                        <Input type="text" placeholder={"<workbookPath>"} />
+                    </Form.Item>
+                </Col>
+
+                <Col span={8}>
+                    <Form.Item
+                        name={[`alias` + id, "alias"]}
+                        label="as"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookKey>"} />
                     </Form.Item>
                 </Col>
                 <Col span={8}>
                     <Form.Item
-                        label="Alias"
-                        name="Alias"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Please input the alias for your file",
-                            },
-                        ]}
+                        name={[`cell` + id, "cell"]}
+                        label="Cell"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col span={8}>
-                    <Form.Item
-                        label="Sheet name"
-                        name="Sheet"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Porfavor indicar el indice o nombre de la columna",
-                            },
-                        ]}
-                    >
-                        <Input />
+                        <Input type="text" placeholder={"<ColRow>"} />
                     </Form.Item>
                 </Col>
             </Row>
@@ -108,58 +94,35 @@ function Upload() {
 
     const add = () => {
         setInputs([...inputs,
-        <Row>
+            <Row>
             <Col span={8}>
                 <Form.Item
-                    label="Path"
-                    name="Path"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Porfavor indicar el path",
-                        },
-                    ]}
+                    name={[`path` + id, "path"]}
+                    label="Path "
+                    rules={[{ required: true, message: 'Please input the workbook path!' }]}
                 >
-                    <Input />
+                    <Input type="text" placeholder={"<workbookPath>"} />
+                </Form.Item>
+            </Col>
+
+            <Col span={8}>
+                <Form.Item
+                    name={[`alias` + id, "alias"]}
+                    label="as"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookKey>"} />
                 </Form.Item>
             </Col>
             <Col span={8}>
                 <Form.Item
-                    label="Alias"
-                    name="Alias"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please input the alias for your file",
-                        },
-                    ]}
+                    name={[`cell` + id, "cell"]}
+                    label="Cell"
+                    rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input />
+                    <Input type="text" placeholder={"<ColRow>"} />
                 </Form.Item>
             </Col>
-            <Col span={8}>
-                <Form.Item
-                    label="Sheet number/name"
-                    name="Sheet"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Porfavor indicar el indice o nombre de la columna",
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-            </Col>
-            <Form.Item>
-                <Button
-                    type="solid"
-                    onClick={() => remove()}
-                    shape="circle"
-                    icon={<MinusCircleOutlined />}
-                >
-                </Button>
-            </Form.Item>
         </Row>])
         setClick(true);
     }
