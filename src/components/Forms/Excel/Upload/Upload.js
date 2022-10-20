@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Form, Input, Col, Row, Typography, InputNumber, Popover } from "antd";
+import { Button, Checkbox, Form, Input, Col, Row, Typography, InputNumber, Popover, Tabs } from "antd";
 import "../RemoveDuplicate/RemoveDuplicate.css"
 import data from '../../syntax.json'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -52,10 +52,10 @@ function Upload() {
     const [inputs, setInputs] = useState([
         <>
             <Row>
-                <Col span={8}>
+                <Col span={10}>
                     <Form.Item
                         name={[`path` + id, "path"]}
-                        label="Path"
+                        label="LoadWBook"
                         rules={[{ required: true, message: 'Please input the workbook path!' }]}
                     >
                         <Input type="text" placeholder={"<workbookPath>"} />
@@ -78,19 +78,62 @@ function Upload() {
 
     ]);
 
+    const [click2, setClick2] = useState(false);
+    const [inputs2, setInputs2] = useState([
+        <>
+            <Row>
+                <Col span={6}>
+                    <Form.Item
+                        name={[`path` + id, "path"]}
+                        label="LoadWB"
+                        rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookPath>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={5}>
+                    <Form.Item
+                        name={[`alias` + id, "alias"]}
+                        label="as"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookKey>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={9}>
+                    <Form.Item
+                        name={[`parameters` + id, "parameters"]}
+                        label="with_parameters UpdateLinks:"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<updLinks>"} />
+                    </Form.Item>
+                </Col>
+            </Row>
+        </>
+
+
+    ]);
+
     const remove = () => {
         const values = [...inputs];
         values.splice = (id, 1);
         setInputs(values);
     }
 
+    const remove2 = () => {
+        const values = [...inputs2];
+        values.splice = (id, 1);
+        setInputs2(values);
+    }
+
     const add = () => {
         setInputs([...inputs,
         <Row>
-            <Col span={8}>
+            <Col span={10}>
                 <Form.Item
                     name={[`path` + id, "path"]}
-                    label="Path "
+                    label="LoadWBook"
                     rules={[{ required: true, message: 'Please input the workbook path!' }]}
                 >
                     <Input type="text" placeholder={"<workbookPath>"} />
@@ -114,7 +157,48 @@ function Upload() {
             >
             </Button>
         </Row>])
-        
+
+    }
+
+    const add2 = () => {
+        setInputs2([...inputs2,
+        <Row>
+            <Col span={6}>
+                <Form.Item
+                    name={[`path` + id, "path"]}
+                    label="LoadWB"
+                    rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookPath>"} />
+                </Form.Item>
+            </Col>
+            <Col span={5}>
+                <Form.Item
+                    name={[`alias` + id, "alias"]}
+                    label="as"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookKey>"} />
+                </Form.Item>
+            </Col>
+            <Col span={9}>
+                <Form.Item
+                    name={[`parameters` + id, "parameters"]}
+                    label="with_parameters UpdateLinks:"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<updLinks>"} />
+                </Form.Item>
+            </Col>
+            <Button
+                type="solid"
+                onClick={() => remove2()}
+                shape="circle"
+                icon={<MinusCircleOutlined />}
+            >
+            </Button>
+        </Row>])
+
     }
 
 
@@ -152,20 +236,46 @@ function Upload() {
                         </div>
                     </Col>
                 </Row>
-                {inputs.map((input) => {
-                    return (input)
-                })}
-                <Row>
-                    <Col offset={12}>
-                        <Button
-                            type="dashed"
-                            onClick={() => add()}
-                            shape="circle"
-                            icon={<PlusOutlined />}
-                        >
-                        </Button>
-                    </Col>
-                </Row>
+                <Tabs defaultActiveKey="1">
+                    <Tabs.TabPane tab="Syyntax 1" key="1">
+                        {inputs.map((input) => {
+                            return (input)
+                        })}
+                        <Row>
+                            <Col offset={12}>
+                                <Button
+                                    type="dashed"
+                                    onClick={() => add()}
+                                    shape="circle"
+                                    icon={<PlusOutlined />}
+                                >
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="Syntax 2" key="2">
+                        {inputs2.map((input2) => {
+                            return (input2)
+                        })}
+                        <Row>
+                            <Col offset={12}>
+                                <Button
+                                    type="dashed"
+                                    onClick={() => add2()}
+                                    shape="circle"
+                                    icon={<PlusOutlined />}
+                                >
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="Syntax 3" key="3">
+                        Syntax 3
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="Syntax 4" key="4">
+                        Syntax 4
+                    </Tabs.TabPane>
+                </Tabs>
             </Form>
         </div>
     );

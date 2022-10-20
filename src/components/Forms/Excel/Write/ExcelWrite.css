@@ -17,3 +17,11 @@
     margin-left: 117px;
 }
 
+.ant-tabs-tab:hover {
+    color: #D64488;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #D64488 !important;
+    text-shadow: 0 0 0.25px currentcolor;
+}
