@@ -1,20 +1,12 @@
-import React from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Col,
-  Row,
-  Typography,
-  DatePicker,
-  Select,
-  Space,
-  Popover
-} from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Form, Input, Col, Row, Typography, DatePicker, Select, Space, Popover } from "antd";
 import data from '../../syntax.json'
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "../Write/ExcelWrite.css"
 
 
+
+let id = Date.now();
 const { Title } = Typography;
 const { Option } = Select;
 const buttonWidth = 70;
@@ -53,25 +45,102 @@ function InsertColumn() {
     console.log("Failed:", errorInfo);
   };
 
+  const [click, setClick] = useState(false);
+  const [inputs, setInputs] = useState([
+    <>
+      <Row>
+        <Col span={10}>
+          <Form.Item
+            label="InsertCol in"
+            name={[`InsertColIn` + id, "InsertColIn"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indicar el nombre del libro",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKey" />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item
+            label="at"
+            name={[`at` + id, "at"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indicar el indice de la columna",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<colIndex>" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </>
+  ]);
+
+  const remove = () => {
+    const values = [...inputs];
+    values.splice = (id, 1);
+    setInputs(values);
+  }
+
+  const add = () => {
+    setInputs([...inputs,
+    <Row>
+      <Col span={10}>
+        <Form.Item
+          label="InsertCol in"
+          name={[`InsertColIn` + id, "InsertColIn"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indicar el nombre del libro",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKey" />
+        </Form.Item>
+      </Col>
+      <Col span={8}>
+        <Form.Item
+          label="at"
+          name={[`at` + id, "at"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indicar el indice de la columna",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<colIndex>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+    </Row>
+    ])
+    setClick(true);
+  }
+
+  const [form] = Form.useForm();
+  useEffect(() => {
+    id = Date.now();
+    setClick(false);
+  }, [click])
+
   return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
+    <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
       <Row justify="center">
         <Col>
-          <Title level={5}>Insertar Columna</Title>
+          <Title level={5}>Insert Column</Title>
         </Col>
       </Row>
       <Row>
@@ -94,49 +163,21 @@ function InsertColumn() {
           </div>
         </Col>
       </Row>
+      {inputs.map((input) => {
+        return (input)
+      })}
+
       <Row>
-        <Col span={8}>
-          <Form.Item
-            label="Hoja de Excel"
-            name="sheetName"
-            rules={[
-              {
-                required: true,
-                message: "Porfavor indicar el nombre del libro",
-              },
-            ]}
+        <Col offset={12}>
+          <Button
+            type="dashed"
+            onClick={() => add()}
+            shape="circle"
+            icon={<PlusOutlined />}
           >
-
-            <Input />
-          </Form.Item>
+          </Button>
         </Col>
-
-        <Col span={8}>
-          <Form.Item
-            label="Indice de columna"
-            name="colIndex"
-            rules={[
-              {
-                required: true,
-                message: "Porfavor indicar el indice de la columna",
-              },
-            ]}
-          >
-
-            <Input />
-          </Form.Item>
-        </Col>
-
       </Row>
-
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-
-      </Form.Item>
     </Form>
   );
 }

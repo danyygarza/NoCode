@@ -74,5 +74,24 @@
         "Example1": "CountItems in list and save_as users",
         "Example2": "CountItems in string and save_as numChars",
         "Example3": "CountItems in rows and save_as filas"
+    },
+    "fridaExcelReadersSyntaxSubstring":{
+        "Name": "Substring",
+        "Description": "Extracts part of the content of a string, given the input and the startIndex. Optionally, you can ask for a length. Given the string 'Hello world!', a substring starting in 4 will return 'o world!'; and a substring with length 4 will return 'o wor'.",
+        "Parameters": "<inputString> <startIndex> <strongLength> <newVarName>",
+        "Syntax1": "Substring <inputString> start <startIndex> and save as <newVarName>",
+        "Syntax2": "Substring <inputString> start <startIndex> length <stringLength> and save as <newVarName>",
+        "Example1": "Substring 'Hello world!' start at 0 and save as 'subString'",
+        "Example2": "Substring 'Hello world' start 3 length 5 and sabe as 'newString'"
+    },
+    "fridaExcelReadersSyntaxCopyColumn":{
+        "Name": "CopyColumn",
+        "Description": "Copy the full column to another place (in the same sheet or another), the value indicated after 'start at' in the instruction is the offset value, hence if value equals 1, it will be displaced one row, pasting the balue in the second row.",
+        "Parameters": "<worksheetKeyOrig> <worksheetKeyDest> <columnIndexOrig> <columnIndexDest> <rowOffsetOrig> <rowOffsetDest>",
+        "Syntax1": "CopyColumn <columnIndexOrig> from <worksheetKeyOrig> start_at <rowOffsetOrig> to the sheet <worksheetKeyDest> in column <columnIndexdest> start_at <rowOffsetDest>",
+        "Syntax2": "CopyColumn <columnIndexOrig> from <worksheetKeyOrig> to the sheet <worksheetKeyDest> in column <columnIndexDest> start_at <rowOffsetDest> --visible",
+        "Syntax3": "CopyColumn value <columnIndexOrig> from <worksheetKeyOrig> start_at <rowOffsetOrig> to the sheet <worksheetKeyDest> in column <columnIndexDest> start_at <rowOffsetDest>",
+        "Example1": "CopyColumn 10 from hoja2 start_at 1 to the sheet hoja3 in column 4 start_at 1",
+        "Example2": "CopyColumn value 20 from hojaCostos start_at 2 to the sheet hoja4 in column 4 start_at 3"
     }
 }

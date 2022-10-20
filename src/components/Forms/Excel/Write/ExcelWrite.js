@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react"
 import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row, Typography, Popover } from 'antd'
-import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '@ant-design/icons';
-import { Done, Splitscreen } from "@mui/icons-material";
-import Test from "../../Test/test";
+import { MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json'
 
