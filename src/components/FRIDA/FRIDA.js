@@ -1,13 +1,31 @@
-import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } from 'react'
-import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
-import Forms from "../../components/Forms/Forms";
-
-
-const { createRef } = React;
-
+import React, {
+  useEffect,
+  useState,
+  useForm,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
+import {
+  Form,
+  Input,
+  Checkbox,
+  Button,
+  Menu,
+  Dropdown,
+  Space,
+  Col,
+  Row,
+} from "antd";
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  SmileOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+import { ExcelWriteModel } from "../Forms/Excel/Write/ExcelWriteModel";
+import { remove } from "firebase/database";
 
 const Frida = forwardRef((props, ref) => {
-    const [form] = Form.useForm();
     const [forms, setForms] = useState([]); // forms array
     const [elRefs, setElRefs] = React.useState([]); // reference array
     useImperativeHandle(ref, () => ({
@@ -17,13 +35,13 @@ const Frida = forwardRef((props, ref) => {
         },
     }));
 
-    //! Function  which is triggered by the imperative handle
+      //! Function  which is triggered by the imperative handle
     const handleValidate = () => {
-        console.log('elRef lenght', elRefs.length);
+            console.log('elRef lenght', elRefs.length);
         console.log(elRefs)
         const res = elRefs.map((item, index) => {
-            return item.current.submit();
-        });
+                return item.current.submit();
+          });
     }
 
     React.useEffect(() => {
@@ -37,7 +55,6 @@ const Frida = forwardRef((props, ref) => {
         );
     }, [forms]);
     //! this is used to pass the function to code(parent component) //
-
 
 
     return (
