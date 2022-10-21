@@ -1,96 +1,77 @@
-import React, {
-  useEffect,
-  useState,
-  useForm,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
-import {
-    Form,
-    Input,
-    Checkbox,
-    Button,
-    Menu,
-    Dropdown,
-    Space,
-    Col,
-    Row,
-} from "antd";
-import {
-    MinusCircleOutlined,
-    PlusOutlined,
-    SmileOutlined,
-    DownOutlined,
-} from "@ant-design/icons";
-import { ExcelWriteModel } from "../Forms/Excel/Write/ExcelWriteModel";
-import { remove } from "firebase/database";
+import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } from 'react'
+import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
+import Forms from "../../components/Forms/Forms";
+
+
+const { createRef } = React;
+
+const testing = async (test) => {
+    console.log("in testing function")
+    const temp = await test;
+    console.log("temp", temp);
+    return temp;
+}
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();
     const [forms, setForms] = useState([]); // forms array
     const [elRefs, setElRefs] = React.useState([]); // reference array
+    const [code, addCode] = useState([]);
     useImperativeHandle(ref, () => ({
         validate() {
             // ! This binds validate function to Codes' reference  
-            return handleValidate();
-        },
+            const codeArr = [];
+
+            elRefs.forEach((element, index) => {
+                if(element.current != null){
+                    const temp = element.current.submit()
+                    testing(temp); 
+                    console.log("temp",temp); 
+                    // codeArr.push(temp); 
+                }
+            })
+            // console.log('codeArr', codeArr)
+            // return codeArr; 
+        }
     }));
 
-      //! Function  which is triggered by the imperative handle
+    //! Function  which is triggered by the imperative handle from child
     const handleValidate = () => {
-            console.log('elRef lenght', elRefs.length);
+        console.log('elRef lenght', elRefs.length);
         console.log(elRefs)
         const res = elRefs.map((item, index) => {
-                return item.current.submit();
-          });
+            console.log(index);
+            console.log(item.current.submit());
+        });
     }
 
-    React.useEffect(() => {
-        // *add or remove refs
-        console.log("use effect is triggered");
+    const Testing = () => {
+        // elRefs.map((item, index) => {
+        //     console.log("doing get code")
+        //     console.log("testing Frida code: ", item.current.getCode());
+        // })
 
+        console.log("code from FRIDA", code);
+    }
+
+    const remove = (index) => {
+        setForms(forms.splice(index, 1));
+    };
+
+    //! this will create array of refs from size of forms
+    useEffect(() => {
         setElRefs((elRefs) =>
             Array(forms.length + 1)
                 .fill()
                 .map((_, i) => elRefs[i] || createRef()),
         );
     }, [forms]);
-    //! this is used to pass the function to code(parent component) //
-
-    // removes Forms 
-    const remove = (index) => {
-        const value = [...props.forms]
-        value.splice(index, 1)
-        props.setForms(value)
-    };
-
-    //! this is used to pass the function to code(parent component) //
-    useImperativeHandle(ref, () => ({
-        showAlert(values) {
-            console.log("testing", form.getFieldValue());
-            console.log(Object.values(form.getFieldsValue()));
-            const array = Object.values(form.getFieldsValue());
-            console.log("array" + array);
-            console.log(array.length);
-            const tempArr = [];
-            for (let i = array.length - 1; i >= 0; i = Math.round(i / 3)) {
-                const temp = new ExcelWriteModel();
-                console.log(getValue(array[i - 2]));
-                temp.setcode(
-                    getValue(array[i - 2]),
-                    getValue(array[i - 1]),
-                    getValue(array[i])
-                );
-                console.log(temp);
-            }
-        },
-    }));
 
     return (
         <>
             < div className="main" >
                 {
-                    forms.length === 0 ? <h1>Empty</h1> : forms.map((form) => {
+                    forms.length === 0 ? <h1>Empty</h1> : forms.map((form, index) => {
                         return (
                             <Space
                                 style={{
@@ -98,8 +79,19 @@ const Frida = forwardRef((props, ref) => {
                                     marginBottom: 8,
                                 }}
                                 align="baseline">
-                                {console.log(form.component)}
-                                {form.component}
+                                {form}
+                                <Button
+                                    onClick={() => {
+                                        console.log("index from click: ", index, form);
+                                        remove(index);
+                                        console.log(index);
+                                        const temp = [...elRefs]
+                                        temp.splice(index, 1);
+                                        setElRefs(temp);
+                                    }}
+                                >
+                                    Delete Action
+                                </Button>
                             </Space>
                         )
                     })
@@ -113,7 +105,7 @@ const Frida = forwardRef((props, ref) => {
                                     {
                                         //! this is a temporary solution that whill only render the last button from the map
                                         //! for some aparent reason it doesn't work by just assgning the last element of the ref array 
-                                        index === elRefs.length - 1 && <Forms setForms={setForms} forms={forms} ref={ref} />
+                                        index === elRefs.length - 1 && <Forms setForms={setForms} forms={forms} ref={ref} code={code} addCode={addCode} />
                                     }
                                     {console.log(ref)}
                                 </>
@@ -125,5 +117,4 @@ const Frida = forwardRef((props, ref) => {
         </>
     );
 })
-
-export default Frida
+export default Frida;

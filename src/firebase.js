@@ -9,7 +9,7 @@ import "firebase/firestore"
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const app =firebase.initializeApp ({
+const app = firebase.initializeApp ({
   apiKey: "AIzaSyCWqe_Y6n36GbEekav1nWuesBvfqRpx8Wo",
   authDomain: "frida-nocode.firebaseapp.com",
   projectId: "frida-nocode",
