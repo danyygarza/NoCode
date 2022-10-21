@@ -20,13 +20,13 @@ function Upload() {
 
     const description = (
         <>
-            {data.fridaExcelReadersSyntaxUploadFile.description}
+            {data.fridaExcelReadersSyntaxUploadFile.Description}
         </>
     );
 
     const parameters = (
         <>
-            {data.fridaExcelReadersSyntaxUploadFile.parameters}
+            {data.fridaExcelReadersSyntaxUploadFile.Parameters}
         </>
     );
 
@@ -74,8 +74,6 @@ function Upload() {
 
             </Row>
         </>
-
-
     ]);
 
     const [click2, setClick2] = useState(false);
@@ -111,8 +109,85 @@ function Upload() {
                 </Col>
             </Row>
         </>
+    ]);
 
+    const [click3, setClick3] = useState(false);
+    const [inputs3, setInputs3] = useState([
+        <>
+            <Row>
+                <Col span={6}>
+                    <Form.Item
+                        name={[`path` + id, "path"]}
+                        label="LoadWB"
+                        rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookPath>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={5}>
+                    <Form.Item
+                        name={[`alias` + id, "alias"]}
+                        label="as"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookKey>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={9}>
+                    <Form.Item
+                        name={[`parameters` + id, "parameters"]}
+                        label="with_parameters Password:"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<password>"} />
+                    </Form.Item>
+                </Col>
+            </Row>
+        </>
+    ]);
 
+    const [click4, setClick4] = useState(false);
+    const [inputs4, setInputs4] = useState([
+        <>
+            <Row>
+                <Col span={5}>
+                    <Form.Item
+                        name={[`path` + id, "path"]}
+                        label="LoadWB"
+                        rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookPath>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={4}>
+                    <Form.Item
+                        name={[`alias` + id, "alias"]}
+                        label="as"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<workbookKey>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={6}>
+                    <Form.Item
+                        name={[`parameters` + id, "parameters"]}
+                        label="with_parameters Password:"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<password>"} />
+                    </Form.Item>
+                </Col>
+                <Col span={4}>
+                    <Form.Item
+                        name={[`parameters` + id, "parameters"]}
+                        label="UpdateLinks:"
+                        rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                    >
+                        <Input type="text" placeholder={"<updLinks>"} />
+                    </Form.Item>
+                </Col>
+            </Row>
+        </>
     ]);
 
     const remove = () => {
@@ -125,6 +200,16 @@ function Upload() {
         const values = [...inputs2];
         values.splice = (id, 1);
         setInputs2(values);
+    }
+    const remove3 = () => {
+        const values = [...inputs3];
+        values.splice = (id, 1);
+        setInputs3(values);
+    }
+    const remove4 = () => {
+        const values = [...inputs4];
+        values.splice = (id, 1);
+        setInputs4(values);
     }
 
     const add = () => {
@@ -201,6 +286,97 @@ function Upload() {
 
     }
 
+    const add3 = () => {
+        setInputs3([...inputs3,
+        <Row>
+            <Col span={6}>
+                <Form.Item
+                    name={[`path` + id, "path"]}
+                    label="LoadWB"
+                    rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookPath>"} />
+                </Form.Item>
+            </Col>
+            <Col span={5}>
+                <Form.Item
+                    name={[`alias` + id, "alias"]}
+                    label="as"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookKey>"} />
+                </Form.Item>
+            </Col>
+            <Col span={9}>
+                <Form.Item
+                    name={[`parameters` + id, "parameters"]}
+                    label="with_parameters Password:"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<password>"} />
+                </Form.Item>
+            </Col>
+            <Button
+                type="solid"
+                onClick={() => remove3()}
+                shape="circle"
+                icon={<MinusCircleOutlined />}
+            >
+            </Button>
+        </Row>])
+
+    }
+
+    const add4 = () => {
+        setInputs4([...inputs4,
+        <Row>
+            <Col span={5}>
+                <Form.Item
+                    name={[`path` + id, "path"]}
+                    label="LoadWB"
+                    rules={[{ required: true, message: 'Please input the workbook path!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookPath>"} />
+                </Form.Item>
+            </Col>
+            <Col span={4}>
+                <Form.Item
+                    name={[`alias` + id, "alias"]}
+                    label="as"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<workbookKey>"} />
+                </Form.Item>
+            </Col>
+            <Col span={6}>
+                <Form.Item
+                    name={[`parameters` + id, "parameters"]}
+                    label="with_parameters Password:"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<password>"} />
+                </Form.Item>
+            </Col>
+            <Col span={4}>
+                <Form.Item
+                    name={[`parameters` + id, "parameters"]}
+                    label="UpdateLinks:"
+                    rules={[{ required: true, message: 'Please input your workbook alias!' }]}
+                >
+                    <Input type="text" placeholder={"<updLinks>"} />
+                </Form.Item>
+            </Col>
+            <Button
+                type="solid"
+                onClick={() => remove4()}
+                shape="circle"
+                icon={<MinusCircleOutlined />}
+            >
+            </Button>
+        </Row>])
+
+    }
+
 
     const [form] = Form.useForm();
     useEffect(() => {
@@ -237,7 +413,7 @@ function Upload() {
                     </Col>
                 </Row>
                 <Tabs defaultActiveKey="1">
-                    <Tabs.TabPane tab="Syyntax 1" key="1">
+                    <Tabs.TabPane tab="Syntax 1" key="1">
                         {inputs.map((input) => {
                             return (input)
                         })}
@@ -254,6 +430,22 @@ function Upload() {
                         </Row>
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="Syntax 2" key="2">
+                        {inputs3.map((input3) => {
+                            return (input3)
+                        })}
+                        <Row>
+                            <Col offset={12}>
+                                <Button
+                                    type="dashed"
+                                    onClick={() => add3()}
+                                    shape="circle"
+                                    icon={<PlusOutlined />}
+                                >
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="Syntax 3" key="3">
                         {inputs2.map((input2) => {
                             return (input2)
                         })}
@@ -269,11 +461,21 @@ function Upload() {
                             </Col>
                         </Row>
                     </Tabs.TabPane>
-                    <Tabs.TabPane tab="Syntax 3" key="3">
-                        Syntax 3
-                    </Tabs.TabPane>
                     <Tabs.TabPane tab="Syntax 4" key="4">
-                        Syntax 4
+                        {inputs4.map((input4) => {
+                            return (input4)
+                        })}
+                        <Row>
+                            <Col offset={12}>
+                                <Button
+                                    type="dashed"
+                                    onClick={() => add4()}
+                                    shape="circle"
+                                    icon={<PlusOutlined />}
+                                >
+                                </Button>
+                            </Col>
+                        </Row>
                     </Tabs.TabPane>
                 </Tabs>
             </Form>

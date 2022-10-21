@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useImperativeHandle, forwardRef } from "react"
-import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row, Typography, Popover, Tabs } from 'antd'
+import React, { useState, useEffect } from "react"
+import { Form, Input, Button, Col, Row, Typography, Popover, Tabs } from 'antd'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json'
+
 
 let id = Date.now();
 const { Title } = Typography;
@@ -42,6 +43,7 @@ const examples = (
 )
 
 function ExcelWrite(props) {
+
     console.log("submit in write is", props.submit)
     const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
@@ -503,7 +505,6 @@ function ExcelWrite(props) {
                         {inputs.map((input) => {
                             return (input)
                         })}
-
                         <Row>
                             <Col offset={12}>
                                 <Button

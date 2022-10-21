@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, Popover } from "antd";
-import { MinusCircleOutlined, PlusOutlined} from '@ant-design/icons';
+import { Button, Form, Input, Col, Row, Typography, Popover, Tabs } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import data from '../../syntax.json'
 import "../Write/ExcelWrite.css"
 
@@ -81,10 +81,38 @@ function NewWorkBook() {
     </>
   ]);
 
+  const [click2, setClick2] = useState(false);
+  const [inputs2, setInputs2] = useState([
+    <>
+      <Row>
+        <Col span={16}>
+          <Form.Item
+            label="NewWb create in"
+            name={[`newWB` + id, "newWB"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the workbook path name",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<pathWithNameh>" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </>
+  ]);
+
   const remove = () => {
     const values = [...inputs];
     values.splice(id, 1);
     setInputs(values);
+  }
+
+  const remove2 = () => {
+    const values = [...inputs2];
+    values.splice(id, 1);
+    setInputs2(values);
   }
 
   const add = () => {
@@ -129,6 +157,34 @@ function NewWorkBook() {
     setClick(true);
   }
 
+  const add2 = () => {
+    setInputs2([...inputs2,
+    <Row>
+      <Col span={16}>
+        <Form.Item
+          label="NewWb create in"
+          name={[`newWB` + id, "newWB"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the workbook path name",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<pathWithNameh>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove2()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+    </Row>])
+    setClick(true);
+  }
+
   useEffect(() => {
     id = Date.now();
     setClick(false);
@@ -161,20 +217,40 @@ function NewWorkBook() {
           </div>
         </Col>
       </Row>
-      {inputs.map((input) => {
-        return (input)
-      })}
-      <Row>
-        <Col offset={12}>
-          <Button
-            type="dashed"
-            onClick={() => add()}
-            shape="circle"
-            icon={<PlusOutlined />}
-          >
-          </Button>
-        </Col>
-      </Row>
+      <Tabs desaultActiveKey="1" key="1">
+        <Tabs.TabPane tab="Syntax 1" key="1">
+          {inputs.map((input) => {
+            return (input)
+          })}
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Syntax 2" key="2">
+          {inputs2.map((input2) => {
+            return (input2)
+          })}
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add2()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+      </Tabs>
     </Form>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, Popover } from "antd";
+import { Button, Form, Input, Col, Row, Typography, Popover, Tabs } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import data from '../../syntax.json'
 
@@ -93,10 +93,80 @@ function Substring() {
     </>
   ]);
 
+  const [clic2k, setClick2] = useState(false);
+  const [inputs2, setInputs2] = useState([
+    <>
+      <Row>
+        <Col span={6}>
+          <Form.Item
+            label="Substring"
+            name={[`substring` + id, "substring"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the substring",
+              },
+            ]}>
+            <Input type="text" placeholder="<inputString>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="start"
+            name={[`start` + id, "start"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the start index",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<startIndex>" />
+          </Form.Item>
+        </Col>
+        <Col span={7}>
+          <Form.Item
+            label="length"
+            name={[`length` + id, "length"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the new variable name",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<stringLength>" />
+          </Form.Item>
+        </Col>
+        <Col span={7}>
+          <Form.Item
+            label="and save as"
+            name={[`andSaveAs` + id, "andSaveAs"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the new variable name",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<newVarName>" />
+          </Form.Item>
+        </Col>
+        
+      </Row>
+    </>
+  ]);
+
   const remove = () => {
     const values = [...inputs];
     values.splice(id, 1);
     setInputs(values);
+  }
+
+  const remove2 = () => {
+    const values = [...inputs2];
+    values.splice(id, 1);
+    setInputs2(values);
   }
 
   const add = () => {
@@ -159,6 +229,75 @@ function Substring() {
     setClick(true);
   }
 
+  const add2 = () => {
+    setInputs2([...inputs2,
+      <Row>
+        <Col span={6}>
+          <Form.Item
+            label="Substring"
+            name={[`substring` + id, "substring"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the substring",
+              },
+            ]}>
+            <Input type="text" placeholder="<inputString>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="start"
+            name={[`start` + id, "start"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the start index",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<startIndex>" />
+          </Form.Item>
+        </Col>
+        <Col span={7}>
+          <Form.Item
+            label="length"
+            name={[`length` + id, "length"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the new variable name",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<stringLength>" />
+          </Form.Item>
+        </Col>
+        <Col span={7}>
+          <Form.Item
+            label="and save as"
+            name={[`andSaveAs` + id, "andSaveAs"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the new variable name",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<newVarName>" />
+          </Form.Item>
+        </Col>
+        <Button
+        type="solid"
+        onClick={() => remove2()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+      </Row>
+    ])
+  }
+
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -194,21 +333,42 @@ function Substring() {
           </div>
         </Col>
       </Row>
-      {inputs.map((input) => {
-        return (input)
-      })}
+      <Tabs defaultActiveKey="1" key="1">
+        <Tabs.TabPane tab="Syntax 1" key="1">
+          {inputs.map((input) => {
+            return (input)
+          })}
 
-      <Row>
-        <Col offset={12}>
-          <Button
-            type="dashed"
-            onClick={() => add()}
-            shape="circle"
-            icon={<PlusOutlined />}
-          >
-          </Button>
-        </Col>
-      </Row>
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Syntax 2" key="2">
+        {inputs2.map((input2) => {
+            return (input2)
+          })}
+
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add2()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+      </Tabs>
     </Form>
   );
 }
