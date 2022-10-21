@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Checkbox, Form, Input, Col, Row, Popover } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Typography } from "antd";
 import "../Write/ExcelWrite.css"
 import data from '../../syntax.json'
 
+
+let id = Date.now();
 const { Title } = Typography;
 const buttonWidth = 70;
 
@@ -44,22 +47,156 @@ function SortColumns() {
     console.log("Failed:", errorInfo);
   };
 
+  const [click, setClick] = useState(false);
+  const [inputs, setInputs] = useState([
+    <>
+      <Row>
+        <Col span={7}>
+          <Form.Item
+            label="SortColumns in"
+            name={[`sortcolumnsin` + id, "sortcolumnsin"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the worksheetKey",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKey>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="by column"
+            name={[`bycolumn` + id, "bycolumn"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the column index",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<colindex>" />
+          </Form.Item>
+        </Col>
+        <Col span={4}>
+          <Form.Item
+            label="order"
+            name={[`order` + id, "order"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indica el orden",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<order>" />
+          </Form.Item>
+        </Col>
+        <Col span={5}>
+          <Form.Item
+            label="header"
+            name={[`header` + id, "header"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indica el orden",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<isHeader>" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </>
+  ]);
+
+  const remove = () => {
+    const values = [...inputs];
+    values.splice = (id, 1);
+    setInputs(values);
+  }
+
+  const add = () => {
+    setInputs([...inputs,
+    <Row>
+      <Col span={7}>
+        <Form.Item
+          label="SortColumns in"
+          name={[`sortcolumnsin` + id, "sortcolumnsin"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the worksheetKey",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKey>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="by column"
+          name={[`bycolumn` + id, "bycolumn"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the column index",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<colindex>" />
+        </Form.Item>
+      </Col>
+      <Col span={4}>
+        <Form.Item
+          label="order"
+          name={[`order` + id, "order"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indica el orden",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<order>" />
+        </Form.Item>
+      </Col>
+      <Col span={5}>
+        <Form.Item
+          label="header"
+          name={[`header` + id, "header"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indica el orden",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<isHeader>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+    </Row>
+    ])
+    setClick(true);
+  }
+
+  const [form] = Form.useForm();
+  useEffect(() => {
+    id = Date.now();
+    setClick(false);
+  }, [click])
+
+
   return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
+    <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
       <Row justify="center">
         <Col >
           <Title level={5}>SortColumns</Title>
@@ -85,53 +222,21 @@ function SortColumns() {
           </div>
         </Col>
       </Row>
-      <Form.Item
-        label="Nombre de la hoja"
-        name="sheetName"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el nombre de la hoja",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+      {inputs.map((input) => {
+        return (input)
+      })}
+      <Row>
+        <Col offset={12}>
+          <Button
+            type="dashed"
+            onClick={() => add()}
+            shape="circle"
+            icon={<PlusOutlined />}
+          >
+          </Button>
+        </Col>
+      </Row>
 
-      <Form.Item
-        label="Indice de la columna"
-        name="colIndex"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el indice la columna",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        label="Orden"
-        name="colInorderdex"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el orden",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-
-      </Form.Item>
     </Form>
   );
 }

@@ -1,10 +1,29 @@
-import React, { useEffect, useState, useForm, forwardRef, useImperativeHandle } from 'react'
-import { Form, Input, Checkbox, Button, Menu, Dropdown, Space, Col, Row } from 'antd'
-import Forms from "../../components/Forms/Forms";
-
-
-const { createRef } = React;
-
+import React, {
+    useEffect,
+    useState,
+    useForm,
+    forwardRef,
+    useImperativeHandle,
+} from "react";
+import {
+    Form,
+    Input,
+    Checkbox,
+    Button,
+    Menu,
+    Dropdown,
+    Space,
+    Col,
+    Row,
+} from "antd";
+import {
+    MinusCircleOutlined,
+    PlusOutlined,
+    SmileOutlined,
+    DownOutlined,
+} from "@ant-design/icons";
+import { ExcelWriteModel } from "../Forms/Excel/Write/ExcelWriteModel";
+import { remove } from "firebase/database";
 
 const Frida = forwardRef((props, ref) => {
     const [form] = Form.useForm();
@@ -26,19 +45,34 @@ const Frida = forwardRef((props, ref) => {
         });
     }
 
-    React.useEffect(() => {
-        // *add or remove refs
-        console.log("use effect is triggered");
+    // removes Forms 
+    const remove = (index) => {
+        const value = [...props.forms]
+        value.splice(index, 1)
+        props.setForms(value)
+    };
 
-        setElRefs((elRefs) =>
-            Array(forms.length + 1)
-                .fill()
-                .map((_, i) => elRefs[i] || createRef()),
-        );
-    }, [forms]);
     //! this is used to pass the function to code(parent component) //
-
-
+    useImperativeHandle(ref, () => ({
+        showAlert(values) {
+            console.log("testing", form.getFieldValue());
+            console.log(Object.values(form.getFieldsValue()));
+            const array = Object.values(form.getFieldsValue());
+            console.log("array" + array);
+            console.log(array.length);
+            const tempArr = [];
+            for (let i = array.length - 1; i >= 0; i = Math.round(i / 3)) {
+                const temp = new ExcelWriteModel();
+                console.log(getValue(array[i - 2]));
+                temp.setcode(
+                    getValue(array[i - 2]),
+                    getValue(array[i - 1]),
+                    getValue(array[i])
+                );
+                console.log(temp);
+            }
+        },
+    }));
 
     return (
         <>

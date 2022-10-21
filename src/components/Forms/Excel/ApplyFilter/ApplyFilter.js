@@ -1,7 +1,66 @@
-import React from "react";
-import { Button, Checkbox, Form, Input, Col, Row } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Checkbox, Form, Input, Col, Row, Popover } from "antd";
 import { Typography } from "antd";
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import data from
+  '../../syntax.json'
+
+
+let id = Date.now();
 const { Title } = Typography;
+const buttonWidth = 70;
+
+const description = (
+  <>
+    {data.fridaExcelReadersSyntaxApplyFilter.Description}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description2}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description3}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description4}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description5}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description6}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description7}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Description8}<br />
+  </>
+);
+
+const parameters = (
+  <>
+    {data.fridaExcelReadersSyntaxApplyFilter.Parameters}
+  </>
+);
+
+const syntax = (
+  <>
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax1}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax2}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax3}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax4}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax5}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax6}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax7}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax8}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Syntax9}<br />
+  </>
+);
+
+const examples = (
+  <>
+    {data.fridaExcelReadersSyntaxApplyFilter.Example1}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example2}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example3}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example4}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example5}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example6}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example7}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example8}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example9}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example10}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example11}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example12}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example13}<br />
+    {data.fridaExcelReadersSyntaxApplyFilter.Example14}<br />
+  </>
+)
 
 function ApplyFilter() {
   const onFinish = (values) => {
@@ -12,89 +71,166 @@ function ApplyFilter() {
     console.log("Failed:", errorInfo);
   };
 
-  return (
-    <Form
-      name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Row justify="center">
-            <Col >
-            <Title level={5}>Save Wb</Title>
-            </Col>
+  const [click, setClick] = useState(false);
+  const [inputs, setInputs] = useState([
+    <>
+      <Row>
+        <Col span={8}>
+          <Form.Item
+            label="Applyfilter to the worksheet"
+            name={[`worksheet` + id, "worksheet"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate thworksheet key",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKey>" />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item
+            label="to the column with the index"
+            name={[`column` + id, "column"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the column index",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<columnIndex>" />
+          </Form.Item>
+        </Col>
+        <Col span={5}>
+          <Form.Item
+            label="with the criteria"
+            name={[`criteria` + id, "criteria"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the criteria",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<criteria>" />
+          </Form.Item>
+        </Col>
       </Row>
-      
+    </>
+  ]);
 
-      <Form.Item
-        label="Nombre de la hoja"
-        name="sheetName"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el nombre de la hoja",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+  const remove = () => {
+    const values = [...inputs];
+    values.splice = (id, 1);
+    setInputs(values);
+  }
 
-      <Form.Item
-        label="Indice de la columna"
-        name="colIndex"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el indice la columna",
-          },
-        ]}
+  const add = () => {
+    setInputs([...inputs,
+    <Row>
+      <Col span={8}>
+        <Form.Item
+          label="Applyfilter to the worksheet"
+          name={[`worksheet` + id, "worksheet"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate thworksheet key",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKey>" />
+        </Form.Item>
+      </Col>
+      <Col span={8}>
+        <Form.Item
+          label="to the column with the index"
+          name={[`column` + id, "column"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the column index",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<columnIndex>" />
+        </Form.Item>
+      </Col>
+      <Col span={5}>
+        <Form.Item
+          label="with the criteria"
+          name={[`criteria` + id, "criteria"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the criteria",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<criteria>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
       >
-        <Input />
-      </Form.Item>
+      </Button>
+    </Row>
+    ])
+    setClick(true);
+  }
 
-      <Form.Item
-        label="Con el Criterio"
-        name="criterion"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el criterio",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+  useEffect(() => {
+    id = Date.now();
+    setClick(false);
+  }, [click])
 
-      <Form.Item
-        label="Nombre de la variable"
-        name="variable"
-        rules={[
-          {
-            required: true,
-            message: "Porfavor indica el nombre de la variable",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+  return (
+    <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+      <Row justify="center">
+        <Col >
+          <Title level={5}>ApplyFilter</Title>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className="demo">
+            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                <Button>Description</Button>
+              </Popover>
+              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                <Button>Parameters</Button>
+              </Popover>
+              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                <Button>Syntax</Button>
+              </Popover>
+              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                <Button>Examples</Button>
+              </Popover>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      {inputs.map((input) => {
+        return (input)
+      })}
 
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        
-      </Form.Item>
+      <Row>
+        <Col offset={12}>
+          <Button
+            type="dashed"
+            onClick={() => add()}
+            shape="circle"
+            icon={<PlusOutlined />}
+          >
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 }
