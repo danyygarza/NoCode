@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, DatePicker, Select, Space, Popover } from "antd";
+import { Button, Form, Input, Col, Row, Typography, DatePicker, Select, Space, Popover, Tabs } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import data from '../../syntax.json'
 
@@ -137,10 +137,192 @@ function CopyColumn() {
     </>
   ]);
 
+  const [click2, setClick2] = useState(false);
+  const [inputs2, setInputs2] = useState([
+    <>
+      <Row>
+        <Col span={6}>
+          <Form.Item
+            label="CopyColumn"
+            name={[`CopyColumn` + id, "CopyColumn"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indicate the column you want to copy",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<columnIndexOrig>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="from"
+            name={[`from` + id, "from"]}
+            rules={[
+              {
+                required: true,
+                message: "Pleade indicate the column origin",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKeyOrig>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="to the sheet"
+            name={[`to` + id, "to"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the origin column offset",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKeyDest>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="in column"
+            name={[`column` + id, "column"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the worksheet key destiny",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<columnIndexDest>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="start_at"
+            name={[`startAt` + id, "startAt"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indictae the row offset destiny",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<rowOffsetDest>" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </>
+  ]);
+
+  const [click3, setClick3] = useState(false);
+  const [inputs3, setInputs3] = useState([
+    <>
+      <Row>
+        <Col span={6}>
+          <Form.Item
+            label="CopyColumn value"
+            name={[`CopyColumn` + id, "CopyColumn"]}
+            rules={[
+              {
+                required: true,
+                message: "Porfavor indicate the column you want to copy",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<columnIndexOrig>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="from"
+            name={[`from` + id, "from"]}
+            rules={[
+              {
+                required: true,
+                message: "Pleade indicate the column origin",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKeyOrig>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="start_at"
+            name={[`to` + id, "to"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the origin column offset",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<rowOffsetOrigt>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="to the sheet"
+            name={[`sheet` + id, "sheet"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indicate the worksheet key destiny",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<worksheetKeyDest>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="in column"
+            name={[`startAt` + id, "startAt"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indictae the row offset destiny",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<columnIndexDest>" />
+          </Form.Item>
+        </Col>
+        <Col span={6}>
+          <Form.Item
+            label="start_at"
+            name={[`startAt` + id, "startAt"]}
+            rules={[
+              {
+                required: true,
+                message: "Please indictae the row offset destiny",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="<rowOffsetDest>" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </>
+  ]);
+
   const remove = () => {
     const values = [...inputs];
     values.splice = (id, 1);
     setInputs(values);
+  }
+
+  const remove2 = () => {
+    const values = [...inputs2];
+    values.splice = (id, 1);
+    setInputs2(values);
+  }
+
+  const remove3 = () => {
+    const values = [...inputs3];
+    values.splice = (id, 1);
+    setInputs3(values);
   }
 
   const add = () => {
@@ -242,6 +424,190 @@ function CopyColumn() {
     setClick(true);
   }
 
+  const add2 = () => {
+    setInputs2([...inputs2,
+    <Row>
+      <Col span={6}>
+        <Form.Item
+          label="CopyColumn"
+          name={[`CopyColumn` + id, "CopyColumn"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indicate the column you want to copy",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<columnIndexOrig>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="from"
+          name={[`from` + id, "from"]}
+          rules={[
+            {
+              required: true,
+              message: "Pleade indicate the column origin",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKeyOrig>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="to the sheet"
+          name={[`to` + id, "to"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the origin column offset",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKeyDest>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="in column"
+          name={[`column` + id, "column"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the worksheet key destiny",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<columnIndexDest>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="start_at"
+          name={[`startAt` + id, "startAt"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indictae the row offset destiny",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<rowOffsetDest>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove2()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+    </Row>
+    ])
+    setClick2(true);
+  }
+
+  const add3 = () => {
+    setInputs3([...inputs3,
+    <Row>
+      <Col span={6}>
+        <Form.Item
+          label="CopyColumn value"
+          name={[`CopyColumn` + id, "CopyColumn"]}
+          rules={[
+            {
+              required: true,
+              message: "Porfavor indicate the column you want to copy",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<columnIndexOrig>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="from"
+          name={[`from` + id, "from"]}
+          rules={[
+            {
+              required: true,
+              message: "Pleade indicate the column origin",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKeyOrig>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="start_at"
+          name={[`to` + id, "to"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the origin column offset",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<rowOffsetOrigt>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="to the sheet"
+          name={[`sheet` + id, "sheet"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the worksheet key destiny",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<worksheetKeyDest>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="in column"
+          name={[`startAt` + id, "startAt"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indictae the row offset destiny",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<columnIndexDest>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="start_at"
+          name={[`startAt` + id, "startAt"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indictae the row offset destiny",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<rowOffsetDest>" />
+        </Form.Item>
+      </Col>
+      <Button
+        type="solid"
+        onClick={() => remove3()}
+        shape="circle"
+        icon={<MinusCircleOutlined />}
+      >
+      </Button>
+    </Row>
+    ])
+    setClick3(true);
+  }
+
   const [form] = Form.useForm();
   useEffect(() => {
     id = Date.now();
@@ -275,21 +641,58 @@ function CopyColumn() {
           </div>
         </Col>
       </Row>
-      {inputs.map((input) => {
-        return (input)
-      })}
+      <Tabs defaultActiveKey="1">
+        <Tabs.TabPane tab="Syntax 1" key="1">
+          {inputs.map((input) => {
+            return (input)
+          })}
 
-      <Row>
-        <Col offset={12}>
-          <Button
-            type="dashed"
-            onClick={() => add()}
-            shape="circle"
-            icon={<PlusOutlined />}
-          >
-          </Button>
-        </Col>
-      </Row>
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Syntax 2" key="2">
+          {inputs2.map((input2) => {
+            return (input2)
+          })}
+
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add2()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Syntax 3" key="3">
+          {inputs3.map((input3) => {
+            return (input3)
+          })}
+          <Row>
+            <Col offset={12}>
+              <Button
+                type="dashed"
+                onClick={() => add3()}
+                shape="circle"
+                icon={<PlusOutlined />}
+              >
+              </Button>
+            </Col>
+          </Row>
+        </Tabs.TabPane>
+      </Tabs>
     </Form>
   );
 }

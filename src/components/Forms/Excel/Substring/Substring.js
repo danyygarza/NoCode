@@ -110,7 +110,7 @@ function Substring() {
             <Input type="text" placeholder="<inputString>" />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={5}>
           <Form.Item
             label="start"
             name={[`start` + id, "start"]}
@@ -124,7 +124,7 @@ function Substring() {
             <Input type="text" placeholder="<startIndex>" />
           </Form.Item>
         </Col>
-        <Col span={7}>
+        <Col span={5}>
           <Form.Item
             label="length"
             name={[`length` + id, "length"]}
@@ -138,7 +138,7 @@ function Substring() {
             <Input type="text" placeholder="<stringLength>" />
           </Form.Item>
         </Col>
-        <Col span={7}>
+        <Col span={6}>
           <Form.Item
             label="and save as"
             name={[`andSaveAs` + id, "andSaveAs"]}
@@ -152,7 +152,7 @@ function Substring() {
             <Input type="text" placeholder="<newVarName>" />
           </Form.Item>
         </Col>
-        
+
       </Row>
     </>
   ]);
@@ -231,70 +231,70 @@ function Substring() {
 
   const add2 = () => {
     setInputs2([...inputs2,
-      <Row>
-        <Col span={6}>
-          <Form.Item
-            label="Substring"
-            name={[`substring` + id, "substring"]}
-            rules={[
-              {
-                required: true,
-                message: "Please indicate the substring",
-              },
-            ]}>
-            <Input type="text" placeholder="<inputString>" />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item
-            label="start"
-            name={[`start` + id, "start"]}
-            rules={[
-              {
-                required: true,
-                message: "Please indicate the start index",
-              },
-            ]}
-          >
-            <Input type="text" placeholder="<startIndex>" />
-          </Form.Item>
-        </Col>
-        <Col span={7}>
-          <Form.Item
-            label="length"
-            name={[`length` + id, "length"]}
-            rules={[
-              {
-                required: true,
-                message: "Please indicate the new variable name",
-              },
-            ]}
-          >
-            <Input type="text" placeholder="<stringLength>" />
-          </Form.Item>
-        </Col>
-        <Col span={7}>
-          <Form.Item
-            label="and save as"
-            name={[`andSaveAs` + id, "andSaveAs"]}
-            rules={[
-              {
-                required: true,
-                message: "Please indicate the new variable name",
-              },
-            ]}
-          >
-            <Input type="text" placeholder="<newVarName>" />
-          </Form.Item>
-        </Col>
-        <Button
+    <Row>
+      <Col span={6}>
+        <Form.Item
+          label="Substring"
+          name={[`substring` + id, "substring"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the substring",
+            },
+          ]}>
+          <Input type="text" placeholder="<inputString>" />
+        </Form.Item>
+      </Col>
+      <Col span={5}>
+        <Form.Item
+          label="start"
+          name={[`start` + id, "start"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the start index",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<startIndex>" />
+        </Form.Item>
+      </Col>
+      <Col span={5}>
+        <Form.Item
+          label="length"
+          name={[`length` + id, "length"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the new variable name",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<stringLength>" />
+        </Form.Item>
+      </Col>
+      <Col span={6}>
+        <Form.Item
+          label="and save as"
+          name={[`andSaveAs` + id, "andSaveAs"]}
+          rules={[
+            {
+              required: true,
+              message: "Please indicate the new variable name",
+            },
+          ]}
+        >
+          <Input type="text" placeholder="<newVarName>" />
+        </Form.Item>
+      </Col>
+      <Button
         type="solid"
         onClick={() => remove2()}
         shape="circle"
         icon={<MinusCircleOutlined />}
       >
       </Button>
-      </Row>
+    </Row>
     ])
   }
 
@@ -352,7 +352,7 @@ function Substring() {
           </Row>
         </Tabs.TabPane>
         <Tabs.TabPane tab="Syntax 2" key="2">
-        {inputs2.map((input2) => {
+          {inputs2.map((input2) => {
             return (input2)
           })}
 
