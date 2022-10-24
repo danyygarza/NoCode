@@ -26,7 +26,7 @@ function Code() {
             </Row>
             <Row>
                 <Col offset={21}>
-                    <Button type="primary" onClick={handleValidate} >
+                    <Button className="submit" onClick={handleValidate} >
                         Submit from code!!
                     </Button>
                 </Col>

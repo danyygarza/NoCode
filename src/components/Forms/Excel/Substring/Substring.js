@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, Popover, Tabs } from "antd";
+import { Button, Form, Input, Col, Row, Typography, Popover, Tabs, Modal, Card } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import data from '../../syntax.json'
 
@@ -7,6 +7,7 @@ import data from '../../syntax.json'
 
 let id = Date.now();
 const { Title } = Typography;
+const { Meta } = Card;
 const buttonWidth = 70;
 
 const description = (
@@ -305,71 +306,84 @@ function Substring() {
     setClick(false);
   }, [click])
 
+  const [open, setOpen] = useState(false);
+
 
   return (
-    <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
-      <Row justify="center">
-        <Col>
-          <Title level={5}>Substring</Title>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div className="demo">
-            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
-                <Button>Description</Button>
-              </Popover>
-              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
-                <Button>Parameters</Button>
-              </Popover>
-              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
-                <Button>Syntax</Button>
-              </Popover>
-              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
-                <Button>Examples</Button>
-              </Popover>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      <Tabs defaultActiveKey="1" key="1">
-        <Tabs.TabPane tab="Syntax 1" key="1">
-          {inputs.map((input) => {
-            return (input)
-          })}
+    <>
+      <div>
+        <Card hoverable style={{ width: 800 }} cover={<img alt="excel substring" src="../../../../substring.svg" />} onClick={() => setOpen(true)} maskClosable={true}>
+          <Meta title="Substring" description="Extracts part of the content of a string, given the input and the startIndex." />
+        </Card>
+        <Modal
+          title="Substring"
+          centered
+          open={open}
+          onOk={() => setOpen(false)}
+          onCancel={() => setOpen(false)}
+          width={900}
+        >
+          <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+            <Row>
+              <Col>
+                <div className="demo">
+                  <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                    <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                      <Button>Description</Button>
+                    </Popover>
+                    <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                      <Button>Parameters</Button>
+                    </Popover>
+                    <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                      <Button>Syntax</Button>
+                    </Popover>
+                    <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                      <Button>Examples</Button>
+                    </Popover>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <Tabs defaultActiveKey="1" key="1">
+              <Tabs.TabPane tab="Syntax 1" key="1">
+                {inputs.map((input) => {
+                  return (input)
+                })}
 
-          <Row>
-            <Col offset={12}>
-              <Button
-                type="dashed"
-                onClick={() => add()}
-                shape="circle"
-                icon={<PlusOutlined />}
-              >
-              </Button>
-            </Col>
-          </Row>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="Syntax 2" key="2">
-          {inputs2.map((input2) => {
-            return (input2)
-          })}
+                <Row>
+                  <Col offset={12}>
+                    <Button
+                      type="dashed"
+                      onClick={() => add()}
+                      shape="circle"
+                      icon={<PlusOutlined />}
+                    >
+                    </Button>
+                  </Col>
+                </Row>
+              </Tabs.TabPane>
+              <Tabs.TabPane tab="Syntax 2" key="2">
+                {inputs2.map((input2) => {
+                  return (input2)
+                })}
 
-          <Row>
-            <Col offset={12}>
-              <Button
-                type="dashed"
-                onClick={() => add2()}
-                shape="circle"
-                icon={<PlusOutlined />}
-              >
-              </Button>
-            </Col>
-          </Row>
-        </Tabs.TabPane>
-      </Tabs>
-    </Form>
+                <Row>
+                  <Col offset={12}>
+                    <Button
+                      type="dashed"
+                      onClick={() => add2()}
+                      shape="circle"
+                      icon={<PlusOutlined />}
+                    >
+                    </Button>
+                  </Col>
+                </Row>
+              </Tabs.TabPane>
+            </Tabs>
+          </Form>
+        </Modal>
+      </div>
+    </>
   );
 }
 

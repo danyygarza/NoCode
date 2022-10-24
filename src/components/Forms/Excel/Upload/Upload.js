@@ -387,11 +387,10 @@ function Upload() {
     }, [click])
 
     const [open, setOpen] = useState(false);
-    const [closed, setClosed] = useState(false);
 
     return (
         <div>
-            <Card hoverable style={{ width: 240 }} cover={<img alt="excel upload" src="../../../../uploadicon.png" />} onClick={() => setOpen(true)} MaskClosable={true}>
+            <Card hoverable style={{ width: 800 }} cover={<img alt="excel upload" src="../../../../uploadicon.png" />} onClick={() => setOpen(true)} MaskClosable={true}>
                 <Meta title="Excel Upload" description="Opens a given workbook and saves a variable for future reference." />
             </Card>
             <Modal
@@ -403,11 +402,6 @@ function Upload() {
                 width={900}
             >
                 <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
-                    <Row justify="center">
-                        <Col>
-                            <Title level={5}>UploadFile</Title>
-                        </Col>
-                    </Row>
                     <Row>
                         <Col>
                             <div className="demo">

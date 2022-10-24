@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Form, Input, Col, Row, Popover } from "antd";
+import { Button, Checkbox, Form, Input, Col, Row, Popover, Card, Modal } from "antd";
 import { Typography } from "antd";
 import data from '../../syntax.json'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
@@ -7,6 +7,7 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 let id = Date.now();
 const { Title } = Typography;
+const { Meta } = Card;
 
 const buttonWidth = 70;
 
@@ -136,49 +137,62 @@ function CountElements() {
     setClick(false);
   }, [click])
 
+  const [open, setOpen] = useState(false);
+
   return (
-    <Form
-      name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off" >
-      <Row justify="center">
-        <Col >
-          <Title level={5}>CountElements</Title>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div className="demo">
-            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
-                <Button>Description</Button>
-              </Popover>
-              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
-                <Button>Parameters</Button>
-              </Popover>
-              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
-                <Button>Syntax</Button>
-              </Popover>
-              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
-                <Button>Examples</Button>
-              </Popover>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      {inputs.map((input) => {
-        return (input)
-      })}
-      <Row>
-        <Col offset={12}>
-          <Button
-            type="dashed"
-            onClick={() => add()}
-            shape="circle"
-            icon={<PlusOutlined />}
-          >
-          </Button>
-        </Col>
-      </Row>
-    </Form>
+    <>
+      <div>
+        <Card hoverable style={{ width: 800 }} cover={<img alt="excel count element icon" src="../../../../countElements.jpg" />} onClick={() => setOpen(true)} maskClosable={true}>
+          <Meta title=" Excel Count Elements" description="Counts the elements inside a list or dictionary variable." />
+        </Card>
+        <Modal
+          title="Count Elements"
+          centered
+          open={open}
+          onOk={() => setOpen(false)}
+          onCancel={() => setOpen(false)}
+          width={900}
+        >
+          <Form
+            name="basic" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off" >
+            <Row>
+              <Col>
+                <div className="demo">
+                  <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                    <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                      <Button>Description</Button>
+                    </Popover>
+                    <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                      <Button>Parameters</Button>
+                    </Popover>
+                    <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                      <Button>Syntax</Button>
+                    </Popover>
+                    <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                      <Button>Examples</Button>
+                    </Popover>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            {inputs.map((input) => {
+              return (input)
+            })}
+            <Row>
+              <Col offset={12}>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  shape="circle"
+                  icon={<PlusOutlined />}
+                >
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Modal>
+      </div>
+    </>
   );
 }
 

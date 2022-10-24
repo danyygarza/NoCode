@@ -261,12 +261,11 @@ function RemoveDuplicate() {
     }, [click])
 
     const [open, setOpen] = useState(false);
-    const [closed, setclosed] = useState(false);
 
     return (
         <>
             <div>
-                <Card hoverable style={{ width: 240 }} cover={<img alt="excel remove duplicate" src="../../../../removeduplicate.webp" />} onClick={() => setOpen(true)} maskClosable={true}>
+                <Card hoverable style={{ width: 800 }} cover={<img alt="excel remove duplicate" src="../../../../removeduplicate.webp" />} onClick={() => setOpen(true)} maskClosable={true}>
                     <Meta title="Remove Duplicate" description="Removes the duplicate rows from a given sheet." />
                 </Card>
                 <Modal
@@ -278,11 +277,6 @@ function RemoveDuplicate() {
                     width={900}
                 >
                     <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>
-                        <Row justify="center">
-                            <Col>
-                                <Title level={5}>RemoveDuplicate</Title>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col>
                                 <div className="demo">
