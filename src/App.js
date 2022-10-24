@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 
 //components
 import Home from "./components/Home/Home";
@@ -22,6 +22,7 @@ import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
 import ParentSubmit from './components/Forms/Test/ParentSubmit';
 import CarouselTest from './components/Forms/Test/CarouselTest';
+
 
 /* 
 <Route path='/card' element={
