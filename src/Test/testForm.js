@@ -1,5 +1,5 @@
 import React, { useState, useForm } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col } from "antd";
+import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs } from "antd";
 
 const { Meta } = Card;
 
@@ -19,7 +19,7 @@ export default function Testform(props) {
     };
 
     let id = Date.now();
-    const test = { forms: [["name", "text"], ["in", 'text'], ["cell", "text"]], syntax: {} }
+    const test = { forms: [["name", "text"], ["in", 'text'], ["cell", "text"]], syntax: { } }
     console.log(test.forms)
     return (
         <>
@@ -56,55 +56,75 @@ export default function Testform(props) {
                             </div>
                         </Col>
                     </Row>
-                    {test.forms.map((item) => {
-                        return (
-                            <>
-                                <div>
+                    <Tabs defaultActiveKey="1">
+                        <Tabs.TabPane tab="Syntax 1" key="1">
+                            <Col span={8}>
+                                {test.forms.map((item) => {
+                                    return (
+                                        <>
+                                            {console.log(item[1])}
+                                            {/* //!  for text inputs */}
 
-                                    {console.log(item[1])}
-                                    {/* //!  for text inputs */}
-                                    <Col span={8}>
-                                        {
-                                            item[1] === "text" &&
-                                            <Form.Item
-                                                name={[`write` + id, item[0]]}
-                                                label={item[0]}
-                                                rules={[{ required: true, message: 'Please input your username!' }]}
-                                                style={{ width: 'auto' }}
-                                            >
-                                                <Input type="text" placeholder={item[0]} onChange={props.onChange} />
-                                            </Form.Item>
+                                            {
+                                                item[1] === "text" &&
+                                                <>
+                                                    <Col>
+                                                        <Form.Item name={[`write` + id, item[0]]} label={item[0]} rules={[{ required: true, message: 'Please input your username!' }]} style={{ width: 'auto' }}>
+                                                            <Input type="text" placeholder={item[0]} onChange={props.onChange} />
+                                                        </Form.Item>
+                                                    </Col>
+                                                </>
+                                            }
 
-                                        }
-                                    </Col>
-                                    {/* //!  for text file picker */}
-                                    {/* {item[1] === "file" &&
-                                        <Form.Item
-                                            name={[`${item[0] + id}`, `${item[0]}`]}
-                                            label={item[0]}
-                                            rules={[{ required: true, message: 'Please input your username!' }]}
-                                        >
-                                        </Form.Item>} */}
-                                    {/* //!  for text date */}
-                                    {/* {item[1] === "date" &&
-                                        <Form.Item
-                                            name={[`${item[0] + id}`, `${item[0]}`]}
-                                            label={item[0]}
-                                            rules={[{ required: true, message: 'Please input your username!' }]}
-                                        >
-                                        </Form.Item>} */}
-
-                                </div>
-                            </>
-                        )
-                    })}
-
+                                        </>
+                                    )
+                                })}
+                            </Col>
+                        </Tabs.TabPane>
+                        <Tabs.TabPane tab="Syntax 2" key="2">
+                            {test.forms.map((item) => {
+                                return (
+                                    <>
+                                        {console.log(item[1])}
+                                        {/* //!  for text inputs */}
+                                        <Col span={8}>
+                                            {
+                                                item[1] === "text" &&
+                                                <Form.Item
+                                                    name={[`write` + id, item[0]]}
+                                                    label={item[0]}
+                                                    rules={[{ required: true, message: 'Please input your username!' }]}
+                                                    style={{ width: 'auto' }}
+                                                >
+                                                    <Input type="text" placeholder={item[0]} onChange={props.onChange} />
+                                                </Form.Item>
+                                            }
+                                        </Col>
+                                    </>
+                                )
+                            })}
+                        </Tabs.TabPane>
+                    </Tabs>
 
                 </Form>
             </Modal>
         </>
     )
-
-
 }
 
+{/* //!  for text file picker */ }
+{/* {item[1] === "file" &&
+    <Form.Item
+        name={[`${item[0] + id}`, `${item[0]}`]}
+        label={item[0]}
+        rules={[{ required: true, message: 'Please input your username!' }]}
+    >
+    </Form.Item>} */}
+{/* //!  for text date */ }
+{/* {item[1] === "date" &&
+    <Form.Item
+        name={[`${item[0] + id}`, `${item[0]}`]}
+        label={item[0]}
+        rules={[{ required: true, message: 'Please input your username!' }]}
+    >
+    </Form.Item>} */}
