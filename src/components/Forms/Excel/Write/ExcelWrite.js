@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react"
-import { Form, Input, Button, Col, Row, Typography, Popover, Tabs } from 'antd'
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Col, Row, Typography, Popover, Tabs, Card, Modal } from 'antd'
+import { MinusCircleOutlined, PlusOutlined, FileExcelOutlined } from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json'
 
 
+const { Meta } = Card;
 let id = Date.now();
 const { Title } = Typography;
 const buttonWidth = 70;
 
 const description = (
     <>
-        {data.fridaExcelReadersSyntaxWrite.Description}
+    {data.fridaExcelReadersSyntaxWrite.Description}
     </>
-);
+)
 
 const parameters = (
     <>
@@ -472,108 +473,119 @@ function ExcelWrite(props) {
 
     console.log(props.submit);
 
+    //modal
+    const [open, setOpen] = useState(false);
+    const [closed, setClosed] = useState(false);
+
     return (
-        <div>
-            <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed} id={id}>
-                <Row justify="center">
-                    <Col>
-                        <Title level={5}>ExcelWrite</Title>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <div className="demo">
-                            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-                                <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
-                                    <Button>Description</Button>
-                                </Popover>
-                                <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
-                                    <Button>Parameters</Button>
-                                </Popover>
-                                <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
-                                    <Button>Syntax</Button>
-                                </Popover>
-                                <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
-                                    <Button>Examples</Button>
-                                </Popover>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-                <Tabs defaultActiveKey="1">
-                    <Tabs.TabPane tab="Syntax 1" key="1">
-                        {inputs.map((input) => {
-                            return (input)
-                        })}
+        <>
+            <div>
+                <Card hoverable style={{ width: 240, }} cover={<img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true}>
+                    <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
+                </Card>
+                <Modal
+                    title="Excel Write"
+                    centered
+                    open={open}
+                    onOk={() => setOpen(false)}
+                    onCancel={() => setOpen(false)}
+                    width={900}
+                >
+                    <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed} id={id}>
                         <Row>
-                            <Col offset={12}>
-                                <Button
-                                    type="dashed"
-                                    onClick={() => add()}
-                                    shape="circle"
-                                    icon={<PlusOutlined />}
-                                >
-                                </Button>
+                            <Col>
+                                <div className="demo">
+                                    <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                                        <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                                            <Button>Description</Button>
+                                        </Popover>
+                                        <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                                            <Button>Parameters</Button>
+                                        </Popover>
+                                        <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                                            <Button>Syntax</Button>
+                                        </Popover>
+                                        <Popover placement="topRight" title="Examples" content={examples} trigger="click">
+                                            <Button>Examples</Button>
+                                        </Popover>
+                                    </div>
+                                </div>
                             </Col>
                         </Row>
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Syntax 2" key="2">
-                        {inputs2.map((input2) => {
-                            return (input2)
-                        })}
+                        <Tabs defaultActiveKey="1">
+                            <Tabs.TabPane tab="Syntax 1" key="1">
+                                {inputs.map((input) => {
+                                    return (input);
+                                })}
+                                <Row>
+                                    <Col offset={12}>
+                                        <Button
+                                            type="dashed"
+                                            onClick={() => add()}
+                                            shape="circle"
+                                            icon={<PlusOutlined />}
+                                        >
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Tabs.TabPane>
+                            <Tabs.TabPane tab="Syntax 2" key="2">
+                                {inputs2.map((input2) => {
+                                    return (input2);
+                                })}
 
-                        <Row>
-                            <Col offset={12}>
-                                <Button
-                                    type="dashed"
-                                    onClick={() => add2()}
-                                    shape="circle"
-                                    icon={<PlusOutlined />}
-                                >
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Syntax 3" key="3">
-                        {inputs3.map((input3) => {
-                            return (input3)
-                        })}
+                                <Row>
+                                    <Col offset={12}>
+                                        <Button
+                                            type="dashed"
+                                            onClick={() => add2()}
+                                            shape="circle"
+                                            icon={<PlusOutlined />}
+                                        >
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Tabs.TabPane>
+                            <Tabs.TabPane tab="Syntax 3" key="3">
+                                {inputs3.map((input3) => {
+                                    return (input3);
+                                })}
 
-                        <Row>
-                            <Col offset={12}>
-                                <Button
-                                    type="dashed"
-                                    onClick={() => add3()}
-                                    shape="circle"
-                                    icon={<PlusOutlined />}
-                                >
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Tabs.TabPane>
-                    <Tabs.TabPane tab="Syntax 4" key="4">
-                        {inputs4.map((input4) => {
-                            return (input4)
-                        })}
+                                <Row>
+                                    <Col offset={12}>
+                                        <Button
+                                            type="dashed"
+                                            onClick={() => add3()}
+                                            shape="circle"
+                                            icon={<PlusOutlined />}
+                                        >
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Tabs.TabPane>
+                            <Tabs.TabPane tab="Syntax 4" key="4">
+                                {inputs4.map((input4) => {
+                                    return (input4);
+                                })}
 
-                        <Row>
-                            <Col offset={12}>
-                                <Button
-                                    type="dashed"
-                                    onClick={() => add4()}
-                                    shape="circle"
-                                    icon={<PlusOutlined />}
-                                >
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Tabs.TabPane>
-                </Tabs>
-            </Form>
-        </div>
-
+                                <Row>
+                                    <Col offset={12}>
+                                        <Button
+                                            type="dashed"
+                                            onClick={() => add4()}
+                                            shape="circle"
+                                            icon={<PlusOutlined />}
+                                        >
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Tabs.TabPane>
+                        </Tabs>
+                    </Form>
+                </Modal>
+            </div>
+        </>
     )
-
 };
 
 

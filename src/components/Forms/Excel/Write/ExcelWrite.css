@@ -25,3 +25,17 @@
     color: #D64488 !important;
     text-shadow: 0 0 0.25px currentcolor;
 }
+
+.ant-card-cover > * {
+    display: block;
+    width: 50%;
+    margin-left: 4em;
+    margin-top: 1em;
+}
+
+.ant-space-align-baseline{
+    display: flex;
+    margin-bottom: 8px;
+    gap: 8px;
+    margin-top: 20px;
+}

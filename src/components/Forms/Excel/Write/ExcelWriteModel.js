@@ -1,9 +1,12 @@
 import React from "react";
 import ExcelWrite from "./ExcelWrite";
+import { Form } from 'antd'
 
+// simple model with 2 methods 
+// just need to pass the reference to bind the submit function 
 export class ExcelWriteModel {
-    constructor() {
-        this.component = <ExcelWrite />
+    constructor(ref) {
+        this.component = <ExcelWrite ref={ref} />
         this.code = ``
     }
 
@@ -12,9 +15,8 @@ export class ExcelWriteModel {
     }
 
     setcode(Text, In, Cell) {
-        this.code = "write " + Text + " in " + In + " cell " + Cell; 
+        this.code = "write " + Text + " in " + In + " cell " + Cell;
     }
-
 
 }
 

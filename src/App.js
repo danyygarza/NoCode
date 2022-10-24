@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 
-
-
 //components
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
@@ -22,10 +20,8 @@ import SubirArchivo from './components/CartasProcesos/SubirArchivo';
 import AllFunctions from "./components/Forms/AllFunctions";
 import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
-
-//prueba de api
-
-
+import ParentSubmit from './components/Forms/Test/ParentSubmit';
+import CarouselTest from './components/Forms/Test/CarouselTest';
 
 /* 
 <Route path='/card' element={
@@ -47,6 +43,7 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/submit' element={< CarouselTest />} />
 
         <Route path='/inicio' element={
 
