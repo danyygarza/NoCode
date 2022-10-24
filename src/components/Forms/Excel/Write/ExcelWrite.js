@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Form, Input, Button, Col, Row, Typography, Popover, Tabs, Card, Modal } from 'antd'
+import { Form, Input, Button, Col, Row, Typography, Popover, Tabs, Card, Modal, BackTop } from 'antd'
 import { MinusCircleOutlined, PlusOutlined, FileExcelOutlined } from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json'
@@ -475,12 +475,12 @@ function ExcelWrite(props) {
 
     //modal
     const [open, setOpen] = useState(false);
-    const [closed, setClosed] = useState(false);
 
     return (
         <>
+        
             <div>
-                <Card hoverable style={{ width: 240, }} cover={<img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true}>
+                <Card hoverable style={{ width: 800 }} cover={<img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
                     <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
                 </Card>
                 <Modal

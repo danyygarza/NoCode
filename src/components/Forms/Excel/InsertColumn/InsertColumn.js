@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, DatePicker, Select, Space, Popover } from "antd";
+import { Button, Form, Input, Col, Row, Typography, Card, Select, Modal, Popover } from "antd";
 import data from '../../syntax.json'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "../Write/ExcelWrite.css"
@@ -8,6 +8,7 @@ import "../Write/ExcelWrite.css"
 
 let id = Date.now();
 const { Title } = Typography;
+const { Meta } = Card;
 const { Option } = Select;
 const buttonWidth = 70;
 
@@ -136,49 +137,62 @@ function InsertColumn() {
     setClick(false);
   }, [click])
 
-  return (
-    <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
-      <Row justify="center">
-        <Col>
-          <Title level={5}>Insert Column</Title>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div className="demo">
-            <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-              <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
-                <Button>Description</Button>
-              </Popover>
-              <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
-                <Button>Parameters</Button>
-              </Popover>
-              <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
-                <Button>Syntax</Button>
-              </Popover>
-              <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
-                <Button>Examples</Button>
-              </Popover>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      {inputs.map((input) => {
-        return (input)
-      })}
+  const [open, setOpen] = useState(false);
 
-      <Row>
-        <Col offset={12}>
-          <Button
-            type="dashed"
-            onClick={() => add()}
-            shape="circle"
-            icon={<PlusOutlined />}
-          >
-          </Button>
-        </Col>
-      </Row>
-    </Form>
+  return (
+    <>
+      <div>
+        <Card hoverable style={{ width: 800 }} cover={<img alt="insert column" src="../../../../addColumn.webp" />} onClick={() => setOpen(true)} maskClosable={true}>
+          <Meta title="Insert Column" description="Inserts a Column at index (1-based)." />
+        </Card>
+        <Modal
+          title="Insert Column"
+          centered
+          open={open}
+          onOk={() => setOpen(false)}
+          onCancel={() => setOpen(false)}
+          width={900}
+        >
+          <Form onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+            <Row>
+              <Col>
+                <div className="demo">
+                  <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                    <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                      <Button>Description</Button>
+                    </Popover>
+                    <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                      <Button>Parameters</Button>
+                    </Popover>
+                    <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                      <Button>Syntax</Button>
+                    </Popover>
+                    <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                      <Button>Examples</Button>
+                    </Popover>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            {inputs.map((input) => {
+              return (input)
+            })}
+
+            <Row>
+              <Col offset={12}>
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  shape="circle"
+                  icon={<PlusOutlined />}
+                >
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Modal>
+      </div>
+    </>
   );
 }
 
