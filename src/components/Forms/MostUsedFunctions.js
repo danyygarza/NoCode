@@ -20,6 +20,7 @@ import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
 import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
 import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
+import Testform from '../../Test/testForm'
 
 
 
@@ -30,7 +31,7 @@ function MostUsedFunctions(props) {
     }
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
-        { text: "Write", form: <ExcelWrite submit={props.submit} setSubmit={props.setSubmit} /> },
+        { text: "Write", form: <Testform/> },
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
@@ -40,7 +41,7 @@ function MostUsedFunctions(props) {
         { text: "CopyColumn", form: <CopyColumn /> },
         { text: "ApplyFilter", form: <ApplyFilter /> },
         { text: "RemoveColumn", form: <RemoveColumn /> },
-    ])
+    ]) 
 
     const [form] = Form.useForm();
 

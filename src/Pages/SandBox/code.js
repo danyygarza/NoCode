@@ -17,22 +17,21 @@ function Code() {
 
     }
     return (
-       <Testform/>
-        // <>
-        //     <Row>
-        //         <Col offset={8}>
-        //             {/* //!this is the place where all the form will be stored */}
-        //             <Frida ref={ref} />
-        //         </Col>
-        //     </Row>
-        //     <Row>
-        //         <Col offset={21}>
-        //             <Button type="primary" onClick={handleValidate} >
-        //                 Submit from code!!
-        //             </Button>
-        //         </Col>
-        //     </Row>
-        // </>
+        <>
+            <Row>
+                <Col offset={8}>
+                    {/* //!this is the place where all the form will be stored */}
+                    <Frida ref={ref} />
+                </Col>
+            </Row>
+            <Row>
+                <Col offset={21}>
+                    <Button type="primary" onClick={handleValidate} >
+                        Submit from code!!
+                    </Button>
+                </Col>
+            </Row>
+        </>
     )
 }
 

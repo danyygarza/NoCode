@@ -3,6 +3,7 @@ import { Form, Input, Button, Col, Row, Typography, Popover, Tabs, Card, Modal }
 import { MinusCircleOutlined, PlusOutlined, FileExcelOutlined } from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
 import data from '../../syntax.json'
+import Testform from "../../../../Test/testForm";
 
 
 const { Meta } = Card;
@@ -12,7 +13,7 @@ const buttonWidth = 70;
 
 const description = (
     <>
-    {data.fridaExcelReadersSyntaxWrite.Description}
+        {data.fridaExcelReadersSyntaxWrite.Description}
     </>
 )
 
@@ -476,6 +477,8 @@ function ExcelWrite(props) {
     //modal
     const [open, setOpen] = useState(false);
     const [closed, setClosed] = useState(false);
+    const test = { forms: [["name", "text"], ["in", 'text'], ["cell", "text"]], syntax: {} }
+    console.log(<Testform />)
 
     return (
         <>
@@ -491,8 +494,11 @@ function ExcelWrite(props) {
                     onCancel={() => setOpen(false)}
                     width={900}
                 >
+
                     <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed} id={id}>
-                        <Row>
+
+                        <Testform></Testform>
+                        {/* <Row>
                             <Col>
                                 <div className="demo">
                                     <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
@@ -580,7 +586,7 @@ function ExcelWrite(props) {
                                     </Col>
                                 </Row>
                             </Tabs.TabPane>
-                        </Tabs>
+                        </Tabs> */}
                     </Form>
                 </Modal>
             </div>
