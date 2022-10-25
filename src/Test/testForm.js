@@ -1,18 +1,7 @@
-<<<<<<< HEAD
-import React, { useState, useForm, useEffect } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs } from "antd";
-
-import { db } from '../firebase';
-import { collection, getDocs } from "firebase/firestore";
-
-=======
 import React, { useState, useForm } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
-import { data } from "autoprefixer";
 import { useModalForm } from 'sunflower-antd';
->>>>>>> dynamicSyntax
 const { Meta } = Card;
-
 
 export default function Testform(props) {
     const [open, setOpen] = useState(false);
