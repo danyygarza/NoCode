@@ -67,23 +67,6 @@ function MostUsedFunctions(props) {
         else {
             console.log("no such document!")
         }
-
-        // getDocs(colRef)
-        //     .then((snapshot) => {
-        //         console.log("inside the snapshot")
-        //         snapshot.docs.forEach((doc) => {
-        //             console.log("inside then")
-        //             dbData.push({ ...doc.data(), id: doc.id });
-        //             console.log("dbData", doc.data())
-        //         });
-        //         // setData(dbData);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
-        // props.setForms([...props.forms,
-        //     data
-        // ])
         console.log("forms",)
     }
 
