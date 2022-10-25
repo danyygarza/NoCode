@@ -1,19 +1,18 @@
 
 import { db } from '../firebase';
 import { collection, getDocs } from "firebase/firestore";
-
-
-import React, { useState, useForm } from "react";
+import React, { useState, useForm, useEffect } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 import { useModalForm } from 'sunflower-antd';
 const { Meta } = Card;
 
-
 export default function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
+    const [forms, setForm] = useState(Object.values(props.data.forms)[key])
+    // const forms = Object.values(props.data.forms)[key]; 
     const buttonWidth = 70;
 
     const onFinish = (values) => {
@@ -24,7 +23,6 @@ export default function Testform(props) {
         console.log("Failed:", errorInfo);
         props.setSubmit(false)
     };
-    console.log('data', props.data);
     let id = Date.now();
 
     const {
@@ -46,6 +44,22 @@ export default function Testform(props) {
         },
         form,
     });
+    
+    const add = () => {
+        // setForm(...forms,Object.values(props.data.forms)[key])
+        Object.values(props.data.forms)[key].map((item)=>{
+            forms.push(item)
+            setForm(item);  
+
+        })
+        console.log(forms); 
+    }
+
+    useEffect(() => {
+
+        // setForm()
+        console.log(forms)
+    }, [forms])
 
     const addLine =
 
@@ -71,7 +85,8 @@ export default function Testform(props) {
                             })}
                         </Radio.Group>
                         <Row>
-                            {Object.values(props.data.forms)[key].map((item) => {
+                            {forms.map((item) => {
+                                console.log("map", item); 
                                 return (
                                     <>
                                         {console.log(item.type)}
@@ -89,12 +104,12 @@ export default function Testform(props) {
                                     // <h1>test</h1>
                                 )
                             })}
-                            
+
                         </Row>
                         <Row>
-                            <Button type="primary" shape="circle" icon={<PlusOutlined />} size={'large'} />
+                            <Button type="primary" shape="circle" icon={<PlusOutlined />} size={'large'} onClick={() => add()} />
                         </Row>
-                        
+
 
                     </Form>
                 </>
