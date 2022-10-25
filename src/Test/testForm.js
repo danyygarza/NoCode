@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-import React, { useState, useForm, useEffect } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs } from "antd";
-
-import { db } from '../firebase';
-import { collection, getDocs } from "firebase/firestore";
-
-=======
 import React, { useState, useForm } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
-import { data } from "autoprefixer";
 import { useModalForm } from 'sunflower-antd';
->>>>>>> dynamicSyntax
 const { Meta } = Card;
 
 
@@ -58,7 +48,7 @@ export default function Testform(props) {
             } cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
                 <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
             </Card >
-            <Modal {...modalProps} title="useModalForm" okText="submit" width={1200} open={open}>
+            <Modal {...modalProps} title="useModalForm" open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} okText="submit" width={1200} >
                 <>
                     <p>
                         submit: username {formValues.username} email {formValues.email}
