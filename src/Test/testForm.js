@@ -7,7 +7,7 @@ const { Meta } = Card;
 export default function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
-    const [key, setKey] = useState(1);
+    const [key, setKey] = useState(0);
     const buttonWidth = 70;
 
     const onFinish = (values) => {
@@ -48,7 +48,7 @@ export default function Testform(props) {
             } cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
                 <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
             </Card >
-            <Modal {...modalProps} title="useModalForm" okText="submit" width={900} open={open}>
+            <Modal {...modalProps} title="useModalForm" okText="submit" width={1200} open={open}>
                 <>
                     <p>
                         submit: username {formValues.username} email {formValues.email}
@@ -97,6 +97,7 @@ export default function Testform(props) {
         label={item[0]}
         rules={[{ required: true, message: 'Please input your username!' }]}
     >
+    <input> // 
     </Form.Item>} */}
 {/* //!  for text date */ }
 {/* {item[1] === "date" &&
