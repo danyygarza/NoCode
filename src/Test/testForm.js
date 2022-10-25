@@ -1,11 +1,80 @@
-import React, { useState, useForm } from "react";
+import React, { useState, useForm, useEffect } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs } from "antd";
 
+import { db } from '../firebase';
+import { collection, getDocs } from "firebase/firestore";
+
 const { Meta } = Card;
+
 
 export default function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        async function Readers() {
+            var arr = [];
+            var i = 0;
+            const querySnapshot = await getDocs(collection(db, "Excel"));
+            querySnapshot.forEach((doc) => {
+                arr[i] = [];
+                console.log(doc.id, "=>", doc.data());
+                arr[i] = doc.data();
+                i++;
+            });
+            console.log(arr);
+            setData(arr);
+        }
+        Readers();
+    }, []);
+
+    
+
+    const description = (
+        data.map((dato, index) => (
+            <>
+                {dato.ExcelWriteDescription}<br />
+                {dato.ExcelWriteDescription2}<br />
+                {dato.ExcelWriteDescription3}<br />
+                {dato.ExcelWriteDescription4}<br />
+                {dato.ExcelWriteDescription5}
+            </>
+        ))
+    );
+
+    const parameters = (
+        data.map((dato, index) => (
+            <>
+                {dato.ExcelWriteParameters}
+            </>
+        ))
+    );
+
+    const syntax = (
+        data.map((dato, index) => (
+            <>
+                {dato.ExcelWriteSyntax1}<br />
+                {dato.ExcelWriteSyntax2}<br />
+                {dato.ExcelWriteSyntax3}<br />
+                {dato.ExcelWriteSyntax4}
+            </>
+        ))
+    );
+
+    const examples = (
+        data.map((dato, index) => (
+            <>
+                {dato.ExcelWriteExample1}<br/>
+                {dato.ExcelWriteExample2}<br/>
+                {dato.ExcelWriteExample3}<br/>
+                {dato.ExcelWriteExample4}<br/>
+                {dato.ExcelWriteExample5}<br/>
+                {dato.ExcelWriteExample6}<br/>
+                {dato.ExcelWriteExample7}
+            </>
+        ))
+    )
 
     const buttonWidth = 70;
 
@@ -41,18 +110,17 @@ export default function Testform(props) {
                         <Col>
                             <div className="demo">
                                 <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-                                    <Popover placement="topLeft" title="Description" /*content={description}*/ trigger="click" className='popover-position'>
+
+                                    <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
                                         <Button>Description</Button>
-                                    </Popover>
-                                    <Popover placement="topLeft" title="Parameters" /*content={parameters}*/ trigger="click" className='popover-position'>
+                                    </Popover><Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
                                         <Button>Parameters</Button>
-                                    </Popover>
-                                    <Popover placement="top" title="Syntax" /*content={syntax}*/ trigger="click" className='popover-position'>
+                                    </Popover><Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
                                         <Button>Syntax</Button>
-                                    </Popover>
-                                    <Popover placement="topRight" title="Examples" /*content={examples}*/ trigger="click">
+                                    </Popover><Popover placement="topRight" title="Examples" content={examples} trigger="click">
                                         <Button>Examples</Button>
                                     </Popover>
+
                                 </div>
                             </div>
                         </Col>
@@ -60,7 +128,7 @@ export default function Testform(props) {
                     <Tabs defaultActiveKey="1">
                         <Tabs.TabPane tab="Syntax 1" key="1">
                             <Col span={8}>
-                                {props.data.forms.map((item) => {
+                               {props.data.forms.map((item) => {
                                     return (
                                         <>
                                             {console.log(item.type)}

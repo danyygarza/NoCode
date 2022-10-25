@@ -13,12 +13,12 @@ export default function modForm(props) {
             {test.forms.map((item) => {
                 return (
                     item.type === "text" ?
-                        <form.item
+                        <form.Item
                             name={[`${item.input + id}`, `${item.input}`]}
                             label={item.input}
                             rules={[{ required: true, message: 'Please input your username!' }]}
                         >
-                        </form.item> :
+                        </form.Item> :
                         <h1>working</h1>
                 )
             })}
