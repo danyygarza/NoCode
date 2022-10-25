@@ -33,9 +33,6 @@ const dbData = [];
 
 function MostUsedFunctions(props) {
     console.log('submit in muf is ', props.submit)
-    if (props.submit) {
-        console.log('submit true in muf')
-    }
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
         { text: "Write", collection: 'Excel', function: 'Write' },
@@ -53,13 +50,9 @@ function MostUsedFunctions(props) {
     const [form] = Form.useForm();
 
     const add = async (data) => {
-        console.log('adding to form from MOF', form)
-        console.log(data.collection, data.function)
         const colRef = doc(db, data.collection, data.function);
-
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
-            console.log("data", docSnap.data());
             props.setForms([...props.forms,
                 docSnap.data()
             ])
@@ -67,7 +60,6 @@ function MostUsedFunctions(props) {
         else {
             console.log("no such document!")
         }
-        console.log("forms",)
     }
 
 
