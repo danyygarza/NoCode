@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-import React, { useState, useForm, useEffect } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs } from "antd";
-
-import { db } from '../firebase';
-import { collection, getDocs } from "firebase/firestore";
-
-=======
 import React, { useState, useForm } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
-import { data } from "autoprefixer";
+import { PlusOutlined } from '@ant-design/icons';
 import { useModalForm } from 'sunflower-antd';
->>>>>>> dynamicSyntax
 const { Meta } = Card;
 
 
@@ -91,7 +82,12 @@ export default function Testform(props) {
                                     // <h1>test</h1>
                                 )
                             })}
+                            
                         </Row>
+                        <Row>
+                            <Button type="primary" shape="circle" icon={<PlusOutlined />} size={'large'} />
+                        </Row>
+                        
 
                     </Form>
                 </>
