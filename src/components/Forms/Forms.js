@@ -16,8 +16,6 @@ const Forms = forwardRef((props, ref) => {
 
   const onSearch = (value) => console.log(value);
 
-  console.log(ref)
-
   return (
     <>
       <Button onClick={() => setOpen(true)} className='forms-button'>

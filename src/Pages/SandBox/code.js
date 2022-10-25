@@ -21,7 +21,7 @@ function Code() {
             <Row>
                 <Col offset={8}>
                     {/* //!this is the place where all the form will be stored */}
-                    <Frida ref={ref} />
+                    <Frida />
                 </Col>
             </Row>
             <Row>

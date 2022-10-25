@@ -17,10 +17,11 @@ export default function Testform(props) {
         console.log("Failed:", errorInfo);
         props.setSubmit(false)
     };
-
+    // console.log("data", props.data);
+    console.log('data', props.data.forms[0]);
     let id = Date.now();
-    const test = { forms: [["name", "text"], ["in", 'text'], ["cell", "text"]], syntax: { } }
-    console.log(test.forms)
+    // const test = { forms: [["name", "text"], ["in", 'text'], ["cell", "text"]], syntax: { } }
+    // console.log(test.forms[0])
     return (
         <>
             < Card hoverable style={{ width: 800, }
@@ -59,48 +60,49 @@ export default function Testform(props) {
                     <Tabs defaultActiveKey="1">
                         <Tabs.TabPane tab="Syntax 1" key="1">
                             <Col span={8}>
-                                {test.forms.map((item) => {
+                                {props.data.forms.map((item) => {
                                     return (
                                         <>
-                                            {console.log(item[1])}
+                                            {console.log(item.type)}
                                             {/* //!  for text inputs */}
 
                                             {
-                                                item[1] === "text" &&
+                                                item.type === "text" &&
                                                 <>
                                                     <Col>
-                                                        <Form.Item name={[`write` + id, item[0]]} label={item[0]} rules={[{ required: true, message: 'Please input your username!' }]} style={{ width: 'auto' }}>
-                                                            <Input type="text" placeholder={item[0]} onChange={props.onChange} />
+                                                        <Form.Item name={[`${item.title}` + id, item.title]} label={item.title} rules={[{ required: true, message: 'Please input your username!' }]} style={{ width: 'auto' }}>
+                                                            <Input type={item.type} placeholder={item.title} onChange={props.onChange} />
                                                         </Form.Item>
                                                     </Col>
                                                 </>
                                             }
-
                                         </>
+                                        // <h1>test</h1>
                                     )
                                 })}
                             </Col>
                         </Tabs.TabPane>
                         <Tabs.TabPane tab="Syntax 2" key="2">
-                            {test.forms.map((item) => {
+                            {props.data.forms.map((item) => {
                                 return (
-                                    <>
-                                        {console.log(item[1])}
-                                        {/* //!  for text inputs */}
-                                        <Col span={8}>
-                                            {
-                                                item[1] === "text" &&
-                                                <Form.Item
-                                                    name={[`write` + id, item[0]]}
-                                                    label={item[0]}
-                                                    rules={[{ required: true, message: 'Please input your username!' }]}
-                                                    style={{ width: 'auto' }}
-                                                >
-                                                    <Input type="text" placeholder={item[0]} onChange={props.onChange} />
-                                                </Form.Item>
-                                            }
-                                        </Col>
-                                    </>
+                                    // <>
+                                    //     {console.log(item[1])}
+                                    //     {/* //!  for text inputs */}
+                                    //     <Col span={8}>
+                                    //         {
+                                    //             item[1] === "text" &&
+                                    //             <Form.Item
+                                    //                 name={[`write` + id, item[0]]}
+                                    //                 label={item[0]}
+                                    //                 rules={[{ required: true, message: 'Please input your username!' }]}
+                                    //                 style={{ width: 'auto' }}
+                                    //             >
+                                    //                 <Input type="text" placeholder={item[0]} onChange={props.onChange} />
+                                    //             </Form.Item>
+                                    //         }
+                                    //     </Col>
+                                    // </>
+                                    <h1>testing</h1>
                                 )
                             })}
                         </Tabs.TabPane>

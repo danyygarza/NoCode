@@ -1,7 +1,13 @@
 import { Button, Form } from 'antd'
 import React, { forwardRef, useState } from 'react'
 
-
+import {
+    getDocs,
+    getFirestore,
+    doc,
+    getDocFromCache,
+    getDoc,
+} from "@firebase/firestore"
 
 import './MostUsedFunctions.css'
 
@@ -22,16 +28,17 @@ import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
 import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 import Testform from '../../Test/testForm'
 
-
+const db = getFirestore();
+const dbData = [];
 
 function MostUsedFunctions(props) {
     console.log('submit in muf is ', props.submit)
-    if (props.submit){
+    if (props.submit) {
         console.log('submit true in muf')
     }
     const [formArray, setFormArray] = useState([
         { text: "UploadFile", form: <Upload /> },
-        { text: "Write", form: <Testform/> },
+        { text: "Write", collection: 'Excel', function: 'Write' },
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
         { text: "NewWorkBook", form: <NewWorkBook /> },
         { text: "SortColumns", form: <SortColumns /> },
@@ -41,20 +48,46 @@ function MostUsedFunctions(props) {
         { text: "CopyColumn", form: <CopyColumn /> },
         { text: "ApplyFilter", form: <ApplyFilter /> },
         { text: "RemoveColumn", form: <RemoveColumn /> },
-    ]) 
+    ])
 
     const [form] = Form.useForm();
 
-    const add = (data) => {
+    const add = async (data) => {
         console.log('adding to form from MOF', form)
+        console.log(data.collection, data.function)
+        const colRef = doc(db, data.collection, data.function);
 
-        props.setForms([...props.forms,
-            data
-        ])
-        console.log("forms", props.forms)
+        const docSnap = await getDoc(colRef);
+        if (docSnap.exists()) {
+            console.log("data", docSnap.data());
+            props.setForms([...props.forms,
+                docSnap.data()
+            ])
+        }
+        else {
+            console.log("no such document!")
+        }
+
+        // getDocs(colRef)
+        //     .then((snapshot) => {
+        //         console.log("inside the snapshot")
+        //         snapshot.docs.forEach((doc) => {
+        //             console.log("inside then")
+        //             dbData.push({ ...doc.data(), id: doc.id });
+        //             console.log("dbData", doc.data())
+        //         });
+        //         // setData(dbData);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
+        // props.setForms([...props.forms,
+        //     data
+        // ])
+        console.log("forms",)
     }
 
-    
+
 
     return (
 
@@ -63,7 +96,7 @@ function MostUsedFunctions(props) {
                 <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
                         console.log("button is being pressed from MOF")
-                        add(data.form);
+                        add(data);
                     }
                     }>
                     <div className="imgp">
