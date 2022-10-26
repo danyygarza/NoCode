@@ -5,6 +5,7 @@ import React, { useState, useForm, useEffect } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 import { useModalForm } from 'sunflower-antd';
+
 const { Meta } = Card;
 
 export default function Testform(props) {
@@ -45,7 +46,7 @@ export default function Testform(props) {
         },
         form,
     });
-    
+
     const add = () => {
         // setForm(...forms,Object.values(props.data.forms)[key])
         // Object.values(props.data.forms)[key].map((item)=>{
@@ -56,13 +57,13 @@ export default function Testform(props) {
         // })
         // console.log(forms); 
 
-        setForms(forms.concat(item)); 
+        setForms(forms.concat(item));
 
     }
 
     useEffect(() => {
         const tempArray = []
-        Object.values(props.data.forms)[key].map((item)=>{
+        Object.values(props.data.forms)[key].map((item) => {
             tempArray.push(item)
         })
         setItem(tempArray)
@@ -70,8 +71,46 @@ export default function Testform(props) {
         console.log(forms)
     }, [forms])
 
-    
+  
+
+
     console.log(Object.keys(props.data.forms))
+   
+
+    /*const descriptions = (
+        <>
+            {Object.keys(props.data.description).map((_, index) => {
+                return (
+                    <p value={index}>syntax: {index}</p>
+                )
+            })}
+        </>
+    )
+    */
+
+
+    const parameters = (
+        <>
+            {props.data.ExcelWriteParameters}
+        </>
+    );
+
+    const syntax = (
+        <>
+            {props.data.ExcelWriteSyntax1}<br />
+            {props.data.ExcelWriteSyntax2}<br />
+            {props.data.ExcelWriteSyntax3}<br />
+            {props.data.ExcelWriteSyntax4}<br />
+        </>
+    );
+
+    const examples = (
+        <>
+            {props.data.ExcelWriteExample1}<br />
+            {props.data.ExcelWriteExample2}<br />
+            {props.data.ExcelWriteExample3}<br />
+        </>
+    );
     return (
         <>
             < Card hoverable style={{ width: 800, }
@@ -80,9 +119,29 @@ export default function Testform(props) {
             </Card >
             <Modal {...modalProps} title="useModalForm" open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} okText="submit" width={1200} >
                 <>
-                    <p>
+                    <Row>
+                        <Col>
+                            <div className="demo">
+                                <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                                    {//<Popover placement="topLeft" title="Description" /*content={description}*/ trigger="click" className='popover-position'>
+                                            //<Button>Description</Button>
+                                        /*</Popover> */}
+                                    <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                                        <Button>Parameters</Button>
+                                    </Popover>
+                                    <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                                        <Button>Syntax</Button>
+                                    </Popover>
+                                    <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                                        <Button>Examples</Button>
+                                    </Popover>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    {/*<p>
                         submit: username {formValues.username} email {formValues.email}
-                    </p>
+                                    </p>*/}
                     <p>result: {formResult}</p>
                     <Form layout="inline" {...formProps}>
                         <Radio.Group defaultValue="a" buttonStyle="solid" onChange={(e) => setKey(e.target.value)}>
@@ -94,7 +153,7 @@ export default function Testform(props) {
                         </Radio.Group>
                         <Row>
                             {forms.map((item) => {
-                                console.log("map", item); 
+                                console.log("map", item);
                                 return (
                                     <>
                                         {console.log(item.type)}
