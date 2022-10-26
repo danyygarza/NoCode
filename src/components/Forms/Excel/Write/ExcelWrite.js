@@ -11,7 +11,7 @@ let id = Date.now();
 const { Title } = Typography;
 const buttonWidth = 70;
 
-const description = (
+/*const description = (
     <>
         {data.fridaExcelReadersSyntaxWrite.Description}
     </>
@@ -43,6 +43,7 @@ const examples = (
         {data.fridaExcelReadersSyntaxWrite.Example7}<br />
     </>
 )
+*/
 
 function ExcelWrite(props) {
 

@@ -117,13 +117,13 @@ export default function Testform(props) {
             } cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
                 <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
             </Card >
-            <Modal {...modalProps} title="useModalForm" open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} okText="submit" width={1200} >
+            <Modal {...modalProps} title="Excel Write" open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)} okText="submit" width={1200} >
                 <>
                     <Row>
                         <Col>
                             <div className="demo">
                                 <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-                                    {//<Popover placement="topLeft" title="Description" /*content={description}*/ trigger="click" className='popover-position'>
+                                    {//<Popover placement="topLeft" title="Description" /*content={props.data.description[item.text]}*/ trigger="click" className='popover-position'>
                                             //<Button>Description</Button>
                                         /*</Popover> */}
                                     <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>

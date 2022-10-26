@@ -1,6 +1,6 @@
-{
-    "fridaExcelReadersSyntaxWrite": {
-        "Name": "ExcelWrite",
+[{
+        "id":1,
+        "Name": "Excel Write",
         "Description": "Write something in a given cell in a worksheet. ColRow can take values such as A1, D15, etc. RowIndex and colIndex must take numerical values and it starts from 1, or either 'lastrow' or 'lastcol'. Format will be applied to the cell after writting the text. Original format is mainly intended for dates, to identify the origin date parts in the text. Excel formats are different from this, refer to https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-stringsfor further information. ",
         "Parameters": "<something> <worksheetKey> <ColRow> <rowIndex> <colIndex> <format> <originalFormat>",
         "Syntax1": "Write <someting> in <worksheetKey> cell <ColRow>",
@@ -15,8 +15,9 @@
         "Example6": "Write 'Nombres' in hoja1 row 1 and column 5",
         "Example7": "Write 'Nombres' in hoja1 row lastrow and column lastcol"
     },
-    "fridaExcelReadersSyntaxRemoveDuplicate":{
-        "Name": "RemoveDuplicate",
+    {
+        "id": 2,
+        "Name": "Remove Duplicate",
         "Description": "Removes the duplicate rows from a given sheet. When many column indexes are specified, the deletion will be based on the repetition of values in all those columns. Indexes start with 1. ",
         "Parameters": "<worksheetKey> <columnIndex> <hasReader>",
         "Syntax1": "RemoveDuplicates from <worksheetKey>",
@@ -27,8 +28,9 @@
         "Example2": "RemoveDuplicates from WSheet1 at [2,8,9]",
         "Example3": "RemoveDuplicates from WSheet1 at [1] with_header Y"
     },
-    "fridaExcelReadersSyntaxNewWorkbook":{
-        "Name": "NewWorkbook",
+    {
+        "id":3,
+        "Name": "New Workbook",
         "Description": "Creates a new Workbook in a path where the client wants (only creates file of type 'xlsx'). You CANNOT use special characters that Windows does NOT allow. WorkbookName is also saved as a variable. 'Create i' syntax will save the workbook without saving a variable. ",
         "Parameters": "<path> <workbookName> <pathWithName>",
         "Syntax1": "NewWB in '<path>' as <workbookName>",
@@ -37,8 +39,9 @@
         "Example1": "NewWB in {C/Users/user_name/Desktop} as {Book_03-03-2019}",
         "Example2": "NewWB create in {C:/Users/user_name/Desktop/Book_03-03-2019.xlsx}"
     },
-    "fridaExcelReadersSyntaxSortColumns":{
-        "Name": "SortColumns",
+    {
+        "id":4,
+        "Name": "Sort Columns",
         "Description": "Sort by a Column. Maximum 3 columns to sort in a worksheet. Order direction must be set (ascending/descending). If header is Yes, it will not sort the first value, since it considers it to be a header.",
         "Parameters": "<worksheetKey> <colIndex> <order> <isHeader>",
         "Syntax1": "SortColumns in <worksheetKey> by column {<colindex>} <order> header <isHeader>",
@@ -47,15 +50,17 @@
         "Example2": "SortColumns in WSName1 in UsedRange by columns {1/ascending,2/descending,3/descending} header Yes",
         "Example3": "SortColumns in WSName1 in B10:D18 by columns {1/asc,2/desc} header No"
     },
-    "fridaExcelReadersSyntaxInsertColumn":{
-        "Name": "InsertColumn",
+    {
+        "id":5,
+        "Name": "Insert Column",
         "Description": "Inserts a Column at index (1-based). ",
         "Parameters": "<worksheetKey> <colIndex>",
         "Syntax1": "InsertCol in <worksheetKey> at <colIndex>",
         "Example1": "InsertCol in Sheet1 at 6"
     },
-    "fridaExcelReadersSyntaxUploadFile":{
-        "Name": "LoadWBook",
+    {
+        "id":6,
+        "Name": "Load Workbook",
         "Description": "Opens a given workbook and saves a variable for future reference. Optional parameters are: Password'<password>', UpdateLinks:yes|no  ",
         "Parameters": "<workbookPath> <workbookKey> <password> <updateLinksAnswer> <updLinks>",
         "Syntax1": "LoadWBook <workbookPath> as <workbookKey>",
@@ -66,8 +71,9 @@
         "Example2": "LoadWBook 'C:/Users/productivity/Desktop/SecretBook.xlsx' as book1 with_parameters Password: '1234'",
         "Example3": "LoadWBook 'C:/Users/productivity/Desktop/Summary.xlsx' as book1 with_parameters UpdateLinks: yes"
     },
-    "fridaExcelReadersSyntaxCountElements":{
-        "Name": "CountElements",
+    {
+        "id":7,
+        "Name": "Count Elements",
         "Description": "Counts the elements inside a list or dictionary variable. For strings it counts the number of chars. Angle brackets (<>) are not required.",
         "Parameters": "<varName> <varName2>",
         "Syntax1": "CountItems in <varName> and save_as <varName2>",
@@ -75,7 +81,8 @@
         "Example2": "CountItems in string and save_as numChars",
         "Example3": "CountItems in rows and save_as filas"
     },
-    "fridaExcelReadersSyntaxSubstring":{
+    {
+        "id": 8,
         "Name": "Substring",
         "Description": "Extracts part of the content of a string, given the input and the startIndex. Optionally, you can ask for a length. Given the string 'Hello world!', a substring starting in 4 will return 'o world!'; and a substring with length 4 will return 'o wor'.",
         "Parameters": "<inputString> <startIndex> <strongLength> <newVarName>",
@@ -84,8 +91,9 @@
         "Example1": "Substring 'Hello world!' start at 0 and save as 'subString'",
         "Example2": "Substring 'Hello world' start 3 length 5 and sabe as 'newString'"
     },
-    "fridaExcelReadersSyntaxCopyColumn":{
-        "Name": "CopyColumn",
+    {
+        "id": 9,
+        "Name": "Copy Column",
         "Description": "Copy the full column to another place (in the same sheet or another), the value indicated after 'start at' in the instruction is the offset value, hence if value equals 1, it will be displaced one row, pasting the balue in the second row.",
         "Parameters": "<worksheetKeyOrig> <worksheetKeyDest> <columnIndexOrig> <columnIndexDest> <rowOffsetOrig> <rowOffsetDest>",
         "Syntax1": "CopyColumn <columnIndexOrig> from <worksheetKeyOrig> start_at <rowOffsetOrig> to the sheet <worksheetKeyDest> in column <columnIndexdest> start_at <rowOffsetDest>",
@@ -94,8 +102,9 @@
         "Example1": "CopyColumn 10 from hoja2 start_at 1 to the sheet hoja3 in column 4 start_at 1",
         "Example2": "CopyColumn value 20 from hojaCostos start_at 2 to the sheet hoja4 in column 4 start_at 3"
     },
-    "fridaExcelReadersSyntaxApplyFilter":{
-        "Name": "ApplyFilter",
+    {
+        "id": 10,
+        "Name": "Apply Filter",
         "Description": "Apply a filter to a column located in a given index. Index begins with 1.",
         "Description2": "Criteria refers to the word(s) used to apply the filter, use wildcard '*' to represent any series of characters, '?' to represent any single character in the criteria.",
         "Description3": "Comparison operators may be used at the beginning of the criteria to indicate the following: '<>' different than the criteria, '<' less than, '>' more than, '<='mless or equal than, '>=' more or equal than, '=' equal, if not stated this is the default comparison operator.",
@@ -129,12 +138,13 @@
         "Example13": "ApplyFilter to the worksheet WSExampleName to the column with the LetterIndex {P} with the criteria '=' Error and write on the column {18} '-1'",
         "Example14": "ApplyFilter to the worksheet WSExampleName to the column with the LetterIndex {P} with the criteria '='Error';='Succes'' and write on the column {18} '-1;1'"
     },
-    "fridaExcelReadersSyntaxRemoveColumns":{
-        "Name": "RemoveColumns",
+    {
+        "id": 11,
+        "Name": "Remove Columns",
         "Description": "Deletes its specified columns. Index starts with 1",
         "Parameters": "<worksheetKey> <columnIndex> <index>",
         "Syntax1": "RemoveCols from <worksheetKey> at [<index1>, <index2>, <index3>, ..., <indexN>]",
         "Example1": "RemoveCols from hoja1 at [2, 4, 8, 10]",
         "Example2": "Removecols from WSheet1 at [3, 4]"
     }
-}
+]

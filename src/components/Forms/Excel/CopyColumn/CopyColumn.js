@@ -9,7 +9,7 @@ const { Title } = Typography;
 const { Meta } = Card;
 const { Option } = Select;
 const buttonWidth = 70;
-
+/*
 const description = (
   <>
     {data.fridaExcelReadersSyntaxCopyColumn.Description}
@@ -36,7 +36,7 @@ const examples = (
     {data.fridaExcelReadersSyntaxCopyColumn.Example2}<br />
   </>
 )
-
+*/
 function CopyColumn() {
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -636,16 +636,16 @@ function CopyColumn() {
               <Col>
                 <div className="demo">
                   <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
-                    <Popover placement="topLeft" title="Description" content={description} trigger="click" className='popover-position'>
+                    <Popover placement="topLeft" title="Description"  trigger="click" className='popover-position'>
                       <Button>Description</Button>
                     </Popover>
-                    <Popover placement="topLeft" title="Parameters" content={parameters} trigger="click" className='popover-position'>
+                    <Popover placement="topLeft" title="Parameters"  trigger="click" className='popover-position'>
                       <Button>Parameters</Button>
                     </Popover>
-                    <Popover placement="top" title="Syntax" content={syntax} trigger="click" className='popover-position'>
+                    <Popover placement="top" title="Syntax"  trigger="click" className='popover-position'>
                       <Button>Syntax</Button>
                     </Popover>
-                    <Popover placement="topRight" title="Examples" content={examples} trigger="click" >
+                    <Popover placement="topRight" title="Examples"  trigger="click" >
                       <Button>Examples</Button>
                     </Popover>
                   </div>
