@@ -11,7 +11,8 @@ export default function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
-    const [forms, setForm] = useState(Object.values(props.data.forms)[key])
+    const [forms, setForms] = useState(Object.values(props.data.forms)[key])
+    const [item, setItem] = useState([])
     // const forms = Object.values(props.data.forms)[key]; 
     const buttonWidth = 70;
 
@@ -47,22 +48,29 @@ export default function Testform(props) {
     
     const add = () => {
         // setForm(...forms,Object.values(props.data.forms)[key])
-        Object.values(props.data.forms)[key].map((item)=>{
-            forms.push(item)
-            setForm(item);  
+        // Object.values(props.data.forms)[key].map((item)=>{
+        //     const tempArray = []
+        //     forms.push(item)
+        //     setForm(item);  
 
-        })
-        console.log(forms); 
+        // })
+        // console.log(forms); 
+
+        setForms(forms.concat(item)); 
+
     }
 
     useEffect(() => {
-
+        const tempArray = []
+        Object.values(props.data.forms)[key].map((item)=>{
+            tempArray.push(item)
+        })
+        setItem(tempArray)
         // setForm()
         console.log(forms)
     }, [forms])
 
-    const addLine =
-
+    
     console.log(Object.keys(props.data.forms))
     return (
         <>
