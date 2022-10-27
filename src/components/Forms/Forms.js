@@ -13,7 +13,7 @@ const Forms = forwardRef((props, ref, items) => {
   const [open, setOpen] = useState(false);
   const [closed, setClosed] = useState(false);
   const [filteredList, setFilteredList] = useState(items);
-  const [component, setComponent] = useState("");
+  const [component, setComponent] = useState("nothing");
 
 
   //search 
