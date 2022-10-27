@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, Popover, Tabs, Modal, Card } from "antd";
+import { Button, Form, Input, Col, Row,  Popover, Tabs, Modal, Card } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import data from '../../syntax.json'
+
 
 
 
 let id = Date.now();
-const { Title } = Typography;
 const { Meta } = Card;
 const buttonWidth = 70;
 /*
@@ -94,7 +93,6 @@ function Substring() {
     </>
   ]);
 
-  const [clic2k, setClick2] = useState(false);
   const [inputs2, setInputs2] = useState([
     <>
       <Row>
@@ -299,7 +297,6 @@ function Substring() {
     ])
   }
 
-  const [form] = Form.useForm();
 
   useEffect(() => {
     id = Date.now();

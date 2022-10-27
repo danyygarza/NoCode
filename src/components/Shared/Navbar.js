@@ -3,14 +3,13 @@ import {
   PlayCircleOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Switch } from "antd";
+import { Layout, Menu } from "antd";
 import React from "react";
 import "antd/dist/antd.css";
 import "./Navbar.css";
 import { useAuth } from "../../context/authContext";
 import { Link } from "react-router-dom";
 //import { useThemeSwitcher } from "react-css-theme-switcher";
-import { useState } from "react";
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);

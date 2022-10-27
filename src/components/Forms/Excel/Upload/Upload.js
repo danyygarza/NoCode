@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Form, Input, Col, Row, Typography, Card, Popover, Tabs, Modal } from "antd";
+import { Button,  Form, Input, Col, Row, Card, Popover, Tabs, Modal } from "antd";
 import "../RemoveDuplicate/RemoveDuplicate.css"
 import data from '../../syntax.json'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 
 let id = Date.now();
-const { Title } = Typography;
 const { Meta } = Card;
 
 const buttonWidth = 70;
@@ -78,7 +77,6 @@ function Upload() {
         </>
     ]);
 
-    const [click2, setClick2] = useState(false);
     const [inputs2, setInputs2] = useState([
         <>
             <Row>
@@ -113,7 +111,6 @@ function Upload() {
         </>
     ]);
 
-    const [click3, setClick3] = useState(false);
     const [inputs3, setInputs3] = useState([
         <>
             <Row>
@@ -148,7 +145,6 @@ function Upload() {
         </>
     ]);
 
-    const [click4, setClick4] = useState(false);
     const [inputs4, setInputs4] = useState([
         <>
             <Row>
