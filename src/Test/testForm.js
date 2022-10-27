@@ -12,6 +12,7 @@ export default function Testform(props) {
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
     const [forms, setForms] = useState(Object.values(props.data.forms)[key]);
+    const [size] = useState(Object.values(props.data.forms)[key].length);
     const [item, setItem] = useState([]);
     const [codeArr, setCodeArr] = useState([])
 
@@ -34,6 +35,7 @@ export default function Testform(props) {
         formLoading,
         formValues,
         formResult,
+        resetField,
     } = useModalForm({
         defaultVisible: false,
         autoSubmitClose: false,
@@ -44,8 +46,9 @@ export default function Testform(props) {
             let tempCodeArr = [];
             let i = 0;
             console.log("data", data)
+            console.log(size);
             Object.values(data).forEach((obj) => {
-                if (i === 2) {
+                if (i === size - 1) {
                     i = 0;
                     console.log(tempString);
                     tempCodeArr.push(tempString);
@@ -53,7 +56,9 @@ export default function Testform(props) {
                     tempString = "";
                 }
                 else {
-                    tempString.length === 0 ? tempString = `${(Object.keys(obj))} ${(Object.values(obj))} ` : tempString += `${(Object.keys(obj))} ${(Object.values(obj))} `;
+                    if (obj !== undefined) {
+                        tempString.length === 0 ? tempString = `${(Object.keys(obj))} ${(Object.values(obj))} ` : tempString += `${(Object.keys(obj))} ${(Object.values(obj))} `;
+                    }
                     i++;
                 }
             })
@@ -71,15 +76,17 @@ export default function Testform(props) {
     }
     const removeForm = () => {
         const tempForms = forms
-        const tempFields = form.getFieldsValue()
-        console.log(tempFields);
-        console.log(Object.values(tempFields));
+        // const tempFields = form.getFieldsValue()
         for (let i = tempForms.length - item.length; i < tempForms.length; i++) {
-            console.log(tempFields[i]);
-            form.resetFields(Object.values(tempFields)[i]);
+            try {
+                form.resetFields([`${i}`]);
+            } catch (err) {
+                console.log(err);
+            }
         }
 
         tempForms.splice(tempForms.length - item.length, item.length)
+        console.log("tempForms", tempForms)
         setForms([...tempForms])
     }
 
@@ -128,7 +135,7 @@ export default function Testform(props) {
                                             item.type === "text" &&
                                             <>
                                                 <Col>
-                                                    <Form.Item name={[`${item.title}${index}`, item.title]} label={item.title} rules={[{ required: true, message: 'Please fill this out' }]} style={{ width: 'auto' }}>
+                                                    <Form.Item name={[`${index}`, item.title]} label={item.title} rules={[{ required: true, message: 'Please fill this out' }]} style={{ width: 'auto' }}>
                                                         <Input type={item.type} placeholder={item.placeHolder} onChange={props.onChange} name={index} />
                                                     </Form.Item>
                                                 </Col>
