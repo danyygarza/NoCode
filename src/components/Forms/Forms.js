@@ -45,11 +45,11 @@ let inputHandler = (e) => {
           <p>
             <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
           </p>
-          <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
+          <div className="most-used-functions"><MostUsedFunctions  variables={props.variables} setVariables={props.setVariables} setForms={props.setForms} forms={props.forms} ref={ref} /></div>
         </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
             <p>
               <div className="most-used-functions">
-                <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
+                <AllFunctions  variables={props.variables} setVariables={props.setVariables} setForms={props.setForms} forms={props.forms} ref={ref} />
               </div>
             </p>
           </span>

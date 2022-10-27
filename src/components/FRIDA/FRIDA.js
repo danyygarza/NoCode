@@ -72,7 +72,7 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
-                                <Testform data={form}  />
+                                <Testform data={form}  variables={props.variables} setVariables={props.setVariables} />
                                 <Button
                                     onClick={() => {
                                         console.log("index from click: ", index, form);
@@ -92,6 +92,8 @@ function Frida(props) {
                 <Row>
                     <Col>
                         <Forms
+                            variables={props.variables}
+                            setVariables={props.setVariables}
                             setForms={setForms}
                             forms={forms}
                             code={code}
