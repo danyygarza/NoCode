@@ -20,19 +20,20 @@ import RemoveColumn from "../Excel/RemoveColumn/RemoveColumn";
 import { ExcelWriteModel } from "../Excel/Write/ExcelWriteModel";
 import "../../../index.css"
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-const contentStyle = {
+/*const contentStyle = {
   height: "160px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
   background: "#364d79",
 };
+*/
 
 const onChange = (currentSlide) => {
   console.log(currentSlide);
 };
 const CarouselTest = forwardRef((props, ref) => {
-  const [formArray, setFormArray] = useState([
+  const [formArray, /*setFormArray*/] = useState([
     { text: "UploadFile", form: <Upload /> },
     { text: "Write", form: new ExcelWriteModel(ref) },
     { text: "RemoveDuplicate", form: <RemoveDuplicate /> },

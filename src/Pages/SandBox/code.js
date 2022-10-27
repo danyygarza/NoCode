@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { Button, Row, Col } from 'antd'
 import Frida from '../../components/FRIDA/FRIDA';
-import modForm from '../../Test/modForm';
-import Testform from '../../Test/testForm';
 
 //TODO: create an alert and show in which from is not completed 
 function Code() {
-    const [forms, setForms] = useState([]);
     //! this to call functions from Frida (child component) // 
 
     const ref = useRef(null)

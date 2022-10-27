@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Col, Row, Typography, Card, Select, Modal, Popover } from "antd";
-import data from '../../syntax.json'
+import { Button, Form, Input, Col, Row,  Card,  Modal, Popover } from "antd";
+
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "../Write/ExcelWrite.css"
 
 
 
 let id = Date.now();
-const { Title } = Typography;
 const { Meta } = Card;
-const { Option } = Select;
 const buttonWidth = 70;
 /*
 const description = (

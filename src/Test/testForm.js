@@ -13,7 +13,7 @@ import {
   Tabs,
   Radio,
 } from "antd";
-import { PlusOutlined, MinusOutlined} from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
 const { Meta } = Card;
@@ -71,9 +71,9 @@ export default function Testform(props) {
 
   const removeForm = () => {
     const tempForms = forms
-    tempForms.splice(tempForms.length-item.length, item.length)
+    tempForms.splice(tempForms.length - item.length, item.length)
     setForms([...tempForms])
-    
+
   }
 
   useEffect(() => {
@@ -109,6 +109,26 @@ export default function Testform(props) {
         width={1200}
       >
         <>
+          <Row>
+            <Col>
+              <div className="demo">
+                <div style={{ marginLeft: buttonWidth, whiteSpace: 'nowrap' }}>
+                  {//<Popover placement="topLeft" title="Description" /*content={props.data.description[item.text]}*/ trigger="click" className='popover-position'>
+                                            //<Button>Description</Button>
+                                        /*</Popover> */}
+                  <Popover placement="topLeft" title="Parameters" /*content={parameters}*/ trigger="click" className='popover-position'>
+                    <Button>Parameters</Button>
+                  </Popover>
+                  <Popover placement="top" title="Syntax" /*content={syntax}*/ trigger="click" className='popover-position'>
+                    <Button>Syntax</Button>
+                  </Popover>
+                  <Popover placement="topRight" title="Examples" /*content={examples}*/ trigger="click" >
+                    <Button>Examples</Button>
+                  </Popover>
+                </div>
+              </div>
+            </Col>
+          </Row>
           <p>
             submit: username {formValues.username} email {formValues.email}
           </p>
@@ -127,7 +147,7 @@ export default function Testform(props) {
             </Radio.Group>
             <Row>
               {forms.map((item, index) => {
-                
+
                 return (
                   <>
                     {console.log(item.type)}
@@ -177,7 +197,7 @@ export default function Testform(props) {
                   shape="circle"
                   icon={<MinusOutlined />}
                   size={"large"}
-                  onClick={ () => {removeForm()}}
+                  onClick={() => { removeForm() }}
                 />
               </Col>
             </Row>

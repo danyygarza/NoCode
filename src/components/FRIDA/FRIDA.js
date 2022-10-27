@@ -1,9 +1,6 @@
 import React, {
     useEffect,
     useState,
-    useForm,
-    forwardRef,
-    useImperativeHandle,
 } from "react";
 import {
     Form,
@@ -12,13 +9,6 @@ import {
     Col,
     Row,
 } from "antd";
-import {
-    addDoc,
-    collection,
-    getDoc,
-    getDocs,
-    getFirestore,
-} from "@firebase/firestore"
 import Forms from "../../components/Forms/Forms";
 import Testform from "../../Test/testForm";
 

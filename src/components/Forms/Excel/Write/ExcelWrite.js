@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { Form, Input, Button, Col, Row, Typography, Popover, Tabs, Card, Modal, BackTop } from 'antd'
-import { MinusCircleOutlined, PlusOutlined, FileExcelOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Col, Row, Typography,  Card, Modal } from 'antd'
+import { MinusCircleOutlined } from '@ant-design/icons';
 import "../RemoveDuplicate/RemoveDuplicate.css";
-import data from '../../syntax.json'
 import Testform from "../../../../Test/testForm";
 
 
