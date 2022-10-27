@@ -13,7 +13,7 @@ function PageTest() {
         <>
             <div>pageTest</div>
             <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
-            <ListTest />
+            
         </>
     )
 }
