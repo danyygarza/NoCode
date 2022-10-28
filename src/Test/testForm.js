@@ -1,12 +1,25 @@
 import React, { useState, useForm, useEffect } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
-import { useModalForm } from 'sunflower-antd';
+import {
+  Form,
+  Input,
+  Card,
+  Modal,
+  Button,
+  Popover,
+  Row,
+  Col,
+  Tabs,
+  Radio,
+} from "antd";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { useModalForm } from "sunflower-antd";
 import "../App.css";
 
 
 const buttonWidth = 70;
 const { Meta } = Card;
+
+
 
 export default function Testform(props) {
   const [open, setOpen] = useState(false);
@@ -91,6 +104,8 @@ export default function Testform(props) {
     form,
   });
 
+
+
   const add = () => {
     setForms(forms.concat(item));
 
@@ -154,6 +169,7 @@ export default function Testform(props) {
               </div>
             </Col>
           </Row>
+          
           <p>
             submit: username {formValues.username} email {formValues.email}
           </p>
@@ -172,6 +188,7 @@ export default function Testform(props) {
             </Row>
             <Row>
               {forms.map((item, index) => {
+
                 return (
                   <>
                     {
