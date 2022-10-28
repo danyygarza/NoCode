@@ -6,7 +6,7 @@ import Testform from '../../Test/testForm';
 
 //TODO: create an alert and show in which from is not completed 
 function Code() {
-    const [forms, setForms] = useState([]);
+    const [frida, setFrida] = useState([]);
     //! this to call functions from Frida (child component) // 
 
     const ref = useRef(null)
@@ -21,7 +21,7 @@ function Code() {
             <Row>
                 <Col offset={8}>
                     {/* //!this is the place where all the form will be stored */}
-                    <Frida />
+                    <Frida frida = {frida}/>
                 </Col>
             </Row>
             <Row>

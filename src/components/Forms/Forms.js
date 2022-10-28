@@ -49,7 +49,7 @@ let inputHandler = (e) => {
         </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
             <p>
               <div className="most-used-functions">
-                <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
+                <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} /> 
               </div>
             </p>
           </span>

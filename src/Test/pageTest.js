@@ -12,7 +12,7 @@ function PageTest() {
     return (
         <>
             <div>pageTest</div>
-            <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
+                <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
             <ListTest />
         </>
     )

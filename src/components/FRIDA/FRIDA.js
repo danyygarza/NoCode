@@ -72,7 +72,7 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
-                                <Testform data={form}  />
+                                <Testform data={form} frida/>
                                 <Button
                                     onClick={() => {
                                         console.log("index from click: ", index, form);
