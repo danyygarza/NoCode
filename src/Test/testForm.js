@@ -13,10 +13,12 @@ import {
   Tabs,
   Radio,
 } from "antd";
-import { PlusOutlined, MinusOutlined} from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
 const { Meta } = Card;
+
+
 
 export default function Testform(props) {
   const [open, setOpen] = useState(false);
@@ -57,6 +59,8 @@ export default function Testform(props) {
     form,
   });
 
+
+
   const add = () => {
     // setForm(...forms,Object.values(props.data.forms)[key])
     // Object.values(props.data.forms)[key].map((item)=>{
@@ -69,11 +73,12 @@ export default function Testform(props) {
     setForms(forms.concat(item));
   };
 
+
   const removeForm = () => {
     const tempForms = forms
-    tempForms.splice(tempForms.length-item.length, item.length)
+    tempForms.splice(tempForms.length - item.length, item.length)
     setForms([...tempForms])
-    
+
   }
 
   useEffect(() => {
@@ -85,6 +90,8 @@ export default function Testform(props) {
   }, [forms]);
 
   console.log(Object.keys(props.data.forms));
+
+  
   return (
     <>
       <Card
@@ -109,6 +116,7 @@ export default function Testform(props) {
         width={1200}
       >
         <>
+          
           <p>
             submit: username {formValues.username} email {formValues.email}
           </p>
@@ -127,7 +135,7 @@ export default function Testform(props) {
             </Radio.Group>
             <Row>
               {forms.map((item, index) => {
-                
+
                 return (
                   <>
                     {console.log(item.type)}
@@ -177,7 +185,7 @@ export default function Testform(props) {
                   shape="circle"
                   icon={<MinusOutlined />}
                   size={"large"}
-                  onClick={ () => {removeForm()}}
+                  onClick={() => { removeForm() }}
                 />
               </Col>
             </Row>

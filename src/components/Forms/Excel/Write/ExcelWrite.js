@@ -493,9 +493,8 @@ function ExcelWrite(props) {
                     onCancel={() => setOpen(false)}
                     width={900}
                 >
-
+                    
                     <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed} id={id}>
-
                         <Testform></Testform>
                         {/* <Row>
                             <Col>

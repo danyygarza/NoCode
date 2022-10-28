@@ -23,11 +23,11 @@ const Forms = forwardRef((props, ref, items) => {
 
   //search 
   const { Search } = Input;
-const [inputText, setInputText] = useState("");
-let inputHandler = (e) => {
-  var lowerCase = e.target.value.toLowerCase();
-  setInputText(lowerCase);
-};
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
 
 
   return (
@@ -59,7 +59,7 @@ let inputHandler = (e) => {
           {
           label: 'Functions',
           key: '3',
-          children: <><span style={{ display: 'inline-block', wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
+          children: <><span style={{ display: 'inline-block', paddingTop: 15, marginLeft: '6%' }}>
             <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
           </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
               <div className="most-used-functions">
