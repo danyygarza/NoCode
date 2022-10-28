@@ -1,9 +1,6 @@
 import React, {
     useEffect,
     useState,
-    useForm,
-    forwardRef,
-    useImperativeHandle,
 } from "react";
 import {
     Form,
@@ -12,13 +9,6 @@ import {
     Col,
     Row,
 } from "antd";
-import {
-    addDoc,
-    collection,
-    getDoc,
-    getDocs,
-    getFirestore,
-} from "@firebase/firestore"
 import Forms from "../../components/Forms/Forms";
 import Testform from "../../Test/testForm";
 
@@ -72,7 +62,8 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
-                                <Testform data={form} frida/>
+                                {/* <Testform data={form}  variables={props.variables} setVariables={props.setVariables} /> */}
+                                {form}
                                 <Button
                                     onClick={() => {
                                         console.log("index from click: ", index, form);
@@ -92,7 +83,9 @@ function Frida(props) {
                 <Row>
                     <Col>
                         <Forms
-                            setForms={setForms}
+                            variables={props.variables}
+                            setVariables={props.setVariables}
+                                setForms={setForms}
                             forms={forms}
                             code={code}
                             addCode={addCode}

@@ -1,4 +1,4 @@
-import { Button, Modal, Input, Form, List } from 'antd';
+import { Button, Modal, Input } from 'antd';
 import React, { forwardRef, useState } from 'react';
 import './Forms.css';
 
@@ -6,23 +6,22 @@ import './Forms.css';
 //components
 import MostUsedFunctions from './MostUsedFunctions'
 import AllFunctions from './AllFunctions'
-import ListTest from '../../Test/ListTest';
 
 const Forms = forwardRef((props, ref, items) => {
   //modal
   const [open, setOpen] = useState(false);
   const [closed, setClosed] = useState(false);
   const [filteredList, setFilteredList] = useState(items);
-  const [component, setComponent] = useState("");
+  const [component, setComponent] = useState("nothing");
 
 
   //search 
   const { Search } = Input;
-const [inputText, setInputText] = useState("");
-let inputHandler = (e) => {
-  var lowerCase = e.target.value.toLowerCase();
-  setInputText(lowerCase);
-};
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
 
 
   return (
@@ -39,17 +38,17 @@ let inputHandler = (e) => {
         width={900}
       >
         <Search placeholder="Búsqueda" onChange={inputHandler} className='search ' enterButton />
-        <ListTest input={inputText} />
+        
         
         <><span style={{ display: 'inline-block', wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
           <p>
             <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
           </p>
-          <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
+          <div className="most-used-functions"><MostUsedFunctions  variables={props.variables} setVariables={props.setVariables} setForms={props.setForms} forms={props.forms} ref={ref} /></div>
         </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
             <p>
               <div className="most-used-functions">
-                <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} /> 
+                <AllFunctions  variables={props.variables} setVariables={props.setVariables} setForms={props.setForms} forms={props.forms} ref={ref} />
               </div>
             </p>
           </span>

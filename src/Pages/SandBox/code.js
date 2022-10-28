@@ -4,9 +4,12 @@ import Frida from '../../components/FRIDA/FRIDA';
 import modForm from '../../Test/modForm';
 import Testform from '../../Test/testForm';
 
+
 //TODO: create an alert and show in which from is not completed 
 function Code() {
     const [frida, setFrida] = useState([]);
+    const [forms, setForms] = useState([]);
+    const [variables, setVariables] = useState([])
     //! this to call functions from Frida (child component) // 
 
     const ref = useRef(null)
@@ -21,7 +24,7 @@ function Code() {
             <Row>
                 <Col offset={8}>
                     {/* //!this is the place where all the form will be stored */}
-                    <Frida frida = {frida}/>
+                    <Frida variables={variables} setVariables={setVariables} frida={frida} />
                 </Col>
             </Row>
             <Row>

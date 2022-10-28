@@ -12,8 +12,8 @@ function PageTest() {
     return (
         <>
             <div>pageTest</div>
-                <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
-            <ListTest />
+            <Search placeholder="Búsqueda" onSearch={onSearch} className='search ' enterButton />
+            
         </>
     )
 }

@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Form, Input, Col, Row, Popover, Modal } from "antd";
-import { Typography } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import data from
-  '../../syntax.json'
-import { TryOutlined } from "@mui/icons-material";
+
 
 
 let id = Date.now();
-const { Title } = Typography;
 const { Meta } = Card;
 const buttonWidth = 70;
 /*

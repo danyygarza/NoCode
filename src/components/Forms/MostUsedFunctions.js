@@ -1,11 +1,9 @@
 import { Button, Form } from 'antd'
-import React, { forwardRef, useState } from 'react'
-
+import React, { useState } from 'react'
+import Testform from '../../Test/testForm'
 import {
-    getDocs,
     getFirestore,
     doc,
-    getDocFromCache,
     getDoc,
 } from "@firebase/firestore"
 
@@ -14,7 +12,7 @@ import './MostUsedFunctions.css'
 //components
 
 //! Forms
-import ExcelWrite from './Excel/Write/ExcelWrite'
+//import ExcelWrite from './Excel/Write/ExcelWrite'
 import Upload from './Excel/Upload/Upload'
 import RemoveDuplicate from './Excel/RemoveDuplicate/RemoveDuplicate'
 import NewWorkBook from './Excel/NewWorkBook/NewWorkBook'
@@ -25,15 +23,15 @@ import InsertColumn from './Excel/InsertColumn/InsertColumn'
 import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
 import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
-import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
-import Testform from '../../Test/testForm'
+//import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
+//import Testform from '../../Test/testForm'
 
 const db = getFirestore();
-const dbData = [];
+//const dbData = [];
 
 function MostUsedFunctions(props) {
     console.log('submit in muf is ', props.submit)
-    const [formArray, setFormArray] = useState([
+    const [formArray, /*setFormArray*/] = useState([
         { text: "UploadFile", form: <Upload /> },
         { text: "Write", collection: 'Excel', function: 'Write' },
         { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
@@ -47,14 +45,14 @@ function MostUsedFunctions(props) {
         { text: "RemoveColumn", form: <RemoveColumn /> },
     ])
 
-    const [form] = Form.useForm();
+    //const [form] = Form.useForm();
 
     const add = async (data) => {
         const colRef = doc(db, data.collection, data.function);
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
             props.setForms([...props.forms,
-                docSnap.data()
+            <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} />
             ])
         }
         else {
@@ -65,12 +63,10 @@ function MostUsedFunctions(props) {
 
 
     return (
-
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {
             return (
                 <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
-                        console.log("button is being pressed from MOF")
                         add(data);
                     }
                     }>

@@ -2,11 +2,9 @@ import { Menu, Button } from "antd";
 import React, { useState } from "react";
 import "./AllFunctions.css";
 import ExcelWrite from "./Excel/Write/ExcelWrite";
-import Upload from "./Excel/Upload/Upload";
-import RemoveDuplicate from "./Excel/RemoveDuplicate/RemoveDuplicate";
-import {
-  LinkOutlined
-} from '@ant-design/icons';
+
+
+
 function getItem(label, key, icon, children, type) {
   return {
     key,
