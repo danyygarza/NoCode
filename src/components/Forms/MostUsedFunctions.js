@@ -8,9 +8,6 @@ import {
 } from "@firebase/firestore"
 
 import './MostUsedFunctions.css'
-
-//components
-
 //! Forms
 //import ExcelWrite from './Excel/Write/ExcelWrite'
 import Upload from './Excel/Upload/Upload'
@@ -27,7 +24,6 @@ import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
 //import Testform from '../../Test/testForm'
 
 const db = getFirestore();
-//const dbData = [];
 
 function MostUsedFunctions(props) {
     console.log('submit in muf is ', props.submit)
@@ -52,15 +48,13 @@ function MostUsedFunctions(props) {
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
             props.setForms([...props.forms,
-            <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} />
+                <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} frida = {props.frida} setFrida={props.setFrida} />
             ])
         }
         else {
             console.log("no such document!")
         }
     }
-
-
 
     return (
         formArray.lenght === 0 ? <h1>empty</h1> : formArray.map((data) => {

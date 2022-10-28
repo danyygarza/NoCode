@@ -1,5 +1,3 @@
-import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
 import React, { useState, useForm, useEffect } from "react";
 import { Form, Input, Card, Modal, Button, Popover, Row, Col, Tabs, Radio } from "antd";
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
@@ -15,18 +13,6 @@ export default function Testform(props) {
     const [size] = useState(Object.values(props.data.forms)[key].length);
     const [item, setItem] = useState([]);
     const [codeArr, setCodeArr] = useState([])
-
-    // const forms = Object.values(props.data.forms)[key];
-    const buttonWidth = 70;
-
-    const onFinish = (values) => {
-        console.log("Success:", values);
-        props.setSubmit(false)
-    };
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-        props.setSubmit(false)
-    };
 
     const {
         modalProps,

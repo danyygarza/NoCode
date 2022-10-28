@@ -10,7 +10,6 @@ import {
     Row,
 } from "antd";
 import Forms from "../../components/Forms/Forms";
-import Testform from "../../Test/testForm";
 
 const { createRef } = React;
 
@@ -29,7 +28,7 @@ function Frida(props) {
     const [text, setText] = useState([]);
     const [elRefs, setElRefs] = React.useState([]); // reference array
     const [code, addCode] = useState([]);
-
+    const [frida, setFrida] = useState([]);
 
     //! Function  which is triggered by the imperative handle from child
 
@@ -62,7 +61,6 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
-                                {/* <Testform data={form}  variables={props.variables} setVariables={props.setVariables} /> */}
                                 {form}
                                 <Button
                                     onClick={() => {
@@ -85,10 +83,12 @@ function Frida(props) {
                         <Forms
                             variables={props.variables}
                             setVariables={props.setVariables}
-                                setForms={setForms}
+                            setForms={setForms}
                             forms={forms}
                             code={code}
                             addCode={addCode}
+                            frida = {frida}
+                            setFrida={setFrida}
                         />
                     </Col>
                 </Row>
