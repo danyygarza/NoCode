@@ -1,4 +1,4 @@
-import { Button, Modal, Input, Form, List } from 'antd';
+import { Button, Modal, Input, Form, List, Tabs } from 'antd';
 import React, { forwardRef, useState } from 'react';
 import './Forms.css';
 
@@ -14,6 +14,11 @@ const Forms = forwardRef((props, ref, items) => {
   const [closed, setClosed] = useState(false);
   const [filteredList, setFilteredList] = useState(items);
   const [component, setComponent] = useState("nothing");
+
+  const onChange = (key) => 
+{
+  console.log(key);
+};
 
 
   //search 
@@ -40,19 +45,41 @@ let inputHandler = (e) => {
       >
         <Search placeholder="Búsqueda" onChange={inputHandler} className='search ' enterButton />
         <ListTest input={inputText} />
-        
-        <><span style={{ display: 'inline-block', wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
-          <p>
-            <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>All</a> <a style={{ color: 'black', textAlign: 'center', textDecoration: 'none' }}>Readers</a> <a style={{ color: 'black', textDecoration: 'underline' }}>Function</a> <a style={{ color: 'black', textDecoration: 'none' }}>Conditions</a> <a style={{ color: 'black', textDecoration: 'none' }}>Scripts</a>
-          </p>
-          <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
-        </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
-            <p>
+        <Tabs defaultActiveKey='1' onChange={onChange} centered items={[
+          {
+            label: 'All',
+            key: '1',
+            children: 'Content of Tab 1'
+          },
+          {
+            label: 'Readers',
+            key: '2',
+            children: 'Content of Tab 2'
+          },
+          {
+          label: 'Functions',
+          key: '3',
+          children: <><span style={{ display: 'inline-block', wordSpacing: 115, paddingTop: 15, marginLeft: '9%' }}>
+            <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
+          </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
               <div className="most-used-functions">
                 <AllFunctions setForms={props.setForms} forms={props.forms} ref={ref} />
               </div>
-            </p>
-          </span>
+            </span></>,
+          },
+          {
+            label: 'Condition',
+            key: '4',
+            children: 'Content of Tab 4'
+          },
+          {
+            label: 'Scripts',
+            key: '5',
+            children: 'Content of Tab 5'
+          },
+        ]}
+        />
+        <>
         </>
       </Modal>
 

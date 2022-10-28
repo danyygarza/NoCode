@@ -34,17 +34,17 @@ const dbData = [];
 function MostUsedFunctions(props) {
     console.log('submit in muf is ', props.submit)
     const [formArray, setFormArray] = useState([
-        { text: "UploadFile", form: <Upload /> },
-        { text: "Write", collection: 'Excel', function: 'Write' },
-        { text: "RemoveDuplicate", form: <RemoveDuplicate /> },
-        { text: "NewWorkBook", form: <NewWorkBook /> },
-        { text: "SortColumns", form: <SortColumns /> },
-        { text: "CountElements", form: <CountElements /> },
-        { text: "Substring", form: <Substring /> },
-        { text: "InsertColumn", form: <InsertColumn /> },
-        { text: "CopyColumn", form: <CopyColumn /> },
-        { text: "ApplyFilter", form: <ApplyFilter /> },
-        { text: "RemoveColumn", form: <RemoveColumn /> },
+        { id: 1, text: "UploadFile", form: <Upload /> },
+        { id: 2, text: "Write", collection: 'Excel', function: 'Write' },
+        { id: 3, text: "RemoveDuplicate", form: <RemoveDuplicate /> },
+        { id: 4, text: "NewWorkBook", form: <NewWorkBook /> },
+        { id: 5, text: "SortColumns", form: <SortColumns /> },
+        { id: 6, text: "CountElements", form: <CountElements /> },
+        { id: 7, text: "Substring", form: <Substring /> },
+        { id: 8, text: "InsertColumn", form: <InsertColumn /> },
+        { id: 9, text: "CopyColumn", form: <CopyColumn /> },
+        { id: 10, text: "ApplyFilter", form: <ApplyFilter /> },
+        { id: 11, text: "RemoveColumn", form: <RemoveColumn /> },
     ])
 
     const [form] = Form.useForm();
