@@ -11,8 +11,6 @@ import {
 } from "antd";
 import Forms from "../../components/Forms/Forms";
 
-const { createRef } = React;
-
 const testing = async (test) => {
     console.log("in testing function");
     const temp = await test;
@@ -28,8 +26,8 @@ function Frida(props) {
     const [text, setText] = useState([]);
     const [elRefs, setElRefs] = React.useState([]); // reference array
     const [code, addCode] = useState([]);
-    const [frida, setFrida] = useState([]);
-
+    const [frida, setFrida] = useState([]); // Code generated for FRIDA parser
+    const [idx, setIdx] = useState([]); //index to know when todo add or edit FRDIA code
     //! Function  which is triggered by the imperative handle from child
 
 
