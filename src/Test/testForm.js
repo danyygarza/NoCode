@@ -74,20 +74,9 @@ export default function Testform(props) {
     }
 
     const removeForm = (index) => {
-        console.log(index)
-        // const tempForms = forms
-        // // const tempFields = form.getFieldsValue()
-        // for (let i = tempForms.length - item.length; i < tempForms.length; i++) {
-        //     try {
-        //         form.resetFields([`${i}`]);
-        //     } catch (err) {
-        //         console.log(err);
-        //     }
-        // }
-
-        // tempForms.splice(tempForms.length - item.length, item.length)
-        // console.log("tempForms", tempForms)
-        // setForms([...tempForms])
+        const tempForm = forms; 
+        tempForm.splice(index, 1); 
+        setForms([...tempForm]); 
     }
 
     // useEffect(() => {
