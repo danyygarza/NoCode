@@ -4,9 +4,10 @@ import './Forms.css';
 
 
 //components
-import MostUsedFunctions from "./MostUsedFunctions";
-import AllFunctions from "./AllFunctions";
-import Conditions from "./Conditions";
+import MostUsedFunctions from './MostUsedFunctions'
+import AllFunctions from './AllFunctions'
+import ListTest from '../../Test/ListTest';
+
 const Forms = forwardRef((props, ref, items) => {
   //modal
   const [open, setOpen] = useState(false);
