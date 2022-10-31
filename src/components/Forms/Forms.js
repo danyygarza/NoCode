@@ -1,13 +1,12 @@
-import { Button, Modal, Input, Form, List, Tabs } from 'antd';
-import React, { forwardRef, useState } from 'react';
-import './Forms.css';
-
+import { Button, Modal, Input, Form, List, Tabs } from "antd";
+import React, { forwardRef, useState } from "react";
+import "./Forms.css";
 
 //components
-import MostUsedFunctions from './MostUsedFunctions'
-import AllFunctions from './AllFunctions'
-import ListTest from '../../Test/ListTest';
-
+import MostUsedFunctions from "./MostUsedFunctions";
+import AllFunctions from "./AllFunctions";
+import ListTest from "../../Test/ListTest";
+import Conditions from "./Conditions";
 const Forms = forwardRef((props, ref, items) => {
   //modal
   const [open, setOpen] = useState(false);
@@ -15,11 +14,9 @@ const Forms = forwardRef((props, ref, items) => {
   const [filteredList, setFilteredList] = useState(items);
   const [component, setComponent] = useState("nothing");
 
-  const onChange = (key) => 
-{
-  console.log(key);
-};
-
+  const onChange = (key) => {
+    console.log(key);
+  };
 
   //search
   const { Search } = Input;
@@ -42,50 +39,77 @@ const Forms = forwardRef((props, ref, items) => {
         onCancel={() => setOpen(false)}
         width={900}
       >
-        <Search placeholder="Búsqueda" onChange={inputHandler} className='search ' enterButton />
-        <ListTest input={inputText} />
-        <Tabs defaultActiveKey='1' onChange={onChange} centered items={[
-          {
-            label: 'All',
-            key: '1',
-            children: 'Content of Tab 1'
-          },
-          {
-            label: 'Readers',
-            key: '2',
-            children: 'Content of Tab 2'
-          },
-          {
-          label: 'Functions',
-          key: '3',
-          children: <><span style={{ display: 'inline-block', paddingTop: 15, marginLeft: '6%' }}>
-            <div className="most-used-functions"><MostUsedFunctions setForms={props.setForms} forms={props.forms} ref={ref} /></div>
-          </span><span style={{ display: 'inline-block', marginLeft: 50 }}>
-              <div className="most-used-functions">
-                <Conditions
-                  variables={props.variables}
-                  setVariables={props.setVariables}
-                  setForms={props.setForms}
-                  forms={props.forms}
-                  ref={ref}
-                />
-              </div>
-            </span></>,
-          },
-          {
-            label: 'Condition',
-            key: '4',
-            children: 'Content of Tab 4'
-          },
-          {
-            label: 'Scripts',
-            key: '5',
-            children: 'Content of Tab 5'
-          },
-        ]}
+        <Search
+          placeholder="Búsqueda"
+          onChange={inputHandler}
+          className="search "
+          enterButton
         />
-        <>
-        </>
+        <ListTest input={inputText} />
+        <Tabs
+          defaultActiveKey="1"
+          onChange={onChange}
+          centered
+          items={[
+            {
+              label: "All",
+              key: "1",
+              children: "Content of Tab 1",
+            },
+            {
+              label: "Readers",
+              key: "2",
+              children: "Content of Tab 2",
+            },
+            {
+              label: "Functions",
+              key: "3",
+              children: (
+                <>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      paddingTop: 15,
+                      marginLeft: "6%",
+                    }}
+                  >
+                    <div className="most-used-functions">
+                      <MostUsedFunctions
+                        setForms={props.setForms}
+                        forms={props.forms}
+                        ref={ref}
+                        setfridaString={props.setfridaString}
+                        fridaString={props.fridaString}
+                      />
+                    </div>
+                  </span>
+                  <span style={{ display: "inline-block", marginLeft: 50 }}>
+                    <div className="most-used-functions">
+                      <Conditions
+                        variables={props.variables}
+                        setVariables={props.setVariables}
+                        setForms={props.setForms}
+                        forms={props.forms}
+                        ref={ref}
+                      />
+                    </div>
+                  </span>
+                </>
+              ),
+            },
+            {
+              label: "Condition",
+              key: "4",
+              children: "Content of Tab 4",
+            },
+            {
+              label: "Scripts",
+              key: "5",
+              children: "Content of Tab 5",
+            },
+          ]}
+        />
+        <></>
       </Modal>
     </>
   );

@@ -26,7 +26,8 @@ const syntax = (
     <>
         {data.fridaExcelReadersSyntaxWrite.Syntax1}<br />
         {data.fridaExcelReadersSyntaxWrite.Syntax2}<br />
-        {data.fridaExcelReadersSyntaxWrite.Syntax3}<br />
+        {data.fridaExcelReadersSyntaxWrite.Syntax3}<br /return ref.current.validate();
+>
         {data.fridaExcelReadersSyntaxWrite.Syntax4}<br />
     </>
 );

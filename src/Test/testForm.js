@@ -100,11 +100,17 @@ export default function Testform(props) {
       setCodeArr([...codeArr, tempCodeArr]);
       console.log('tempCodeArr', tempCodeArr);
 
+      try{
+        console.log('fridaCode in', props.fridaString)
+        props.setfridaString([...props.fridaString, tempCodeArr])
+        console.log('fridaCode', props.fridaString)
+      }catch(e){ console.log(e.message)}
+      
     },
     form,
   });
 
-
+  
 
   const add = () => {
     setForms(forms.concat(item));

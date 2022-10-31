@@ -30,8 +30,8 @@ const options = [
 
 export default function IfElseForm(props) {
   const [open, setOpen] = useState(false);
-  const [variables, setVariables] = useState(["option"]);
-  
+  const [fridaString1, setfridaString1] = useState([""]);
+  const [fridaString2, setfridaString2] = useState([""]);
 
   const [form] = Form.useForm();
   const {
@@ -46,15 +46,18 @@ export default function IfElseForm(props) {
     autoSubmitClose: true,
     autoResetForm: true,
     async submit({ username, email }) {
-      console.log('beforeSubmit');
-      await new Promise(r => setTimeout(r, 1000));
-      console.log('afterSubmit', username, email);
-      return 'ok';
+      console.log("beforeSubmit");
+      await new Promise((r) => setTimeout(r, 1000));
+      console.log("afterSubmit", username, email);
+      return "ok";
     },
     form,
   });
 
-
+  useEffect(() => {
+    console.log('fridaString1',fridaString1)
+    console.log('fridaString2',fridaString2)
+  }, [fridaString1,fridaString2])
   return (
     <>
       <Card
@@ -133,14 +136,14 @@ export default function IfElseForm(props) {
               </Form.Item>
             </Row>
             <Row>
-                    <Col span={32}>
-                      <Frida />
-                    </Col>
-                  </Row>
+              <Col span={32}>
+                <Frida setfridaString={setfridaString1} fridaString={fridaString1}/>
+              </Col>
+            </Row>
             <Row>
               <Col span={32}>
                 ELSE:
-                <Frida />
+                <Frida setfridaString={setfridaString2} fridaString={fridaString2}/>
               </Col>
             </Row>
           </Form>

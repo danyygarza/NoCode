@@ -48,7 +48,7 @@ function MostUsedFunctions(props) {
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
             props.setForms([...props.forms,
-                <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} frida = {props.frida} setFrida={props.setFrida} />
+                <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} frida = {props.frida} setFrida={props.setFrida} setfridaString={props.setfridaString} fridaString={props.fridaString}/>
             ])
         }
         else {
