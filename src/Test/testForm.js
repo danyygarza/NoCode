@@ -31,7 +31,7 @@ export default function Testform(props) {
   const [codeArr, setCodeArr] = useState([])
   const description = (
     <>
-
+      {/* {console.logp(props.data.description)} */}
     </>
   )
 
@@ -134,9 +134,7 @@ export default function Testform(props) {
         <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
       </Card >
       <Modal {...modalProps} title="useModalForm" open={open} onCancel={() => setOpen(false)} okText="submit" width={1200} height={800}>
-        < Card hoverable style={{ width: 800, }} cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
-          <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
-        </Card >
+
         <Row>
           <Col>
             <div className="demo">
@@ -171,7 +169,6 @@ export default function Testform(props) {
         <Form layout="inline" {...formProps}>
           <Row>
             {forms.map((item, index) => {
-              console.log()
               return (
                 <>
                   <Row>

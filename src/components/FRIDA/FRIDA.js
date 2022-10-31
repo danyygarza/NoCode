@@ -34,10 +34,12 @@ function Frida(props) {
     const remove = (index) => {
         console.log("forms before remove", forms);
         const temp = [...forms];
+        const tempFrida = [...frida];
+        tempFrida.splice(index, 1);
         temp.splice(index, 1);
         setForms(temp);
+        setFrida(tempFrida);
     };
-
 
     //! this will create array of refs from size of forms
     useEffect(() => {
@@ -85,7 +87,7 @@ function Frida(props) {
                             forms={forms}
                             code={code}
                             addCode={addCode}
-                            frida = {frida}
+                            frida={frida}
                             setFrida={setFrida}
                         />
                     </Col>
