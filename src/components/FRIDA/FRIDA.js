@@ -1,24 +1,13 @@
-import React, {
-    useEffect,
-    useState,
-} from "react";
-import {
-    Form,
-    Button,
-    Space,
-    Col,
-    Row,
-} from "antd";
+import React, { useEffect, useState } from "react";
+import { Form, Button, Space, Col, Row } from "antd";
 import Forms from "../../components/Forms/Forms";
 
 const testing = async (test) => {
-    console.log("in testing function");
-    const temp = await test;
-    console.log("temp", temp);
-    return temp;
+  console.log("in testing function");
+  const temp = await test;
+  console.log("temp", temp);
+  return temp;
 };
-
-
 
 function Frida(props) {
     const [form] = Form.useForm();
@@ -30,16 +19,12 @@ function Frida(props) {
     const [idx, setIdx] = useState([]); //index to know when todo add or edit FRDIA code
     //! Function  which is triggered by the imperative handle from child
 
-
-    const remove = (index) => {
-        console.log("forms before remove", forms);
-        const temp = [...forms];
-        const tempFrida = [...frida];
-        tempFrida.splice(index, 1);
-        temp.splice(index, 1);
-        setForms(temp);
-        setFrida(tempFrida);
-    };
+  const remove = (index) => {
+    console.log("forms before remove", forms);
+    const temp = [...forms];
+    temp.splice(index, 1);
+    setForms(temp);
+  };
 
     //! this will create array of refs from size of forms
     useEffect(() => {

@@ -92,9 +92,21 @@ export default function Testform(props) {
         tempString = "";
       })
       console.log('tempCodeArr', tempCodeArr.reverse());
+      console.log("code arr", codeArr);
+      setCodeArr([...codeArr, tempCodeArr]);
+      console.log('tempCodeArr', tempCodeArr);
+      
+      // try{
+      //   console.log('fridaCode in', props.fridaString)
+      //   props.setfridaString([...props.fridaString, tempCodeArr])
+      //   console.log('fridaCode', props.fridaString)
+      // }catch(e){ console.log(e.message)}
+      
     },
     form,
   });
+
+  
 
   const add = () => {
     const temp = []

@@ -8,6 +8,9 @@ import {
 } from "@firebase/firestore"
 
 import './MostUsedFunctions.css'
+
+//components
+
 //! Forms
 //import ExcelWrite from './Excel/Write/ExcelWrite'
 import Upload from './Excel/Upload/Upload'
@@ -20,40 +23,24 @@ import InsertColumn from './Excel/InsertColumn/InsertColumn'
 import CopyColumn from './Excel/CopyColumn/CopyColumn'
 import ApplyFilter from './Excel/ApplyFilter/ApplyFilter'
 import RemoveColumn from './Excel/RemoveColumn/RemoveColumn'
+import IfElseForm from './Conditions/IfForm'
+
 //import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 //import Testform from '../../Test/testForm'
 
 const db = getFirestore();
+//const dbData = [];
 
-function MostUsedFunctions(props) {
+function Conditions(props) {
     console.log('submit in muf is ', props.submit)
-    const [formArray, setFormArray] = useState([
-        { id: 1, text: "UploadFile", form: <Upload /> },
-        { id: 2, text: "Write", collection: 'Excel', function: 'Write' },
-        { id: 3, text: "RemoveDuplicate", form: <RemoveDuplicate /> },
-        { id: 4, text: "NewWorkBook", form: <NewWorkBook /> },
-        { id: 5, text: "SortColumns", form: <SortColumns /> },
-        { id: 6, text: "CountElements", form: <CountElements /> },
-        { id: 7, text: "Substring", form: <Substring /> },
-        { id: 8, text: "InsertColumn", form: <InsertColumn /> },
-        { id: 9, text: "CopyColumn", form: <CopyColumn /> },
-        { id: 10, text: "ApplyFilter", form: <ApplyFilter /> },
-        { id: 11, text: "RemoveColumn", form: <RemoveColumn /> },
+    const [formArray, /*setFormArray*/] = useState([
+        { text: "IF/ELSE", form: <IfElseForm /> }
     ])
 
     //const [form] = Form.useForm();
 
-    const add = async (data) => {
-        const colRef = doc(db, data.collection, data.function);
-        const docSnap = await getDoc(colRef);
-        if (docSnap.exists()) {
-            props.setForms([...props.forms,
-                <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} frida = {props.frida} setFrida={props.setFrida} setfridaString={props.setfridaString} fridaString={props.fridaString}/>
-            ])
-        }
-        else {
-            console.log("no such document!")
-        }
+    const add = (form) =>{
+        props.setForms([...props.forms,form])
     }
 
     return (
@@ -61,7 +48,7 @@ function MostUsedFunctions(props) {
             return (
                 <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
-                        add(data);
+                        add(data.form);
                     }
                     }>
                     <div className="imgp">
@@ -75,4 +62,4 @@ function MostUsedFunctions(props) {
     )
 };
 
-export default MostUsedFunctions    
+export default Conditions    
