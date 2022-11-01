@@ -93,20 +93,8 @@ export default function Testform(props) {
                 tempCodeArr.push(tempString);
                 tempString = "";
             })
-
-            console.log('tempCodeArr', tempCodeArr.reverse());
-            console.log(props.id)
-            // console.log("code arr", codeArr);
+            console.log(props.code)
             props.setCode(props.code.set(props.id, tempCodeArr.reverse()))
-            // setCodeArr([...codeArr, tempCodeArr]);
-            // console.log('tempCodeArr', tempCodeArr);
-
-            // try{
-            //   console.log('fridaCode in', props.fridaString)
-            //   props.setfridaString([...props.fridaString, tempCodeArr])
-            //   console.log('fridaCode', props.fridaString)
-            // }catch(e){ console.log(e.message)}
-
         },
         form,
     });
@@ -174,7 +162,7 @@ export default function Testform(props) {
                 </Row>
                 <Row>
                     <Col>
-                        <Radio.Group defaultValue="a" buttonStyle="solid" onChange={(e) => setKey(e.target.value)}>
+                        <Radio.Group defaultValue="a" buttonStyle="solid" onChange={(e) => setKey(e.target.value)} value={key}>
                             {Object.keys(props.data.forms).map((_, index) => {
                                 return (
                                     <Radio.Button value={index}>syntax: {index}</Radio.Button>

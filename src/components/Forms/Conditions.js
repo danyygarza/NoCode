@@ -34,13 +34,14 @@ const db = getFirestore();
 function Conditions(props) {
     console.log('submit in muf is ', props.submit)
     const [formArray, /*setFormArray*/] = useState([
-        { text: "IF/ELSE", form: <IfElseForm /> }
+        { text: "If Else", data: { id: props.id, form: <IfElseForm variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} /> } }
     ])
 
-    //const [form] = Form.useForm();
+    const add = (form) => {
+        console.log("form", form)
+        console.log("forms", props.forms)
 
-    const add = (form) =>{
-        props.setForms([...props.forms,form])
+        props.setForms([...props.forms, form])
     }
 
     return (
@@ -48,7 +49,8 @@ function Conditions(props) {
             return (
                 <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
-                        add(data.form);
+                        console.log(data.data)
+                        add(data.data);
                     }
                     }>
                     <div className="imgp">

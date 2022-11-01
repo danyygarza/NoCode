@@ -14,13 +14,6 @@ function Frida(props) {
     const [forms, setForms] = useState([]); // forms array
     const [elRefs, setElRefs] = React.useState([]); // reference array
 
-    const handleClick = () => {
-        for (const item of props.code) {
-            console.log(item);
-        }
-    }
-
-
     const remove = (index) => {
         console.log("forms before remove", forms);
         const temp = [...forms];
@@ -89,13 +82,7 @@ function Frida(props) {
                         />
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Button onClick={handleClick}>
-                            Test
-                        </Button>
-                    </Col>
-                </Row>
+               
             </div>
         </>
     );
