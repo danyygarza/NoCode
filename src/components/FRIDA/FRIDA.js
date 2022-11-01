@@ -15,8 +15,8 @@ function Frida(props) {
     const [elRefs, setElRefs] = React.useState([]); // reference array
 
     const handleClick = () => {
-        for(const item of props.code){
-            console.log(item); 
+        for (const item of props.code) {
+            console.log(item);
         }
     }
 
@@ -24,18 +24,15 @@ function Frida(props) {
     const remove = (index) => {
         console.log("forms before remove", forms);
         const temp = [...forms];
-        temp.splice(index, 1);
-        const tempNumbers = props.numberList
-        const tempCode = props.code; 
-
-        console.log("number array", tempNumbers)
-        console.log("number in idex", tempNumbers[index]);
+        const tempCode = props.code;
         console.log("temp code", tempCode)
-
-        tempCode.delete(tempNumbers[index]); 
-        console.log(tempNumbers)
-        tempNumbers.splice(index, 1);
-        props.setNumberList(tempNumbers);
+        console.log("index",index)
+        console.log("forms", forms)
+        console.log("form obj", forms[index].id)
+        if (tempCode.get(forms[index].id) !== undefined) {
+            tempCode.delete(forms[index].id);
+        }
+        temp.splice(index, 1);
         setForms(temp);
     };
 
@@ -59,7 +56,7 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
-                                {form}
+                                {form.form}
                                 <Button
                                     onClick={() => {
                                         console.log("index from click: ", index, form);
