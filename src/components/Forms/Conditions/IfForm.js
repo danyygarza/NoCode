@@ -36,8 +36,6 @@ export default function IfElseForm(props) {
             frida1 =  frida1.concat(Array.from(fridaString1.values()));
             console.log(frida1)
 
-
-
         },
         form,
     });
