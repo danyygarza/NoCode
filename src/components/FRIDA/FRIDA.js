@@ -3,28 +3,41 @@ import { Form, Button, Space, Col, Row } from "antd";
 import Forms from "../../components/Forms/Forms";
 
 const testing = async (test) => {
-  console.log("in testing function");
-  const temp = await test;
-  console.log("temp", temp);
-  return temp;
+    console.log("in testing function");
+    const temp = await test;
+    console.log("temp", temp);
+    return temp;
 };
 
-function Frida(props) {
-    const [form] = Form.useForm();
-    const [forms, setForms] = useState([]); // forms array
-    const [text, setText] = useState([]);
-    const [elRefs, setElRefs] = React.useState([]); // reference array
-    const [code, addCode] = useState([]);
-    const [frida, setFrida] = useState([]); // Code generated for FRIDA parser
-    const [idx, setIdx] = useState([]); //index to know when todo add or edit FRDIA code
-    //! Function  which is triggered by the imperative handle from child
 
-  const remove = (index) => {
-    console.log("forms before remove", forms);
-    const temp = [...forms];
-    temp.splice(index, 1);
-    setForms(temp);
-  };
+function Frida(props) {
+    const [forms, setForms] = useState([]); // forms array
+    const [elRefs, setElRefs] = React.useState([]); // reference array
+
+    const handleClick = () => {
+        for(const item of props.code){
+            console.log(item); 
+        }
+    }
+
+
+    const remove = (index) => {
+        console.log("forms before remove", forms);
+        const temp = [...forms];
+        temp.splice(index, 1);
+        const tempNumbers = props.numberList
+        const tempCode = props.code; 
+
+        console.log("number array", tempNumbers)
+        console.log("number in idex", tempNumbers[index]);
+        console.log("temp code", tempCode)
+
+        tempCode.delete(tempNumbers[index]); 
+        console.log(tempNumbers)
+        tempNumbers.splice(index, 1);
+        props.setNumberList(tempNumbers);
+        setForms(temp);
+    };
 
     //! this will create array of refs from size of forms
     useEffect(() => {
@@ -70,11 +83,20 @@ function Frida(props) {
                             setVariables={props.setVariables}
                             setForms={setForms}
                             forms={forms}
-                            code={code}
-                            addCode={addCode}
-                            frida={frida}
-                            setFrida={setFrida}
+                            code={props.code}
+                            setCode={props.setCode}
+                            numberList={props.numberList}
+                            setNumberList={props.setNumberList}
+                            id={props.id}
+                            setId={props.setId}
                         />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Button onClick={handleClick}>
+                            Test
+                        </Button>
                     </Col>
                 </Row>
             </div>

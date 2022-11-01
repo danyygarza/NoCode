@@ -47,9 +47,12 @@ function MostUsedFunctions(props) {
         const colRef = doc(db, data.collection, data.function);
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
+            console.log(docSnap.data())
             props.setForms([...props.forms,
-                <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} frida = {props.frida} setFrida={props.setFrida} setfridaString={props.setfridaString} fridaString={props.fridaString}/>
+            <Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} />
             ])
+            props.setId(props.id + 1);
+            props.setNumberList([...props.numberList, props.id]);
         }
         else {
             console.log("no such document!")
