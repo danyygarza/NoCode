@@ -23,6 +23,7 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
+  
   const filteredData = props.functions.filter((el) =>
     searchFunction(props.input, el.id)
   );

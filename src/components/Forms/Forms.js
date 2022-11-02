@@ -25,7 +25,7 @@ const Forms = forwardRef((props, ref, items) => {
         var lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
-
+    
     return (
         <>
             <Button onClick={() => setOpen(true)} className="forms-button">
@@ -55,6 +55,7 @@ const Forms = forwardRef((props, ref, items) => {
                     setId={props.setId}
                     code={props.code}
                     setCode={props.setCode}
+                    functions={props.functions}
                 />
                 <Tabs
                     defaultActiveKey="1"
