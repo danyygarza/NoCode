@@ -34,9 +34,6 @@ export default function ForEach(props) {
             console.log("fridaString1", Array.from(fridaString1.values()));
             frida1 = frida1.concat(Array.from(fridaString1.values()));
             console.log(frida1)
-
-
-
         },
         form,
     });
@@ -64,35 +61,31 @@ export default function ForEach(props) {
             >
                 <>
                     <Form layout="flex" {...formProps}  >
-                        <   Row>
-                            <Form.Item label="">
-                                <Input.Group >
-                                    <Form.Item
-                                        name={["element", "variable"]}
-                                        noStyle
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: "este campo es requerido",
-                                            },
-                                        ]}
-                                    >
-                                            <Col>
-                                                <h3>foreach</h3>
-                                            </Col>
+                        <Row>
+                            <Form.Item
+                                name={["element", "variable"]}
+                                noStyle
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "este campo es requerido",
+                                    },
+                                ]}
+                            >
+                                <Col>
+                                    <h3>foreach</h3>
+                                </Col>
 
-                                            <Col offset={1}>
-                                                <Select placeholder="Selecciona una variable">
-                                                    {options.map((option) => (
-                                                        <Option key={option.id}>{option.name}</Option>
-                                                    ))}
-                                                </Select>
-                                            </Col>
-                                            <Col >
-                                                <h3>in  range</h3>
-                                            </Col>
-                                    </Form.Item>
-                                </Input.Group>
+                                <Col offset={1}>
+                                    <Select placeholder="Selecciona una variable">
+                                        {options.map((option) => (
+                                            <Option key={option.id}>{option.name}</Option>
+                                        ))}
+                                    </Select>
+                                </Col>
+                                <Col offset={1}>
+                                    <h3>in  range</h3>
+                                </Col>
                             </Form.Item>
                         </Row>
                         <Row>
