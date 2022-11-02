@@ -7,6 +7,7 @@ import MostUsedFunctions from "./MostUsedFunctions";
 import AllFunctions from "./AllFunctions";
 import ListTest from "../../Test/ListTest";
 import Conditions from "./Conditions";
+import Iterators from "./Iterators";
 const Forms = forwardRef((props, ref, items) => {
     //modal
     const [open, setOpen] = useState(false);
@@ -99,6 +100,7 @@ const Forms = forwardRef((props, ref, items) => {
                                     <span style={{ display: "inline-block", marginLeft: 50 }}>
                                         <div className="most-used-functions">
                                             <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+                                            <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId}/>
                                         </div>
                                     </span>
                                 </>
