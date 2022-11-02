@@ -151,6 +151,23 @@ export default function Testform(props) {
                         </>
                     )
                     break;
+                    case 'word':
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <p style={{color:'black'}}> {item.title} </p>
+                                         <Form.Item name={[`${forms.length}${index}`, item.title]} label={item.title} hidden={true} >
+                                            
+                                        </Form.Item>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    )
+                    break;
+                    
                 case 'filepicker':
                     temp.push(
                         <>
