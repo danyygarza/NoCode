@@ -64,7 +64,7 @@ export default function ForEach(props) {
             >
                 <>
                     <Form layout="flex" {...formProps}  >
-                        <Row>
+                        <   Row>
                             <Form.Item label="">
                                 <Input.Group >
                                     <Form.Item
