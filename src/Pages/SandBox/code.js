@@ -9,26 +9,32 @@ import Testform from '../../Test/testForm';
 function Code() {
     const [variables, setVariables] = useState([])
     const [code, setCode] = useState(new Map()); //!! Final code 
-    const [id, setId] = useState(0)
-    const [numberList, setNumberList] = useState([]); 
+    const [id, setId] = useState(0);
+
     //! this to call functions from Frida (child component) // 
 
-    const ref = useRef(null)
-
-    const handleValidate = () => {
-        //! Triggers button from Frida to submit Code from child forms
-        return ref.current.validate();
-
+    // const ref = useRef(null)
+    const handleClick = () => {
+        for (const item of code) {
+            console.log(item);
+        }
     }
+
     return (
         <>
             <Row>
                 <Col offset={8}>
                     {/* //!this is the place where all the form will be stored */}
-                    <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} numberList={numberList} setNumberList={setNumberList}/>
+                    <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} />
                 </Col>
             </Row>
-
+            <Row justify='end'>
+                <Col>
+                    <Button onClick={handleClick}>
+                        Generate Code
+                    </Button>
+                </Col>
+            </Row>
         </>
     )
 }
