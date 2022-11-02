@@ -56,6 +56,7 @@ const Forms = forwardRef((props, ref, items) => {
                     setId={props.setId}
                     code={props.code}
                     setCode={props.setCode}
+                    functions={props.functions}
                 />
                 <Tabs
                     defaultActiveKey="1"

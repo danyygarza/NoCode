@@ -16,29 +16,28 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
-  console.log("input", typeof props.input);
-  console.log("search", data[0].Name.search("x"));
-  const filteredData = data.filter((el) =>
-    searchFunction(props.input, el.Name)
+  
+  const filteredData = props.functions.filter((el) =>
+    searchFunction(props.input, el.function)
   );
 
   const db = getFirestore();
 
-  const add = (data) => {
-    props.setForms([
-      ...props.forms,
-      <Testform
-        data={data}
-        variables={props.variables}
-        setVariables={props.setVariables}
-        code={props.code}
-        setCode={props.setCode}
-        id={props.id}
-      />,
-    ]);
-    props.setId(props.id + 1);
-    props.setNumberList([...props.numberList, props.id]);
-  };
+  const add = async (data) => {
+    const colRef = doc(db, data.collection, data.function);
+    const docSnap = await getDoc(colRef);
+    if (docSnap.exists()) {
+        console.log(docSnap.data())
+        props.setForms([...props.forms,
+        { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
+        ])
+        props.setId(props.id + 1);
+        // props.setNumberList([...props.numberList, props.id]);
+    }
+    else {
+        console.log("no such document!")
+    }
+}
   console.log("filter", filteredData);
   return (
     <ul>
@@ -54,7 +53,7 @@ function ListTest(props) {
             <div className="imgp">
               <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
               <p style={{ color: "black", marginLeft: 0 }}>
-                <b>{item.Name}</b>
+                <b>{item.function}</b>
               </p>
             </div>
           </Button>

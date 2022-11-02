@@ -10,8 +10,10 @@ import {
     Col,
     Tabs,
     Radio,
+    message,
+    Upload
 } from "antd";
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
 import { set } from "firebase/database";
@@ -22,7 +24,9 @@ const { Meta } = Card;
 
 
 
+
 export default function Testform(props) {
+    console.log('data',props.data)
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
@@ -35,6 +39,32 @@ export default function Testform(props) {
             {/* {console.logp(props.data.description)} */}
         </>
     )
+
+    const info = {
+        name: 'file',
+        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        headers: {
+            authorization: 'authorization-text',
+        },
+        onChange(info) {
+            if (info.file.status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (info.file.status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+        progress: {
+            strokeColor: {
+                '0%': '#108ee9',
+                '100%': '#87d068',
+            },
+            strokeWidth: 3,
+            format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+        },
+    };
 
     const parameters = (
         <>
@@ -104,22 +134,50 @@ export default function Testform(props) {
     const add = () => {
         const temp = []
         Object.values(props.data.forms)[key].map((item, index) => {
-            return (
-                temp.push(
-                    <>
-                        {
-                            item.type === "text" &&
-                            <>
-                                <Col>
-                                    <Form.Item name={[`${forms.length}${index}`, item.title]} label={item.title} rules={[{ required: true, message: 'Please fill this out' }]} style={{ width: 'auto' }}>
-                                        <Input type={item.type} placeholder={item.placeHolder} onChange={props.onChange} name={index} />
-                                    </Form.Item>
-                                </Col>
-                            </>
-                        }
-                    </>
-                )
-            )
+            console.log(item);
+            switch (item.type) {
+                case 'text':
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <Form.Item name={[`${forms.length}${index}`, item.title]} label={item.title} rules={[{ required: true, message: 'Please fill this out' }]} style={{ width: 'auto' }}>
+                                            <Input type={item.type} placeholder={item.placeHolder} onChange={props.onChange} name={index} />
+                                        </Form.Item>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    )
+                    break;
+                case 'filepicker':
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <Upload {...info}>
+                                            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                                        </Upload>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    )
+                    break;
+                case 'word':
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <p label={item.title}></p>
+                                </>
+                            }
+                        </>
+                    )
+                    break;
+            }
         })
         setForms([...forms, temp]);
     }
@@ -136,7 +194,7 @@ export default function Testform(props) {
         <>
             < Card hoverable style={{ width: 800, }
             } cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
-                <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
+                <Meta title={props.function} description="Write something in a given cell in a worksheet." />
             </Card >
             <Modal {...modalProps} title="useModalForm" open={open} onCancel={() => setOpen(false)} okText="submit" width={1200} height={800}>
 
