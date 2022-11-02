@@ -64,8 +64,6 @@ export default function IfElseForm(props) {
                 height={800}
             >
                 <>
-                    <p>submit: username email</p>
-                    <p>result: </p>
                     <Form layout="flex" {...formProps}>
                         <Row>
                             <Form.Item label="IF">
