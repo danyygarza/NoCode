@@ -53,6 +53,7 @@ function MostUsedFunctions(props) {
           code={props.code}
           setCode={props.setCode}
           id={props.id}
+          
         />,
       ]);
       props.setId(props.id + 1);

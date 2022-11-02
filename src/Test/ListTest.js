@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form } from "antd";
 import items from "../components/Forms/AllFunctions";
 import Testform from "./testForm";
 import data from "../components/Forms/syntax.json";
-import { getFirestore, doc, getDoc } from "@firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  onSnapshot,
+  collection,
+} from "@firebase/firestore";
+const db = getFirestore();
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -16,30 +23,36 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
-  console.log("input", typeof props.input);
-  console.log("search", data[0].Name.search("x"));
-  const filteredData = data.filter((el) =>
-    searchFunction(props.input, el.Name)
+  const filteredData = props.functions.filter((el) =>
+    searchFunction(props.input, el.id)
   );
 
-  const db = getFirestore();
 
-  const add = (data) => {
-    props.setForms([
-      ...props.forms,
-      <Testform
-        data={data}
-        variables={props.variables}
-        setVariables={props.setVariables}
-        code={props.code}
-        setCode={props.setCode}
-        id={props.id}
-      />,
-    ]);
-    props.setId(props.id + 1);
-    props.setNumberList([...props.numberList, props.id]);
+  const add = async (data) => {
+    const colRef = doc(db, data.collection, data.id);
+    const docSnap = await getDoc(colRef);
+    if (docSnap.exists()) {
+      console.log(docSnap.data());
+      props.setForms([
+        ...props.forms,
+        <Testform
+          data={docSnap.data()}
+          variables={props.variables}
+          setVariables={props.setVariables}
+          code={props.code}
+          setCode={props.setCode}
+          id={props.id}
+          
+        />,
+      ]);
+      props.setId(props.id + 1);
+      props.setNumberList([...props.numberList, props.id]);
+    } else {
+      console.log("no such document!");
+    }
   };
   console.log("filter", filteredData);
+
   return (
     <ul>
       {filteredData.map((item) => (
@@ -54,7 +67,7 @@ function ListTest(props) {
             <div className="imgp">
               <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
               <p style={{ color: "black", marginLeft: 0 }}>
-                <b>{item.Name}</b>
+                <b>{item.id}</b>
               </p>
             </div>
           </Button>
