@@ -23,6 +23,7 @@ const { Meta } = Card;
 
 
 export default function Testform(props) {
+    console.log('data',props.data)
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
@@ -136,7 +137,7 @@ export default function Testform(props) {
         <>
             < Card hoverable style={{ width: 800, }
             } cover={< img alt="excel icon" src="../../../../excelIcon.ico" />} onClick={() => setOpen(true)} maskClosable={true} >
-                <Meta title="Excel Write" description="Write something in a given cell in a worksheet." />
+                <Meta title={props.function} description="Write something in a given cell in a worksheet." />
             </Card >
             <Modal {...modalProps} title="useModalForm" open={open} onCancel={() => setOpen(false)} okText="submit" width={1200} height={800}>
 
