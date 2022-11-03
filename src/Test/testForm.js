@@ -22,6 +22,7 @@ const buttonWidth = 70;
 const { Meta } = Card;
 
 export default function Testform(props) {
+<<<<<<< HEAD
     console.log("data", props.data);
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
@@ -32,10 +33,154 @@ export default function Testform(props) {
     const [codeArr, setCodeArr] = useState([]);
     const description = Object.values(props.data.description).map((text) => {
         return (
+=======
+  console.log("data", props.data);
+  const [open, setOpen] = useState(false);
+  const [form] = Form.useForm();
+  const [key, setKey] = useState(0);
+  const [forms, setForms] = useState([]);
+  const [size] = useState(Object.values(props.data.forms)[key].length);
+  const [item, setItem] = useState([]);
+  const [codeArr, setCodeArr] = useState([]);
+  const description = Object.values(props.data.description).map((text) => {
+    return (
+      <>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+      </>
+    );
+  });
+
+  const info = {
+    name: "file",
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    headers: {
+      authorization: "authorization-text",
+    },
+    onChange(info) {
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    progress: {
+      strokeColor: {
+        "0%": "#108ee9",
+        "100%": "#87d068",
+      },
+      strokeWidth: 3,
+      format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+    },
+  };
+
+  const parameters = <>{props.data.parameters}</>;
+  const syntax = Object.values(props.data.syntax).map((text) => {
+    return (
+      <>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+      </>
+    );
+  });
+
+  const examples = Object.values(props.data.examples).map((text) => {
+    return (
+      <>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+      </>
+    );
+  });
+  const {
+    modalProps,
+    formProps,
+    show,
+    formLoading,
+    formValues,
+    formResult,
+    resetField,
+  } = useModalForm({
+    defaultVisible: false,
+    autoSubmitClose: false,
+    autoResetForm: false,
+    submit(data) {
+      console.log(forms);
+      let tempString = "";
+      let tempCodeArr = [];
+      let tempData = Object.values(data);
+      let idx = 0;
+
+      console.log(tempData);
+      forms.reverse().forEach((obj) => {
+        console.log("obj", obj);
+        for (let i = 0; i < obj.length; i++) {
+          console.log(tempData[idx]);
+          if (tempData[idx] !== undefined) {
+            tempString.length === 0
+              ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
+                  tempData[idx]
+                )} `)
+              : (tempString += `${Object.keys(tempData[idx])} ${Object.values(
+                  tempData[idx]
+                )} `);
+          }
+          idx++;
+        }
+        tempCodeArr.push(tempString);
+        tempString = "";
+      });
+      console.log(props.code);
+      props.setCode(props.code.set(props.id, tempCodeArr.reverse()));
+    },
+    form,
+  });
+
+  const add = () => {
+    const temp = [];
+    Object.values(props.data.forms)[key].map((item, index) => {
+      console.log(item);
+      switch (item.type) {
+        case "text":
+          temp.push(
+>>>>>>> 7be8782ec803f0256b5f890e17ca87ebd0b1176d
             <>
                 <h4>{text}</h4>
             </>
+<<<<<<< HEAD
         );
+=======
+          );
+          break;
+        case "filepicker":
+          temp.push(
+            <>
+              {
+                <>
+                  <Col>
+                    <Upload {...info}>
+                      <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    </Upload>
+                  </Col>
+                </>
+              }
+            </>
+          );
+          break;
+        case "word":
+          temp.push(
+            <>
+              {
+                <>
+                  <p style={{color: 'black'}}>{item.title}</p>
+                  
+                </>
+              }
+            </>
+          );
+          break;
+      }
+>>>>>>> 7be8782ec803f0256b5f890e17ca87ebd0b1176d
     });
 
     const info = {
