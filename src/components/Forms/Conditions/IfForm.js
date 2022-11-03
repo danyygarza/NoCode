@@ -4,6 +4,7 @@ import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../../../App.css";
 import Frida from "../../FRIDA/FRIDA";
+import { push } from "@firebase/database";
 const { Meta } = Card;
 const { Option } = Select;
 const options = [
@@ -39,13 +40,15 @@ export default function IfElseForm(props) {
         autoSubmitClose: false,
         autoResetForm: false,
         submit(data) {
+
             const tempData = Object.values(data);
             console.log(tempData);
             let frida1 = ['if ' + `${tempData[0].variable} ` + `${tempData[0].operator}` + ` ${tempData[0].input}`];
-            console.log("fridaString1", Array.from(fridaString1.values()));
-            frida1 = frida1.concat(Array.from(fridaString1.values()));
-            console.log(frida1)
+            frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
 
+            console.log("FridaString 2 length ", Array.from(fridaString2.values()).length);
+
+            Array.from(fridaString2.values()).length === 0 ? props.setCode(props.code.set(props.id, frida1)) : props.setCode(props.code.set(props.id, frida1.concat(["else"], [].concat.apply([], Array.from(fridaString2.values())))))
         },
         form,
     });
@@ -75,7 +78,7 @@ export default function IfElseForm(props) {
                     <Form layout="flex" {...formProps}>
                         <Row>
                             <Form.Item label="IF">
-                                <Input.Group compact>
+                                <Input.Group >
                                     <Form.Item
                                         name={["if", "variable"]}
                                         noStyle
@@ -103,11 +106,13 @@ export default function IfElseForm(props) {
                                         ]}
                                     >
                                         <Select placeholder="Selecciona un operador">
-                                            {oparand.map((option) => (
-                                                <Option key={option.operand}>{option.name}</Option>
-                                            ))}
-                                        </Select>
-                                    </Form.Item>
+                                            {
+                                                oparand.map((option) => (
+                                                    <Option key={option.operand}>{option.name}</Option>
+                                                ))
+                                            }
+                                        </Select >
+                                    </Form.Item >
                                     <Form.Item
                                         name={["if", "input"]}
                                         style={{
@@ -122,13 +127,13 @@ export default function IfElseForm(props) {
                                     >
                                         <Input
                                             type={"text"}
-                                            placeholder ={"<Temporary>"}
-                                            
+                                            placeholder={"<Temporary>"}
+
                                         />
                                     </Form.Item>
-                                </Input.Group>
-                            </Form.Item>
-                        </Row>
+                                </Input.Group >
+                            </Form.Item >
+                        </Row >
                         <Row>
                             <Col span={32}>
                                 <Frida code={fridaString1} setCode={setfridaString1} id={id} setId={setId} />
@@ -140,10 +145,10 @@ export default function IfElseForm(props) {
                                 <Frida code={fridaString2} setCode={setfridaString2} id={id} setId={setId} />
                             </Col>
                         </Row>
-                    </Form>
+                    </Form >
                 </>
 
-            </Modal>
+            </Modal >
         </>
     );
 }
