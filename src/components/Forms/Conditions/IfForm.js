@@ -4,6 +4,7 @@ import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../../../App.css";
 import Frida from "../../FRIDA/FRIDA";
+import { push } from "@firebase/database";
 const { Meta } = Card;
 const { Option } = Select;
 const options = [
@@ -11,6 +12,14 @@ const options = [
     { id: 2, name: "var2" },
     { id: 3, name: "var3" },
     { id: 4, name: "var4" },
+];
+const logicOperators = [
+    { id: 1, name: "greater than ", operand: ">" },
+    { id: 2, name: "less than", operand: "<" },
+    { id: 3, name: "greater than equal to", operand: ">=" },
+    { id: 4, name: "less than equal to ", operand: "<=" },
+    { id: 5, name: "equal to", operand: "==" },
+    { id: 6, name: "not equal to", operand: "!=" },
 ];
 
 export default function IfElseForm(props) {
@@ -31,13 +40,13 @@ export default function IfElseForm(props) {
         autoSubmitClose: false,
         autoResetForm: false,
         submit(data) {
-            let frida1 = ['if test'];
-            console.log("fridaString1", Array.from(fridaString1.values()));
-            frida1 =  frida1.concat(Array.from(fridaString1.values()));
-            console.log(frida1)
+            console.log(Object.values(data));
+            let frida1 = ['if'];
+            let frida2 = ['else'];
+            frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
 
-
-
+            console.log("FridaString 2 length ", Array.from(fridaString2.values()).length);
+            Array.from(fridaString2.values()).length === 0 ? props.setCode(props.code.set(props.id, frida1)) : props.setCode(props.code.set(props.id, frida1.concat(["else"], [].concat.apply([], Array.from(fridaString2.values())))))
         },
         form,
     });
@@ -67,7 +76,7 @@ export default function IfElseForm(props) {
                     <Form layout="flex" {...formProps}>
                         <Row>
                             <Form.Item label="IF">
-                                <Input.Group compact>
+                                <Input.Group >
                                     <Form.Item
                                         name={["if", "variable"]}
                                         noStyle
@@ -95,7 +104,7 @@ export default function IfElseForm(props) {
                                         ]}
                                     >
                                         <Select placeholder="Selecciona un operador">
-                                            {options.map((option) => (
+                                            {logicOperators.map((option) => (
                                                 <Option key={option.id}>{option.name}</Option>
                                             ))}
                                         </Select>
