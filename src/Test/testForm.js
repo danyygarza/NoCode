@@ -22,9 +22,9 @@ import { render } from "less";
 const buttonWidth = 70;
 const { Meta } = Card;
 
+
+
 function Testform(props) {
-
-
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
   const [key, setKey] = useState(0);
@@ -120,11 +120,11 @@ function Testform(props) {
           if (tempData[idx] !== undefined) {
             tempString.length === 0
               ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
-                tempData[idx]
-              )} `)
+                  tempData[idx]
+                )} `)
               : (tempString += `${Object.keys(tempData[idx])} ${Object.values(
-                tempData[idx]
-              )} `);
+                  tempData[idx]
+                )} `);
           }
           idx++;
         }
@@ -141,25 +141,23 @@ function Testform(props) {
     const cards = Object.values(props.data.syntax).map((text, index) => {
       return (
         <>
-              <div onClick={() =>addCard(index)}>
+          <div onClick={() => addCard(index)}>
             <Card
               style={{
-                width: 300,
+                width: 1000,
               }}
-
             >
               {index}
-              <h3 style={{ color: "black", textAlign: "left" }}>{text}</h3>
+              <Button block size='large'>
+                <h3 style={{ color: "black", textAlign: "left" }}>{text}</h3>
+              </Button>
             </Card>
-
           </div>
         </>
       );
     });
 
-    return (
-      cards
-    );
+    return cards;
   };
 
   const addCard = (index) => {
@@ -224,7 +222,7 @@ function Testform(props) {
       }
     });
     setForms([...forms, temp]);
-  }
+  };
 
   const add = () => {
     const temp = [];
@@ -423,6 +421,7 @@ function Testform(props) {
               open={isModalOpen}
               onOk={handleOk}
               onCancel={handleCancel}
+              width={2000}
             >
               {renderSyntaxCards()}
             </Modal>
