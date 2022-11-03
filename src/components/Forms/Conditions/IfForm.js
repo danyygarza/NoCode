@@ -12,6 +12,14 @@ const options = [
     { id: 3, name: "var3" },
     { id: 4, name: "var4" },
 ];
+const oparand = [
+    { id: 1, name: "less than", operand: "<" },
+    { id: 2, name: "greater than", operand: ">" },
+    { id: 3, name: "less than  or equal to", operand: "<=" },
+    { id: 4, name: "greater than or equal to ", operand: ">=" },
+    { id: 5, name: "equal to", operand: "==" },
+    { id: 6, name: "not equal to", operand: "!=" },
+];
 
 export default function IfElseForm(props) {
     const [open, setOpen] = useState(false);
@@ -31,12 +39,12 @@ export default function IfElseForm(props) {
         autoSubmitClose: false,
         autoResetForm: false,
         submit(data) {
-            let frida1 = ['if test'];
+            const tempData = Object.values(data);
+            console.log(tempData);
+            let frida1 = ['if ' + `${tempData[0].variable} ` + `${tempData[0].operator}` + ` ${tempData[0].input}`];
             console.log("fridaString1", Array.from(fridaString1.values()));
-            frida1 =  frida1.concat(Array.from(fridaString1.values()));
+            frida1 = frida1.concat(Array.from(fridaString1.values()));
             console.log(frida1)
-
-
 
         },
         form,
@@ -80,12 +88,12 @@ export default function IfElseForm(props) {
                                     >
                                         <Select placeholder="Selecciona una variable">
                                             {options.map((option) => (
-                                                <Option key={option.id}>{option.name}</Option>
+                                                <Option key={option.name}>{option.name}</Option>
                                             ))}
                                         </Select>
                                     </Form.Item>
                                     <Form.Item
-                                        name={["if", "operador"]}
+                                        name={["if", "operator"]}
                                         noStyle
                                         rules={[
                                             {
@@ -95,14 +103,13 @@ export default function IfElseForm(props) {
                                         ]}
                                     >
                                         <Select placeholder="Selecciona un operador">
-                                            {options.map((option) => (
-                                                <Option key={option.id}>{option.name}</Option>
+                                            {oparand.map((option) => (
+                                                <Option key={option.operand}>{option.name}</Option>
                                             ))}
                                         </Select>
                                     </Form.Item>
                                     <Form.Item
-                                        name={["if", "variable/input"]}
-                                        placeholder="variable/input"
+                                        name={["if", "input"]}
                                         style={{
                                             maxWidth: 300,
                                         }}
@@ -113,7 +120,11 @@ export default function IfElseForm(props) {
                                             },
                                         ]}
                                     >
-                                        <Input></Input>
+                                        <Input
+                                            type={"text"}
+                                            placeholder ={"<Temporary>"}
+                                            
+                                        />
                                     </Form.Item>
                                 </Input.Group>
                             </Form.Item>
