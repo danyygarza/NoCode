@@ -33,7 +33,7 @@ export default function Testform(props) {
   const description = Object.values(props.data.description).map((text) => {
     return (
       <>
-        <h4>{text}</h4>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
       </>
     );
   });
@@ -68,7 +68,7 @@ export default function Testform(props) {
   const syntax = Object.values(props.data.syntax).map((text) => {
     return (
       <>
-        <h4>{text}</h4>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
       </>
     );
   });
@@ -76,7 +76,7 @@ export default function Testform(props) {
   const examples = Object.values(props.data.examples).map((text) => {
     return (
       <>
-        <h4>{text}</h4>
+        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
       </>
     );
   });
@@ -176,7 +176,8 @@ export default function Testform(props) {
             <>
               {
                 <>
-                  <p label={item.title}></p>
+                  <p style={{color: 'black'}}>{item.title}</p>
+                  
                 </>
               }
             </>
