@@ -17,12 +17,35 @@ import { PlusOutlined, MinusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
 import { set } from "firebase/database";
+import { render } from "less";
 
 const buttonWidth = 70;
 const { Meta } = Card;
 
-export default function Testform(props) {
-  console.log("data", props.data);
+function Testform(props) {
+  const renderSyntaxCards = () => {
+    const cards = Object.values(props.data.syntax).map((text, index) => {
+      return (
+        <>
+          <Card
+            style={{
+              width: 300,
+            }}
+            
+          >
+            {index}
+            <h3 style={{ color: "black", textAlign: "left" }}>{text}</h3>
+          </Card>
+          
+        </>
+      );
+    });
+    
+    return (
+      cards
+    );
+  };
+
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
   const [key, setKey] = useState(0);
@@ -30,10 +53,20 @@ export default function Testform(props) {
   const [size] = useState(Object.values(props.data.forms)[key].length);
   const [item, setItem] = useState([]);
   const [codeArr, setCodeArr] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const description = Object.values(props.data.description).map((text) => {
     return (
       <>
-        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+        <p style={{ color: "black", textAlign: "left" }}>{text}</p>
       </>
     );
   });
@@ -68,7 +101,7 @@ export default function Testform(props) {
   const syntax = Object.values(props.data.syntax).map((text) => {
     return (
       <>
-        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+        <p style={{ color: "black", textAlign: "left" }}>{text}</p>
       </>
     );
   });
@@ -76,7 +109,7 @@ export default function Testform(props) {
   const examples = Object.values(props.data.examples).map((text) => {
     return (
       <>
-        <p style={{color: 'black', textAlign:'left'}}>{text}</p>
+        <p style={{ color: "black", textAlign: "left" }}>{text}</p>
       </>
     );
   });
@@ -176,8 +209,7 @@ export default function Testform(props) {
             <>
               {
                 <>
-                  <p style={{color: 'black'}}>{item.title}</p>
-                  
+                  <p style={{ color: "black" }}>{item.title}</p>
                 </>
               }
             </>
@@ -192,6 +224,9 @@ export default function Testform(props) {
     const tempForm = forms;
     tempForm.splice(index, 1);
     setForms([...tempForm]);
+  };
+  const textTest = () => {
+    return <h2>sjfdjj</h2>;
   };
 
   return (
@@ -309,6 +344,20 @@ export default function Testform(props) {
               />
             </Col>
           </Row>
+
+          <Row>
+            <Button type="primary" onClick={showModal}>
+              Open Modal
+            </Button>
+            <Modal
+              title="Basic Modal"
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              {renderSyntaxCards()}
+            </Modal>
+          </Row>
         </Form>
       </Modal>
     </>
@@ -339,3 +388,5 @@ export default function Testform(props) {
       >
       </Form.Item>} */
 }
+
+export default Testform;
