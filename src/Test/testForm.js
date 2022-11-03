@@ -23,28 +23,7 @@ const buttonWidth = 70;
 const { Meta } = Card;
 
 function Testform(props) {
-  const renderSyntaxCards = () => {
-    const cards = Object.values(props.data.syntax).map((text, index) => {
-      return (
-        <>
-          <Card
-            style={{
-              width: 300,
-            }}
-            
-          >
-            {index}
-            <h3 style={{ color: "black", textAlign: "left" }}>{text}</h3>
-          </Card>
-          
-        </>
-      );
-    });
-    
-    return (
-      cards
-    );
-  };
+
 
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
@@ -54,6 +33,7 @@ function Testform(props) {
   const [item, setItem] = useState([]);
   const [codeArr, setCodeArr] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -140,11 +120,11 @@ function Testform(props) {
           if (tempData[idx] !== undefined) {
             tempString.length === 0
               ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
-                  tempData[idx]
-                )} `)
+                tempData[idx]
+              )} `)
               : (tempString += `${Object.keys(tempData[idx])} ${Object.values(
-                  tempData[idx]
-                )} `);
+                tempData[idx]
+              )} `);
           }
           idx++;
         }
@@ -156,6 +136,95 @@ function Testform(props) {
     },
     form,
   });
+
+  const renderSyntaxCards = () => {
+    const cards = Object.values(props.data.syntax).map((text, index) => {
+      return (
+        <>
+              <div onClick={() =>addCard(index)}>
+            <Card
+              style={{
+                width: 300,
+              }}
+
+            >
+              {index}
+              <h3 style={{ color: "black", textAlign: "left" }}>{text}</h3>
+            </Card>
+
+          </div>
+        </>
+      );
+    });
+
+    return (
+      cards
+    );
+  };
+
+  const addCard = (index) => {
+    const temp = [];
+
+    Object.values(props.data.forms)[index].map((item, index) => {
+      console.log(item);
+      switch (item.type) {
+        case "text":
+          temp.push(
+            <>
+              {
+                <>
+                  <Col>
+                    <Form.Item
+                      name={[`${forms.length}${index}`, item.title]}
+                      label={item.title}
+                      rules={[
+                        { required: true, message: "Please fill this out" },
+                      ]}
+                      style={{ width: "auto" }}
+                    >
+                      <Input
+                        type={item.type}
+                        placeholder={item.placeHolder}
+                        onChange={props.onChange}
+                        name={index}
+                      />
+                    </Form.Item>
+                  </Col>
+                </>
+              }
+            </>
+          );
+          break;
+        case "filepicker":
+          temp.push(
+            <>
+              {
+                <>
+                  <Col>
+                    <Upload {...info}>
+                      <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    </Upload>
+                  </Col>
+                </>
+              }
+            </>
+          );
+          break;
+        case "word":
+          temp.push(
+            <>
+              {
+                <>
+                  <p style={{ color: "black" }}>{item.title}</p>
+                </>
+              }
+            </>
+          );
+          break;
+      }
+    });
+    setForms([...forms, temp]);
+  }
 
   const add = () => {
     const temp = [];
