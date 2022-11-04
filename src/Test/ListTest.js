@@ -4,6 +4,11 @@ import items from "../components/Forms/AllFunctions";
 import Testform from "./testForm";
 import data from "../components/Forms/syntax.json";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
+
+
+
+
+
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -40,7 +45,7 @@ function ListTest(props) {
 }
   console.log("filter", filteredData);
   return (
-    <ul>
+    <div style={{display: 'flex'}}>
       {filteredData.map((item) => (
         <>
           {" "}
@@ -59,7 +64,7 @@ function ListTest(props) {
           </Button>
         </>
       ))}
-    </ul>
+    </div>
   );
 }
 

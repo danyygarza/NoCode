@@ -1,13 +1,18 @@
 import { Button, Modal, Input, Form, List, Tabs } from "antd";
 import React, { forwardRef, useState } from "react";
 import "./Forms.css";
-
+ 
 //components
 import MostUsedFunctions from "./MostUsedFunctions";
 import AllFunctions from "./AllFunctions";
 import ListTest from "../../Test/ListTest";
+import Readers from "./Readers";
 import Conditions from "./Conditions";
 import Iterators from "./Iterators";
+
+
+
+
 const Forms = forwardRef((props, ref, items) => {
     //modal
     const [open, setOpen] = useState(false);
@@ -46,18 +51,7 @@ const Forms = forwardRef((props, ref, items) => {
                     className="search "
                     enterButton
                 />
-                <ListTest
-                    input={inputText}
-                    forms={props.forms}
-                    setForms={props.setForms}
-                    setNumberList={props.setNumberList}
-                    numberList={props.numberList}
-                    id={props.id}
-                    setId={props.setId}
-                    code={props.code}
-                    setCode={props.setCode}
-                    functions={props.functions}
-                />
+
                 <Tabs
                     defaultActiveKey="1"
                     onChange={onChange}
@@ -71,22 +65,38 @@ const Forms = forwardRef((props, ref, items) => {
                         {
                             label: "Readers",
                             key: "2",
-                            children: "Content of Tab 2",
+                            children: (
+                                <>
+                                    <span style={{ display: "inline-block", marginTop:17, marginLeft: '39%' }}>
+                                            <Readers 
+                                            forms={props.forms} 
+                                            setForms={props.setForms} 
+                                            variables={props.variables} 
+                                            setVariables={props.setVariables} 
+                                            code={props.code} 
+                                            setCode={props.setCode} 
+                                            id={props.id} 
+                                            setId={props.setId} 
+                                            />
+                                    </span>
+                                </>
+                            )
                         },
                         {
                             label: "Functions",
                             key: "3",
                             children: (
                                 <>
+                                <p style={{color: 'black', marginBottom: -4}}>Most Used Functions</p>
                                     <span
                                         style={{
                                             display: "inline-block",
-                                            paddingTop: 15,
                                             marginLeft: "6%",
                                         }}
                                     >
                                         <div className="most-used-functions">
-                                            <MostUsedFunctions
+                                            <ListTest
+                                                input={inputText}
                                                 forms={props.forms}
                                                 setForms={props.setForms}
                                                 setNumberList={props.setNumberList}
@@ -95,27 +105,40 @@ const Forms = forwardRef((props, ref, items) => {
                                                 setId={props.setId}
                                                 code={props.code}
                                                 setCode={props.setCode}
+                                                functions={props.functions}
+                                                className='most-used-functions'
+                                                
                                             />
                                         </div>
                                     </span>
+                                    <p style={{color: 'black', marginTop: 10, marginBottom: -3}}>All Functions</p>
                                     <span style={{ display: "inline-block", marginLeft: 50 }}>
                                         <div className="most-used-functions">
-                                            <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
-                                            <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId}/>
+                                            <AllFunctions />
                                         </div>
                                     </span>
                                 </>
                             ),
                         },
                         {
-                            label: "Condition",
+                            label: "Conditions",
                             key: "4",
-                            children: "Content of Tab 4",
+                            children: (
+                                <>
+                                    <span style={{ display: "inline-block", marginTop:17, marginLeft: '39%' }}>
+                                        
+                                            <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+                                            <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+                                            
+                                        
+                                    </span>
+                                </>
+                            ),
                         },
                         {
                             label: "Scripts",
                             key: "5",
-                            children: "Content of Tab 5",
+                            children: "Content of scripts",
                         },
                     ]}
                 />
