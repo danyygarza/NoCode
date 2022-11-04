@@ -14,12 +14,6 @@ import './MostUsedFunctions.css'
 //! Forms
 import ForEach from './Iterators/forEeach'
 
-//import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
-//import Testform from '../../Test/testForm'
-
-const db = getFirestore();
-//const dbData = [];
-
 function Iterators(props) {
     console.log('submit in muf is ', props.submit)
     const [formArray, /*setFormArray*/] = useState([

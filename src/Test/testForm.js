@@ -92,7 +92,7 @@ export default function Testform(props) {
     defaultVisible: false,
     autoSubmitClose: false,
     autoResetForm: false,
-    submit(data) {
+    submit(data) { //! submit data to parent 
       console.log(forms);
       let tempString = "";
       let tempCodeArr = [];
