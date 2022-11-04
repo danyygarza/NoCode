@@ -1,13 +1,15 @@
 import { Button, Form } from "antd";
 import React, { useState } from "react";
-import Testform from "../../Test/testForm";
+import Testform from "../../../Test/testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 
-import "./MostUsedFunctions.css";
+import "../MostUsedFunctions.css";
+
 //! Forms
 //import ExcelWrite from './Excel/Write/ExcelWrite'
-import Upload from "./Excel/Upload/Upload";
-import RemoveDuplicate from "./Excel/RemoveDuplicate/RemoveDuplicate";
+import Upload from "../Excel/Upload/Upload";
+import RemoveDuplicate from "../Excel/RemoveDuplicate/RemoveDuplicate";
+import ExcelWrite from "../Excel/Write/ExcelWrite";
 
 //import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 //import Testform from '../../Test/testForm'
@@ -17,9 +19,9 @@ const db = getFirestore();
 function MostUsedFunctions(props) {
     console.log("submit in muf is ", props.submit);
     const [formArray, setFormArray] = useState([
-        { id: 1, text: "Excel", form: <Upload /> },
-        { id: 2, text: "Mix", collection: "Excel", function: "Write" },
-        { id: 3, text: "File", form: <RemoveDuplicate /> },
+        { id: 1, text: "Excel", src: '../../../img/excelIcon.ico', collection: "Excel", function: "Write" },
+        { id: 2, text: "Mix", src: '../../../img/mixIcon.png', collection: "Excel", function: "Write" },
+        { id: 3, text: "File",src: '../../../img/fileIcon.png', collection: "Excel", function: "Write" },
        
     ]);
 
@@ -47,7 +49,7 @@ function MostUsedFunctions(props) {
         formArray.map((data) => {
             return (
                 <>
-                    
+                    {" "}
                     <Button
                         style={{ height: 120, borderRadius: 40, borderColor: "white" }}
                         onClick={(event) => {
@@ -55,7 +57,7 @@ function MostUsedFunctions(props) {
                         }}
                     >
                         <div className="imgp">
-                            <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                            <img src={data.src} alt="logo" style={{ width: 70 }} />
                             <p style={{ color: "black", marginLeft: 0 }}>
                                 <b>{data.text}</b>
                             </p>

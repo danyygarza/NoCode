@@ -44,7 +44,7 @@ export default function ForEach(props) {
             <Card
                 hoverable
                 style={{ width: 800 }}
-                cover={<img alt="excel icon" src="../../../../excelIcon.ico" />}
+                cover={<img alt="excel icon" src="../../../../img/foreach.png" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >

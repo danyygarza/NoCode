@@ -1,12 +1,12 @@
 import { Button, Modal, Input, Form, List, Tabs } from "antd";
 import React, { forwardRef, useState } from "react";
 import "./Forms.css";
- 
+
 //components
 import MostUsedFunctions from "./MostUsedFunctions";
 import AllFunctions from "./AllFunctions";
 import ListTest from "../../Test/ListTest";
-import Readers from "./Readers";
+import Readers from "./Readers/Readers";
 import Conditions from "./Conditions";
 import Iterators from "./Iterators";
 
@@ -67,17 +67,17 @@ const Forms = forwardRef((props, ref, items) => {
                             key: "2",
                             children: (
                                 <>
-                                    <span style={{ display: "inline-block", marginTop:17, marginLeft: '39%' }}>
-                                            <Readers 
-                                            forms={props.forms} 
-                                            setForms={props.setForms} 
-                                            variables={props.variables} 
-                                            setVariables={props.setVariables} 
-                                            code={props.code} 
-                                            setCode={props.setCode} 
-                                            id={props.id} 
-                                            setId={props.setId} 
-                                            />
+                                    <span style={{ display: "inline-block", marginTop: 17, marginLeft: '32%' }}>
+                                        <Readers
+                                            forms={props.forms}
+                                            setForms={props.setForms}
+                                            variables={props.variables}
+                                            setVariables={props.setVariables}
+                                            code={props.code}
+                                            setCode={props.setCode}
+                                            id={props.id}
+                                            setId={props.setId}
+                                        />
                                     </span>
                                 </>
                             )
@@ -87,7 +87,7 @@ const Forms = forwardRef((props, ref, items) => {
                             key: "3",
                             children: (
                                 <>
-                                <p style={{color: 'black', marginBottom: -4}}>Most Used Functions</p>
+                                    <p style={{ color: 'black', marginBottom: -4 }}>Most Used Functions</p>
                                     <span
                                         style={{
                                             display: "inline-block",
@@ -107,11 +107,11 @@ const Forms = forwardRef((props, ref, items) => {
                                                 setCode={props.setCode}
                                                 functions={props.functions}
                                                 className='most-used-functions'
-                                                
+
                                             />
                                         </div>
                                     </span>
-                                    <p style={{color: 'black', marginTop: 10, marginBottom: -3}}>All Functions</p>
+                                    <p style={{ color: 'black', marginTop: 10, marginBottom: -3 }}>All Functions</p>
                                     <span style={{ display: "inline-block", marginLeft: 50 }}>
                                         <div className="most-used-functions">
                                             <AllFunctions />
@@ -125,12 +125,12 @@ const Forms = forwardRef((props, ref, items) => {
                             key: "4",
                             children: (
                                 <>
-                                    <span style={{ display: "inline-block", marginTop:17, marginLeft: '39%' }}>
-                                        
-                                            <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
-                                            <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
-                                            
-                                        
+                                    <span style={{ display: "inline-block", marginTop: 17, marginLeft: '39%' }}>
+
+                                        <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+                                        <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+
+
                                     </span>
                                 </>
                             ),

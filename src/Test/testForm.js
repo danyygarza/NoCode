@@ -199,7 +199,7 @@ export default function Testform(props) {
       <Card
         hoverable
         style={{ width: 800 }}
-        cover={<img alt="excel icon" src="../../../../excelIcon.ico" />}
+        cover={<img alt="excel icon" src={props.data.src} />}
         onClick={() => setOpen(true)}
         maskClosable={true}
       >
