@@ -30,10 +30,11 @@ export default function ForEach(props) {
         autoSubmitClose: false,
         autoResetForm: false,
         submit(data) {
-            let frida1 = ['if test'];
+            const tempData = Object.values(data);
+            let frida1 = ['foreach ' + tempData.variable + " in range"];
             console.log("fridaString1", Array.from(fridaString1.values()));
-            frida1 = frida1.concat(Array.from(fridaString1.values()));
-            console.log(frida1)
+            frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
+            props.setCode(props.code.set(props.id, frida1.concat("end")))
         },
         form,
     });
@@ -62,31 +63,31 @@ export default function ForEach(props) {
                 <>
                     <Form layout="flex" {...formProps}  >
                         <Row>
-                            <Form.Item
-                                name={["element", "variable"]}
-                                noStyle
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: "este campo es requerido",
-                                    },
-                                ]}
-                            >
-                                <Col>
-                                    <h3>foreach</h3>
-                                </Col>
-
-                                <Col offset={1}>
+                            <Col>
+                                <h3>foreach</h3>
+                            </Col>
+                            <Col offset={1}>
+                                <Form.Item
+                                    name={["if", "variable"]}
+                                    noStyle
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: "este campo es requerido",
+                                        },
+                                    ]}
+                                >
                                     <Select placeholder="Selecciona una variable">
                                         {options.map((option) => (
-                                            <Option key={option.id}>{option.name}</Option>
+                                            <Option key={option.name}>{option.name}</Option>
                                         ))}
                                     </Select>
-                                </Col>
-                                <Col offset={1}>
-                                    <h3>in  range</h3>
-                                </Col>
-                            </Form.Item>
+                                </Form.Item>
+                            </Col>
+
+                            <Col offset={1}>
+                                <h3>in  range</h3>
+                            </Col>
                         </Row>
                         <Row>
                             <Col span={32}>
