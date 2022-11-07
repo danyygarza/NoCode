@@ -145,8 +145,8 @@ function Testform(props) {
         console.log("inside the render cards");
         const cardArr = [];
         let temp = [];
-        for (let i = 1; i <= Object.values(props.data.test).length; i++) {
-            console.log(Object.values(props.data.test)[i - 1]);
+        for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
+            console.log(Object.values(props.data.templates)[i - 1]);
             temp.push(
                 <Col>
                     <div onClick={() => { addCard(Object.values(props.data.test)[i - 1].syntax) }}>
@@ -156,7 +156,7 @@ function Testform(props) {
                             }}
                         >
                             {i}
-                            <h3 style={{ color: "black", textAlign: "left" }}>{Object.values(props.data.test)[i - 1].example}</h3>
+                            <h3 style={{ color: "black", textAlign: "left" }}>{Object.values(props.data.templates)[i - 1].example}</h3>
                         </Card>
                     </div>
                 </Col>
@@ -327,7 +327,7 @@ function Testform(props) {
             <Card
                 hoverable
                 style={{ width: 800 }}
-                cover={<img alt="excel icon" src="../../../../excelIcon.ico" />}
+                cover={<img alt="excel icon" src={props.data.src} />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
