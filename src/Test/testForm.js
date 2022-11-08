@@ -395,8 +395,8 @@ function Testform(props) {
               return (
                 <>
                   <Row>{item}</Row>
-                  <Row  justify="center" className="a-row" style={{backgroundColor: "white" }}>
-                    <Col  sm={{ span: 2, offset: 0 }} lg={{ span: 2, offset: 20 }} xl={{ span: 2, offset: 18 }}>
+                  <Row  justify="center" className="a-row" >
+                  <Col  sm={{ span: 2, offset: 0 }} lg={{ span: 2, offset: 20 }} xl={{ span: 2, offset: 18 }}>
                       <Button
                         className="add-button"
                         type="primary"
