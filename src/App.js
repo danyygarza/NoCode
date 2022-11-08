@@ -22,7 +22,7 @@ import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
 //import ParentSubmit from './components/Forms/Test/ParentSubmit';
 import CarouselTest from './components/Forms/Test/CarouselTest';
-
+import ReadersTest from './Test/readersTest';
 
 
 /* 
@@ -101,6 +101,12 @@ export default function App() {
         <Route path='/subir-archivo' element={
 
           <SubirArchivo />
+
+        } />
+
+        <Route path='/readers-test' element={
+
+          <ReadersTest />
 
         } />
 

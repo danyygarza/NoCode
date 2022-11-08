@@ -1,7 +1,7 @@
-import { Button, Form } from "antd";
+import { Button, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
 import Testform from "../../../Test/testForm";
-import { getFirestore, doc, getDoc } from "@firebase/firestore";
+import { getFirestore, doc, getDoc, collection } from "@firebase/firestore";
 
 import "../MostUsedFunctions.css";
 
@@ -14,34 +14,43 @@ import ExcelWrite from "../Excel/Write/ExcelWrite";
 //import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
 //import Testform from '../../Test/testForm'
 
-const db = getFirestore();
 
-function MostUsedFunctions(props) {
+
+export default function Readers(props) {
     console.log("submit in muf is ", props.submit);
     const [formArray, setFormArray] = useState([
         { id: 1, text: "Excel", src: '../../../img/excelIcon.ico', collection: "Excel", function: "Write" },
-        { id: 2, text: "Mix", src: '../../../img/mixIcon.png', collection: "Excel", function: "Write" },
-        { id: 3, text: "File",src: '../../../img/fileIcon.png', collection: "Excel", function: "Write" },
-       
+        { id: 2, text: "Mix", src: '../../../img/mixIcon.png', collection: "Mix", function: "Write" },
+        { id: 3, text: "File", src: '../../../img/fileIcon.png', collection: "File", function: "Write" },
+
     ]);
 
-    //const [form] = Form.useForm();
+    const [open, setOpen] = useState(false);
+    const onChange = (key) => {
+        console.log(key);
+    };
 
-    const add = async (data) => {
+    const { Search } = Input;
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (e) => {
+        var lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+    };
+
+    const db = getFirestore();
+    const readers = async (data) => {
         const colRef = doc(db, data.collection, data.function);
         const docSnap = await getDoc(colRef);
-        if (docSnap.exists()) {
-            console.log(docSnap.data())
-            props.setForms([...props.forms,
-            { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
-            ])
-            props.setId(props.id + 1);
-            // props.setNumberList([...props.numberList, props.id]);
-        }
-        else {
+        if(docSnap.exists()){
+            console.log(docSnap.data(collection))
+            
+        }else {
             console.log("no such document!")
         }
     }
+
+
+    //const [form] = Form.useForm();
 
     return formArray.lenght === 0 ? (
         <h1>empty</h1>
@@ -52,9 +61,7 @@ function MostUsedFunctions(props) {
                     {" "}
                     <Button
                         style={{ height: 120, borderRadius: 40, borderColor: "white" }}
-                        onClick={(event) => {
-                            add(data);
-                        }}
+                        onClick={() => setOpen(true)}
                     >
                         <div className="imgp">
                             <img src={data.src} alt="logo" style={{ width: 70 }} />
@@ -63,10 +70,38 @@ function MostUsedFunctions(props) {
                             </p>
                         </div>
                     </Button>
+                    <Modal
+                        title="Excel"
+                        centered
+                        open={open}
+                        onOk={() => setOpen(false)}
+                        onCancel={() => setOpen(false)}
+                        onClick={console.log(readers(data))}
+                        width={900}
+                    >
+                        {readers.map((item) => (
+                            <>
+                            {" "}
+                            <Button
+                              style={{ height: 120, borderRadius: 40, borderColor: "white" }}
+                              onClick={(event) => {
+                                readers(item);
+                              }}
+                            >
+                              <div className="imgp">
+                                <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                                <p style={{ color: "black", marginLeft: 0 }}>
+                                  <b>{item.function}</b>
+                                </p>
+                              </div>
+                            </Button>
+                          </>
+                        ))}
+                    </Modal>
                 </>
             );
         })
     );
 }
 
-export default MostUsedFunctions;
+
