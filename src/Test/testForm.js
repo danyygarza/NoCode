@@ -187,7 +187,7 @@ function Testform(props) {
             <>
               {
                 <>
-                  <Col>
+                  <Col xs={2} sm={4} md={6} lg={8} xl={10}>
                     <Form.Item
                       name={[`${forms.length}${index}`, item.title]}
                       label={item.title}
@@ -249,7 +249,7 @@ function Testform(props) {
             <>
               {
                 <>
-                  <Col>
+                  <Col  sm={4} md={6} lg={8} xl={10}>
                     <Form.Item
                       name={[`${forms.length}${index}`, item.title]}
                       label={item.title}
@@ -396,7 +396,7 @@ function Testform(props) {
                 <>
                   <Row>{item}</Row>
                   <Row >
-                    <Col offset={22} span={2}>
+                    <Col sm={10} md={8} lg={16} xl={22}>
                       <Button
                         className="add-button"
                         type="primary"
