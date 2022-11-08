@@ -395,14 +395,15 @@ function Testform(props) {
               return (
                 <>
                   <Row>{item}</Row>
-                  <Row >
-                    <Col sm={10} md={8} lg={16} xl={22}>
+                  <Row  justify="center" className="a-row" style={{backgroundColor: "white" }}>
+                    <Col  sm={{ span: 2, offset: 0 }} lg={{ span: 2, offset: 20 }} xl={{ span: 2, offset: 18 }}>
                       <Button
                         className="add-button"
                         type="primary"
                         shape="circle"
                         icon={<MinusOutlined />}
                         size={"large"}
+                        
                         onClick={() => {
                           removeForm(index);
                         }}
@@ -422,6 +423,7 @@ function Testform(props) {
                 icon={<PlusOutlined />}
                 size={"large"}
                 onClick={() => add()}
+                
               />
             </Col>
           </Row>
