@@ -121,7 +121,36 @@ function Testform(props) {
             let tempData = Object.values(data);
             let idx = 0;
             console.log(tempData);
-            console.log("item Type Arr",itemType)
+            console.log("item arr", itemType);
+            itemType.forEach((element) => {
+                switch (element.key) {
+                    case "set":
+                        const tempSet = Object.values(tempData.shift()); 
+                        tempCodeArr.push(tempSet[0]);
+                        tempVar.get(element.key) === undefined ? setTempVar(tempVar.set(element.key, tempSet[0])) : setTempVar(tempVar.set(tempVar.get(element.key).concat(tempSet[0])));
+                        break;
+                    case "text":
+                        tempCodeArr.push(tempData.shift());
+                        break;
+                    case "filepicker":
+                        tempCodeArr.push(Object.values(tempData.shift())[0].file.name);
+                        break;
+                    default:
+                        tempCodeArr.push(element.val)
+                        break;
+                }
+
+            })
+
+            console.log(tempCodeArr)
+            console.log(tempVar);
+            for (const item of tempVar) {
+                console.log(item);
+            }
+            setTempVar(tempVar.clear());
+
+
+            // !  Switch evaluate the key  
             // tempData.forEach((item) => {
             //     console.log("item", item);
             //     // // const  [key, value] = console.log(Object.entries(item));
@@ -203,8 +232,10 @@ function Testform(props) {
     //! add new line with example blocks function 
     const addCard = (index) => {
         const temp = [];
+        const itemTypeArr = itemType;
         Object.values(props.data.forms)[index].map((item, index) => {
-            setItemType([...itemType, {key:item.type, val: item.title} ]);
+            itemTypeArr.push({ key: item.type, val: item.title })
+            // setItemType([...itemType, { key: item.type, val: item.title }]);
             console.log(item);
             switch (item.type) {
                 case "text":
@@ -239,19 +270,15 @@ function Testform(props) {
                             {
                                 <>
                                     <Col>
-                                        {item.title}
-                                    </Col>
-                                    <Col>
                                         <Form.Item
                                             name={[`${forms.length}${index}`, item.title]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
-                                            title={item.title}
                                         >
                                             <Upload {...info}>
-                                                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                                                <Button icon={<UploadOutlined />}>upload file</Button>
                                             </Upload>
                                         </Form.Item>
 
@@ -262,7 +289,6 @@ function Testform(props) {
                     );
                     break;
                 case "word":
-
                     temp.push(
                         <>
                             {
@@ -276,13 +302,8 @@ function Testform(props) {
                                             style={{ width: "auto" }}
                                             title={item.title}
                                         >
-                                            {/* <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
-                                                onChange={props.onChange}
-                                                name={index}
-                                                defaultValue={item.placeHolder}
-                                            /> */}
+                                            {item.title}
+
                                         </Form.Item>
                                     </Col>
                                 </>
@@ -320,14 +341,36 @@ function Testform(props) {
                 case "get":
                     break;
                 case "set":
-                    // setTempVar(tempVar.set(item.title, []));
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <Form.Item
+                                            name={[`${forms.length}${index}`, item.title]}
+                                            rules={[
+                                                { required: true, message: "Please fill this out" },
+                                            ]}
+                                            style={{ width: "auto" }}
+                                        >
+                                            <Input
+                                                type={item.type}
+                                                placeholder={item.placeHolder}
+                                                onChange={props.onChange}
+                                                name={index}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    );
                     break;
                 default:
                     console.log(item.title);
             }
         });
-        console.log(temp);
-        console.log(itemType)
+        setItemType(itemTypeArr);
         setForms([...forms, temp]);
     }
 
@@ -396,8 +439,14 @@ function Testform(props) {
 
     const removeForm = (index) => {
         const tempForm = forms;
+        const tempArr = itemType;
         tempForm.splice(index, 1);
+        console.log(tempArr);
+        console.log(Object.values(props.data.forms)[key]);
+        tempArr.splice(index, Object.values(props.data.forms)[key].length);
+        console.log(tempArr);
         setForms([...tempForm]);
+        setItemType([...tempArr]);
     };
 
     return (
