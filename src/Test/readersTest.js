@@ -20,7 +20,6 @@ async function readersTest(props) {
             props.setForms([...props.forms,
             { id: props.id }
             ])
-            props.setId(props.id + 1);
             // props.setNumberList([...props.numberList, props.id]);
         }
         else {

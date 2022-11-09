@@ -1,20 +1,18 @@
-import { Button, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
-import Testform from "../../../Test/testForm";
-import { getFirestore, doc, getDoc, collection } from "@firebase/firestore";
+import { Button, Form, Input, Modal } from "antd";
+import { getFirestore, doc, getDoc } from "@firebase/firestore";
 
-import "../MostUsedFunctions.css";
-
-//! Forms
-//import ExcelWrite from './Excel/Write/ExcelWrite'
-import Upload from "../Excel/Upload/Upload";
-import RemoveDuplicate from "../Excel/RemoveDuplicate/RemoveDuplicate";
-import ExcelWrite from "../Excel/Write/ExcelWrite";
-
-//import { ExcelWriteModel } from './Excel/Write/ExcelWriteModel'
-//import Testform from '../../Test/testForm'
-
-
+function searchFunction(input, nameSearch) {
+    try {
+        let text = input.toUpperCase();
+        const name = nameSearch.toUpperCase();
+        console.log("try", name.search(text) > -1);
+        return name.search(text) > -1;
+    } catch (e) {
+        console.log("try", e.message);
+        return false;
+    }
+}
 
 export default function Readers(props) {
     console.log("submit in muf is ", props.submit);
@@ -37,17 +35,25 @@ export default function Readers(props) {
         setInputText(lowerCase);
     };
 
+
+    const filteredData = props.functions.filter((el) =>
+        searchFunction(props.input, el.function)
+    );
     const db = getFirestore();
+
     const readers = async (data) => {
         const colRef = doc(db, data.collection, data.function);
         const docSnap = await getDoc(colRef);
-        if(docSnap.exists()){
-            console.log(docSnap.data(collection))
-            
-        }else {
+        if (docSnap.exists()) {
+            console.log(docSnap.data())
+
+            // props.setNumberList([...props.numberList, props.id]);
+        }
+        else {
             console.log("no such document!")
         }
     }
+    console.log("filter", filteredData);
 
 
     //const [form] = Form.useForm();
@@ -76,27 +82,21 @@ export default function Readers(props) {
                         open={open}
                         onOk={() => setOpen(false)}
                         onCancel={() => setOpen(false)}
-                        onClick={console.log(readers(data))}
+                        /*onClick={console.log(readers(data))}*/
                         width={900}
                     >
-                        {readers.map((item) => (
-                            <>
-                            {" "}
-                            <Button
-                              style={{ height: 120, borderRadius: 40, borderColor: "white" }}
-                              onClick={(event) => {
-                                readers(item);
-                              }}
-                            >
-                              <div className="imgp">
+                        {" "}
+                        <Button
+                            style={{ height: 120, borderRadius: 40, borderColor: "white" }}
+                            onClick={console.log(readers(data.collection))}
+                        >
+                            <div className="imgp">
                                 <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
                                 <p style={{ color: "black", marginLeft: 0 }}>
-                                  <b>{item.function}</b>
+                                    <b>{data.text}</b>
                                 </p>
-                              </div>
-                            </Button>
-                          </>
-                        ))}
+                            </div>
+                        </Button>
                     </Modal>
                 </>
             );
