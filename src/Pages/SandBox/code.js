@@ -7,13 +7,12 @@ import Testform from '../../Test/testForm';
 
 //TODO: create an alert and show in which from is not completed 
 function Code() {
-    const [variables, setVariables] = useState([])
+    const [variables, setVariables] = useState(new Map()) //! Map with all the variables
     const [code, setCode] = useState(new Map()); //!! Final code 
     const [id, setId] = useState(0);
 
     //! this to call functions from Frida (child component) // 
 
-    // const ref = useRef(null)
     const handleClick = () => {
         for (const item of code) {
             console.log(item);

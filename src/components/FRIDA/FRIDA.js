@@ -10,7 +10,6 @@ const testing = async (test) => {
     return temp;
 };
 
-
 function Frida(props) {
     const [forms, setForms] = useState([]); // forms array
     const [elRefs, setElRefs] = React.useState([]); // reference array
