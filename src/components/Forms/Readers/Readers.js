@@ -17,7 +17,7 @@ function searchFunction(input, nameSearch) {
 export default function Readers(props) {
     console.log("submit in muf is ", props.submit);
     const [formArray, setFormArray] = useState([
-        { id: 1, text: "Excel", src: '../../../img/excelIcon.ico', collection: "Excel", function: "Write" },
+        { id: 1, text: "Excel", src: '../../../img/excelIcon.ico', collection: "Excel", function: "Remove Duplicate" },
         { id: 2, text: "Mix", src: '../../../img/mixIcon.png', collection: "Mix", function: "Write" },
         { id: 3, text: "File", src: '../../../img/fileIcon.png', collection: "File", function: "Write" },
 
@@ -36,9 +36,6 @@ export default function Readers(props) {
     };
 
 
-    const filteredData = props.functions.filter((el) =>
-        searchFunction(props.input, el.function)
-    );
     const db = getFirestore();
 
     const readers = async (data) => {
@@ -53,7 +50,7 @@ export default function Readers(props) {
             console.log("no such document!")
         }
     }
-    console.log("filter", filteredData);
+
 
 
     //const [form] = Form.useForm();
@@ -85,13 +82,12 @@ export default function Readers(props) {
                         /*onClick={console.log(readers(data))}*/
                         width={900}
                     >
-                        {" "}
                         <Button
                             style={{ height: 120, borderRadius: 40, borderColor: "white" }}
-                            onClick={console.log(readers(data.collection))}
+                            onClick={console.log(data.collection)}
                         >
                             <div className="imgp">
-                                <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+                                <img src={data.src} alt="logo" style={{ width: 70 }} />
                                 <p style={{ color: "black", marginLeft: 0 }}>
                                     <b>{data.text}</b>
                                 </p>
