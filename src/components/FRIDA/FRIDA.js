@@ -48,6 +48,7 @@ function Frida(props) {
                                 }}
                                 align="baseline"
                             >
+                                {index}
                                 {form.form}
                                 <Button
                                     onClick={() => {
