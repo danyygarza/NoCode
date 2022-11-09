@@ -9,7 +9,6 @@ export default function Tutorial() {
     const [current, setCurrent] = useState(2);
 
     const onChange = (value) => {
-        console.log('onChange:', current);
         setCurrent(value);
     };
 

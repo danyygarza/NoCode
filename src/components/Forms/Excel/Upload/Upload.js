@@ -12,11 +12,9 @@ const buttonWidth = 70;
 
 function Upload() {
     const onFinish = (values) => {
-        console.log("Success:", values);
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
     };
 
     const description = (

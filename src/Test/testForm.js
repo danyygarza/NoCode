@@ -58,7 +58,6 @@ function Testform(props) {
     },
     onChange(info) {
       if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
       }
       if (info.file.status === "done") {
         message.success(`${info.file.name} file uploaded successfully`);
@@ -105,17 +104,13 @@ function Testform(props) {
     autoSubmitClose: false,
     autoResetForm: false,
     submit(data) {
-      console.log(forms);
       let tempString = "";
       let tempCodeArr = [];
       let tempData = Object.values(data);
       let idx = 0;
 
-      console.log(tempData);
       forms.reverse().forEach((obj) => {
-        console.log("obj", obj);
         for (let i = 0; i < obj.length; i++) {
-          console.log(tempData[idx]);
           if (tempData[idx] !== undefined) {
             tempString.length === 0
               ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
@@ -130,7 +125,6 @@ function Testform(props) {
         tempCodeArr.push(tempString);
         tempString = "";
       });
-      console.log(props.code);
       props.setCode(props.code.set(props.id, tempCodeArr.reverse()));
     },
     form,
@@ -138,11 +132,9 @@ function Testform(props) {
 
   //! these are the examples are being rendered
   const renderSyntaxCards = () => {
-    console.log("inside the render cards");
     const cardArr = [];
     let temp = [];
     for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
-      console.log(Object.values(props.data.templates)[i - 1]);
       temp.push(
         <Col>
           <div
@@ -169,7 +161,6 @@ function Testform(props) {
       }
     }
     cardArr.push(<Row gutter={[12, 24]}>{temp}</Row>);
-    console.log(cardArr);
     return cardArr.map((item) => {
       return <>{item}</>;
     });
@@ -180,7 +171,6 @@ function Testform(props) {
     const temp = [];
 
     Object.values(props.data.forms)[index].map((item, index) => {
-      console.log(item);
       switch (item.type) {
         case "text":
           temp.push(
@@ -242,7 +232,6 @@ function Testform(props) {
   const add = () => {
     const temp = [];
     Object.values(props.data.forms)[key].map((item, index) => {
-      console.log(item);
       switch (item.type) {
         case "text":
           temp.push(

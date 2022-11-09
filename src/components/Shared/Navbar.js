@@ -12,14 +12,12 @@ import { Link } from "react-router-dom";
 //import { useThemeSwitcher } from "react-css-theme-switcher";
 
 const onChange = (checked) => {
-  console.log(`switch to ${checked}`);
 };
 
 export default function Navbar() {
   const { user, logout, loading } = useAuth();
   const { Sider } = Layout;
 
-  console.log(user);
 
   /*
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -34,7 +32,6 @@ export default function Navbar() {
     try {
       await logout();
     } catch (error) {
-      console.log(error);
     }
   };
 

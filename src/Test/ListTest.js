@@ -13,10 +13,8 @@ function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
     const name = nameSearch.toUpperCase();
-    console.log("try", name.search(text) > -1);
     return name.search(text) > -1;
   } catch (e) {
-    console.log("try", e.message);
     return false;
   }
 }
@@ -32,7 +30,6 @@ function ListTest(props) {
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
-        console.log(docSnap.data())
         props.setForms([...props.forms,
         { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
         ])
@@ -40,10 +37,8 @@ function ListTest(props) {
         // props.setNumberList([...props.numberList, props.id]);
     }
     else {
-        console.log("no such document!")
     }
 }
-  console.log("filter", filteredData);
   return (
     <div style={{display: 'flex'}}>
       {filteredData.map((item) => (

@@ -12,7 +12,6 @@ export default function SubirArchivo() {
         action: '',
         onChange({ file, fileList }) {
             if (file.status !== 'uploading') {
-                console.log(file, fileList)
             }
         }
     }
@@ -28,7 +27,7 @@ export default function SubirArchivo() {
                 }}
             >
                 <Upload {...props} action={"http://localhost:3000"} accept='.xlsx' beforeUpload={(file) =>{
-                    console.log({file})
+
                     return false
                 }}>
                     <Button icon={<UploadOutlined />}>Upload</Button>

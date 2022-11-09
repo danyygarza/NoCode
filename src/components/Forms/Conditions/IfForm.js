@@ -42,7 +42,6 @@ export default function IfElseForm(props) {
         submit(data) {
 
             const tempData = Object.values(data);
-            console.log(tempData);
             let frida1 = ['if ' + `${tempData[0].variable} ` + `${tempData[0].operator}` + ` ${tempData[0].input}`];
             frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
             Array.from(fridaString2.values()).length === 0 ? props.setCode(props.code.set(props.id, frida1.concat("end"))) : props.setCode(props.code.set(props.id, frida1.concat(["else"], [].concat.apply([], Array.from(fridaString2.values()).concat("end")))))

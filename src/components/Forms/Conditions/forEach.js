@@ -42,12 +42,8 @@ export default function forEachForm(props) {
         submit(data) {
 
             const tempData = Object.values(data);
-            console.log(tempData);
             let frida1 = ['if ' + `${tempData[0].variable} ` + `${tempData[0].operator}` + ` ${tempData[0].input}`];
             frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
-
-            console.log("FridaString 2 length ", Array.from(fridaString2.values()).length);
-
             Array.from(fridaString2.values()).length === 0 ? props.setCode(props.code.set(props.id, frida1)) : props.setCode(props.code.set(props.id, frida1.concat(["else"], [].concat.apply([], Array.from(fridaString2.values())))))
         },
         form,

@@ -17,7 +17,6 @@ import ExcelWrite from "../Excel/Write/ExcelWrite";
 const db = getFirestore();
 
 function MostUsedFunctions(props) {
-    console.log("submit in muf is ", props.submit);
     const [formArray, setFormArray] = useState([
         { id: 1, text: "Excel", src: '../../../img/excelIcon.ico', collection: "Excel", function: "Write" },
         { id: 2, text: "Mix", src: '../../../img/mixIcon.png', collection: "Excel", function: "Write" },
@@ -31,7 +30,6 @@ function MostUsedFunctions(props) {
         const colRef = doc(db, data.collection, data.function);
         const docSnap = await getDoc(colRef);
         if (docSnap.exists()) {
-            console.log(docSnap.data())
             props.setForms([...props.forms,
             { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
             ])
@@ -39,7 +37,6 @@ function MostUsedFunctions(props) {
             // props.setNumberList([...props.numberList, props.id]);
         }
         else {
-            console.log("no such document!")
         }
     }
 

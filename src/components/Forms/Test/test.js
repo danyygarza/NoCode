@@ -2,7 +2,6 @@ import { Form, Input,  Col, Row } from 'antd'
 import React from 'react';
 
 const change = (event) => {
-    console.log(event.target.value);
 }
 
 function Test() {

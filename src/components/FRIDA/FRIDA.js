@@ -4,9 +4,7 @@ import Forms from "../../components/Forms/Forms";
 import { getFirestore, doc, getDoc, onSnapshot, collection } from "@firebase/firestore";
 const db = getFirestore();
 const testing = async (test) => {
-    console.log("in testing function");
     const temp = await test;
-    console.log("temp", temp);
     return temp;
 };
 
@@ -17,13 +15,8 @@ function Frida(props) {
     const [functions, setFunctions] = useState([])
 
     const remove = (index) => {
-        console.log("forms before remove", forms);
         const temp = [...forms];
         const tempCode = props.code;
-        console.log("temp code", tempCode)
-        console.log("index",index)
-        console.log("forms", forms)
-        console.log("form obj", forms[index].id)
         if (tempCode.get(forms[index].id) !== undefined) {
             tempCode.delete(forms[index].id);
         }
@@ -58,9 +51,7 @@ function Frida(props) {
                                 {form.form}
                                 <Button
                                     onClick={() => {
-                                        console.log("index from click: ", index, form);
                                         remove(index);
-                                        console.log(index);
                                         const temp = [...elRefs];
                                         temp.splice(index, 1);
                                         setElRefs(temp);

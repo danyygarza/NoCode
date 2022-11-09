@@ -47,7 +47,6 @@ const examples = (
 
 function ExcelWrite(props) {
 
-    console.log("submit in write is", props.submit)
     const [click, setClick] = useState(false);
     const [inputs, setInputs] = useState([
         <>
@@ -456,15 +455,12 @@ function ExcelWrite(props) {
     const [form] = Form.useForm();
 
     if (props.submit) {
-        console.log('submitted')
         form.submit();
     }
     const onFinish = (values) => {
-        console.log("Success:", values);
         props.setSubmit(false)
     };
     const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
         props.setSubmit(false)
     };
 
@@ -473,7 +469,6 @@ function ExcelWrite(props) {
         setClick(false);
     }, [click])
 
-    console.log(props.submit);
 
     //modal
     const [open, setOpen] = useState(false);

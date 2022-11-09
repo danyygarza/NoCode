@@ -5,16 +5,13 @@ function ChildForm2(props) {
   const [form] = Form.useForm();
   
   if (props.submit) {
-    console.log('submitted')
     form.submit();
   }
 
   const onFinish = (values) => {
-    console.log("Success:", values);
     props.setSubmit(false)
   };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
     props.setSubmit(false)
   };
   return (

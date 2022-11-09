@@ -8,7 +8,6 @@ import { useAuth } from '../../context/authContext'
 
 function Home() {
     const {user} = useAuth();
-    console.log(user);
 
 
     return (

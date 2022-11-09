@@ -15,15 +15,11 @@ import './MostUsedFunctions.css'
 import ForEach from './Iterators/forEeach'
 
 function Iterators(props) {
-    console.log('submit in muf is ', props.submit)
     const [formArray, /*setFormArray*/] = useState([
         { text: "ForEach", data: { id: props.id, form: <ForEach variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} /> } }
     ])
 
     const add = (form) => {
-        console.log("form", form)
-        console.log("forms", props.forms)
-
         props.setForms([...props.forms, form])
     }
 
@@ -32,7 +28,6 @@ function Iterators(props) {
             return (
                 <> <Button style={{ height: 120, borderRadius: 40, borderColor: 'white' }}
                     onClick={(event) => {
-                        console.log(data.data)
                         add(data.data);
                     }
                     }>

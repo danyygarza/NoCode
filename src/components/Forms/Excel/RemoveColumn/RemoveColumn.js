@@ -36,11 +36,9 @@ const examples = (
 */
 function RemoveColumn() {
   const onFinish = (values) => {
-    console.log("Success:", values);
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   const [click, setClick] = useState(false);

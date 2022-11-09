@@ -30,7 +30,6 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 */
 
 const onChange = (currentSlide) => {
-  console.log(currentSlide);
 };
 const CarouselTest = forwardRef((props, ref) => {
   const [formArray, /*setFormArray*/] = useState([
@@ -50,13 +49,10 @@ const CarouselTest = forwardRef((props, ref) => {
   const [form] = Form.useForm();
 
   const add = (data) => {
-    console.log("adding to form from MOF", form);
 
     props.setForms([...props.forms, data]);
-    console.log("forms", props.forms);
   };
 
-  console.log("ref from MOF", ref);
   return formArray.lenght === 0 ? (
     <h1>empty</h1>
   ) : (
@@ -68,7 +64,6 @@ const CarouselTest = forwardRef((props, ref) => {
               <Button
                 style={{ height: 150, borderRadius: 40, borderColor: "white" }}
                 onClick={(event) => {
-                  console.log("button is being pressed from MOF");
                   add(data.form);
                 }}
               >

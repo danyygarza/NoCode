@@ -32,7 +32,6 @@ export default function ForEach(props) {
         submit(data) {
             const tempData = Object.values(data);
             let frida1 = ['foreach ' + tempData.variable + " in range"];
-            console.log("fridaString1", Array.from(fridaString1.values()));
             frida1 = frida1.concat([].concat.apply([], Array.from(fridaString1.values())));
             props.setCode(props.code.set(props.id, frida1.concat("end")))
         },

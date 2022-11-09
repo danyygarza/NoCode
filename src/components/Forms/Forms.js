@@ -21,7 +21,6 @@ const Forms = forwardRef((props, ref, items) => {
     const [component, setComponent] = useState("nothing");
 
     const onChange = (key) => {
-        console.log(key);
     };
 
     //search

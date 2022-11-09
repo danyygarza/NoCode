@@ -9,7 +9,6 @@ import ExcelWriteTest from './Write/ExcelWriteTest';
 import { FormLabel } from '@mui/material';
 import { ThirtyFpsSelect } from '@mui/icons-material';
 const change = (event) => {
-    console.log(event.target.value);
 }
 
 function Excel(props) {
@@ -55,7 +54,6 @@ function Excel(props) {
         />
     );
     const onFinish = (values) => {
-        console.log('Received values of form:', values);
     };
 
 
@@ -67,18 +65,13 @@ function Excel(props) {
         switch (key) {
             case 1:
                 setFormFields([...formFields, <ExcelWriteTest onChange={change} finish={props.finish} />]);
-                console.log("key 1 was choosen");
-                console.log(formFields)
                 break;
             case 2:
                 setFormFields([...formFields, <Test />]);
-                console.log("key 2 was choosen");
-                console.log(formFields)
                 break;
             case 3:
                 // setFormFields([...formFields, { name: "test2", label: "test2", value: "test2" }, {name: "test2", label: "test2", value: "test2"}]);
-                // console.log("key 2 was choosen");
-                console.log(formFields)
+
                 break;
             default:
                 break;
@@ -87,7 +80,6 @@ function Excel(props) {
 
     useEffect(() => {
         //props.setDone(false);
-        { console.log("testing") }
 
     }, [props.done])
 
@@ -115,7 +107,7 @@ function Excel(props) {
                     <Dropdown overlay={menu}>
                         <a onClick={(event) => {
                             event.preventDefault();
-                            console.log(event)
+
                         }}>
                             <Space>
                                 Hover me

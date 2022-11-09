@@ -6,7 +6,6 @@ import { MinusCircleOutlined, PlusOutlined, SmileOutlined, DownOutlined } from '
 import Test from '../Forms/Test/test';
 
 const change = (event) => {
-    console.log(event.target.value);
 }
 
 function MenuOption(props) {
@@ -53,7 +52,6 @@ function MenuOption(props) {
         />
     );
     const onFinish = (values) => {
-        console.log('Received values of form:', values);
     };
 
 
@@ -65,31 +63,23 @@ function MenuOption(props) {
         switch (key) {
             case 1:
                 props.set([...props.form, <Input type="text" placeholder={"testing:" + key} onChange={change} />]);
-                console.log("key 1 was choosen");
-                // console.log(formFields)
                 break;
             case 2:
                 props.set([...props.form, <Test />]);
-                console.log("key 2 was choosen");
-                // console.log(formFields)
                 break;
             case 3:
                 // setFormFields([...formFields, { name: "test2", label: "test2", value: "test2" }, {name: "test2", label: "test2", value: "test2"}]);
-                // console.log("key 2 was choosen");
-                console.log(formFields)
                 break;
             default:
                 break;
         }
     }
 
-    console.log(formFields)
     return (
         <div className="main">
             <Dropdown overlay={menu}>
                 <a onClick={(event) => {
                     event.preventDefault();
-                    console.log(event)
                 }}>
                     <Space>
                         Hover me

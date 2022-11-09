@@ -18,10 +18,8 @@ function getItem(label, key, icon, children, type) {
 export default function AllFunctions(props) {
 
   const add = (data) => {
-    console.log("adding to form from MOF");
 
     props.setForms([...props.forms, data]);
-    console.log("forms", props.forms);
   };
 
 
