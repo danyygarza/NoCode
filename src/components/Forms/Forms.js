@@ -77,6 +77,7 @@ const Forms = forwardRef((props, ref, items) => {
                                             setCode={props.setCode}
                                             id={props.id}
                                             setId={props.setId}
+                                            functions={props.functions}
                                         />
                                     </span>
                                 </>
