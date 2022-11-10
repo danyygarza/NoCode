@@ -19,7 +19,8 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
-  
+  console.log("functions", props.functions);
+  console.log('functions',props.functions)
   const filteredData = props.functions.filter((el) =>
     searchFunction(props.input, el.function)
   );

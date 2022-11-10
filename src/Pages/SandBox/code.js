@@ -16,6 +16,7 @@ function Code() {
     // const ref = useRef(null)
     const handleClick = () => {
         for (const item of code) {
+            console.log(item);
         }
     }
 
