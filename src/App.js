@@ -22,7 +22,8 @@ import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
 //import ParentSubmit from './components/Forms/Test/ParentSubmit';
 import CarouselTest from './components/Forms/Test/CarouselTest';
-import ReadersTest from './Test/readersTest';
+import ReadersTest from './components/Forms/Readers/readersTest';
+
 
 
 /* 

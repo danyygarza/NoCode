@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Input, Modal } from "antd";
-import { getFirestore, doc, getDoc } from "@firebase/firestore";
+import { db } from '../../../firebase';
+import { collection, getDocs } from "firebase/firestore";
+
 
 function searchFunction(input, nameSearch) {
   try {

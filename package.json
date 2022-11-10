@@ -14,6 +14,7 @@
     "antd": "^4.23.5",
     "bootstrap-icons": "^1.9.1",
     "firebase": "^9.12.1",
+    "firebase-admin": "^11.2.0",
     "git": "^0.1.5",
     "i": "^0.3.7",
     "less": "^4.1.3",
