@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "antd";
-import items from "../components/Forms/AllFunctions";
 import Testform from "./testForm";
-import data from "../components/Forms/syntax.json";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
-
-
-
-
 
 function searchFunction(input, nameSearch) {
   try {
@@ -19,31 +13,43 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
-  
   const filteredData = props.functions.filter((el) =>
     searchFunction(props.input, el.function)
   );
-
+  //
   const db = getFirestore();
 
   const add = async (data) => {
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
-        console.log(docSnap.data())
-        props.setForms([...props.forms,
-        { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
-        ])
-        props.setId(props.id + 1);
-        // props.setNumberList([...props.numberList, props.id]);
+      console.log(docSnap.data());
+      props.setForms([
+        ...props.forms,
+        {
+          id: props.id,
+          form: (
+            <Testform
+              function={data.function}
+              data={docSnap.data()}
+              variables={props.variables}
+              setVariables={props.setVariables}
+              code={props.code}
+              setCode={props.setCode}
+              id={props.id}
+            />
+          ),
+        },
+      ]);
+      props.setId(props.id + 1);
+      // props.setNumberList([...props.numberList, props.id]);
+    } else {
+      console.log("no such document!");
     }
-    else {
-        console.log("no such document!")
-    }
-}
+  };
   console.log("filter", filteredData);
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{ display: "flex" }}>
       {filteredData.map((item) => (
         <>
           {" "}

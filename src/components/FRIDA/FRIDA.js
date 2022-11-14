@@ -47,7 +47,6 @@ function Frida(props) {
 
   const remove = (index) => {
     const temp = [...forms];
-    const tempCode = props.code;
     temp.splice(index, 1);
     setForms(temp);
   };

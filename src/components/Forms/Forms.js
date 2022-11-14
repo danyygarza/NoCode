@@ -28,7 +28,7 @@ const Forms = forwardRef((props, ref, items) => {
     const { Search } = Input;
     const [inputText, setInputText] = useState("");
     let inputHandler = (e) => {
-        var lowerCase = e.target.value.toLowerCase();
+        let lowerCase = e.target.value.toLowerCase();
         setInputText(lowerCase);
     };
 
