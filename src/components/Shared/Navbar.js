@@ -8,7 +8,9 @@ import React from "react";
 import "antd/dist/antd.css";
 import "./Navbar.css";
 import { useAuth } from "../../context/authContext";
-import { Link } from "react-router-dom";
+import { auth } from "../../firebase";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 //import { useThemeSwitcher } from "react-css-theme-switcher";
 
 const onChange = (checked) => {
@@ -31,8 +33,10 @@ export default function Navbar() {
   */
 
   const handleLogout = async () => {
+    const navigate = useNavigate();
     try {
-      await logout();
+      await logout(auth);
+      navigate("/")
     } catch (error) {
       console.log(error);
     }

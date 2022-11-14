@@ -14,11 +14,12 @@ export default function MediaCard() {
     return (
         <>
             <div className="container">
+                <Link to='/inicio'>
                 <div className='card-1'>
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 30 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Obtener Celdas en Excel
+                                Agregar y Escribir en Columna Excel
                             </Typography>
                         </CardContent>
                         <div className='parent'>
@@ -36,6 +37,7 @@ export default function MediaCard() {
                         </div>
                     </Card>
                 </div>
+                </Link>
                 <div className='card-2'>
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 5 }}>
                         <CardContent>
