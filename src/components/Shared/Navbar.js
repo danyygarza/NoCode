@@ -3,15 +3,14 @@ import {
   PlayCircleOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import React from "react";
+import { Layout, Menu, Switch} from "antd";
+import React, {useState} from "react";
 import "antd/dist/antd.css";
 import "./Navbar.css";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
-//import { useThemeSwitcher } from "react-css-theme-switcher";
+import { useThemeSwitcher } from "react-css-theme-switcher";
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
@@ -23,14 +22,14 @@ export default function Navbar() {
 
   console.log(user);
 
-  /*
+  
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { switcher, themes } = useThemeSwitcher();
   const switchTheme = (isDarkMode) => {
     setIsDarkMode(isDarkMode);
     switcher({ theme: isDarkMode ? themes.dark : themes.light });
   };
-  */
+  
 
   const handleLogout = async () => {
     const navigate = useNavigate();
@@ -83,6 +82,14 @@ export default function Navbar() {
                 <PlayCircleOutlined className="homeoutlined" /> Video Tutoriales
               </Menu.Item>
             </Link>
+            <div className="main fade-in">
+                <Switch
+                    checkedChildren="🌜"
+                    unCheckedChildren="🌞"
+                    checked={isDarkMode}
+                    onChange={switchTheme}
+                />
+            </div>
           </Menu>
           <div className="logout">
             <LogoutOutlined
