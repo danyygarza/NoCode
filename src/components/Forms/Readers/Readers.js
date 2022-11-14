@@ -4,6 +4,17 @@ import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
 const db = getFirestore();
 
+
+function searchFunction(input, nameSearch) {
+  try {
+    let text = input.toUpperCase();
+    const name = nameSearch.toUpperCase();
+    return name.search(text) > -1;
+  } catch (e) {
+    return false;
+  }
+}
+
 export default function Readers(props) {
   console.log("submit in muf is ", props.submit);
   const [formArray, setFormArray] = useState([
@@ -72,13 +83,18 @@ export default function Readers(props) {
   const onChange = (key) => {
     console.log(key);
   };
+  
+  const filteredData = props.functions.filter((el) =>
+  searchFunction(props.input, el.function)
+);
 
-  const { Search } = Input;
-  const [inputText, setInputText] = useState("");
-  let inputHandler = (e) => {
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
-  };
+const { Search } = Input;
+    const [inputText, setInputText] = useState("");
+    let inputHandler = (e) => {
+        let lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+        console.log(e)
+    };
 
   //const [form] = Form.useForm();
 
@@ -109,12 +125,18 @@ export default function Readers(props) {
             /*onClick={console.log(readers(data))}*/
             width={1000}
           >
+            <Search
+              placeholder="Búsqueda"
+              onChange={inputHandler}
+              className="search "
+              enterButton
+            />
             {console.log(
               "functions",
               props.functions.filter((el) => el.collection === data.collection)
             )}
 
-            <div className="scrollmenu" style={{ display: "flex", width: 1300 }}>
+            <div className="scrollmenu" style={{ display: "flex", width: 906, flexWrap: 'wrap' }}>
               {props.functions
                 .filter((element) => element.collection === data.collection)
                 .map((item) => (

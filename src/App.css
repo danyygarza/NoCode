@@ -8,7 +8,8 @@ body{
 
 div.scrollmenu {
     background-color: rgb(255, 255, 255);
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
   }
   
