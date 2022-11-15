@@ -23,6 +23,7 @@ import Code from './Pages/SandBox/code';
 //import ParentSubmit from './components/Forms/Test/ParentSubmit';
 import CarouselTest from './components/Forms/Test/CarouselTest';
 import ReadersTest from './components/Forms/Readers/readersTest';
+import Example from './components/Forms/Example/Example'
 
 
 
@@ -108,6 +109,12 @@ export default function App() {
         <Route path='/readers-test' element={
 
           <ReadersTest />
+
+        } />
+
+        <Route path='/example' element={
+
+          <Example />
 
         } />
 
