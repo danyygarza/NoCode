@@ -22,6 +22,7 @@ import { AuthProvider } from './context/authContext';
 import Code from './Pages/SandBox/code';
 //import ParentSubmit from './components/Forms/Test/ParentSubmit';
 import CarouselTest from './components/Forms/Test/CarouselTest';
+import SyntaxGen from './Test/syntaxGenerator';
 
 
 
@@ -48,62 +49,36 @@ export default function App() {
         <Route path='/submit' element={< CarouselTest />} />
 
         <Route path='/inicio' element={
-
           <Inicio />
-
         } />
-
         <Route path='/navbar' element={
-
           <Navbar />
-
         } />
-
         <Route path='/code' element={<Code />} />
-
-
         <Route path='/video-tutoriales' element={
-
           <VideoTutoriales />
-
         } />
-
         <Route path='/proceso-nuevo' element={
-
           <ProcesoNuevo />
-
         } />
-
         <Route path='/crear-proceso' element={
-
           <CrearProceso />
-
         } />
-
         <Route path='/forms' element={
-
           <Forms />
-
         } />
-
         <Route path='/all-functions' element={
-
           <AllFunctions />
-
         } />
-
         <Route path='/proceso-excel' element={
-
           <ProcesoExcel />
-
         } />
-
         <Route path='/subir-archivo' element={
-
           <SubirArchivo />
-
         } />
-
+        <Route path='/api' element={
+          <SyntaxGen />
+        } />
       </Routes>
     </AuthProvider>
   )

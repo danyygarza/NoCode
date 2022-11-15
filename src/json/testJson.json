@@ -1,0 +1,17 @@
+{
+    "0": {
+        "Description": "Excel reader is a C# based tool designed to automate your spreadsheets, allowing you to automate the actions you make such as applying filters, running macros, or event copying information across files, making it easier for you having more than 160 functions available. This tool will help you reduce the time you invest in creating an automation with languages such as Visual Basic and start focusing instead in capturing all your process business rules. ",
+        "Function": [{
+            "CreationDate": "2017-Nov-13",
+            "Description": "Adds a value at the end of the columns in a sheet, it can be one or more columns. Column A is index 1. Spaces between index and text are important.",
+            "Example": ["Append from wsGE at [2 =\"='[zvf05_prueba.xls]Process'!$B$narow\",4 =\"='[zvf05_prueba.xls]Process'!$D$narow\"]\r", "Append from libro at [1 =\"Total\",2 =\"=Sum(B2:B4)\"]\r"],
+            "Name": "Append",
+            "Params": ["worksheetKey", "index", "text"],
+            "ShortDescription": "Adds a value at the end of the columns in a sheet.",
+            "Syntax": ["Append from <worksheetKey> at [<index1> =\"<text>\",<index2> =\"<text>\",...,<indexN> =\"<text>\"]"],
+            "SyntaxDetail": [{
+                "Instruction": "Append from <worksheetKey> at [<index1> =\"<text>\",<index2> =\"<text>\",...,<indexN> =\"<text>\"]"
+            }]
+        }]
+    }
+}
