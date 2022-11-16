@@ -4,7 +4,7 @@ import {
       getDoc,
       updateDoc
 } from "@firebase/firestore"
-
+const db = getFirestore();
 async function FirebaseUpdate(){
 
       const washingtonRef = doc(db, "cities", "DC");

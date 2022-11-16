@@ -8,10 +8,13 @@ import {
   onSnapshot,
   collection,
 } from "@firebase/firestore";
+import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
+
 const db = getFirestore();
-//
+
 
 function Frida(props) {
+  FirebaseGroupUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [functions, setFunctions] = useState([]);
@@ -78,6 +81,7 @@ function Frida(props) {
                 snapshot.docs.map((doc) => ({
                   function: doc.id,
                   collection: element,
+                  group: doc.data().category
                 }))
               ),
             ];
