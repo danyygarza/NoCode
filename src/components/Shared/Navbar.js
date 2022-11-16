@@ -10,7 +10,7 @@ import "./Navbar.css";
 import { useAuth } from "../../context/authContext";
 import { auth } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { useThemeSwitcher } from "react-css-theme-switcher";
+//import { useThemeSwitcher } from "react-css-theme-switcher";
 
 const onChange = (checked) => {
   console.log(`switch to ${checked}`);
@@ -22,14 +22,14 @@ export default function Navbar() {
 
   console.log(user);
 
-  
+  /*
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { switcher, themes } = useThemeSwitcher();
   const switchTheme = (isDarkMode) => {
     setIsDarkMode(isDarkMode);
     switcher({ theme: isDarkMode ? themes.dark : themes.light });
   };
-  
+  */
 
   const handleLogout = async () => {
     const navigate = useNavigate();
@@ -82,14 +82,14 @@ export default function Navbar() {
                 <PlayCircleOutlined className="homeoutlined" /> Video Tutoriales
               </Menu.Item>
             </Link>
-            <div className="main fade-in">
+            {/*<div className="main fade-in">
                 <Switch
                     checkedChildren="🌜"
                     unCheckedChildren="🌞"
                     checked={isDarkMode}
                     onChange={switchTheme}
                 />
-            </div>
+          </div>*/}
           </Menu>
           <div className="logout">
             <LogoutOutlined

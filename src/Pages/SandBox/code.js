@@ -13,15 +13,23 @@ function Code() {
     const [variables, setVariables] = useState(new Map()) //! Map with all the variables
     const [code, setCode] = useState(new Map()); //!! Final code 
     const [id, setId] = useState(0);
-    const [storage, setStorage] = useState({id, code, variables});
+    const [storage, setStorage] = useState(
+        window.localStorage.getItem('SAVE_FUNCTIONS')
+    );
 
     console.log('storage', storage)
     
 
 
-    useEffect(() => {
-        window.localStorage.setItem('SAVE_FUNCTIONS', JSON.stringify(storage))
-    }, [storage])
+    const setLocalStorage = value => {
+        try {
+            setStorage(value);
+            window.localStorage.setItem("SAVE_FUNCTIONS", value)
+            console.log('value',value)
+        } catch(error){
+            console.error(error)
+        }
+    }
 
     //! this to call functions from Frida (child component) // 
 
@@ -37,10 +45,10 @@ function Code() {
                 <>
                     <Row>
                         <Col offset={8}>
-                            <Button className="saveOutlined" onClick={() => console.log('storage', storage)} >Save</Button>
+                            <Button className="saveOutlined" onClick={() => console.log('storage', storage)}>Save</Button>
                             
                             {/* //!this is the place where all the form will be stored */}
-                            <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} />
+                            <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} onChange={e => setLocalStorage(e.target.value)} />
                         </Col>
                     </Row><Row justify='end'>
                         <Col>
