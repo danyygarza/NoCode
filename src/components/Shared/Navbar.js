@@ -30,16 +30,8 @@ export default function Navbar() {
     switcher({ theme: isDarkMode ? themes.dark : themes.light });
   };
   */
+  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    const navigate = useNavigate();
-    try {
-      await logout(auth);
-      navigate("/")
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   if (loading) {
     return <h1>loading</h1>;
@@ -94,7 +86,7 @@ export default function Navbar() {
           <div className="logout">
             <LogoutOutlined
               style={{ color: "white", marginLeft: "2" }}
-              onClick={handleLogout}
+              onClick={() => navigate("/")}
             />
           </div>
         </Sider>
