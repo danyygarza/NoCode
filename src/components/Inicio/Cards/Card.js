@@ -14,7 +14,7 @@ export default function MediaCard() {
     return (
         <>
             <div className="container">
-                <Link to='/inicio'>
+                <Link to='/example'>
                 <div className='card-1'>
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 30 }}>
                         <CardContent>
