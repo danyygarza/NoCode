@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Modal, Row, Radio } from "antd";
+import { Button, Form, Input, Modal, Row, Radio, Card } from "antd";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
 import { Title } from "@mui/icons-material";
+import '../../../App.css'
 const db = getFirestore();
+
+const gridStyle= {
+  width: '44%',
+  textAlign: 'center',
+  justifyContent: 'center',
+  height: '38px',
+  marginTop: '50px',
+  marginLeft: '10px',
+};
+
+const group = {
+  display: 'flex',
+};
 
 function searchFunction(input, nameSearch) {
   try {
@@ -181,15 +195,14 @@ export default function Readers(props) {
               onValuesChange={onRequiredTypeChange}
               group={group}
             >
-              <Title lever={3}> Select a type of operation</Title>
-              <Form.Item label="Group" name="groupValue">
-                <Radio.Group>
-                  <Radio.Button value="Read & Write">Read & Write</Radio.Button>
-                  <Radio.Button value="Manipulate Columns">
+              <Form.Item name="groupValue">
+                <Radio.Group style={{display: 'flex'}}>
+                  <Radio.Button style={gridStyle} value="Read & Write">Read & Write</Radio.Button>
+                  <Radio.Button style={gridStyle} value="Manipulate Columns">
                     Manipulate Columns
                   </Radio.Button>
-                  <Radio.Button value="CRUD Files"> CRUD Files</Radio.Button>
-                  <Radio.Button value="Sort Filter and Count">
+                  <Radio.Button style={gridStyle} value="CRUD Files"> CRUD Files</Radio.Button>
+                  <Radio.Button style={gridStyle} value="Sort Filter and Count">
                     Sort Filter and Count
                   </Radio.Button>
                 </Radio.Group>
