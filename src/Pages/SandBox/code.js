@@ -41,12 +41,12 @@ function Code() {
 
     return (
         <>
-            {storage && (
+             (
                 <>
                     <Row>
                         <Col offset={8}>
-                            <Button className="saveOutlined" onClick={() => console.log('storage', storage)}>Save</Button>
-                            
+                            <Button className="saveOutlined" onClick={() =>setLocalStorage(code)}>Save</Button>
+
                             {/* //!this is the place where all the form will be stored */}
                             <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} onChange={e => setLocalStorage(e.target.value)} />
                         </Col>
@@ -57,9 +57,10 @@ function Code() {
                             </Button>
                         </Col>
                     </Row>
-                    
+
                 </>
-            )}
+            )
+         
         </>
     )
 }

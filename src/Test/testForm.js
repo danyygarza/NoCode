@@ -125,7 +125,7 @@ function Testform(props) {
             itemType.forEach((element) => {
                 switch (element.key) {
                     case "set":
-                        const tempSet = Object.values(tempData.shift()); 
+                        const tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         tempVar.get(element.key) === undefined ? setTempVar(tempVar.set(element.key, tempSet[0])) : setTempVar(tempVar.set(tempVar.get(element.key).concat(tempSet[0])));
                         break;
@@ -194,7 +194,7 @@ function Testform(props) {
         for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
             temp.push(
                 <Col>
-                    <div onClick={() => { addCard(Object.values(props.data.templates)[i - 1].syntax) }}>
+                    <div onClick={() => { addCard(parseInt(Object.values(props.data.templates)[i - 1].syntax)) }}>
                         <Card
                             style={{
                                 width: 300,
@@ -231,13 +231,18 @@ function Testform(props) {
 
     //! add new line with example blocks function 
     const addCard = (index) => {
+        console.log(index);
+        console.log();
+        const dataForms = (props.data.forms[index + 1])
         const temp = [];
         const itemTypeArr = itemType;
-        Object.values(props.data.forms)[index].map((item, index) => {
-            itemTypeArr.push({ key: item.type, val: item.title })
-            // setItemType([...itemType, { key: item.type, val: item.title }]);
-            console.log(item);
-            switch (item.type) {
+        console.log(dataForms);
+        console.log(Object.values(dataForms));
+        Object.values(dataForms).forEach((val, index) => {
+            console.log(val.type);
+            console.log(val.PlaceHolder);
+            itemTypeArr.push({ key: val.type, val: val.PlaceHolder });
+            switch (val.type) {
                 case "text":
                     temp.push(
                         <>
@@ -294,17 +299,7 @@ function Testform(props) {
                             {
                                 <>
                                     <Col>
-                                        <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
-                                            rules={[
-                                                { required: false, message: "Please fill this out" },
-                                            ]}
-                                            style={{ width: "auto" }}
-                                            title={item.title}
-                                        >
                                             {item.title}
-
-                                        </Form.Item>
                                     </Col>
                                 </>
                             }
@@ -367,9 +362,10 @@ function Testform(props) {
                     );
                     break;
                 default:
-                    console.log(item.title);
             }
-        });
+        })
+        console.log(temp);
+        console.log(itemTypeArr);
         setItemType(itemTypeArr);
         setForms([...forms, temp]);
     }
@@ -454,7 +450,7 @@ function Testform(props) {
             <Card
                 hoverable
                 style={{ width: 800 }}
-                cover={<img alt="excel icon" src={props.data.src} width="100" height="200"/>}
+                cover={<img alt="excel icon" src={props.data.src} width="100" height="200" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
@@ -531,6 +527,7 @@ function Testform(props) {
                 <Form layout="inline" {...formProps}>
                     <Row>
                         {forms.map((item, index) => {
+                            {console.log("forms",item);}
                             return (
                                 <>
                                     <Row>
