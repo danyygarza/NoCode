@@ -34,6 +34,7 @@ function Code() {
     //! this to call functions from Frida (child component) // 
 
     const handleClick = () => {
+        console.log(code)
         for (const item of code) {
             console.log('item', item);
         }

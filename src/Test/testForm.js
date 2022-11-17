@@ -120,7 +120,7 @@ function Testform(props) {
             let tempCodeArr = [];
             let tempData = Object.values(data);
             let idx = 0;
-            console.log(tempData);
+            console.log("tempData", tempData);
             console.log("item arr", itemType);
             itemType.forEach((element) => {
                 switch (element.key) {
@@ -133,7 +133,9 @@ function Testform(props) {
                         tempCodeArr.push(tempData.shift());
                         break;
                     case "filepicker":
-                        tempCodeArr.push(Object.values(tempData.shift())[0].file.name);
+                        console.log(Object.values(tempData[0])[0].file.name);
+                        tempCodeArr.push(` root ${Object.values(tempData[0])[0].file.name}`);
+                        tempData.shift();
                         break;
                     default:
                         tempCodeArr.push(element.val)
@@ -149,6 +151,8 @@ function Testform(props) {
             }
             setTempVar(tempVar.clear());
 
+            tempCodeArr.forEach((item, index) =>{
+            })
 
             // !  Switch evaluate the key  
             // tempData.forEach((item) => {
@@ -181,7 +185,8 @@ function Testform(props) {
             //     tempString = "";
             // });
             // console.log(props.code);
-            // props.setCode(props.code.set(props.id, tempCodeArr.reverse()));
+            console.log(tempCodeArr);
+            props.setCode(props.code.set(props.id, tempCodeArr));
         },
         form,
     });
@@ -250,7 +255,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, item.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -258,7 +263,7 @@ function Testform(props) {
                                         >
                                             <Input
                                                 type={item.type}
-                                                placeholder={item.placeHolder}
+                                                placeholder={item.PlaceHolder}
                                                 onChange={props.onChange}
                                                 name={index}
                                             />
@@ -276,7 +281,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -297,11 +302,9 @@ function Testform(props) {
                     temp.push(
                         <>
                             {
-                                <>
-                                    <Col>
-                                            {item.title}
-                                    </Col>
-                                </>
+                                <Col>
+                                    <p style={{ color: "black" }}>{val.PlaceHolder}</p>
+                                </Col>
                             }
                         </>
                     );
@@ -313,16 +316,15 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
-                                            label={item.title}
+                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
+                                                type={val.type}
+                                                placeholder={val.PlaceHolder}
                                                 onChange={test}
                                                 name={index}
                                             />
@@ -336,21 +338,22 @@ function Testform(props) {
                 case "get":
                     break;
                 case "set":
+                    console.log(val)
                     temp.push(
                         <>
                             {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, val.title]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
+                                                type={val.type}
+                                                placeholder={val.PlaceHolder}
                                                 onChange={props.onChange}
                                                 name={index}
                                             />
@@ -382,7 +385,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, item.PlaceHolder]}
                                             label={item.title}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
@@ -527,7 +530,6 @@ function Testform(props) {
                 <Form layout="inline" {...formProps}>
                     <Row>
                         {forms.map((item, index) => {
-                            {console.log("forms",item);}
                             return (
                                 <>
                                     <Row>
