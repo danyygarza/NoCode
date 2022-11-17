@@ -31,7 +31,7 @@ function Testform(props) {
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
     const [forms, setForms] = useState([]);
-    const [size] = useState(Object.values(props.data.forms)[key].length);
+    const [size, setSize] = useState([]);
     const [item, setItem] = useState([]);
     const [codeArr, setCodeArr] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -141,18 +141,22 @@ function Testform(props) {
                         tempCodeArr.push(element.val)
                         break;
                 }
-
             })
-
             console.log(tempCodeArr)
             console.log(tempVar);
             for (const item of tempVar) {
                 console.log(item);
             }
             setTempVar(tempVar.clear());
+            while (tempCodeArr.length !== 0) {
+                if (idx != 0 && idx % size[0] === 0) {
+                    tempString.concat(" ", tempCodeArr.shift());
 
-            tempCodeArr.forEach((item, index) =>{
-            })
+                    setSize(size.shift());
+                }
+                tempString.concat(" ", tempCodeArr.shift());
+            }
+            console.log(tempString)
 
             // !  Switch evaluate the key  
             // tempData.forEach((item) => {
@@ -185,8 +189,8 @@ function Testform(props) {
             //     tempString = "";
             // });
             // console.log(props.code);
-            console.log(tempCodeArr);
-            props.setCode(props.code.set(props.id, tempCodeArr));
+            // console.log(tempCodeArr);
+            // props.setCode(props.code.set(props.id, tempCodeArr));
         },
         form,
     });
@@ -243,6 +247,7 @@ function Testform(props) {
         const itemTypeArr = itemType;
         console.log(dataForms);
         console.log(Object.values(dataForms));
+        setSize(dataForms.length);
         Object.values(dataForms).forEach((val, index) => {
             console.log(val.type);
             console.log(val.PlaceHolder);
