@@ -8,10 +8,12 @@ import {
   onSnapshot,
   collection,
 } from "@firebase/firestore";
+import FirebaseUpdate from "../../Test/firebaseconfig";
 const db = getFirestore();
 //
 
 function Frida(props) {
+  //FirebaseUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [functions, setFunctions] = useState([]);
