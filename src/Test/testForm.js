@@ -24,14 +24,12 @@ import { map } from "@firebase/util";
 const buttonWidth = 70;
 const { Meta } = Card;
 
-
-
 function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
     const [forms, setForms] = useState([]);
-    const [size] = useState(Object.values(props.data.forms)[key].length);
+    const [size, setSize] = useState([]);
     const [item, setItem] = useState([]);
     const [codeArr, setCodeArr] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,17 +115,18 @@ function Testform(props) {
         submit(data) {
             console.log(forms);
             let tempString = "";
-            let tempCodeArr = [];
+            const tempCodeArr = [];
             let tempData = Object.values(data);
-            let idx = 0;
+            let idx = 1;
             console.log("tempData", tempData);
             console.log("item arr", itemType);
             itemType.forEach((element) => {
                 switch (element.key) {
                     case "set":
+                        console.log(element)
                         const tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
-                        tempVar.get(element.key) === undefined ? setTempVar(tempVar.set(element.key, tempSet[0])) : setTempVar(tempVar.set(tempVar.get(element.key).concat(tempSet[0])));
+                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.val).concat(tempSet[0])));
                         break;
                     case "text":
                         tempCodeArr.push(tempData.shift());
@@ -141,52 +140,33 @@ function Testform(props) {
                         tempCodeArr.push(element.val)
                         break;
                 }
-
             })
-
             console.log(tempCodeArr)
             console.log(tempVar);
             for (const item of tempVar) {
                 console.log(item);
             }
             setTempVar(tempVar.clear());
-
-            tempCodeArr.forEach((item, index) =>{
-            })
-
-            // !  Switch evaluate the key  
-            // tempData.forEach((item) => {
-            //     console.log("item", item);
-            //     // // const  [key, value] = console.log(Object.entries(item));
-            //     // // console.log(`${key}: ${value}`);
-            //     //! for some reason delcaring it doesn't work :/ 
-            //     for (const [key, value] of Object.entries(item)) {
-            //         console.log(`${key}: ${value}`);
-            //     }
-            // })
-
-            // console.log(tempData);
-            // forms.reverse().forEach((obj) => {
-            //     console.log("obj", obj);
-            //     for (let i = 0; i < obj.length; i++) {
-            //         console.log(tempData[idx]);
-            //         if (tempData[idx] !== undefined) {
-            //             tempString.length === 0
-            //                 ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
-            //                     tempData[idx]
-            //                 )} `)
-            //                 : (tempString += `${Object.keys(tempData[idx])} ${Object.values(
-            //                     tempData[idx]
-            //                 )} `);
-            //         }
-            //         idx++;
-            //     }
-            //     tempCodeArr.push(tempString);
-            //     tempString = "";
-            // });
-            // console.log(props.code);
+            console.log(size);
+            while (size.length !== 0) {
+                const firstElement = tempCodeArr.shift()
+                console.log(idx != 0 && idx % size[0] === 0);
+                if (idx != 0 && idx % size[0] === 0) {
+                    console.log("inside the true");
+                    tempString = tempString.concat(" ", firstElement);
+                    tempCodeArr.push(tempString);
+                    console.log("temp code array", tempCodeArr);
+                    setSize(size.shift());
+                    idx = 1;
+                } else {
+                    tempString = tempString.concat(" ", firstElement);
+                    idx += 1;
+                }
+            }
+            console.log(tempString);
             console.log(tempCodeArr);
             props.setCode(props.code.set(props.id, tempCodeArr));
+            console.log(props.code);
         },
         form,
     });
@@ -243,6 +223,9 @@ function Testform(props) {
         const itemTypeArr = itemType;
         console.log(dataForms);
         console.log(Object.values(dataForms));
+        console.log(Object.values(dataForms).length);
+        setSize([...size, Object.values(dataForms).length]);
+        console.log("checking  size", size);
         Object.values(dataForms).forEach((val, index) => {
             console.log(val.type);
             console.log(val.PlaceHolder);
