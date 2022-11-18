@@ -102,6 +102,8 @@ const Forms = forwardRef((props, ref, items) => {
                                                 setNumberList={props.setNumberList}
                                                 numberList={props.numberList}
                                                 id={props.id}
+                                                variables={props.variables}
+                                                setVariables={props.setVariables}
                                                 setId={props.setId}
                                                 code={props.code}
                                                 setCode={props.setCode}
