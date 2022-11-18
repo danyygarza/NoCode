@@ -24,8 +24,6 @@ import { map } from "@firebase/util";
 const buttonWidth = 70;
 const { Meta } = Card;
 
-
-
 function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
@@ -125,9 +123,10 @@ function Testform(props) {
             itemType.forEach((element) => {
                 switch (element.key) {
                     case "set":
+                        console.log(element)
                         const tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
-                        props.variables.get(element.key) === undefined ? props.setVariables(props.variables.set(element.key, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.key).concat(tempSet[0])));
+                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.val).concat(tempSet[0])));
                         break;
                     case "text":
                         tempCodeArr.push(tempData.shift());
@@ -149,37 +148,21 @@ function Testform(props) {
             }
             setTempVar(tempVar.clear());
             console.log(size);
-            for (let index = 0; index < size[0]; index++) {
+            while (size.length !== 0) {
                 const firstElement = tempCodeArr.shift()
+                console.log(idx != 0 && idx % size[0] === 0);
                 if (idx != 0 && idx % size[0] === 0) {
                     console.log("inside the true");
-                    tempString = tempString.concat("", firstElement);
+                    tempString = tempString.concat(" ", firstElement);
                     tempCodeArr.push(tempString);
                     console.log("temp code array", tempCodeArr);
                     setSize(size.shift());
-                    break;
+                    idx = 1;
                 } else {
                     tempString = tempString.concat(" ", firstElement);
+                    idx += 1;
                 }
-                idx += 1;
             }
-            // while (size[0] !== 4) {
-            //     const firstElement = tempCodeArr.shift()
-            //     console.log(idx);
-            //     console.log(idx % size[0] === 0);
-            //     console.log(idx != 0 && idx % size[0] === 0);
-            //     if (idx != 0 && idx % size[0] === 0) {
-            //         console.log("inside the true");
-            //         tempString = tempString.concat("", firstElement);
-            //         tempCodeArr.push(tempString);
-            //         console.log("temp code array", tempCodeArr);
-            //         setSize(size.shift());
-            //         break; 
-            //     } else {
-            //         tempString = tempString.concat(" ", firstElement);
-            //     }
-            //     idx += 1;
-            // }
             console.log(tempString);
             console.log(tempCodeArr);
             props.setCode(props.code.set(props.id, tempCodeArr));

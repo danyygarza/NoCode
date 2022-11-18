@@ -22,6 +22,7 @@ function Code() {
 
 
     const setLocalStorage = value => {
+        console.log(variables); 
         try {
             setStorage(value);
             window.localStorage.setItem("SAVE_FUNCTIONS", value)
@@ -46,7 +47,7 @@ function Code() {
                 <>
                     <Row>
                         <Col offset={8}>
-                            <Button className="saveOutlined" onClick={() =>setLocalStorage(code)}>Save</Button>
+                            <Button className="saveOutlined" onClick={() =>setLocalStorage({code: code, variables: variables})}>Save</Button>
 
                             {/* //!this is the place where all the form will be stored */}
                             <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} onChange={e => setLocalStorage(e.target.value)} />
