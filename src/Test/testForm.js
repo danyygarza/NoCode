@@ -24,14 +24,12 @@ import { map } from "@firebase/util";
 const buttonWidth = 70;
 const { Meta } = Card;
 
-
-
 function Testform(props) {
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [key, setKey] = useState(0);
     const [forms, setForms] = useState([]);
-    const [size] = useState(Object.values(props.data.forms)[key].length);
+    const [size, setSize] = useState([]);
     const [item, setItem] = useState([]);
     const [codeArr, setCodeArr] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,71 +115,58 @@ function Testform(props) {
         submit(data) {
             console.log(forms);
             let tempString = "";
-            let tempCodeArr = [];
+            const tempCodeArr = [];
             let tempData = Object.values(data);
-            let idx = 0;
-            console.log(tempData);
+            let idx = 1;
+            console.log("tempData", tempData);
             console.log("item arr", itemType);
             itemType.forEach((element) => {
                 switch (element.key) {
                     case "set":
-                        const tempSet = Object.values(tempData.shift()); 
+                        console.log(element)
+                        const tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
-                        tempVar.get(element.key) === undefined ? setTempVar(tempVar.set(element.key, tempSet[0])) : setTempVar(tempVar.set(tempVar.get(element.key).concat(tempSet[0])));
+                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.val).concat(tempSet[0])));
                         break;
                     case "text":
                         tempCodeArr.push(tempData.shift());
                         break;
                     case "filepicker":
-                        tempCodeArr.push(Object.values(tempData.shift())[0].file.name);
+                        console.log(Object.values(tempData[0])[0].file.name);
+                        tempCodeArr.push(` root ${Object.values(tempData[0])[0].file.name}`);
+                        tempData.shift();
                         break;
                     default:
                         tempCodeArr.push(element.val)
                         break;
                 }
-
             })
-
             console.log(tempCodeArr)
             console.log(tempVar);
             for (const item of tempVar) {
                 console.log(item);
             }
             setTempVar(tempVar.clear());
-
-
-            // !  Switch evaluate the key  
-            // tempData.forEach((item) => {
-            //     console.log("item", item);
-            //     // // const  [key, value] = console.log(Object.entries(item));
-            //     // // console.log(`${key}: ${value}`);
-            //     //! for some reason delcaring it doesn't work :/ 
-            //     for (const [key, value] of Object.entries(item)) {
-            //         console.log(`${key}: ${value}`);
-            //     }
-            // })
-
-            // console.log(tempData);
-            // forms.reverse().forEach((obj) => {
-            //     console.log("obj", obj);
-            //     for (let i = 0; i < obj.length; i++) {
-            //         console.log(tempData[idx]);
-            //         if (tempData[idx] !== undefined) {
-            //             tempString.length === 0
-            //                 ? (tempString = `${Object.keys(tempData[idx])} ${Object.values(
-            //                     tempData[idx]
-            //                 )} `)
-            //                 : (tempString += `${Object.keys(tempData[idx])} ${Object.values(
-            //                     tempData[idx]
-            //                 )} `);
-            //         }
-            //         idx++;
-            //     }
-            //     tempCodeArr.push(tempString);
-            //     tempString = "";
-            // });
-            // console.log(props.code);
-            // props.setCode(props.code.set(props.id, tempCodeArr.reverse()));
+            console.log(size);
+            while (size.length !== 0) {
+                const firstElement = tempCodeArr.shift()
+                console.log(idx != 0 && idx % size[0] === 0);
+                if (idx != 0 && idx % size[0] === 0) {
+                    console.log("inside the true");
+                    tempString = tempString.concat(" ", firstElement);
+                    tempCodeArr.push(tempString);
+                    console.log("temp code array", tempCodeArr);
+                    setSize(size.shift());
+                    idx = 1;
+                } else {
+                    tempString = tempString.concat(" ", firstElement);
+                    idx += 1;
+                }
+            }
+            console.log(tempString);
+            console.log(tempCodeArr);
+            props.setCode(props.code.set(props.id, tempCodeArr));
+            console.log(props.code);
         },
         form,
     });
@@ -194,7 +179,7 @@ function Testform(props) {
         for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
             temp.push(
                 <Col>
-                    <div onClick={() => { addCard(Object.values(props.data.templates)[i - 1].syntax) }}>
+                    <div onClick={() => { addCard(parseInt(Object.values(props.data.templates)[i - 1].syntax)) }}>
                         <Card
                             style={{
                                 width: 300,
@@ -231,13 +216,21 @@ function Testform(props) {
 
     //! add new line with example blocks function 
     const addCard = (index) => {
+        console.log(index);
+        console.log();
+        const dataForms = (props.data.forms[index + 1])
         const temp = [];
         const itemTypeArr = itemType;
-        Object.values(props.data.forms)[index].map((item, index) => {
-            itemTypeArr.push({ key: item.type, val: item.title })
-            // setItemType([...itemType, { key: item.type, val: item.title }]);
-            console.log(item);
-            switch (item.type) {
+        console.log(dataForms);
+        console.log(Object.values(dataForms));
+        console.log(Object.values(dataForms).length);
+        setSize([...size, Object.values(dataForms).length]);
+        console.log("checking  size", size);
+        Object.values(dataForms).forEach((val, index) => {
+            console.log(val.type);
+            console.log(val.PlaceHolder);
+            itemTypeArr.push({ key: val.type, val: val.PlaceHolder });
+            switch (val.type) {
                 case "text":
                     temp.push(
                         <>
@@ -245,7 +238,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, item.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -253,7 +246,7 @@ function Testform(props) {
                                         >
                                             <Input
                                                 type={item.type}
-                                                placeholder={item.placeHolder}
+                                                placeholder={item.PlaceHolder}
                                                 onChange={props.onChange}
                                                 name={index}
                                             />
@@ -271,7 +264,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -292,21 +285,9 @@ function Testform(props) {
                     temp.push(
                         <>
                             {
-                                <>
-                                    <Col>
-                                        <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
-                                            rules={[
-                                                { required: false, message: "Please fill this out" },
-                                            ]}
-                                            style={{ width: "auto" }}
-                                            title={item.title}
-                                        >
-                                            {item.title}
-
-                                        </Form.Item>
-                                    </Col>
-                                </>
+                                <Col>
+                                    <p style={{ color: "black" }}>{val.PlaceHolder}</p>
+                                </Col>
                             }
                         </>
                     );
@@ -318,16 +299,15 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
-                                            label={item.title}
+                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
+                                                type={val.type}
+                                                placeholder={val.PlaceHolder}
                                                 onChange={test}
                                                 name={index}
                                             />
@@ -341,21 +321,22 @@ function Testform(props) {
                 case "get":
                     break;
                 case "set":
+                    console.log(val)
                     temp.push(
                         <>
                             {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, val.title]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
+                                                type={val.type}
+                                                placeholder={val.PlaceHolder}
                                                 onChange={props.onChange}
                                                 name={index}
                                             />
@@ -367,9 +348,10 @@ function Testform(props) {
                     );
                     break;
                 default:
-                    console.log(item.title);
             }
-        });
+        })
+        console.log(temp);
+        console.log(itemTypeArr);
         setItemType(itemTypeArr);
         setForms([...forms, temp]);
     }
@@ -386,7 +368,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.title]}
+                                            name={[`${forms.length}${index}`, item.PlaceHolder]}
                                             label={item.title}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
@@ -454,7 +436,7 @@ function Testform(props) {
             <Card
                 hoverable
                 style={{ width: 800 }}
-                cover={<img alt="excel icon" src={props.data.src} width="100" height="200"/>}
+                cover={<img alt="excel icon" src={props.data.src} width="100" height="200" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >

@@ -19,35 +19,6 @@ function Frida(props) {
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [functions, setFunctions] = useState([]);
 
-  // coconst getCollections = async () => {
-  //   try {
-  //     const docRef = doc(db, "Misc", "collections");
-  //     const docSnap = await getDoc(docRef);
-  //     if (docSnap.exists()) {
-  //       return Object.values(docSnap.data().collectionArr);
-  //     } else {
-  //       // doc.data() will be undefined in this case
-  //       console.log("No such document!");
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };nst setCollections = async (collection) => {
-  //   try {
-  //     onSnapshot(collection(db, collection), (snapshot) =>
-  //       setFunctions([
-  //         ...functions,
-  //         snapshot.docs.map((doc) => ({
-  //           function: doc.id,
-  //           collection: collection,
-  //         })),
-  //       ])
-  //     );
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const remove = (index) => {
     const temp = [...forms];
     temp.splice(index, 1);
