@@ -5,15 +5,15 @@ import Reader from './reader';
 
 const steps = [
     {
-      title: 'First',
+      title: 'Choose the reader you want',
       content: <Reader />,
     },
     {
-      title: 'Second',
+      title: 'Choose the function category you want',
       content: 'Second-content',
     },
     {
-      title: 'Last',
+      title: 'Choose the function you want',
       content: 'Last-content',
     },
   ];
@@ -32,7 +32,7 @@ function MultiStepForm() {
   }));
   return (
     <>
-      <Steps current={current} items={items} />
+      <Steps current={current} items={items} style={{padding: 25}}/>
       <div className="steps-content">{steps[current].content}</div>
       <div className="steps-action">
         {current < steps.length - 1 && (
@@ -40,7 +40,7 @@ function MultiStepForm() {
             Next
           </Button>
         )}
-        {current === steps.length - 1 && (
+        {current === steps.length - 1  && (
           <Button type="primary" onClick={() => message.success('Processing complete!')}>
             Done
           </Button>

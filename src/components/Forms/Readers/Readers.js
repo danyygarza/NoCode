@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Modal, Row } from "antd";
+import { Button, Form, Input, Modal, Row, Radio, Card } from "antd";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
+import { Title } from "@mui/icons-material";
+import '../../../App.css'
 const db = getFirestore();
 
+const gridStyle= {
+  width: '44%',
+  textAlign: 'center',
+  justifyContent: 'center',
+  height: '38px',
+  marginTop: '50px',
+  marginLeft: '10px',
+};
+
+const group = {
+  display: 'flex',
+};
 
 function searchFunction(input, nameSearch) {
   try {
@@ -13,6 +27,41 @@ function searchFunction(input, nameSearch) {
   } catch (e) {
     return false;
   }
+}
+
+function RenderFunctions(functions, group, collection) {
+  console.log("RenderFunctions", functions);
+  console.log("RenderGroup", group);
+  console.log("RenderCollection", collection);
+
+  return functions.functions
+    .filter(
+      (element) =>
+        element.collection === functions.collection &&
+        element.group == functions.group
+    )
+    .map((item) => (
+      <>
+        {" "}
+        <Button
+          style={{
+            height: 120,
+            borderRadius: 40,
+            borderColor: "white",
+          }}
+          onClick={(element) => {
+            // add(item);
+          }}
+        >
+          <div className="imgp">
+            <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+            <p style={{ color: "black", marginLeft: 0 }}>
+              <b>{item.function}</b>
+            </p>
+          </div>
+        </Button>
+      </>
+    ));
 }
 
 export default function Readers(props) {
@@ -40,6 +89,12 @@ export default function Readers(props) {
       function: "Write",
     },
   ]);
+
+  const [form] = Form.useForm();
+  const [group, setGroup] = useState("Read & Write");
+  const onRequiredTypeChange = ({ groupValue }) => {
+    setGroup(groupValue);
+  };
 
   const [open, setOpen] = useState([false, false, false]);
 
@@ -83,18 +138,18 @@ export default function Readers(props) {
   const onChange = (key) => {
     console.log(key);
   };
-  
-  const filteredData = props.functions.filter((el) =>
-  searchFunction(props.input, el.function)
-);
 
-const { Search } = Input;
-    const [inputText, setInputText] = useState("");
-    let inputHandler = (e) => {
-        let lowerCase = e.target.value.toLowerCase();
-        setInputText(lowerCase);
-        console.log(e)
-    };
+  const filteredData = props.functions.filter((el) =>
+    searchFunction(props.input, el.function)
+  );
+
+  const { Search } = Input;
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    let lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+    console.log(e);
+  };
 
   //const [form] = Form.useForm();
 
@@ -131,13 +186,39 @@ const { Search } = Input;
               className="search "
               enterButton
             />
-            {console.log(
-              "functions",
-              props.functions.filter((el) => el.collection === data.collection)
-            )}
+            <Form
+              form={form}
+              layout="vertical"
+              initialValues={{
+                groupValue: group,
+              }}
+              onValuesChange={onRequiredTypeChange}
+              group={group}
+            >
+              <Form.Item name="groupValue">
+                <Radio.Group style={{display: 'flex'}}>
+                  <Radio.Button style={gridStyle} value="Read & Write">Read & Write</Radio.Button>
+                  <Radio.Button style={gridStyle} value="Manipulate Columns">
+                    Manipulate Columns
+                  </Radio.Button>
+                  <Radio.Button style={gridStyle} value="CRUD Files"> CRUD Files</Radio.Button>
+                  <Radio.Button style={gridStyle} value="Sort Filter and Count">
+                    Sort Filter and Count
+                  </Radio.Button>
+                </Radio.Group>
+              </Form.Item>
+            </Form>
 
-            <div className="scrollmenu" style={{ display: "flex", width: 906, flexWrap: 'wrap' }}>
-              {props.functions
+            <div
+              className="scrollmenu"
+              style={{ display: "flex", width: 906, flexWrap: "wrap" }}
+            >
+              <RenderFunctions
+                functions={props.functions}
+                group={group}
+                collection={data.collection}
+              />
+              {/* {props.functions
                 .filter((element) => element.collection === data.collection)
                 .map((item) => (
                   <>
@@ -164,7 +245,7 @@ const { Search } = Input;
                       </div>
                     </Button>
                   </>
-                ))}
+                ))} */}
             </div>
           </Modal>
         </>
