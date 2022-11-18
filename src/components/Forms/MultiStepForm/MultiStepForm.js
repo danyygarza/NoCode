@@ -5,17 +5,17 @@ import Reader from './reader';
 
 const steps = [
     {
-      title: 'First',
+      title: 'Choose the reader',
       content: <Reader />,
     },
     {
-      title: 'Second',
+      title: 'Choose the function category',
       content: 'Second-content',
     },
     {
-      title: 'Last',
+      title: 'Choose the function',
       content: 'Last-content',
-    },
+    }
   ];
 
 function MultiStepForm() {
