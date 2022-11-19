@@ -132,6 +132,7 @@ function Testform(props) {
                         tempCodeArr.push(tempData.shift());
                         break;
                     case "filepicker":
+                        console.log(tempData);
                         console.log(Object.values(tempData[0])[0].file.name);
                         tempCodeArr.push(` root ${Object.values(tempData[0])[0].file.name}`);
                         tempData.shift();
@@ -167,6 +168,10 @@ function Testform(props) {
             console.log(tempCodeArr);
             props.setCode(props.code.set(props.id, tempCodeArr));
             console.log(props.code);
+            console.log("prop id", props.id)
+            props.setStatus(props.status.set(props.id, {color: "green", text: "Complete"})); 
+            console.log(props.status.get(props.id));
+            props.setUpdate(true);
         },
         form,
     });
