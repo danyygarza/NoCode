@@ -132,6 +132,7 @@ function Testform(props) {
                         tempCodeArr.push(tempData.shift());
                         break;
                     case "filepicker":
+                        console.log(tempData);
                         console.log(Object.values(tempData[0])[0].file.name);
                         tempCodeArr.push(` root ${Object.values(tempData[0])[0].file.name}`);
                         tempData.shift();
@@ -167,6 +168,10 @@ function Testform(props) {
             console.log(tempCodeArr);
             props.setCode(props.code.set(props.id, tempCodeArr));
             console.log(props.code);
+            console.log("prop id", props.id)
+            props.setStatus(props.status.set(props.id, {color: "green", text: "Complete"})); 
+            console.log(props.status.get(props.id));
+            props.setUpdate(true);
         },
         form,
     });
@@ -435,12 +440,12 @@ function Testform(props) {
         <>
             <Card
                 hoverable
-                style={{ width: 800 }}
+                style={{ width: 800, maxHeight: 219 }}
                 cover={<img alt="excel icon" src={props.data.src} width="100" height="200" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
-                <Meta title={props.function} description={props.data.description[1]} />
+                <Meta title={props.function} description={props.data.description[1]} style={{marginTop: -152, marginLeft: 125}} />
             </Card>
             <Modal
                 {...modalProps}

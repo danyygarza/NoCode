@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "antd";
+import { Button, Form, Badge } from "antd";
 import Testform from "./testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 
@@ -29,6 +29,7 @@ function ListTest(props) {
         {
           id: props.id,
           form: (
+
             <Testform
               function={data.function}
               data={docSnap.data()}
@@ -37,6 +38,9 @@ function ListTest(props) {
               code={props.code}
               setCode={props.setCode}
               id={props.id}
+              status={props.status}
+              setStatus={props.setStatus}
+              setUpdate={props.setUpdate}
             />
           ),
         },
