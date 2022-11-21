@@ -37,13 +37,14 @@ function Frida(props) {
                 align="baseline"
               >
                 <Row>
-                  <Col style={{padding: 10, marginTop: 86}}>
+                  <Col style={{ padding: 10, marginTop: 86 }}>
                     {index}
                   </Col>
-                  <Col>
+                  {console.log(status.get(form.id))}
+                  <Badge.Ribbon text={status.get(form.id) === undefined ? "pending" : status.get(form.id).text} color={status.get(form.id) === undefined ? "blue" : status.get(form.id).color}>
                     {form.form}
-                  </Col>
-                  <Col style={{padding: 10, marginTop: 86}}>
+                  </Badge.Ribbon>
+                  <Col style={{ padding: 10, marginTop: 86 }}>
                     <Button
                       onClick={() => {
                         remove(index);
@@ -51,28 +52,11 @@ function Frida(props) {
                         temp.splice(index, 1);
                         setElRefs(temp);
                       }}
-
-                      
                     >
                       Delete Action
                     </Button>
                   </Col>
                 </Row>
-                {index}
-                {console.log(status.get(form.id))}
-                <Badge.Ribbon text={status.get(form.id) === undefined ? "pending" : status.get(form.id).text} color={status.get(form.id) === undefined ? "blue" : status.get(form.id).color}>
-                  {form.form}
-                </Badge.Ribbon>
-                <Button
-                  onClick={() => {
-                    remove(index);
-                    const temp = [...elRefs];
-                    temp.splice(index, 1);
-                    setElRefs(temp);
-                  }}
-                >
-                  Delete Action
-                </Button>
               </Space>
             );
           })
