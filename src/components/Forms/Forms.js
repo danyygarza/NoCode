@@ -13,7 +13,7 @@ import Iterators from "./Iterators";
 
 
 
-const Forms = forwardRef((props, ref, items) => {
+const Forms = forwardRef((props, items) => {
     //modal
     const [open, setOpen] = useState(false);
     const [closed, setClosed] = useState(false);
@@ -77,6 +77,9 @@ const Forms = forwardRef((props, ref, items) => {
                                             id={props.id}
                                             setId={props.setId}
                                             functions={props.functions}
+                                            status={props.status}
+                                            setStatus={props.setStatus}
+                                            setUpdate={props.setUpdate}
                                         />
                                     </span>
                                 </>
@@ -109,6 +112,9 @@ const Forms = forwardRef((props, ref, items) => {
                                                 setCode={props.setCode}
                                                 functions={props.functions}
                                                 className='most-used-functions'
+                                                status={props.status}
+                                                setStatus={props.setStatus}
+                                                setUpdate={props.setUpdate}
 
                                             />
                                         </div>
@@ -129,8 +135,10 @@ const Forms = forwardRef((props, ref, items) => {
                                 <>
                                     <span style={{ display: "inline-block", marginTop: 17, marginLeft: '39%' }}>
 
-                                        <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
-                                        <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} />
+                                        <Conditions forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} setUpdate={props.setUpdate}
+                                        />
+                                        <Iterators forms={props.forms} setForms={props.setForms} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} setId={props.setId} setUpdate={props.setUpdate}
+                                        />
 
 
                                     </span>
