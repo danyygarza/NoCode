@@ -36,6 +36,8 @@ function Testform(props) {
     const [tempVar, setTempVar] = useState(new Map());
     const [itemType, setItemType] = useState([]);
 
+    const date = new Date();
+
     const test = (item) => {
         console.log(item.target.value)
     }
@@ -129,7 +131,9 @@ function Testform(props) {
                         props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.val).concat(tempSet[0])));
                         break;
                     case "text":
-                        tempCodeArr.push(tempData.shift());
+                        const tempText = Object.values(tempData.shift());
+                        console.log(tempText);
+                        tempCodeArr.push(tempText);
                         break;
                     case "filepicker":
                         console.log(tempData);
@@ -169,7 +173,7 @@ function Testform(props) {
             props.setCode(props.code.set(props.id, tempCodeArr));
             console.log(props.code);
             console.log("prop id", props.id)
-            props.setStatus(props.status.set(props.id, {color: "green", text: "Complete"})); 
+            props.setStatus(props.status.set(props.id, { color: "green", text: "Complete" }));
             console.log(props.status.get(props.id));
             props.setUpdate(true);
         },
@@ -221,39 +225,33 @@ function Testform(props) {
 
     //! add new line with example blocks function 
     const addCard = (index) => {
-        console.log(index);
-        console.log();
         const dataForms = (props.data.forms[index + 1])
         const temp = [];
         const itemTypeArr = itemType;
-        console.log(dataForms);
-        console.log(Object.values(dataForms));
-        console.log(Object.values(dataForms).length);
         setSize([...size, Object.values(dataForms).length]);
-        console.log("checking  size", size);
         Object.values(dataForms).forEach((val, index) => {
-            console.log(val.type);
-            console.log(val.PlaceHolder);
-            itemTypeArr.push({ key: val.type, val: val.PlaceHolder });
-            switch (val.type) {
+            itemTypeArr.push({ key: val.Type, val: val.PlaceHolder });
+            console.log(val);
+            switch (val.Type) {
                 case "text":
+                    console.log(index, val.PlaceHolder);
                     temp.push(
                         <>
                             {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, item.PlaceHolder]}
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.PlaceHolder}
+                                                type={val.Type}
+                                                placeholder={val.PlaceHolder}
                                                 onChange={props.onChange}
-                                                name={index}
+                                                name={`${val.Type}${date}`}
                                             />
                                         </Form.Item>
                                     </Col>
@@ -269,7 +267,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -304,7 +302,7 @@ function Testform(props) {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, val.PlaceHolder]}
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
@@ -314,7 +312,7 @@ function Testform(props) {
                                                 type={val.type}
                                                 placeholder={val.PlaceHolder}
                                                 onChange={test}
-                                                name={index}
+                                                name={`${val.Type}${date}`}
                                             />
                                         </Form.Item>
                                     </Col>
@@ -324,26 +322,50 @@ function Testform(props) {
                     );
                     break;
                 case "get":
-                    break;
-                case "set":
-                    console.log(val)
+                    //! temp code, needs to be changed
                     temp.push(
                         <>
                             {
                                 <>
                                     <Col>
                                         <Form.Item
-                                            name={[`${forms.length}${index}`, val.title]}
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
                                             rules={[
                                                 { required: true, message: "Please fill this out" },
                                             ]}
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={val.type}
+                                                type={val.Type}
+                                                placeholder={val.PlaceHolder}
+                                                onChange={test}
+                                                name={`${val.Type}${date}`}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    );
+                    break;
+                case "set":
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <Form.Item
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                            rules={[
+                                                { required: true, message: "Please fill this out" },
+                                            ]}
+                                            style={{ width: "auto" }}
+                                        >
+                                            <Input
+                                                type={val.Type}
                                                 placeholder={val.PlaceHolder}
                                                 onChange={props.onChange}
-                                                name={index}
+                                                name={`${val.Type}${date}`}
                                             />
                                         </Form.Item>
                                     </Col>
@@ -353,10 +375,11 @@ function Testform(props) {
                     );
                     break;
                 default:
+                    console.log(val)
             }
         })
-        console.log(temp);
-        console.log(itemTypeArr);
+        console.log("temp", temp);
+        console.log("Item type arr", itemTypeArr);
         setItemType(itemTypeArr);
         setForms([...forms, temp]);
     }
@@ -364,7 +387,6 @@ function Testform(props) {
     const add = () => {
         const temp = [];
         Object.values(props.data.forms)[key].map((item, index) => {
-            console.log(item);
             switch (item.type) {
                 case "text":
                     temp.push(
@@ -381,8 +403,8 @@ function Testform(props) {
                                             style={{ width: "auto" }}
                                         >
                                             <Input
-                                                type={item.type}
-                                                placeholder={item.placeHolder}
+                                                type={item.Type}
+                                                placeholder={item.PlaceHolder}
                                                 onChange={props.onChange}
                                                 name={index}
                                             />

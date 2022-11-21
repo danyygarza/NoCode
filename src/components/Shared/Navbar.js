@@ -59,7 +59,7 @@ export default function Navbar() {
           }}
         >
           <div className="logo" />
-          <p>Welcome {user.displayName || user.email}</p>
+          {/* <p>Welcome {user.displayName || user.email}</p> */}
           <div>
             <img className="frida" src="favicon.ico" alt="logo" />
           </div>

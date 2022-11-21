@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Button, Space, Col, Row, Badge } from "antd";
 import Forms from "../../components/Forms/Forms";
 
-//
+// TODO: bug, if you submit and there's a problem it will cause an error after
 
 function Frida(props) {
   const [forms, setForms] = useState([]); // forms array
