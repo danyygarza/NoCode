@@ -435,12 +435,12 @@ function Testform(props) {
         <>
             <Card
                 hoverable
-                style={{ width: 800 }}
+                style={{ width: 800, maxHeight: 219 }}
                 cover={<img alt="excel icon" src={props.data.src} width="100" height="200" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
-                <Meta title={props.function} description={props.data.description[1]} />
+                <Meta title={props.function} description={props.data.description[1]} style={{marginTop: -152, marginLeft: 125}} />
             </Card>
             <Modal
                 {...modalProps}

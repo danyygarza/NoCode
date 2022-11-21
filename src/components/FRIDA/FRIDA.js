@@ -74,18 +74,28 @@ function Frida(props) {
                 }}
                 align="baseline"
               >
-                {index}
-                {form.form}
-                <Button
-                  onClick={() => {
-                    remove(index);
-                    const temp = [...elRefs];
-                    temp.splice(index, 1);
-                    setElRefs(temp);
-                  }}
-                >
-                  Delete Action
-                </Button>
+                <Row>
+                  <Col style={{padding: 10, marginTop: 86}}>
+                    {index}
+                  </Col>
+                  <Col>
+                    {form.form}
+                  </Col>
+                  <Col style={{padding: 10, marginTop: 86}}>
+                    <Button
+                      onClick={() => {
+                        remove(index);
+                        const temp = [...elRefs];
+                        temp.splice(index, 1);
+                        setElRefs(temp);
+                      }}
+
+                      
+                    >
+                      Delete Action
+                    </Button>
+                  </Col>
+                </Row>
               </Space>
             );
           })

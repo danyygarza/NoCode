@@ -36,7 +36,7 @@ function MultiStepForm() {
       <div className="steps-content">{steps[current].content}</div>
       <div className="steps-action">
         {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
+          <Button type="primary" onClick={() => next()} style={{justifyContent: 'right'}}>
             Next
           </Button>
         )}
