@@ -1,0 +1,36 @@
+//EXCEL
+
+
+READ & WRITE: {
+      Write
+      Write Formula
+      Write variable value
+      Read Cell Text
+      Read Column
+}
+
+MANIPULATE COLUMNS: {
+      Copy Column
+      Inset Column
+      Sort Columns
+      Remove Column
+}
+
+CRUD Files :{
+      Load WorkSheet,
+      save,
+      dispose,
+      New Workbook,
+      NewWs, 
+      Convert to 2007
+}
+
+Sort Filter and Count: {
+      Apply Filter,
+      Count Elements,
+      Remove Duplicate,
+}
+
+Text Elements and variables {
+
+}

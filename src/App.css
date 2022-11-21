@@ -24,3 +24,7 @@ div.scrollmenu {
   div.scrollmenu a:hover {
     background-color: rgb(255, 255, 255);
   }
+
+  .group{
+    display: flex;
+  }

@@ -24,6 +24,7 @@ function ListTest(props) {
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
       console.log(docSnap.data());
+      console.log(props.variables);
       props.setForms([
         ...props.forms,
         {

@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Space, Col, Row, Badge } from "antd";
 import Forms from "../../components/Forms/Forms";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  onSnapshot,
+  collection,
+} from "@firebase/firestore";
+import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
+
+const db = getFirestore();
 
 // TODO: bug, if you submit and there's a problem it will cause an error after
 
 function Frida(props) {
+  //FirebaseGroupUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
   // const [functions, setFunctions] = useState([]);
@@ -36,21 +47,27 @@ function Frida(props) {
                 }}
                 align="baseline"
               >
-                {index}
-                {console.log(status.get(form.id))}
-                <Badge.Ribbon text={status.get(form.id) === undefined ? "pending" : status.get(form.id).text} color={status.get(form.id) === undefined ? "blue" : status.get(form.id).color}>
-                  {form.form}
-                </Badge.Ribbon>
-                <Button
-                  onClick={() => {
-                    remove(index);
-                    const temp = [...elRefs];
-                    temp.splice(index, 1);
-                    setElRefs(temp);
-                  }}
-                >
-                  Delete Action
-                </Button>
+                <Row>
+                  <Col style={{ padding: 10, marginTop: 86 }}>
+                    {index}
+                  </Col>
+                  {console.log(status.get(form.id))}
+                  <Badge.Ribbon text={status.get(form.id) === undefined ? "pending" : status.get(form.id).text} color={status.get(form.id) === undefined ? "blue" : status.get(form.id).color}>
+                    {form.form}
+                  </Badge.Ribbon>
+                  <Col style={{ padding: 10, marginTop: 86 }}>
+                    <Button
+                      onClick={() => {
+                        remove(index);
+                        const temp = [...elRefs];
+                        temp.splice(index, 1);
+                        setElRefs(temp);
+                      }}
+                    >
+                      Delete Action
+                    </Button>
+                  </Col>
+                </Row>
               </Space>
             );
           })
