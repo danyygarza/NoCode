@@ -29,11 +29,9 @@ function searchFunction(input, nameSearch) {
   }
 }
 
-function RenderFunctions(functions, group, collection) {
-  console.log("RenderFunctions", functions);
-  console.log("RenderGroup", group);
-  console.log("RenderCollection", collection);
-
+function RenderFunctions(functions) {
+  
+  console.log('funcs',functions)
   return functions.functions
     .filter(
       (element) =>
@@ -197,8 +195,8 @@ export default function Readers(props) {
             >
               <Form.Item name="groupValue">
                 <Radio.Group style={{display: 'flex'}}>
-                  <Radio.Button style={gridStyle} value="Read & Write">Read & Write</Radio.Button>
-                  <Radio.Button style={gridStyle} value="Manipulate Columns">
+                  <Radio.Button style={gridStyle} value="READ & WRITE">Read & Write</Radio.Button>
+                  <Radio.Button style={gridStyle} value="MANIPULATE COLUMNS">
                     Manipulate Columns
                   </Radio.Button>
                   <Radio.Button style={gridStyle} value="CRUD Files"> CRUD Files</Radio.Button>

@@ -14,7 +14,7 @@ const db = getFirestore();
 
 
 function Frida(props) {
-  FirebaseGroupUpdate()
+  //FirebaseGroupUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [functions, setFunctions] = useState([]);
