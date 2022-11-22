@@ -52,6 +52,7 @@ function ListTest(props) {
     }
   };
   console.log("filter", filteredData);
+
   return (
     <div style={{ display: "flex" }}>
       {filteredData.map((item) => (

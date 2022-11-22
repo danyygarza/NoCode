@@ -8,10 +8,21 @@ import {
   onSnapshot,
   collection,
 } from "@firebase/firestore";
+import '../../App.css'
 import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
+import { async } from "@firebase/util";
 
 const db = getFirestore();
 
+
+
+async function  getData()  {
+  const citiesRef = collection(db,"Excel");
+  const snapshot = await citiesRef.get();
+  snapshot.forEach((doc) => {
+    console.log(doc.id, "=>", doc.data());
+  });
+};
 
 function Frida(props) {
   //FirebaseGroupUpdate()
@@ -20,16 +31,22 @@ function Frida(props) {
   // const [functions, setFunctions] = useState([]);
   const [status, setStatus] = useState(new Map()); // will give you status of 
   const [update, setUpdate] = useState(false);
+  const [functions, setFunctions] = useState([]);
   const remove = (index) => {
     const temp = [...forms];
     temp.splice(index, 1);
     setForms(temp);
   };
 
-  //! this will create array of refs from size of forms
-  useEffect(() => {
-    setUpdate(false);
-  }, [status]);
+    //! this will create array of refs from size of forms
+    useEffect(
+      () =>
+        onSnapshot(collection(db, "Excel"), (snapshot) =>
+          setFunctions(snapshot.docs.map((doc) => ({ id: doc.id, collection: 'Excel'})))
+        ),
+      []
+    );
+    console.log(functions)
 
   return (
     <>
