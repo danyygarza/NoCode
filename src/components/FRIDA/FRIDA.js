@@ -11,14 +11,7 @@ import {
 import '../../App.css'
 import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
 import { async } from "@firebase/util";
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  onSnapshot,
-  collection,
-  getDocs
-} from "@firebase/firestore";
+
 const db = getFirestore();
 
 
@@ -38,6 +31,7 @@ function Frida(props) {
   // const [functions, setFunctions] = useState([]);
   const [status, setStatus] = useState(new Map()); // will give you status of 
   const [update, setUpdate] = useState(false);
+  const [functions, setFunctions] = useState([]);
   const remove = (index) => {
     const temp = [...forms];
     temp.splice(index, 1);
