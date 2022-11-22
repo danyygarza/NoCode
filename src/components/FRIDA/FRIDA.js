@@ -15,10 +15,8 @@ const db = getFirestore();
 // TODO: bug, if you submit and there's a problem it will cause an error after
 
 function Frida(props) {
-  //FirebaseGroupUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
-  // const [functions, setFunctions] = useState([]);
   const [status, setStatus] = useState(new Map()); // will give you status of 
   const [update, setUpdate] = useState(false);
   const remove = (index) => {

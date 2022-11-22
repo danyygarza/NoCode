@@ -12,17 +12,16 @@ import {
     Radio,
     message,
     Upload,
+    AutoComplete,
 } from "antd";
 import { PlusOutlined, MinusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
-import { set } from "firebase/database";
-import { render } from "less";
-import { array } from "i/lib/util";
-import { map } from "@firebase/util";
+import { element } from "prop-types";
 
 const buttonWidth = 70;
 const { Meta } = Card;
+
 
 function Testform(props) {
     const [open, setOpen] = useState(false);
@@ -35,12 +34,14 @@ function Testform(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [tempVar, setTempVar] = useState(new Map());
     const [itemType, setItemType] = useState([]);
-
+    const [options, setOptions] = useState([]);
     const date = new Date();
 
-    const test = (item) => {
-        console.log(item.target.value)
-    }
+    const handleSearch = (value, options) => {
+        let res = [];
+        console.log(options);
+    };
+
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -129,7 +130,7 @@ function Testform(props) {
                         console.log(element)
                         const tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
-                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, tempSet[0])) : props.setVariables(props.variables.set(props.variables.get(element.val).concat(tempSet[0])));
+                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
                         break;
                     case "text":
                         const tempText = Object.values(tempData.shift());
@@ -312,7 +313,6 @@ function Testform(props) {
                                             <Input
                                                 type={val.type}
                                                 placeholder={val.PlaceHolder}
-                                                onChange={test}
                                                 name={`${val.Type}${date}`}
                                             />
                                         </Form.Item>
@@ -324,30 +324,47 @@ function Testform(props) {
                     break;
                 case "get":
                     //! temp code, needs to be changed
-                    temp.push(
-                        <>
-                            {
-                                <>
-                                    <Col>
-                                        <Form.Item
-                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
-                                            rules={[
-                                                { required: true, message: "Please fill this out" },
-                                            ]}
-                                            style={{ width: "auto" }}
-                                        >
-                                            <Input
-                                                type={val.Type}
-                                                placeholder={val.PlaceHolder}
-                                                onChange={test}
-                                                name={`${val.Type}${date}`}
-                                            />
-                                        </Form.Item>
-                                    </Col>
-                                </>
-                            }
-                        </>
-                    );
+                    console.log(props.variables.get(val.PlaceHolder));
+                    console.log("varaibales", props.variables);
+                    try {
+                        const tempGet = []
+                        console.log("check var map", props.variables.get(val.PlaceHolder));
+                        props.variables.get(val.PlaceHolder).forEach((element) => {
+                            console.log(element);
+                            tempGet.push({ value: element });
+                        })
+                        console.log("tempGet", tempGet);
+                        temp.push(
+                            <>
+                                {
+                                    <>
+                                        <Col>
+                                            <Form.Item
+                                                name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                                rules={[
+                                                    { required: true, message: "Please fill this out" },
+                                                ]}
+                                                style={{ width: "auto" }}
+                                            >
+                                                <AutoComplete
+                                                    placeholder={val.PlaceHolder}
+                                                    options={tempGet}
+                                                />
+                                                {/* <Input
+                                                        type={val.type}
+                                                        placeholder={val.PlaceHolder}
+                                                        name={`${val.Type}${date}`}
+                                                    /> */}
+                                                {/* </AutoComplete> */}
+                                            </Form.Item>
+                                        </Col>
+                                    </>
+                                }
+                            </>
+                        );
+                    } catch (e) {
+                        console.log(e);
+                    }
                     break;
                 case "set":
                     temp.push(
@@ -468,7 +485,7 @@ function Testform(props) {
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
-                <Meta title={props.function} description={props.data.description[1]} style={{marginTop: -152, marginLeft: 125}} />
+                <Meta title={props.function} description={props.data.description[1]} style={{ marginTop: -152, marginLeft: 125 }} />
             </Card>
             <Modal
                 {...modalProps}
