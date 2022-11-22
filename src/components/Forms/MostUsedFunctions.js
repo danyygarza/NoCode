@@ -45,7 +45,7 @@ function MostUsedFunctions(props) {
         if (docSnap.exists()) {
             console.log(docSnap.data())
             props.setForms([...props.forms,
-            { id: props.id, form: < Testform data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
+            { id: props.id, form: < Testform function={data.function} data={docSnap.data()} variables={props.variables} setVariables={props.setVariables} code={props.code} setCode={props.setCode} id={props.id} /> }
             ])
             props.setId(props.id + 1);
             // props.setNumberList([...props.numberList, props.id]);

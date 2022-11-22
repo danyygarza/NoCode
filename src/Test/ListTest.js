@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "antd";
 import items from "../components/Forms/AllFunctions";
@@ -11,18 +12,24 @@ import {
   collection,
 } from "@firebase/firestore";
 const db = getFirestore();
+=======
+import React, { useState } from "react";
+import { Button, Form, Badge } from "antd";
+import Testform from "./testForm";
+import { getFirestore, doc, getDoc } from "@firebase/firestore";
+
+>>>>>>> c3d1493b3c7545761e7117b99ac09279ae878979
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
     const name = nameSearch.toUpperCase();
-    console.log("try", name.search(text) > -1);
     return name.search(text) > -1;
   } catch (e) {
-    console.log("try", e.message);
     return false;
   }
 }
 function ListTest(props) {
+<<<<<<< HEAD
   
   const filteredData = props.functions.filter((el) =>
     searchFunction(props.input, el.id)
@@ -31,11 +38,22 @@ function ListTest(props) {
 
   const add = async (data) => {
     const colRef = doc(db, data.collection, data.id);
+=======
+  const filteredData = props.functions.filter((el) =>
+    searchFunction(props.input, el.function)
+  );
+  //
+  const db = getFirestore();
+
+  const add = async (data) => {
+    const colRef = doc(db, data.collection, data.function);
+>>>>>>> c3d1493b3c7545761e7117b99ac09279ae878979
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
       console.log(docSnap.data());
       props.setForms([
         ...props.forms,
+<<<<<<< HEAD
         <Testform
           data={docSnap.data()}
           variables={props.variables}
@@ -48,6 +66,29 @@ function ListTest(props) {
       ]);
       props.setId(props.id + 1);
       props.setNumberList([...props.numberList, props.id]);
+=======
+        {
+          id: props.id,
+          form: (
+
+            <Testform
+              function={data.function}
+              data={docSnap.data()}
+              variables={props.variables}
+              setVariables={props.setVariables}
+              code={props.code}
+              setCode={props.setCode}
+              id={props.id}
+              status={props.status}
+              setStatus={props.setStatus}
+              setUpdate={props.setUpdate}
+            />
+          ),
+        },
+      ]);
+      props.setId(props.id + 1);
+      // props.setNumberList([...props.numberList, props.id]);
+>>>>>>> c3d1493b3c7545761e7117b99ac09279ae878979
     } else {
       console.log("no such document!");
     }
@@ -55,7 +96,7 @@ function ListTest(props) {
   console.log("filter", filteredData);
 
   return (
-    <ul>
+    <div style={{ display: "flex" }}>
       {filteredData.map((item) => (
         <>
           {" "}
@@ -68,13 +109,17 @@ function ListTest(props) {
             <div className="imgp">
               <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
               <p style={{ color: "black", marginLeft: 0 }}>
+<<<<<<< HEAD
                 <b>{item.id}</b>
+=======
+                <b>{item.function}</b>
+>>>>>>> c3d1493b3c7545761e7117b99ac09279ae878979
               </p>
             </div>
           </Button>
         </>
       ))}
-    </ul>
+    </div>
   );
 }
 
