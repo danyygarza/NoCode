@@ -2,7 +2,9 @@ import React from 'react'
 import {Button} from 'antd';
 
 function RenderFunctions(functions, group, collection, props) {
-  console.log('render', functions)
+  console.log('render', functions.functions)
+  console.log('render', functions.group)
+  console.log('render', functions.collection)
 
   return functions.functions
     .filter(

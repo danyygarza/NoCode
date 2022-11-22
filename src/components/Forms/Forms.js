@@ -30,7 +30,7 @@ const Forms = forwardRef((props, items) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-
+ console.log('formsFuncs', props.functions)
   return (
     <>
       <Button onClick={() => setOpen(true)} className="forms-button">

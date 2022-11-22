@@ -6,6 +6,7 @@ import GroupSelect from "./GroupSelect";
 import RenderFunctions from "./functions";
 
 function MultiStepForm(props) {
+  console.log('funcs', props.functions)
   const [current, setCurrent] = useState(0);
   const [collection, setCollection] = useState("");
   const [group, SetGroup] = useState("");
