@@ -64,11 +64,10 @@ const Forms = forwardRef((props, items) => {
                   <span
                     style={{
                       display: "inline-block",
-                      marginTop: 17,
-                      marginLeft: "32%",
+                      marginTop: 10,
                     }}
                   >
-                    <Readers
+                    <MultiStepForm
                       forms={props.forms}
                       setForms={props.setForms}
                       variables={props.variables}
@@ -78,9 +77,6 @@ const Forms = forwardRef((props, items) => {
                       id={props.id}
                       setId={props.setId}
                       functions={props.functions}
-                                            status={props.status}
-                                            setStatus={props.setStatus}
-                                            setUpdate={props.setUpdate}
                     />
                   </span>
                 </>
@@ -174,27 +170,7 @@ const Forms = forwardRef((props, items) => {
               label: "Scripts",
               key: "5",
               children: (
-                <>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      marginTop: 17,
-                      marginLeft: "39%",
-                    }}
-                  >
-                    <MultiStepForm
-                      forms={props.forms}
-                      setForms={props.setForms}
-                      variables={props.variables}
-                      setVariables={props.setVariables}
-                      code={props.code}
-                      setCode={props.setCode}
-                      id={props.id}
-                      setId={props.setId}
-                      functions={props.functions}
-                    />
-                  </span>
-                </>
+                <p style={{color: 'black'}}> scripts</p>
               ),
             },
           ]}

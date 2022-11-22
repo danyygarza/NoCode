@@ -8,6 +8,7 @@ import {
   onSnapshot,
   collection,
 } from "@firebase/firestore";
+import '../../App.css'
 import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
 
 const db = getFirestore();
