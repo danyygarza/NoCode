@@ -28,8 +28,27 @@ function Frida(props) {
 
   //! this will create array of refs from size of forms
   useEffect(() => {
-    setUpdate(false);
-  }, [status]);
+    let temp = [];
+    const fetchData = async () => {
+      const collections = await getCollections();
+      console.log(collections);
+      collections.forEach((element) => {
+        onSnapshot(collection(db, element), (snapshot) => {
+          setFunctions((functions) => {
+            return [
+              ...functions.concat(
+                snapshot.docs.map((doc) => ({
+                  function: doc.id,
+                  collection: element,
+                }))
+              ),
+            ];
+          });
+        });
+      });
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
