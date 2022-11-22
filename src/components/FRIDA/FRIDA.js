@@ -40,6 +40,7 @@ function Frida(props) {
                 snapshot.docs.map((doc) => ({
                   function: doc.id,
                   collection: element,
+                  group: doc.get('group'),
                 }))
               ),
             ];
