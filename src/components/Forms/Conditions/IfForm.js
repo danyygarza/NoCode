@@ -57,7 +57,7 @@ export default function IfElseForm(props) {
             <Card
                 hoverable
                 style={{ width: 800 }}
-                cover={<img alt="excel icon" src="../../../../img/ifelse.png" />}
+                cover={<img alt="excel icon" src="../../../../img/IF.svg" />}
                 onClick={() => setOpen(true)}
                 maskClosable={true}
             >
