@@ -3,12 +3,8 @@ import { Button, Form, Input, Modal, Row, Radio, Space } from "antd";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
 import '../../../App.css'
-
-
 //comment
-
 const db = getFirestore();
-
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -18,7 +14,6 @@ function searchFunction(input, nameSearch) {
     return false;
   }
 }
-
 function Reader(props) {
   const [value, setValue] = useState(0);
   const onChange = (e) => {
@@ -50,7 +45,6 @@ function Reader(props) {
       value: 3,
     },
   ]);
-
   const { Search } = Input;
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
@@ -58,7 +52,6 @@ function Reader(props) {
     setInputText(lowerCase);
     console.log(e);
   };
-
   return formArray.lenght === 0 ? (
     <h1>empty</h1>
   ) : (
@@ -78,7 +71,7 @@ function Reader(props) {
                 }}
                 onClick={() => {
                   props.setCollection(data.collection);
-                  console.log('data collection',data.collection)
+                  console.log('data collection', data.collection)
                   console.log("collection", props.collection);
                 }}
               >
@@ -96,5 +89,4 @@ function Reader(props) {
     </div>
   );
 }
-
 export default Reader;

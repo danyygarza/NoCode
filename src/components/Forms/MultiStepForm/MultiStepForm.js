@@ -5,6 +5,10 @@ import Reader from "./reader";
 import GroupSelect from "./GroupSelect";
 import RenderFunctions from "./functions";
 
+
+
+
+
 function MultiStepForm(props) {
   console.log('funcs', props.functions)
   const [current, setCurrent] = useState(0);
@@ -24,9 +28,7 @@ function MultiStepForm(props) {
       content: <RenderFunctions functions={props.functions} collection={collection} group={group} setForms={props.setForms} forms={props.forms} id={props.id} setId={props.setId} />,
     },
   ];
-
   const next = () => {
-
     setCurrent(current + 1);
   };
   const prev = () => {
@@ -36,13 +38,10 @@ function MultiStepForm(props) {
     key: item.title,
     title: item.title,
   }));
-
   useEffect(() => {
     console.log('group', group)
   }, [])
-
-
-  return (  
+  return (
     <>
       <Steps current={current} items={items} style={{ padding: 25 }} />
       <div style={{ marginTop: 10, marginLeft: 140, marginBottom: 15 }}>{steps[current].content}</div>
@@ -74,5 +73,4 @@ function MultiStepForm(props) {
     </>
   );
 }
-
 export default MultiStepForm;
