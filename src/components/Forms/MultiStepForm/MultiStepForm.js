@@ -8,7 +8,6 @@ import RenderFunctions from "./functions";
 
 //comment
 
-
 function MultiStepForm(props) {
   console.log('funcs', props.functions)
   const [current, setCurrent] = useState(0);
