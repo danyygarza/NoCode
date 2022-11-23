@@ -8,7 +8,7 @@ import {
   onSnapshot,
   collection,
 } from "@firebase/firestore";
-import FirebaseGroupUpdate from "../../Test/sketches/fireBaseGroups";
+import './FRIDA.css'
 
 const db = getFirestore();
 
@@ -45,7 +45,7 @@ function Frida(props) {
                 }}
                 align="baseline"
               >
-                <Row>
+                <Row className='cardFunction'>
                   <Col style={{ padding: 10, marginTop: 86 }}>
                     {index + 1}
                   </Col>
