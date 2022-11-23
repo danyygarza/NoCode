@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Form, Badge } from "antd";
 import Testform from "./testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
-
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -18,7 +17,6 @@ function ListTest(props) {
   );
   //
   const db = getFirestore();
-
   const add = async (data) => {
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
@@ -30,7 +28,6 @@ function ListTest(props) {
         {
           id: props.id,
           form: (
-
             <Testform
               function={data.function}
               data={docSnap.data()}
@@ -76,5 +73,4 @@ function ListTest(props) {
     </div>
   );
 }
-
 export default ListTest;
