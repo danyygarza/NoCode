@@ -1,10 +1,23 @@
-import React, { useState, useForm, useEffect, useRef } from "react";
-import { Form, Input, Card, Modal, Button, Popover, Row, Col, message, Upload, AutoComplete } from "antd";
-import { MinusOutlined, UploadOutlined } from "@ant-design/icons";
+import React, { useState, useForm, useEffect } from "react";
+import {
+    Form,
+    Input,
+    Card,
+    Modal,
+    Button,
+    Popover,
+    Row,
+    Col,
+    Tabs,
+    Radio,
+    message,
+    Upload,
+    AutoComplete,
+} from "antd";
+import { PlusOutlined, MinusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
-import "antd/dist/antd.css";
 import "../App.css";
-
+import { element } from "prop-types";
 
 const buttonWidth = 70;
 const { Meta } = Card;
@@ -30,6 +43,7 @@ function Testform(props) {
         console.log(options);
     };
 
+
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -39,8 +53,6 @@ function Testform(props) {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
-
-  
     const description = Object.values(props.data.description).map((text) => {
         return (
             <>
@@ -155,9 +167,7 @@ function Testform(props) {
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         //! check this not working 
-                        console.log("varSet", varSet[0]);
-                        props.variables.get(varSet[0]); 
-                        props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).concat(tempSet[0])));
+                        // props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
                         break
                     default:
                         tempCodeArr.push(element.val)
@@ -526,19 +536,17 @@ function Testform(props) {
             </Card>
             <Modal
                 {...modalProps}
-                title={props.function}
+                title="useModalForm"
                 open={open}
-                centered
-                onOk={() => setOpen(false)}
                 onCancel={() => setOpen(false)}
                 okText="submit"
                 width={1200}
                 height={800}
             >
-                <Row centered>
+                <Row>
                     <Col>
                         <div className="demo">
-                            <div style={{ marginLeft: '64%', whiteSpace: "nowrap" }}>
+                            <div style={{ marginLeft: buttonWidth, whiteSpace: "nowrap" }}>
                                 <Popover
                                     placement="topLeft"
                                     title="Description"
@@ -566,23 +574,34 @@ function Testform(props) {
                                 >
                                     <Button>Syntax</Button>
                                 </Popover>
-                                <Button onClick={showModal}>
-                                    Examples
-                                </Button>
-                                <Modal
-                                    title="Pick the example that looks most similar to what you are trying to achieve  "
-                                    open={isModalOpen}
-                                    onOk={handleOk}
-                                    onCancel={handleCancel}
-                                    width={1000}
+                                <Popover
+                                    placement="topRight"
+                                    title="Examples"
+                                    content={examples}
+                                    trigger="click"
                                 >
-                                    {renderSyntaxCards()}
-                                </Modal>
+                                    <Button>Examples</Button>
+                                </Popover>
                             </div>
                         </div>
                     </Col>
                 </Row>
-                <br />
+                <Row>
+                    <Col>
+                        <Radio.Group
+                            defaultValue="a"
+                            buttonStyle="solid"
+                            onChange={(e) => setKey(e.target.value)}
+                            value={key}
+                        >
+                            {Object.keys(props.data.forms).map((_, index) => {
+                                return (
+                                    <Radio.Button value={index}>syntax: {index}</Radio.Button>
+                                );
+                            })}
+                        </Radio.Group>
+                    </Col>
+                </Row>
                 <Form layout="inline" {...formProps}>
                     <Row>
                         {forms.map((item, index) => {
@@ -607,7 +626,33 @@ function Testform(props) {
                             );
                         })}
                     </Row>
+                    <Row justify="center">
+                        <Col offset={8} span={4}>
+                            <Button
+                                className="add-button"
+                                type="primary"
+                                shape="circle"
+                                icon={<PlusOutlined />}
+                                size={"large"}
+                                onClick={() => add()}
+                            />
+                        </Col>
+                    </Row>
 
+                    <Row>
+                        <Button type="primary" onClick={showModal}>
+                            Examples
+                        </Button>
+                        <Modal
+                            title="Pick the example that looks most similar to what you are trying to achieve  "
+                            open={isModalOpen}
+                            onOk={handleOk}
+                            onCancel={handleCancel}
+                            width={1000}
+                        >
+                            {renderSyntaxCards()}
+                        </Modal>
+                    </Row>
                 </Form>
             </Modal>
         </>
