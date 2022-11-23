@@ -78,9 +78,10 @@ const Forms = forwardRef((props, items) => {
                       id={props.id}
                       setId={props.setId}
                       functions={props.functions}
-                                            status={props.status}
-                                            setStatus={props.setStatus}
-                                            setUpdate={props.setUpdate}
+                      status={props.status}
+                      setStatus={props.setStatus}
+                      setUpdate={props.setUpdate}
+                      formCards={props.formCards}
                     />
                   </span>
                 </>
@@ -112,10 +113,11 @@ const Forms = forwardRef((props, items) => {
                         code={props.code}
                         setCode={props.setCode}
                         functions={props.functions}
-                        className="most-used-functions"                                                status={props.status}
-                                                setStatus={props.setStatus}
-                                                setUpdate={props.setUpdate}
-
+                        className="most-used-functions"
+                        status={props.status}
+                        setStatus={props.setStatus}
+                        setUpdate={props.setUpdate}
+                        formCards={props.formCards}
                       />
                     </div>
                   </span>
@@ -126,7 +128,7 @@ const Forms = forwardRef((props, items) => {
                   </p>
                   <span style={{ display: "inline-block", marginLeft: 50 }}>
                     <div className="most-used-functions">
-                      <AllFunctions />
+                      <AllFunctions formCards={props.formCards}/>
                     </div>
                   </span>
                 </>
@@ -143,8 +145,8 @@ const Forms = forwardRef((props, items) => {
                       marginTop: 17,
                       marginLeft: "39%",
                     }}
-                >
-                      <Conditions
+                  >
+                    <Conditions
                       forms={props.forms}
                       setForms={props.setForms}
                       variables={props.variables}
@@ -152,8 +154,8 @@ const Forms = forwardRef((props, items) => {
                       code={props.code}
                       setCode={props.setCode}
                       id={props.id}
-                      setId={props.setId} setUpdate={props.setUpdate}
-                                       
+                      setId={props.setId}
+                      setUpdate={props.setUpdate}
                     />
                     <Iterators
                       forms={props.forms}
@@ -164,8 +166,8 @@ const Forms = forwardRef((props, items) => {
                       setCode={props.setCode}
                       id={props.id}
                       setId={props.setId}
-                    setUpdate={props.setUpdate}
-                                        />
+                      setUpdate={props.setUpdate}
+                    />
                   </span>
                 </>
               ),

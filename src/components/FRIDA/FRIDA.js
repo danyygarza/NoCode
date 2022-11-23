@@ -122,6 +122,7 @@ function Frida(props) {
               status={status}
               setStatus={setStatus}
               setUpdate={setUpdate}
+              formCards={props.formCards}
             />
           </Col>
         </Row>

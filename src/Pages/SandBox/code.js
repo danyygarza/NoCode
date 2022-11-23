@@ -114,6 +114,7 @@ function Code() {
               functions={functions}
               setFunctions={setFunctions}
               onChange={(e) => setLocalStorage(e.target.value)}
+              formCards={formCards}
               
             />
           </Col>
