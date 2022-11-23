@@ -28,7 +28,7 @@ function Frida(props) {
   //! this will create array of refs from size of forms
   useEffect(() => {
     setUpdate(false);
-  }, [status]);
+  }, [update]);
 
   return (
     <>
@@ -47,9 +47,8 @@ function Frida(props) {
               >
                 <Row className='cardFunction'>
                   <Col style={{ padding: 10, marginTop: 86 }}>
-                    {index}
+                    {index + 1}
                   </Col>
-                  {console.log(status.get(form.id))}
                   <Badge.Ribbon text={status.get(form.id) === undefined ? "pending" : status.get(form.id).text} color={status.get(form.id) === undefined ? "blue" : status.get(form.id).color}>
                     {form.form}
                   </Badge.Ribbon>
