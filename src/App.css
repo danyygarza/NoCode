@@ -28,3 +28,8 @@ div.scrollmenu {
   .group{
     display: flex;
   }
+
+
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active{
+    color:#D64488 !important;
+  }

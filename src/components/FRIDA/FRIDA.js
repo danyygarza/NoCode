@@ -10,9 +10,21 @@ import {
 } from "@firebase/firestore";
 import './FRIDA.css'
 
-const db = getFirestore();
+const testing = async (test) => {
+    console.log("in testing function");
+    const temp = await test;
+    console.log("temp", temp);
+    return temp;
+};
 
 // TODO: bug, if you submit and there's a problem it will cause an error after
+// async function  getData()  {
+//   const citiesRef = collection(db,"Excel");
+//   const snapshot = await citiesRef.get();
+//   snapshot.forEach((doc) => {
+//     console.log(doc.id, "=>", doc.data());
+//   });
+// };
 
 function Frida(props) {
   const [forms, setForms] = useState([]); // forms array

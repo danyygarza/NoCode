@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Input, Modal, Row, Radio, Space } from "antd";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
+import '../../../App.css'
+
+
+//comment
+
 const db = getFirestore();
 
 function searchFunction(input, nameSearch) {
@@ -73,6 +78,7 @@ function Reader(props) {
                 }}
                 onClick={() => {
                   props.setCollection(data.collection);
+                  console.log('data collection',data.collection)
                   console.log("collection", props.collection);
                 }}
               >
