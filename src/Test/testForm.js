@@ -536,7 +536,7 @@ function Testform(props) {
             </Card>
             <Modal
                 {...modalProps}
-                title="useModalForm"
+                title={props.function}
                 open={open}
                 onCancel={() => setOpen(false)}
                 okText="submit"
@@ -574,33 +574,23 @@ function Testform(props) {
                                 >
                                     <Button>Syntax</Button>
                                 </Popover>
-                                <Popover
-                                    placement="topRight"
-                                    title="Examples"
-                                    content={examples}
-                                    trigger="click"
-                                >
-                                    <Button>Examples</Button>
-                                </Popover>
                             </div>
                         </div>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                        <Radio.Group
-                            defaultValue="a"
-                            buttonStyle="solid"
-                            onChange={(e) => setKey(e.target.value)}
-                            value={key}
-                        >
-                            {Object.keys(props.data.forms).map((_, index) => {
-                                return (
-                                    <Radio.Button value={index}>syntax: {index}</Radio.Button>
-                                );
-                            })}
-                        </Radio.Group>
-                    </Col>
+                    <Button type="primary" onClick={showModal}>
+                        Examples
+                    </Button>
+                    <Modal
+                        title="Pick the example that looks most similar to what you are trying to achieve  "
+                        open={isModalOpen}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                        width={1000}
+                    >
+                        {renderSyntaxCards()}
+                    </Modal>
                 </Row>
                 <Form layout="inline" {...formProps}>
                     <Row>
@@ -625,33 +615,6 @@ function Testform(props) {
                                 </>
                             );
                         })}
-                    </Row>
-                    <Row justify="center">
-                        <Col offset={8} span={4}>
-                            <Button
-                                className="add-button"
-                                type="primary"
-                                shape="circle"
-                                icon={<PlusOutlined />}
-                                size={"large"}
-                                onClick={() => add()}
-                            />
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Button type="primary" onClick={showModal}>
-                            Examples
-                        </Button>
-                        <Modal
-                            title="Pick the example that looks most similar to what you are trying to achieve  "
-                            open={isModalOpen}
-                            onOk={handleOk}
-                            onCancel={handleCancel}
-                            width={1000}
-                        >
-                            {renderSyntaxCards()}
-                        </Modal>
                     </Row>
                 </Form>
             </Modal>
