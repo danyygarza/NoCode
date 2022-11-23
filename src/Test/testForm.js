@@ -345,23 +345,22 @@ function Testform(props) {
                                                     { required: true, message: "Please fill this out" },
                                                 ]}
                                             >
-                                                {/* <AutoComplete
+                                                <AutoComplete
                                                     onSelect={v => console.log("selected : " + v)}
                                                     filterOption={(inputValue, option) =>
                                                         option.value
                                                             .toUpperCase()
                                                             .indexOf(inputValue.toUpperCase()) !== -1
                                                     }
-                                                    placeholder={val.PlaceHolder}
                                                     options={tempGet}
-                                                > */}
-                                                <Input
-                                                    type={val.type}
-                                                    placeholder={val.PlaceHolder}
-                                                    name={`${val.Type}${date}`}
-                                                    value={options}
-                                                />
-                                                {/* </AutoComplete> */}
+                                                >
+                                                    <Input
+                                                        type={val.type}
+                                                        placeholder={val.PlaceHolder}
+                                                        name={`${val.Type}${date}`}
+                                                        value={options}
+                                                    />
+                                                </AutoComplete>
                                             </Form.Item>
                                             {/* <Form.Item
                                                 name={[`${val.Type}${date}`, val.PlaceHolder]}
