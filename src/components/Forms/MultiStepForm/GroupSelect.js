@@ -25,6 +25,13 @@ function GroupSelect(props) {
       <Radio value={"Read"} onClick={props.SetGroup(props.group)}>Read</Radio>
       <Radio value={"Remove"} onClick={props.SetGroup(props.group)}>Remove</Radio>
       <Radio value={"Write"} onClick={props.SetGroup(props.group)}>Write</Radio>
+      <Radio value={"Delete"} onClick={props.SetGroup(props.group)}>Delete</Radio>
+      <Radio value={"Conditions"} onClick={props.SetGroup(props.group)}>Conditions</Radio>
+      <Radio value={"Apply"} onClick={props.SetGroup(props.group)}>Apply</Radio>
+      <Radio value={"Convert"} onClick={props.SetGroup(props.group)}>Convert</Radio>
+      <Radio value={"Copy"} onClick={props.SetGroup(props.group)}>Copy</Radio>
+      <Radio value={"Count"} onClick={props.SetGroup(props.group)}>Count</Radio>
+      <Radio value={"Define"} onClick={props.SetGroup(props.group)}>Define</Radio>
     </Radio.Group>
   );
 }
