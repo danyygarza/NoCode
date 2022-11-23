@@ -166,7 +166,10 @@ function Testform(props) {
                         console.log(element)
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
-                        props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).push(tempSet[0])));
+                        //! check this not working 
+                        console.log("varSet", varSet[0]);
+                        props.variables.get(varSet[0]); 
+                        props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).concat(tempSet[0])));
                         break
                     default:
                         tempCodeArr.push(element.val)
