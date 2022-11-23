@@ -13,15 +13,15 @@ import Title from "antd/lib/skeleton/Title";
 import MultiStepForm from "./MultiStepForm/MultiStepForm";
 
 const Forms = forwardRef((props, items) => {
-    //modal
-    const [open, setOpen] = useState(false);
-    const [closed, setClosed] = useState(false);
-    const [filteredList, setFilteredList] = useState(items);
-    const [component, setComponent] = useState("nothing");
+  //modal
+  const [open, setOpen] = useState(false);
+  const [closed, setClosed] = useState(false);
+  const [filteredList, setFilteredList] = useState(items);
+  const [component, setComponent] = useState("nothing");
 
-    const onChange = (key) => {
-        console.log(key);
-    };
+  const onChange = (key) => {
+    console.log(key);
+  };
 
   //search
   const { Search } = Input;
@@ -30,7 +30,7 @@ const Forms = forwardRef((props, items) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
- console.log('formsFuncs', props.functions)
+  console.log('formsFuncs', props.functions)
   return (
     <>
       <Button onClick={() => setOpen(true)} className="forms-button">
@@ -108,62 +108,62 @@ const Forms = forwardRef((props, items) => {
                         code={props.code}
                         setCode={props.setCode}
                         functions={props.functions}
-                        className="most-used-functions"                                                status={props.status}
-                                                setStatus={props.setStatus}
-                                                setUpdate={props.setUpdate}
-                                                variables={props.variables}
-                                                setVariables={props.setVariables}
+                        className="most-used-functions" status={props.status}
+                        setStatus={props.setStatus}
+                        setUpdate={props.setUpdate}
+                        variables={props.variables}
+                        setVariables={props.setVariables}
 
-                                            />
-                                        </div>
-                                    </span>
-                                    <p
-                                        style={{ color: "black", marginTop: 10, marginBottom: -3 }}
-                                    >
-                                        All Functions
-                                    </p>
-                                    <span style={{ display: "inline-block", marginLeft: 50 }}>
-                                        <div className="most-used-functions">
-                                            <AllFunctions />
-                                        </div>
-                                    </span>
-                                </>
-                            ),
-                        },
-                        {
-                            label: "Conditions",
-                            key: "4",
-                            children: (
-                                <>
-                                    <span
-                                        style={{
-                                            display: "inline-block",
-                                            marginTop: 17,
-                                            marginLeft: "39%",
-                                        }}
-                                    >
-                                        <Conditions
-                                            forms={props.forms}
-                                            setForms={props.setForms}
-                                            variables={props.variables}
-                                            setVariables={props.setVariables}
-                                            code={props.code}
-                                            setCode={props.setCode}
-                                            id={props.id}
-                                            setId={props.setId} setUpdate={props.setUpdate}
+                      />
+                    </div>
+                  </span>
+                  <p
+                    style={{ color: "black", marginTop: 10, marginBottom: -3 }}
+                  >
+                    All Functions
+                  </p>
+                  <span style={{ display: "inline-block", marginLeft: 50 }}>
+                    <div className="most-used-functions">
+                      <AllFunctions />
+                    </div>
+                  </span>
+                </>
+              ),
+            },
+            {
+              label: "Conditions",
+              key: "4",
+              children: (
+                <>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      marginTop: 17,
+                      marginLeft: "39%",
+                    }}
+                  >
+                    <Conditions
+                      forms={props.forms}
+                      setForms={props.setForms}
+                      variables={props.variables}
+                      setVariables={props.setVariables}
+                      code={props.code}
+                      setCode={props.setCode}
+                      id={props.id}
+                      setId={props.setId} setUpdate={props.setUpdate}
 
-                                        />
-                                        <Iterators
-                                            forms={props.forms}
-                                            setForms={props.setForms}
-                                            variables={props.variables}
-                                            setVariables={props.setVariables}
-                                            code={props.code}
-                                            setCode={props.setCode}
-                                            id={props.id}
-                                            setId={props.setId}
-                                            setUpdate={props.setUpdate}
-                                        />
+                    />
+                    <Iterators
+                      forms={props.forms}
+                      setForms={props.setForms}
+                      variables={props.variables}
+                      setVariables={props.setVariables}
+                      code={props.code}
+                      setCode={props.setCode}
+                      id={props.id}
+                      setId={props.setId}
+                      setUpdate={props.setUpdate}
+                    />
                   </span>
                 </>
               ),
@@ -172,7 +172,7 @@ const Forms = forwardRef((props, items) => {
               label: "Scripts",
               key: "5",
               children: (
-                <p style={{color: 'black'}}> scripts</p>
+                <p style={{ color: 'black' }}> scripts</p>
               ),
             },
           ]}

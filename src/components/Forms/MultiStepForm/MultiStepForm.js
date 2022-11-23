@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, message, Steps } from "antd";
 import "antd/dist/antd.css";
 import Reader from "./reader";
@@ -13,18 +13,18 @@ function MultiStepForm(props) {
   const steps = [
     {
       title: "Choose the reader",
-      content: <Reader collection={collection} setCollection={setCollection}/>,
+      content: <Reader collection={collection} setCollection={setCollection} />,
     },
     {
       title: "Choose the function group",
-      content: <GroupSelect group={group} SetGroup={SetGroup}/>,
+      content: <GroupSelect group={group} SetGroup={SetGroup} />,
     },
     {
       title: "Choose the function",
-      content: <RenderFunctions functions={props.functions} collection={collection} group={group}/>,
+      content: <RenderFunctions functions={props.functions} collection={collection} group={group} setForms={props.setForms} forms={props.forms} id={props.id} setId={props.setId} />,
     },
   ];
-  
+
   const next = () => {
 
     setCurrent(current + 1);
@@ -41,13 +41,14 @@ function MultiStepForm(props) {
     console.log('group', group)
   }, [])
 
-  return (
+
+  return (  
     <>
-      <Steps current={current} items={items} style={{padding: 25}}/>
-      <div style={{marginTop: 10, marginLeft: 140, marginBottom: 15}}>{steps[current].content}</div>
+      <Steps current={current} items={items} style={{ padding: 25 }} />
+      <div style={{ marginTop: 10, marginLeft: 140, marginBottom: 15 }}>{steps[current].content}</div>
       <div className="steps-action">
         {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()} style={{justifyContent: 'right'}}>
+          <Button type="primary" onClick={() => next()} style={{ justifyContent: 'right' }}>
             Next
           </Button>
         )}
