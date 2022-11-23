@@ -22,6 +22,7 @@ import { element } from "prop-types";
 const buttonWidth = 70;
 const { Meta } = Card;
 
+const { Option } = AutoComplete;
 
 function Testform(props) {
     const [open, setOpen] = useState(false);
@@ -119,16 +120,20 @@ function Testform(props) {
             console.log(forms);
             let tempString = "";
             const tempCodeArr = [];
+            let varSet = "";
+            let tempSet = ""
             let tempData = Object.values(data);
             let idx = 1;
+            console.log("data", data);
             console.log("tempData", tempData);
             console.log("item arr", itemType);
             console.log(props.variables);
             itemType.forEach((element) => {
+                console.log(element);
                 switch (element.key) {
                     case "set":
                         console.log(element)
-                        const tempSet = Object.values(tempData.shift());
+                        tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
                         break;
@@ -138,11 +143,31 @@ function Testform(props) {
                         tempCodeArr.push(tempText);
                         break;
                     case "filepicker":
-                        console.log(tempData);
-                        console.log(Object.values(tempData[0])[0].file.name);
-                        tempCodeArr.push(` root ${Object.values(tempData[0])[0].file.name}`);
-                        tempData.shift();
+                        tempSet = Object.values(tempData.shift());
+                        console.log("filePciker", tempSet[0].file.name);
+
+                        // console.log(Object.values(tempData[0]));
+                        // // console.log(Object.values(tempData[0])[0].file.name);
+                        tempCodeArr.push(` root ${tempSet[0].file.name}`);
+                        // tempData.shift();
                         break;
+                    case "varGet":
+                        console.log(element)
+                        tempSet = Object.values(tempData.shift());
+                        tempCodeArr.push(tempSet[0]);
+                        props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).push(tempSet[0])));
+                        break
+                    case "varSet":
+                        console.log(element)
+                        varSet = Object.values(tempData.shift());
+                        tempCodeArr.push(varSet[0]);
+                        break
+                    case "get":
+                        console.log(element)
+                        tempSet = Object.values(tempData.shift());
+                        tempCodeArr.push(tempSet[0]);
+                        props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).push(tempSet[0])));
+                        break
                     default:
                         tempCodeArr.push(element.val)
                         break;
@@ -297,31 +322,6 @@ function Testform(props) {
                         </>
                     );
                     break;
-                case "variable":
-                    temp.push(
-                        <>
-                            {
-                                <>
-                                    <Col>
-                                        <Form.Item
-                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
-                                            rules={[
-                                                { required: true, message: "Please fill this out" },
-                                            ]}
-                                            style={{ width: "auto" }}
-                                        >
-                                            <Input
-                                                type={val.type}
-                                                placeholder={val.PlaceHolder}
-                                                name={`${val.Type}${date}`}
-                                            />
-                                        </Form.Item>
-                                    </Col>
-                                </>
-                            }
-                        </>
-                    );
-                    break;
                 case "get":
                     //! temp code, needs to be changed
                     console.log(props.variables.get(val.PlaceHolder));
@@ -344,19 +344,43 @@ function Testform(props) {
                                                 rules={[
                                                     { required: true, message: "Please fill this out" },
                                                 ]}
+                                            >
+                                                {/* <AutoComplete
+                                                    onSelect={v => console.log("selected : " + v)}
+                                                    filterOption={(inputValue, option) =>
+                                                        option.value
+                                                            .toUpperCase()
+                                                            .indexOf(inputValue.toUpperCase()) !== -1
+                                                    }
+                                                    placeholder={val.PlaceHolder}
+                                                    options={tempGet}
+                                                > */}
+                                                <Input
+                                                    type={val.type}
+                                                    placeholder={val.PlaceHolder}
+                                                    name={`${val.Type}${date}`}
+                                                    value={options}
+                                                />
+                                                {/* </AutoComplete> */}
+                                            </Form.Item>
+                                            {/* <Form.Item
+                                                name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                                rules={[
+                                                    { required: true, message: "Please fill this out" },
+                                                ]}
                                                 style={{ width: "auto" }}
                                             >
                                                 <AutoComplete
-                                                    placeholder={val.PlaceHolder}
+                                                    // placeholder={val.PlaceHolder}
                                                     options={tempGet}
-                                                />
-                                                {/* <Input
+                                                >
+                                                    <Input
                                                         type={val.type}
                                                         placeholder={val.PlaceHolder}
                                                         name={`${val.Type}${date}`}
-                                                    /> */}
-                                                {/* </AutoComplete> */}
-                                            </Form.Item>
+                                                    />
+                                                </AutoComplete>
+                                            </Form.Item> */}
                                         </Col>
                                     </>
                                 }
@@ -393,6 +417,29 @@ function Testform(props) {
                     );
                     break;
                 default:
+                    temp.push(
+                        <>
+                            {
+                                <>
+                                    <Col>
+                                        <Form.Item
+                                            name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                            rules={[
+                                                { required: true, message: "Please fill this out" },
+                                            ]}
+                                            style={{ width: "auto" }}
+                                        >
+                                            <Input
+                                                type={val.type}
+                                                placeholder={val.PlaceHolder}
+                                                name={`${val.Type}${date}`}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                </>
+                            }
+                        </>
+                    );
                     console.log(val)
             }
         })
@@ -610,31 +657,6 @@ function Testform(props) {
             </Modal>
         </>
     );
-}
-{
-    /* //!  for text file picker */
-}
-{
-    /* {item[1] === "file" &&
-        <Form.Item
-            name={[`${item[0] + id}`, `${item[0]}`]}
-            label={item[0]}
-            rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-        <input> // 
-        </Form.Item>} */
-}
-{
-    /* //!  for text date */
-}
-{
-    /* {item[1] === "date" &&
-        <Form.Item
-            name={[`${item[0] + id}`, `${item[0]}`]}
-            label={item[0]}
-            rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-        </Form.Item>} */
 }
 
 export default Testform;
