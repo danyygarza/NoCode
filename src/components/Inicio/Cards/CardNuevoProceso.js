@@ -63,7 +63,7 @@ export default function CardNuevoProceso() {
         submit(data) {
             console.log('beforeSubmit');
             console.log('afterSubmit', data.id);
-            navigate("/crear-proceso");
+            navigate("/crear-proceso", {state:{id: data.id}});
 
         },
         form,
@@ -87,9 +87,6 @@ export default function CardNuevoProceso() {
                         <Modal {...modalProps} title="useModalForm" okText="submit" width={600}>
                             <Spin spinning={formLoading}>
                                 <>
-                                    <p>
-                                        submit: username {formValues.username} email {formValues.email}
-                                    </p>
                                     <p>result: {formResult}</p>
                                     <Form layout="inline" {...formProps}>
                                         <Form.Item
