@@ -1,0 +1,21 @@
+@media (max-width: 1444px){
+    .cardFunction{
+        margin-left: -20%;
+    }
+}
+
+
+@media (max-width: 1203px){
+    .cardFunction{
+        margin-left: -25%;
+    }
+}
+
+@media (max-width: 1080px){
+    .ant-card-hoverable{
+       max-width:653px;;
+    }
+    .cardFunction{
+        margin-left: -19%;
+    }
+}

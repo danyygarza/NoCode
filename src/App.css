@@ -5,3 +5,31 @@ body{
 .add-button{
     margin-left: 15rem;
 }
+
+div.scrollmenu {
+    background-color: rgb(255, 255, 255);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  
+  div.scrollmenu a:hover {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .group{
+    display: flex;
+  }
+
+
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active{
+    color:#D64488 !important;
+  }
