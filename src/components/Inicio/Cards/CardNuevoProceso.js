@@ -85,7 +85,7 @@ export default function CardNuevoProceso() {
                                 Create your own automation process
                             </Typography>
                         </CardContent>
-                        <Modal {...modalProps} title="useModalForm" okText="submit" width={600}>
+                        <Modal {...modalProps} title="Create Process" okText="submit" width={600}>
                             <Spin spinning={formLoading}>
                                 <>
                                     <p>
