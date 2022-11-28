@@ -14,10 +14,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 30, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 1
+                                Template 1
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>
@@ -26,10 +26,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 2
+                                Template 2
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>
@@ -38,10 +38,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 3
+                                Template 3
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>
@@ -50,10 +50,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 4
+                                Template 4
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>
@@ -62,10 +62,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 5
+                                Template 5
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>
@@ -74,10 +74,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Plantilla 6
+                                Template 6
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Utiliza esta plantilla para generar un proceso de automatización más rápido
+                            Use this template to generate an automation process quicker
                             </Typography>
                         </CardContent>
                     </Card>

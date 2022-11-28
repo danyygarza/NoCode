@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, Badge } from "antd";
+import { Button, Form, Badge, Col, Row } from "antd";
 import Testform from "./testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
+import { data } from "autoprefixer";
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -12,7 +13,6 @@ function searchFunction(input, nameSearch) {
   }
 }
 function ListTest(props) {
-  
   const filteredData = props.functions.filter((el) =>
     searchFunction(props.input, el.function)
   );
@@ -52,26 +52,27 @@ function ListTest(props) {
   };
   console.log("filter", filteredData);
   return (
-    <div style={{ display: "flex" }}>
+    <Row  gutter={[9, 9]}>
       {filteredData.map((item) => (
         <>
-          {" "}
-          <Button
-            style={{ height: 120, borderRadius: 40, borderColor: "white" }}
-            onClick={(event) => {
-              add(item);
-            }}
-          >
-            <div className="imgp">
-              <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
-              <p style={{ color: "black", marginLeft: 0 }}>
-                <b>{item.function}</b>
-              </p>
-            </div>
-          </Button>
+          <Col span={6}>
+            <Button
+              style={{ height: 120, borderRadius: 40, borderColor: "white" }}
+              onClick={(event) => {
+                add(item);
+              }}
+            >
+              <div className="imgp">
+                <img src={item.src} alt="logo" style={{ width: 80 }} />
+                <p style={{ color: "black", marginLeft: 2 }}>
+                  <b>{item.function}</b>
+                </p>
+              </div>
+            </Button>
+          </Col>
         </>
       ))}
-    </div>
+    </Row>
   );
 }
 export default ListTest;

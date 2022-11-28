@@ -35,16 +35,16 @@ const Forms = forwardRef((props, items) => {
         Create New Function
       </Button>
       <Modal
-        title="Ingresa el tipo de reader que quieras utilizar"
+        title="Choose the type of reader you want to use"
         centered
         open={open}
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
         width={900}
       >
-        <Title level={4}>Ingresa el tipo de reader que quieras utilizar</Title>
+        <Title level={4}>Choose the type of reader you want to use</Title>
         <Search
-          placeholder="Búsqueda"
+          placeholder="Search..."
           onChange={inputHandler}
           className="search "
           enterButton
@@ -91,10 +91,12 @@ const Forms = forwardRef((props, items) => {
                   <span
                     style={{
                       display: "inline-block",
-                      marginLeft: "6%",
+                      marginLeft: "7%",
+                     
                     }}
+                    
                   >
-                    <div className="most-used-functions">
+                    <div className="most-used-functions" style={{ height: 400, overflow: 'auto' }}  >
                       <ListTest
                         input={inputText}
                         forms={props.forms}
@@ -106,25 +108,42 @@ const Forms = forwardRef((props, items) => {
                         code={props.code}
                         setCode={props.setCode}
                         functions={props.functions}
-                        className="most-used-functions" status={props.status}
+                        className="most-used-functions"
+                        status={props.status}
                         setStatus={props.setStatus}
                         setUpdate={props.setUpdate}
                         variables={props.variables}
                         setVariables={props.setVariables}
-
                       />
                     </div>
                   </span>
-                  <p
+                  {/* <p
                     style={{ color: "black", marginTop: 10, marginBottom: -3 }}
                   >
                     All Functions
                   </p>
                   <span style={{ display: "inline-block", marginLeft: 50 }}>
                     <div className="most-used-functions">
-                      <AllFunctions />
+                      <AllFunctions
+                        input={inputText}
+                        forms={props.forms}
+                        setForms={props.setForms}
+                        setNumberList={props.setNumberList}
+                        numberList={props.numberList}
+                        id={props.id}
+                        setId={props.setId}
+                        code={props.code}
+                        setCode={props.setCode}
+                        functions={props.functions}
+                        className="most-used-functions"
+                        status={props.status}
+                        setStatus={props.setStatus}
+                        setUpdate={props.setUpdate}
+                        variables={props.variables}
+                        setVariables={props.setVariables}
+                      />
                     </div>
-                  </span>
+                  </span> */}
                 </>
               ),
             },
@@ -148,8 +167,8 @@ const Forms = forwardRef((props, items) => {
                       code={props.code}
                       setCode={props.setCode}
                       id={props.id}
-                      setId={props.setId} setUpdate={props.setUpdate}
-
+                      setId={props.setId}
+                      setUpdate={props.setUpdate}
                     />
                     <Iterators
                       forms={props.forms}
@@ -169,9 +188,7 @@ const Forms = forwardRef((props, items) => {
             {
               label: "Scripts",
               key: "5",
-              children: (
-                <p style={{ color: 'black' }}> scripts</p>
-              ),
+              children: <p style={{ color: "black" }}> scripts</p>,
             },
           ]}
         />

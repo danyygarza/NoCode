@@ -100,7 +100,8 @@ function Code() {
                                 snapshot.docs.map((doc) => ({
                                     function: doc.id,
                                     collection: element,
-                                    group: doc.get('group')
+                                    group: doc.get('group'),
+                                    src: doc.get('src')
                                 }))
                             ),
                         ];
