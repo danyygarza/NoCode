@@ -153,14 +153,18 @@ function Code() {
             <>
                 <Row>
                     <Col offset={8}>
-                        <Button className="saveOutlined" onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button>
+                        <Button className="saveOutlined" size={'large'} onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button>
 
                         {/* //!this is the place where all the form will be stored */}
                         <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} functions={functions} setFunctions={setFunctions} onChange={e => setLocalStorage(e.target.value)} />
                     </Col>
                 </Row><Row justify='end'>
                     <Col>
+<<<<<<< HEAD
+                        <Button size={'large'} onClick={handleClick}>
+=======
                         <Button onClick={saveCode}>
+>>>>>>> 1b776e42239374ea825c208bd7aba727d1d44f07
                             Generate Code
                         </Button>
                     </Col>

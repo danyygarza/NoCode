@@ -52,19 +52,19 @@ function ListTest(props) {
   };
   console.log("filter", filteredData);
   return (
-    <Row  gutter={[9, 9]}>
+    <Row span={10} gutter={[9, 9]} justify={'center'}>
       {filteredData.map((item) => (
         <>
-          <Col span={6}>
+          <Col >
             <Button
-              style={{ height: 120, borderRadius: 40, borderColor: "white" }}
+              style={{ height: 120, borderRadius: 40, borderColor: "white", marginLeft: 30 }}
               onClick={(event) => {
                 add(item);
               }}
             >
               <div className="imgp">
-                <img src={item.src} alt="logo" style={{ width: 80 }} />
-                <p style={{ color: "black", marginLeft: 2 }}>
+                <img src={item.src} alt="logo" style={{ width: 80,  }} />
+                <p style={{ color: "black", marginLeft: 0,  }}>
                   <b>{item.function}</b>
                 </p>
               </div>
