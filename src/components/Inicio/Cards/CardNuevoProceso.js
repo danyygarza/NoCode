@@ -38,6 +38,7 @@ const NumericInput = (props) => {
             {...props}
             onChange={handleChange}
             onBlur={handleBlur}
+            style={{maxWidth: 'auto'}}
             placeholder="Input a number"
             maxLength={16}
         />
@@ -75,13 +76,13 @@ export default function CardNuevoProceso() {
             <div className="container">
                 <div className='card-1' onClick={show}>
 
-                    <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 30, maxHeight: 500, textAlign: 'center' }}>
+                    <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 30, maxHeight: 273, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Crear mi propio proceso
+                                Create my own process
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 70 }}>
-                                Crea tu propio proceso de automatización
+                                Create your own automation process
                             </Typography>
                         </CardContent>
                         <Modal {...modalProps} title="useModalForm" okText="submit" width={600}>
@@ -93,9 +94,9 @@ export default function CardNuevoProceso() {
                                     <p>result: {formResult}</p>
                                     <Form layout="inline" {...formProps}>
                                         <Form.Item
-                                            label="Id"
+                                            label="Process ID"
                                             name="id"
-                                            rules={[{ required: true, message: 'Please input process id' }]}
+                                            rules={[{ required: true, message: 'Please input your process ID' }]}
                                         >
                                             <NumericInput
                                                 style={{
@@ -116,10 +117,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Liquidaciones Mensuales
+                                Monthly Settlements
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Manda correos automáticamente a las personas con pagos pendientes
+                                Automatically send emails to people with pending payments
                             </Typography>
                         </CardContent>
                     </Card>
@@ -128,10 +129,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Liquidaciones Mensuales
+                                Monthly Settlements
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Manda correos automáticamente a las personas con pagos pendientes
+                                Automatically send emails to people with pending payments
                             </Typography>
                         </CardContent>
                     </Card>
@@ -140,10 +141,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Liquidaciones Mensuales
+                                Monthly Settlements
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Manda correos automáticamente a las personas con pagos pendientes
+                            Automatically send emails to people with pending payments
                             </Typography>
                         </CardContent>
                     </Card>
@@ -152,10 +153,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Liquidaciones Mensuales
+                                Monthly Settlements
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Manda correos automáticamente a las personas con pagos pendientes
+                            Automatically send emails to people with pending payments
                             </Typography>
                         </CardContent>
                     </Card>
@@ -164,10 +165,10 @@ export default function CardNuevoProceso() {
                     <Card sx={{ maxWidth: 250, marginBottom: 3, marginLeft: 3, maxHeight: 500, textAlign: 'center' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div" style={{ paddingTop: 30 }}>
-                                Liquidaciones Mensuales
+                                Monthly Settlements
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Manda correos automáticamente a las personas con pagos pendientes
+                            Automatically send emails to people with pending payments
                             </Typography>
                         </CardContent>
                     </Card>

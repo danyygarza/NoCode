@@ -46,7 +46,7 @@ function Frida(props) {
     <>
       <div className="main">
         {forms.length === 0 ? (
-          <h1>Empty</h1>
+          <h2 style={{color: '#da6a9e'}}>Click 'Create New Function' to start creating your new automation process.</h2>
         ) : (
           forms.map((form, index) => {
             return (

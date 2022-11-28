@@ -18,7 +18,7 @@ export default function CardNuevoProceso() {
                                 Theme 1
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                                Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                                With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>
@@ -30,7 +30,7 @@ export default function CardNuevoProceso() {
                                 Theme 2
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                            With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>
@@ -42,7 +42,7 @@ export default function CardNuevoProceso() {
                                 Theme 3
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                            With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>
@@ -54,7 +54,7 @@ export default function CardNuevoProceso() {
                                 Theme 4
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                            With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>
@@ -66,7 +66,7 @@ export default function CardNuevoProceso() {
                                 Theme 5
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                            With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>
@@ -78,7 +78,7 @@ export default function CardNuevoProceso() {
                                 Theme 6
                             </Typography>
                             <Typography variant="body2" color="text.secondary" style={{ paddingTop: 70, paddingBottom: 50 }}>
-                            Con estos themes del Marketplace, agrega un toque especial a tu automatización
+                            With these themes from Marketplace, add a special touch to your automation
                             </Typography>
                         </CardContent>
                     </Card>

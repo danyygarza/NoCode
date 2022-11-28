@@ -13,6 +13,7 @@ function MultiStepForm(props) {
   console.log('funcs', props.functions)
   const [current, setCurrent] = useState(0);
   const [collection, setCollection] = useState("");
+  const [open, setOpen] = useState(false);
   const [group, SetGroup] = useState("");
   const steps = [
     {

@@ -66,12 +66,12 @@ export default function Navbar() {
           >
             <Link to="/inicio">
               <Menu.Item>
-                <HomeOutlined className="homeoutlined" /> Inicio
+                <HomeOutlined className="homeoutlined" /> Home
               </Menu.Item>
             </Link>
             <Link to="/video-tutoriales">
               <Menu.Item>
-                <PlayCircleOutlined className="homeoutlined" /> Video Tutoriales
+                <PlayCircleOutlined className="homeoutlined" /> Video Tutorials
               </Menu.Item>
             </Link>
             {/*<div className="main fade-in">

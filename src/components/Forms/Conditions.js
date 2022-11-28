@@ -54,7 +54,7 @@ function Conditions(props) {
                     }
                     }>
                     <div className="imgp">
-                        <img src="../img/ifelse.png" alt="logo" style={{ width: 70 }} />
+                        <img src="../img/IF.svg" alt="logo" style={{ width: 70 }} />
                         <p style={{ color: 'black', marginLeft: 0 }}><b>{data.text}</b></p>
                     </div>
                 </Button></>

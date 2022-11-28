@@ -76,7 +76,7 @@ function RenderFunctions(props) {
           }}
         >
           <div className="imgp">
-            <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+            <img src={props.src} alt="logo" style={{ width: 70 }} />
             <p style={{ color: "black", marginLeft: 0 }}>
               <b>{item.function}</b>
             </p>
