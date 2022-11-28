@@ -13,6 +13,7 @@ import {
     onSnapshot,
     collection,
 } from "@firebase/firestore";
+import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 const db = getFirestore();
 const azure = require("azure-storage");
 // !testing//
@@ -71,7 +72,7 @@ function Code() {
             console.error(error)
         }
     }
-    // !
+    // ! get collection of data from firestore
     const getCollections = async () => {
         try {
             const docRef = doc(db, "Misc", "collections");
@@ -110,30 +111,35 @@ function Code() {
         fetchData();
         console.log(functions);
     }, []);
-    // ! Testing
 
-    //! this to call functions from Frida (child component) // 
+    const genCode = async (code) => {
+        return new Promise((resolve, reject) => {
+            let testing = "";
+            for (var [key, value] of code) {
+                console.log(value);
+                testing = testing.concat("\n", value);
+                console.log(testing)
+            }
+            console.log("final from genCode", testing);
+            resolve(testing)
+        })
+    }
 
-
-
-    const handleClick = async () => {
-        console.log(code)
-        let temp = ""; 
-        for (const item of code) {
-            console.log('item', item);
-            temp = item; 
-        }
-        console.log(temp);
+    const saveCode = async () => {
+        const final = await genCode(code);
+        console.log("from save code", final);
         console.log(locData.state.id);
         const FileService = new Azure();
-        console.log('automation',
-            '/Processes/',`${locData.state.id}`,'/Steps/0',
-            'test.txt', 'Web GoTo "https://heb.sedd.ekomercio.com.mx/Login" ');
-        await FileService.uploadFileFromStream(
-            'automation',
-            '/Processes/' +`${locData.state.id}` + '/Steps/0',
-            'NoCode.txt', temp
-        );
+        try {
+
+            await FileService.uploadFileFromStream(
+                'automation',
+                '/Processes/' + `${locData.state.id}` + '/Steps/0',
+                'NoCode.txt', final
+            );
+        } catch (e) {
+            console.log(e);
+        }
     }
 
 
@@ -151,7 +157,7 @@ function Code() {
                     </Col>
                 </Row><Row justify='end'>
                     <Col>
-                        <Button onClick={handleClick}>
+                        <Button onClick={saveCode}>
                             Generate Code
                         </Button>
                     </Col>

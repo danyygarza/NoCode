@@ -31,7 +31,6 @@ function searchFunction(input, nameSearch) {
 
 function RenderFunctions(functions) {
   
-  console.log('funcs',functions)
   return functions.functions
     .filter(
       (element) =>
@@ -63,7 +62,7 @@ function RenderFunctions(functions) {
 }
 
 export default function Readers(props) {
-  console.log("submit in muf is ", props.submit);
+  // console.log("submit in muf is ", props.submit);
   const [formArray, setFormArray] = useState([
     {
       id: 1,
@@ -108,7 +107,7 @@ export default function Readers(props) {
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
-      console.log(docSnap.data());
+      // console.log(docSnap.data());
       props.setForms([
         ...props.forms,
         {

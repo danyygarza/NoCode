@@ -48,7 +48,7 @@ function Frida(props) {
     <>
       <div className="main">
         {forms.length === 0 ? (
-          <h1>Empty</h1>
+          <h1>Welcome</h1>
         ) : (
           forms.map((form, index) => {
             return (

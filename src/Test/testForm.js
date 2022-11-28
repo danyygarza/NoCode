@@ -44,56 +44,56 @@ function Testform(props) {
     };
 
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const description = Object.values(props.data.description).map((text) => {
-    return (
-      <>
-        <p style={{ color: "black", textAlign: "left" }}>{text}</p>
-      </>
-    );
-  });
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    const description = Object.values(props.data.description).map((text) => {
+        return (
+            <>
+                <p style={{ color: "black", textAlign: "left" }}>{text}</p>
+            </>
+        );
+    });
 
-  const info = {
-    name: "file",
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    headers: {
-      authorization: "authorization-text",
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    progress: {
-      strokeColor: {
-        "0%": "#108ee9",
-        "100%": "#87d068",
-      },
-      strokeWidth: 3,
-      format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
-    },
-  };
+    const info = {
+        name: "file",
+        action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+        headers: {
+            authorization: "authorization-text",
+        },
+        onChange(info) {
+            if (info.file.status !== "uploading") {
+            }
+            if (info.file.status === "done") {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === "error") {
+                message.error(`${info.file.name} file upload failed.`);
+            }
+        },
+        progress: {
+            strokeColor: {
+                "0%": "#108ee9",
+                "100%": "#87d068",
+            },
+            strokeWidth: 3,
+            format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+        },
+    };
 
-  const parameters = <>{props.data.parameters}</>;
-  const syntax = Object.values(props.data.syntax).map((text) => {
-    return (
-      <>
-        <p style={{ color: "black", textAlign: "left" }}>{text}</p>
-      </>
-    );
-  });
+    const parameters = <>{props.data.parameters}</>;
+    const syntax = Object.values(props.data.syntax).map((text) => {
+        return (
+            <>
+                <p style={{ color: "black", textAlign: "left" }}>{text}</p>
+            </>
+        );
+    });
 
     const examples = Object.values(props.data.examples).map((text) => {
         return (
@@ -145,11 +145,7 @@ function Testform(props) {
                     case "filepicker":
                         tempSet = Object.values(tempData.shift());
                         console.log("filePciker", tempSet[0].file.name);
-
-                        // console.log(Object.values(tempData[0]));
-                        // // console.log(Object.values(tempData[0])[0].file.name);
-                        tempCodeArr.push(` root ${tempSet[0].file.name}`);
-                        // tempData.shift();
+                        tempCodeArr.push(` <<<root>>> ${tempSet[0].file.name}`);
                         break;
                     case "varGet":
                         console.log(element)
