@@ -160,11 +160,7 @@ function Code() {
                     </Col>
                 </Row><Row justify='end'>
                     <Col>
-<<<<<<< HEAD
-                        <Button size={'large'} onClick={handleClick}>
-=======
                         <Button onClick={saveCode}>
->>>>>>> 1b776e42239374ea825c208bd7aba727d1d44f07
                             Generate Code
                         </Button>
                     </Col>
