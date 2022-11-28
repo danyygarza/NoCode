@@ -43,7 +43,7 @@ function MultiStepForm(props) {
   return (
     <>
       <Steps current={current} items={items} style={{ padding: 25 }} />
-      <div style={{ marginTop: 10, marginLeft: 140, marginBottom: 15 }}>{steps[current].content}</div>
+      <div style={{ marginTop: 10,  marginBottom: 15, justifyContent:'center' }}>{steps[current].content}</div>
       <div className="steps-action">
         {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()} style={{ justifyContent: 'right' }}>

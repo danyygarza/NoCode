@@ -54,19 +54,19 @@ function Reader(props) {
   return formArray.lenght === 0 ? (
     <h1>empty</h1>
   ) : (
-    <div>
+    <div style={{marginLeft:250}}>
       {formArray.map((data, index) => {
         return (
           <>
             {" "}
-            <Radio.Group onChange={onChange} value={value}>
+            <Radio.Group onChange={onChange} value={value} >
               <Radio.Button
                 value={index}
                 style={{
                   height: 120,
                   borderRadius: 40,
                   borderColor: "white",
-                  marginTop: 100,
+                  marginTop: 15,
                 }}
                 onClick={() => {
                   props.setCollection(data.collection);

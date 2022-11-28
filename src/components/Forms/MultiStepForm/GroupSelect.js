@@ -143,7 +143,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -159,7 +159,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -175,7 +175,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -191,7 +191,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -207,7 +207,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -223,7 +223,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -239,7 +239,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -255,7 +255,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -271,7 +271,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -287,7 +287,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -303,7 +303,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -319,7 +319,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -335,7 +335,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -351,7 +351,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -367,7 +367,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -383,7 +383,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -399,7 +399,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -415,7 +415,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
@@ -431,7 +431,7 @@ function GroupSelect(props) {
           height: 120,
           borderRadius: 40,
           borderColor: "white",
-          marginTop: 100,
+          marginTop: 15,
         }} >
         <div className="imgp">
           <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
