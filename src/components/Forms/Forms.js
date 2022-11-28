@@ -30,7 +30,7 @@ const Forms = forwardRef((props, items) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-  console.log('formsFuncs', props.functions)
+  console.log("formsFuncs", props.functions);
   return (
     <>
       <Button onClick={() => setOpen(true)} className="forms-button">
@@ -108,12 +108,12 @@ const Forms = forwardRef((props, items) => {
                         code={props.code}
                         setCode={props.setCode}
                         functions={props.functions}
-                        className="most-used-functions" status={props.status}
+                        className="most-used-functions"
+                        status={props.status}
                         setStatus={props.setStatus}
                         setUpdate={props.setUpdate}
                         variables={props.variables}
                         setVariables={props.setVariables}
-
                       />
                     </div>
                   </span>
@@ -124,7 +124,24 @@ const Forms = forwardRef((props, items) => {
                   </p>
                   <span style={{ display: "inline-block", marginLeft: 50 }}>
                     <div className="most-used-functions">
-                      <AllFunctions />
+                      <AllFunctions
+                        input={inputText}
+                        forms={props.forms}
+                        setForms={props.setForms}
+                        setNumberList={props.setNumberList}
+                        numberList={props.numberList}
+                        id={props.id}
+                        setId={props.setId}
+                        code={props.code}
+                        setCode={props.setCode}
+                        functions={props.functions}
+                        className="most-used-functions"
+                        status={props.status}
+                        setStatus={props.setStatus}
+                        setUpdate={props.setUpdate}
+                        variables={props.variables}
+                        setVariables={props.setVariables}
+                      />
                     </div>
                   </span>
                 </>
@@ -150,8 +167,8 @@ const Forms = forwardRef((props, items) => {
                       code={props.code}
                       setCode={props.setCode}
                       id={props.id}
-                      setId={props.setId} setUpdate={props.setUpdate}
-
+                      setId={props.setId}
+                      setUpdate={props.setUpdate}
                     />
                     <Iterators
                       forms={props.forms}
@@ -171,9 +188,7 @@ const Forms = forwardRef((props, items) => {
             {
               label: "Scripts",
               key: "5",
-              children: (
-                <p style={{ color: 'black' }}> scripts</p>
-              ),
+              children: <p style={{ color: "black" }}> scripts</p>,
             },
           ]}
         />

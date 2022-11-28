@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Badge } from "antd";
 import Testform from "./testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
+import { data } from "autoprefixer";
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -63,7 +64,7 @@ function ListTest(props) {
             }}
           >
             <div className="imgp">
-              <img src="favicon.ico" alt="logo" style={{ width: 70 }} />
+              <img src={item.src} alt="logo" style={{ width: 70 }} />
               <p style={{ color: "black", marginLeft: 0 }}>
                 <b>{item.function}</b>
               </p>
