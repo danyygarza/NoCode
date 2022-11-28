@@ -9,7 +9,6 @@ import RenderFunctions from "./functions";
 //comment
 
 function MultiStepForm(props) {
-  console.log('funcs', props.functions)
   const [current, setCurrent] = useState(0);
   const [collection, setCollection] = useState("");
   const [open, setOpen] = useState(false);
@@ -39,7 +38,7 @@ function MultiStepForm(props) {
     title: item.title,
   }));
   useEffect(() => {
-    console.log('group', group)
+    // console.log('group', group)
   }, [])
   return (
     <>

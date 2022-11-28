@@ -20,7 +20,6 @@ const Forms = forwardRef((props, items) => {
   const [component, setComponent] = useState("nothing");
 
   const onChange = (key) => {
-    console.log(key);
   };
 
   //search
@@ -30,7 +29,6 @@ const Forms = forwardRef((props, items) => {
     let lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-  console.log("formsFuncs", props.functions);
   return (
     <>
      

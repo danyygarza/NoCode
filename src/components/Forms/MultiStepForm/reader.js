@@ -3,7 +3,6 @@ import { Button, Form, Input, Modal, Row, Radio, Space } from "antd";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import Testform from "../../../Test/testForm";
 import '../../../App.css'
-//comment
 const db = getFirestore();
 function searchFunction(input, nameSearch) {
   try {
