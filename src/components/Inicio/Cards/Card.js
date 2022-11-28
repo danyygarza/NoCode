@@ -19,18 +19,18 @@ export default function MediaCard() {
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 30 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Agregar y Escribir en Columna Excel
+                                Add and Write in a Column Excel
                             </Typography>
                         </CardContent>
                         <div className='parent'>
                             <div className='div1'>
-                                Funciones <br />
+                                Functions <br />
                                 <b>300</b>
                             </div>
                             <span>
                                 <div class="vl"></div>
                                 <div className='div2'>
-                                    Procesos<br />
+                                    Processes<br />
                                     <b>2</b>
                                 </div>
                             </span>
@@ -42,18 +42,18 @@ export default function MediaCard() {
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 5 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Obtener Celdas en Excel
+                                Get Cells in Excel
                             </Typography>
                         </CardContent>
                         <div className='parent'>
                             <div className='div1'>
-                                Funciones <br />
+                                Functions <br />
                                 <b>300</b>
                             </div>
                             <span>
                                 <div class="vl"></div>
                                 <div className='div2'>
-                                    Procesos<br />
+                                    Processes<br />
                                     <b>2</b>
                                 </div>
                             </span>
@@ -64,18 +64,18 @@ export default function MediaCard() {
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 5 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Obtener Celdas en Excel
+                                Get Cells in Excel
                             </Typography>
                         </CardContent>
                         <div className='parent'>
                             <div className='div1'>
-                                Funciones <br />
+                                Functions <br />
                                 <b>300</b>
                             </div>
                             <span>
                                 <div class="vl"></div>
                                 <div className='div2'>
-                                    Procesos<br />
+                                    Processes<br />
                                     <b>2</b>
                                 </div>
                             </span>
@@ -86,18 +86,18 @@ export default function MediaCard() {
                     <Card sx={{ maxWidth: 300, marginBottom: 3, marginTop: 13, marginLeft: 5 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                Obtener Celdas en Excel
+                                Get Cells in Excel
                             </Typography>
                         </CardContent>
                         <div className='parent'>
                             <div className='div1'>
-                                Funciones <br />
+                                Functions <br />
                                 <b>300</b>
                             </div>
                             <span>
                                 <div className="vl"></div>
                                 <div className='div2'>
-                                    Procesos<br />
+                                    Processes<br />
                                     <b>2</b>
                                 </div>
                             </span>

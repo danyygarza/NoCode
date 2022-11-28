@@ -19,21 +19,21 @@ export default function ProcesoNuevo() {
      <Layout>
       <Navbar />
       <Layout>
-        <Header className='header'>MI ESPACIO</Header>
+        <Header className='header'>MY SPACE</Header>
         <hr />
         <Content>
-          <p className='content'>MIS PLANTILLAS</p>
-          <p className='vermas'>Ver Más</p>
+          <p className='content'>MY TEMPLATES</p>
+          <p className='vermas'>View More</p>
           <CardNuevoProceso />
         </Content>
         <Content>
-          <p className='content'>PLANTILLAS</p>
-          <p className='vermas'>Ver Más</p>
+          <p className='content'>TEMPLATES</p>
+          <p className='vermas'>View More</p>
           <Plantillas />
         </Content>
         <Content>
           <p className='content'>MARKETPLACE</p>
-          <p className='vermas'>Ver Más</p>
+          <p className='vermas'>View More</p>
           <Marketplace />
         </Content>
       </Layout>
