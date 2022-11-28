@@ -134,6 +134,7 @@ function Testform(props) {
                         console.log(element)
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
+                        console.log(props.variables);
                         props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
                         break;
                     case "text":
