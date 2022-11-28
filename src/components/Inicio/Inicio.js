@@ -17,10 +17,10 @@ export default function Inicio() {
      <Layout>
       <Navbar />
       <Layout>
-        <Header className='header'>MI ESPACIO</Header>
+        <Header className='header'>MY SPACE</Header>
         <hr />
         <Content>
-          <p className='content'>MIS CARPETAS</p>
+          <p className='content'>MY FOLDERS</p>
           <Card />
         </Content>
       </Layout>

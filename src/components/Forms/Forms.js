@@ -37,16 +37,16 @@ const Forms = forwardRef((props, items) => {
         Create New Function
       </Button>
       <Modal
-        title="Ingresa el tipo de reader que quieras utilizar"
+        title="Choose the type of reader you want to use"
         centered
         open={open}
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
         width={900}
       >
-        <Title level={4}>Ingresa el tipo de reader que quieras utilizar</Title>
+        <Title level={4}>Choose the type of reader you want to use</Title>
         <Search
-          placeholder="Búsqueda"
+          placeholder="Search..."
           onChange={inputHandler}
           className="search "
           enterButton
