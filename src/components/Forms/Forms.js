@@ -117,7 +117,7 @@ const Forms = forwardRef((props, items) => {
                       />
                     </div>
                   </span>
-                  <p
+                  {/* <p
                     style={{ color: "black", marginTop: 10, marginBottom: -3 }}
                   >
                     All Functions
@@ -143,7 +143,7 @@ const Forms = forwardRef((props, items) => {
                         setVariables={props.setVariables}
                       />
                     </div>
-                  </span>
+                  </span> */}
                 </>
               ),
             },

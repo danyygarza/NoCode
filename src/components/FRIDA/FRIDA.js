@@ -11,10 +11,10 @@ import {
 import './FRIDA.css'
 
 const testing = async (test) => {
-  console.log("in testing function");
-  const temp = await test;
-  console.log("temp", temp);
-  return temp;
+    console.log("in testing function");
+    const temp = await test;
+    console.log("temp", temp);
+    return temp;
 };
 
 // TODO: bug, if you submit and there's a problem it will cause an error after
@@ -26,9 +26,7 @@ const testing = async (test) => {
 //   });
 // };
 
-
 function Frida(props) {
-  //FirebaseUpdate()
   const [forms, setForms] = useState([]); // forms array
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [status, setStatus] = useState(new Map()); // will give you status of 
@@ -83,6 +81,7 @@ function Frida(props) {
             );
           })
         )}
+        
         <Row>
           <Col>
             <Forms
@@ -100,6 +99,8 @@ function Frida(props) {
               status={status}
               setStatus={setStatus}
               setUpdate={setUpdate}
+              cards={props.cards}
+              setCards={props.setCards}
             />
           </Col>
         </Row>
