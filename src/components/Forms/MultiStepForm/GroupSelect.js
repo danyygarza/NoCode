@@ -20,7 +20,7 @@ function GroupSelect(props) {
   return (
     <Radio.Group onChange={onChange} value={value}>
       <Radio value={"Add"} onClick={props.SetGroup(props.group)}>Add</Radio>
-      <Radio value={"Apply"} onClick={props.SetGroup(props.group)}>Apply</Radio>
+      <Radio value={"Apply"} >Apply</Radio>
       <Radio value={"Conditions"} onClick={props.SetGroup(props.group)}>Conditions</Radio>
       <Radio value={"Convert"} onClick={props.SetGroup(props.group)}>Convert</Radio>
       <Radio value={"Copy"} onClick={props.SetGroup(props.group)}>Copy</Radio>

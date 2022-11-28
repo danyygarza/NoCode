@@ -93,10 +93,12 @@ const Forms = forwardRef((props, items) => {
                   <span
                     style={{
                       display: "inline-block",
-                      marginLeft: "6%",
+                      marginLeft: "7%",
+                     
                     }}
+                    
                   >
-                    <div className="most-used-functions">
+                    <div className="most-used-functions" style={{ height: 400, overflow: 'auto' }}  >
                       <ListTest
                         input={inputText}
                         forms={props.forms}
