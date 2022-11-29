@@ -24,7 +24,7 @@ function MultiStepForm(props) {
     },
     {
       title: "Choose the function",
-      content: <RenderFunctions functions={props.functions} collection={collection} group={group} setForms={props.setForms} forms={props.forms} id={props.id} setId={props.setId} />,
+      content: <RenderFunctions functions={props.functions} collection={collection} group={group} setForms={props.setForms} forms={props.forms} id={props.id} setId={props.setId} onClick={() => setOpen(false)} />,
     },
   ];
   const next = () => {
@@ -48,14 +48,6 @@ function MultiStepForm(props) {
         {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()} style={{ justifyContent: 'right' }}>
             Next
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
           </Button>
         )}
         {current > 0 && (
