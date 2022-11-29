@@ -146,7 +146,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/AddValueToList.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Add</b>
           </p>
@@ -162,7 +162,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/ApplyFilter.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Apply</b>
           </p>
@@ -178,7 +178,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/IF.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Conditions</b>
           </p>
@@ -194,7 +194,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/ConvertTo2007.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Convert</b>
           </p>
@@ -210,7 +210,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/CopyColumn.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Copy</b>
           </p>
@@ -226,7 +226,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/CountElements.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Count</b>
           </p>
@@ -242,7 +242,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/DefineVariable.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Define</b>
           </p>
@@ -258,7 +258,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/Delete.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Delete</b>
           </p>
@@ -274,7 +274,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/GetSpecial.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Get</b>
           </p>
@@ -290,7 +290,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/InsertColumn.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Insert</b>
           </p>
@@ -306,7 +306,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/LoadWorkbook.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Load</b>
           </p>
@@ -322,7 +322,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/NewWorkbook.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>New</b>
           </p>
@@ -338,7 +338,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/ReadCellText.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Read</b>
           </p>
@@ -354,7 +354,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/RemoveDuplicate.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Remove</b>
           </p>
@@ -370,7 +370,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/RunScript.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Run</b>
           </p>
@@ -386,7 +386,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/Save.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Save</b>
           </p>
@@ -402,7 +402,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/SortColumns.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Sort</b>
           </p>
@@ -418,7 +418,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/substring.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Substring</b>
           </p>
@@ -434,7 +434,7 @@ function GroupSelect(props) {
           marginTop: 15,
         }} >
         <div className="imgp">
-          <img src="../../../img/excelIcon.ico" alt="logo" style={{ width: 70 }} />
+          <img src="../../../img/Write.svg" alt="logo" style={{ width: 70 }} />
           <p style={{ color: "black", marginLeft: 0 }}>
             <b>Write</b>
           </p>
