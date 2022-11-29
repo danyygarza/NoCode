@@ -112,7 +112,7 @@ function Testform(props) {
         resetField,
     } = useModalForm({
         defaultVisible: false,
-        autoSubmitClose: false,
+        autoSubmitClose: true,
         autoResetForm: false,
         //! handles submit logic for the forms
         submit(data) {
