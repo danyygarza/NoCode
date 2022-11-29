@@ -584,23 +584,21 @@ function Testform(props) {
                                 >
                                     <Button>Syntax</Button>
                                 </Popover>
+                                <Button type="primary" onClick={showModal}>
+                                    Examples
+                                </Button>
+                                <Modal
+                                    title="Pick the example that looks most similar to what you are trying to achieve  "
+                                    open={isModalOpen}
+                                    onOk={handleOk}
+                                    onCancel={handleCancel}
+                                    width={1000}
+                                >
+                                    {renderSyntaxCards()}
+                                </Modal>
                             </div>
                         </div>
                     </Col>
-                </Row>
-                <Row>
-                    <Button type="primary" onClick={showModal}>
-                        Examples
-                    </Button>
-                    <Modal
-                        title="Pick the example that looks most similar to what you are trying to achieve  "
-                        open={isModalOpen}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                        width={1000}
-                    >
-                        {renderSyntaxCards()}
-                    </Modal>
                 </Row>
                 <Form layout="inline" {...formProps}>
                     <Row>

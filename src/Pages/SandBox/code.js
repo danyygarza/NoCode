@@ -13,6 +13,8 @@ import {
     onSnapshot,
     collection,
 } from "@firebase/firestore";
+
+
 import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 const db = getFirestore();
 const azure = require("azure-storage");
@@ -151,7 +153,7 @@ function Code() {
             <>
                 <Row>
                     <Col offset={8}>
-                        <Button className="saveOutlined" onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button>
+                        <Button className="saveOutlined" size={'large'} onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button>
 
                         {/* //!this is the place where all the form will be stored */}
                         <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} functions={functions} setFunctions={setFunctions} onChange={e => setLocalStorage(e.target.value)} />
