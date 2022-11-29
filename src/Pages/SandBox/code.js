@@ -115,7 +115,7 @@ function Code() {
 
     const genCode = async (code) => {
         return new Promise((resolve, reject) => {
-            let testing = "";
+            let testing = "GetHome \n";
             for (var [key, value] of code) {
                 console.log(value);
                 testing = testing.concat("\n", value);

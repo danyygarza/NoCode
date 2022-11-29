@@ -142,6 +142,16 @@ function Testform(props) {
                         console.log(tempText);
                         tempCodeArr.push(tempText);
                         break;
+                    case "write":
+                        const tempWrite = Object.values(tempData.shift());
+                        console.log(tempWrite);
+                        tempCodeArr.push(`"${tempWrite}"`);
+                        break;
+                    case "path":
+                        const tempPath = Object.values(tempData.shift());
+                        console.log(tempText);
+                        tempCodeArr.push(`"<<<home>>>${tempPath}"`);
+                        break;
                     case "filepicker":
                         tempSet = Object.values(tempData.shift());
                         console.log("filePciker", tempSet[0].file.name);
@@ -183,6 +193,8 @@ function Testform(props) {
                 if (idx != 0 && idx % size[0] === 0) {
                     console.log("inside the true");
                     tempString = tempString.concat(" ", firstElement);
+                    tempString = tempString.concat("\n", "");
+
                     tempCodeArr.push(tempString);
                     console.log("temp code array", tempCodeArr);
                     setSize(size.shift());
@@ -192,13 +204,13 @@ function Testform(props) {
                     idx += 1;
                 }
             }
-            console.log(tempString);
-            console.log(tempCodeArr);
-            props.setCode(props.code.set(props.id, tempCodeArr));
-            console.log(props.code);
-            console.log("prop id", props.id)
+            // console.log(tempString);
+            // console.log(tempCodeArr);
+            props.setCode(props.code.set(props.id, tempString));
+            // console.log(props.code);
+            // console.log("prop id", props.id)
             props.setStatus(props.status.set(props.id, { color: "green", text: "Complete" }));
-            console.log(props.status.get(props.id));
+            // console.log(props.status.get(props.id));
             props.setUpdate(true);
         },
         form,
@@ -321,6 +333,8 @@ function Testform(props) {
                     break;
                 case "get":
                     //! temp code, needs to be changed
+                    console.log(val);
+                    console.log(val.PlaceHolder);
                     console.log(props.variables.get(val.PlaceHolder));
                     console.log("varaibales", props.variables);
                     try {

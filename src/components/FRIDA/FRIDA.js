@@ -11,10 +11,10 @@ import {
 import './FRIDA.css'
 
 const testing = async (test) => {
-    console.log("in testing function");
-    const temp = await test;
-    console.log("temp", temp);
-    return temp;
+  console.log("in testing function");
+  const temp = await test;
+  console.log("temp", temp);
+  return temp;
 };
 
 // TODO: bug, if you submit and there's a problem it will cause an error after
@@ -46,7 +46,7 @@ function Frida(props) {
     <>
       <div className="main">
         {forms.length === 0 ? (
-          <h2 style={{color: '#da6a9e'}}>Click 'Create New Function' to start creating your new automation process.</h2>
+          <h1 style={{ color: '#da6a9e' }}>Welcome</h1>
         ) : (
           forms.map((form, index) => {
             return (
@@ -81,7 +81,7 @@ function Frida(props) {
             );
           })
         )}
-        
+
         <Row>
           <Col>
             <Forms
