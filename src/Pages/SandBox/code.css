@@ -6,8 +6,9 @@
 }
 
 .forms-button{
-    justify-content: center;
-    margin-left: 11em;
+    display: flex;
+    margin-left: 16em;
+    margin-top: 20%;
 }
 
 .forms-button:hover{

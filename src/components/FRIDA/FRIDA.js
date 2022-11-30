@@ -46,7 +46,7 @@ function Frida(props) {
     <>
       <div className="main">
         {forms.length === 0 ? (
-          <h1 style={{ color: '#da6a9e' }}>Welcome</h1>
+          <h1 style={{ color: '#da6a9e', marginLeft: 65 }}>Welcome</h1>
         ) : (
           forms.map((form, index) => {
             return (

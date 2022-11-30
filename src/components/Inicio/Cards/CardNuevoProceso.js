@@ -22,11 +22,11 @@ const NumericInput = (props) => {
 
     // '.' at the end or only '-' in the input box.
     const handleBlur = () => {
-        let valueTemp = value;
-        if (value.charAt(value.length - 1) === '.' || value === '-') {
-            valueTemp = value.slice(0, -1);
-        }
-        onChange(valueTemp.replace(/0*(\d+)/, '$1'));
+        // let valueTemp = value;
+        // if (value.charAt(value.length - 1) === '.' || value === '-') {
+        //     valueTemp = value.slice(0, -1);
+        // }
+        // onChange(valueTemp.replace(/0*(\d+)/, '$1'));
     };
     const title = value ? (
         <span className="numeric-input-title">{value !== '-' ? formatNumber(Number(value)) : '-'}</span>

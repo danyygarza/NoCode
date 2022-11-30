@@ -140,6 +140,7 @@ function Code() {
                 '/Processes/' + `${locData.state.id}` + '/Steps/0',
                 'NoCode.txt', final
             );
+            alert("Code has been uploaded");
         } catch (e) {
             console.log(e);
         }
@@ -153,15 +154,15 @@ function Code() {
             <>
                 <Row>
                     <Col offset={8}>
-                        <Button className="saveOutlined" size={'large'} onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button>
+                        {/* <Button className="saveOutlined" size={'large'} onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button> */}
 
                         {/* //!this is the place where all the form will be stored */}
                         <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} functions={functions} setFunctions={setFunctions} onChange={e => setLocalStorage(e.target.value)} />
                     </Col>
                 </Row><Row justify='end'>
                     <Col>
-                        <Button onClick={saveCode}>
-                            Generate Code
+                        <Button onClick={saveCode} style={{marginRight:55}}>
+                            Upload
                         </Button>
                     </Col>
                 </Row>
