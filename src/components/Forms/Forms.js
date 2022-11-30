@@ -31,9 +31,9 @@ const Forms = forwardRef((props, items) => {
   };
   return (
     <>
-     
+
       <Button className="forms-button" size={'large'} onClick={() => setOpen(true)}>
-      Create New Function
+        Create New Function
       </Button>
       <Modal
         title="Choose the type of reader you want to use"
@@ -76,6 +76,10 @@ const Forms = forwardRef((props, items) => {
                       id={props.id}
                       setId={props.setId}
                       functions={props.functions}
+                      status={props.status}
+                      setStatus={props.setStatus}
+                      setUpdate={props.setUpdate}
+
                     />
                   </span>
                 </>
@@ -93,9 +97,9 @@ const Forms = forwardRef((props, items) => {
                     style={{
                       display: "inline-block",
                       marginLeft: "7%",
-                     
+
                     }}
-                    
+
                   >
                     <div className="most-used-functions" style={{ height: 400, overflow: 'auto', minWidth: 400 }}  >
                       <ListTest
