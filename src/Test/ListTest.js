@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Form, Badge, Col, Row } from "antd";
+import { Button, Form, Badge, Col, Row,Table} from "antd";
 import Testform from "./testForm";
 import { getFirestore, doc, getDoc } from "@firebase/firestore";
 import { data } from "autoprefixer";
+import { ContentCutOutlined } from "@mui/icons-material";
 function searchFunction(input, nameSearch) {
   try {
     let text = input.toUpperCase();
@@ -50,21 +51,85 @@ function ListTest(props) {
       console.log("no such document!");
     }
   };
-  console.log("filter", filteredData);
-  return (
-    <Row span={10} gutter={[9, 9]} justify={'center'}>
-      {filteredData.map((item) => (
-        <>
-          <Col >
-            <Button
-              style={{ height: 120, borderRadius: 40, borderColor: "white", marginLeft: 30 }}
+  const columns = [
+    {
+      title: "1",
+      dataIndex: "1",
+      key: "1",
+      render: (_, {item}) => (
+        <div>{item.collection}</div>
+      ),
+    },
+    {
+      title: "2",
+      dataIndex: "2",
+      key: "2",
+      render: (_, {item}) => (
+        <div>{item.collection}</div>
+      ),
+    },
+    {
+      title: "3",
+      dataIndex: "3",
+      key: "3",
+      render: (_, {item}) => (
+        <div>{item.collection}</div>
+      ),
+    },
+    {
+      title: "4",
+      dataIndex: "4",
+      key: "4",
+      render: (_, {item}) => (
+        <Button
+              style={{
+                height: 120,
+                borderRadius: 40,
+                borderColor: "white",
+                marginLeft: 30,
+              }}
               onClick={(event) => {
                 add(item);
               }}
             >
               <div className="imgp">
-                <img src={item.src} alt="logo" style={{ width: 80,  }} />
-                <p style={{ color: "black", marginLeft: 0,  }}>
+                <img src={item.src} alt="logo" style={{ width: 80 }} />
+                <p style={{ color: "black", marginLeft: 0 }}>
+                  <b>{item.function}</b>
+                </p>
+              </div>
+            </Button>
+      ),
+    },
+  ];
+  const functionButtons = filteredData.map((item, index) => {
+
+    return({ 
+      item: {item},
+      key: {index}
+    })
+  }) 
+  console.log('items',functionButtons)
+  return (
+    <Row  span={7} gutter={[4, 4]} justify={"center"} align={"middle"}>
+      {filteredData.map((item) => (
+        <>
+          <Col justify={"center"} align={"middle"}>
+            <Button
+              style={{
+                height: 120,
+                width: 120,
+                borderRadius: 40,
+                borderColor: "white",
+                marginLeft: 30,
+              }}
+              onClick={(event) => {
+                add(item);
+              }}
+            >
+              <div className="imgp">
+                <img src={item.src} alt="logo" style={{ width: 80 }} />
+                <p style={{ color: "black", marginLeft: 0,textAlign:'center' }}>
                   <b>{item.function}</b>
                 </p>
               </div>
@@ -73,6 +138,7 @@ function ListTest(props) {
         </>
       ))}
     </Row>
+   //<Table columns={columns} dataSource={functionButtons} />
   );
 }
 export default ListTest;
