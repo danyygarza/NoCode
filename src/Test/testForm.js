@@ -547,9 +547,9 @@ function Testform(props) {
             <Modal
                 {...modalProps}
                 title={props.function}
-                open={open}
                 onCancel={() => setOpen(false)}
-                okText="submit"
+                open={open}
+                okText="Submit"
                 width={1200}
                 height={800}
             >

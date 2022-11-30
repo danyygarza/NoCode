@@ -29,7 +29,6 @@ function MultiStepForm(props) {
                 code={props.code} setCode={props.setCode}
                 status={props.status} setStatus={props.setStatus}
                 setUpdate={props.setUpdate}
-
             />,
         },
     ];
@@ -54,14 +53,6 @@ function MultiStepForm(props) {
                 {current < steps.length - 1 && (
                     <Button type="primary" onClick={() => next()} style={{ justifyContent: 'right' }}>
                         Next
-                    </Button>
-                )}
-                {current === steps.length - 1 && (
-                    <Button
-                        type="primary"
-                        onClick={() => message.success("Processing complete!")}
-                    >
-                        Done
                     </Button>
                 )}
                 {current > 0 && (
