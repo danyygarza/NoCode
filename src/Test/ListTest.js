@@ -46,7 +46,7 @@ function ListTest(props) {
         },
       ]);
       props.setId(props.id + 1);
-      // props.setNumberList([...props.numberList, props.id]);
+      // props.setNumberList([...props.numberList, props.id]) ;
     } else {
       console.log("no such document!");
     }
