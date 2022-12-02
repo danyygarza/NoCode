@@ -127,11 +127,13 @@ function Testform(props) {
             console.log("tempData", tempData);
             console.log("item arr", itemType);
             console.log(props.variables);
+            console.log('obj', Object.values(data))
             itemType.forEach((element) => {
                 console.log(element);
                 switch (element.key) {
                     case "set":
                         console.log(element)
+                        console.log(tempData[0])
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         console.log(props.variables);
@@ -154,7 +156,7 @@ function Testform(props) {
                         break;
                     case "filepicker":
                         tempSet = Object.values(tempData.shift());
-                        console.log("filePciker", tempSet[0].file.name);
+                        console.log("filePicker", tempSet[0].file.name);
                         tempCodeArr.push(` <<<root>>> ${tempSet[0].file.name}`);
                         break;
                     case "varGet":
