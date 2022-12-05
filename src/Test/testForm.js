@@ -124,16 +124,16 @@ function Testform(props) {
             let tempData = Object.values(data);
             let idx = 1;
             console.log("data", data);
-            console.log("tempData", tempData);
             console.log("item arr", itemType);
-            console.log(props.variables);
-            console.log('obj', Object.values(data))
+            console.log('variables', props.variables);
+            console.log('obj', Object.values(data));
             itemType.forEach((element) => {
                 console.log(element);
                 switch (element.key) {
                     case "set":
                         console.log(element)
-                        console.log(tempData[0])
+                        console.log("tempData", tempData);
+                        console.log('obj', Object.values(data));
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         console.log(props.variables);
@@ -160,7 +160,7 @@ function Testform(props) {
                         tempCodeArr.push(` <<<root>>> ${tempSet[0].file.name}`);
                         break;
                     case "varGet":
-                        console.log(element)
+                        console.log('varget',element)
                         tempSet = Object.values(tempData.shift());
                         tempCodeArr.push(tempSet[0]);
                         props.variables.get(varSet[0]) === undefined ? props.setVariables(props.variables.set(varSet[0], [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(varSet).push(tempSet[0])));
