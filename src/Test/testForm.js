@@ -122,11 +122,13 @@ function Testform(props) {
             let varSet = "";
             let tempSet = ""
             let tempData = Object.values(data);
+            let TestingData = Object.values(data);
             let idx = 1;
             console.log("data", data);
             console.log("tempData", tempData);
             console.log("item arr", itemType);
             console.log(props.variables);
+            console.log("testing data", TestingData);
             itemType.forEach((element) => {
                 console.log(element);
                 switch (element.key) {
@@ -221,6 +223,7 @@ function Testform(props) {
         console.log("inside the render cards");
         const cardArr = [];
         let temp = [];
+        console.log("props", props.data);
         for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
             temp.push(
                 <Col>
