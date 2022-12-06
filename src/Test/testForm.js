@@ -150,6 +150,7 @@ function Testform(props) {
                         tempCodeArr.push(`"${tempWrite}"`);
                         break;
                     case "path":
+                        console.log(tempData);
                         const tempPath = Object.values(tempData.shift());
                         console.log(tempText);
                         tempCodeArr.push(`"<<<home>>>${tempPath}"`);
@@ -354,7 +355,7 @@ function Testform(props) {
                                     <>
                                         <Col>
                                             <Form.Item
-                                                name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                                name={[`${val.Type}${date}${index}`, val.PlaceHolder]}
                                                 rules={[
                                                     { required: true, message: "Please fill this out" },
                                                 ]}
