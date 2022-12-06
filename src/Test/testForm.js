@@ -42,8 +42,10 @@ function Testform(props) {
     let res = [];
     console.log(options);
   };
-
+  let name = 'woop'
   const preloadedValues = {};
+  // preloadedValues[name] = 'testName'
+  // console.log('preloaded', preloadedValues)
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -137,8 +139,8 @@ function Testform(props) {
       console.log("item arr", itemType);
       console.log(props.variables);
       itemType.forEach((element) => {
-        console.log(element);
-
+        console.log('elementLog',element);
+        
         switch (element.key) {
           case "set":
             tempSet = Object.values(tempData.shift());
@@ -146,11 +148,10 @@ function Testform(props) {
             tempInput = {
               key: element.key,
               name: tempKey,
-              value: tempSet[0],
-              index: 1
+              value: tempSet[0]
             };
             formData.inputs.push(tempInput);
-
+            console.log('tempInput', tempInput)
             tempCodeArr.push(tempSet[0]);
             console.log(props.variables);
             props.variables.get(element.val) === undefined
@@ -199,7 +200,7 @@ function Testform(props) {
               value: tempPath[0],
             };
             formData.inputs.push(tempInput);
-
+            
             console.log(tempText);
             tempCodeArr.push(`"<<<home>>>${tempPath}"`);
             break;
@@ -265,7 +266,17 @@ function Testform(props) {
             // props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
             break;
           default:
+            console.log('defaultVal', element.val)
+            
             tempCodeArr.push(element.val);
+            // tempKey = tempKeys.shift();
+            // tempInput = {
+            //   key: element.key,
+            //   name: tempKey,
+            //   value: element.val,
+            // };
+            // formData.inputs.push(tempInput);
+           
             break;
         }
       });
@@ -364,14 +375,13 @@ function Testform(props) {
       console.log(val);
       let itemName = [val.Type + date, val.PlaceHolder];
       let inputName = val.Type + date;
+      if (name != null) {
+        console.log("nameSet", name);
+        itemName = name;
+      }
       switch (val.Type) {
         case "text":
-          console.log(index, val.PlaceHolder);
-
-          if (name != null) {
-            console.log("nameSet");
-            inputName = name;
-          }
+          
 
           temp.push(
             <>
@@ -405,7 +415,7 @@ function Testform(props) {
                 <>
                   <Col>
                     <Form.Item
-                      name={[`${val.Type}${date}`, val.PlaceHolder]}
+                      name={item.name}
                       rules={[
                         { required: true, message: "Please fill this out" },
                       ]}
@@ -529,12 +539,14 @@ function Testform(props) {
           break;
         default:
           temp.push(
+            
             <>
               {
                 <>
                   <Col>
+                  {console.log('defaultCase addCard', itemName)}
                     <Form.Item
-                      name={[`${val.Type}${date}`, val.PlaceHolder]}
+                      name={itemName}
                       rules={[
                         { required: true, message: "Please fill this out" },
                       ]}
@@ -543,7 +555,7 @@ function Testform(props) {
                       <Input
                         type={val.type}
                         placeholder={val.PlaceHolder}
-                        name={`${val.Type}${date}`}
+                        name={inputName}
                       />
                     </Form.Item>
                   </Col>
@@ -648,18 +660,20 @@ function Testform(props) {
     if(props.inputs != null){
     
       for(let i = 0; i < props.inputs.length; i++){
-        console.log('name',props.inputs[i].name)
-        //preloadedValues.props.inputs[i].name = props.inputs[i].value
+        //console.log('inputType',typeof props.inputs[i].value)
+        preloadedValues[props.inputs[i].name] = props.inputs[i].value
       }
       for(let i = 0; i < props.inputs.length; i++){
         console.log('inputs', i ,props.inputs[i])
         addCard(props.inputs[i].name,0)
         
       }
-      //form.setFieldsValue(preloadedValues)
+      //console.log('namePush', preloadedValues)
+      form.setFieldsValue(preloadedValues)
     }
   }, []);
-
+  console.log('namePush', preloadedValues)
+  form.setFieldsValue(preloadedValues)
   return (
     <>
       <Card

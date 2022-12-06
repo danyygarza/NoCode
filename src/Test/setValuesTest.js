@@ -7,9 +7,11 @@ function SetValueTest() {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+
+  let fields = {
+    username2: 'yulo'  }
   const [form] = Form.useForm();
-  form.setFieldsValue({
-      username: 'yulo'  })
+  form.setFieldsValue(fields)
   return (
     <Form
       form={form}
@@ -37,7 +39,9 @@ function SetValueTest() {
           },
         ]}
       >
-        <Input />
+        <Input
+          name='username2'
+         />
       </Form.Item>
 
       <Form.Item
