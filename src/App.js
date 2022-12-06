@@ -25,7 +25,7 @@ import CarouselTest from './components/Forms/Test/CarouselTest';
 import ReadersTest from './components/Forms/Readers/readersTest';
 import Example from './components/Forms/Example/Example'
 import MultiStepForm from './components/Forms/MultiStepForm/MultiStepForm';
-
+import SetValueTest from './Test/setValuesTest';
 
 
 /* 
@@ -48,7 +48,7 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/submit' element={< CarouselTest />} />
+        <Route path='/yop' element={< SetValueTest />} />
 
         <Route path='/inicio' element={
 

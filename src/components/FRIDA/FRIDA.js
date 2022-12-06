@@ -31,6 +31,7 @@ function Frida(props) {
   const [elRefs, setElRefs] = React.useState([]); // reference array
   const [status, setStatus] = useState(new Map()); // will give you status of 
   const [update, setUpdate] = useState(false);
+  const [preload, setPreload] = useState(false)
   const remove = (index) => {
     const temp = [...forms];
     temp.splice(index, 1);
@@ -101,6 +102,8 @@ function Frida(props) {
               setUpdate={setUpdate}
               cards={props.cards}
               setCards={props.setCards}
+              preload={preload}
+              setPreload={setPreload}
             />
           </Col>
         </Row>

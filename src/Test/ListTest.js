@@ -23,6 +23,7 @@ function ListTest(props) {
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
+
       console.log(docSnap.data());
       console.log(props.variables);
       props.setForms([
@@ -32,6 +33,7 @@ function ListTest(props) {
           form: (
             <Testform
               function={data.function}
+              collection={data.collection}
               data={docSnap.data()}
               variables={props.variables}
               setVariables={props.setVariables}
@@ -41,67 +43,91 @@ function ListTest(props) {
               status={props.status}
               setStatus={props.setStatus}
               setUpdate={props.setUpdate}
+              cards={props.cards}
+              setCards={props.setCards}
+              inputs={data.inputs}
             />
           ),
         },
       ]);
       props.setId(props.id + 1);
       // props.setNumberList([...props.numberList, props.id]) ;
-    } else {
+    } else { 
       console.log("no such document!");
     }
   };
-  const columns = [
-    {
-      title: "1",
-      dataIndex: "1",
-      key: "1",
-      render: (_, {item}) => (
-        <div>{item.collection}</div>
-      ),
-    },
-    {
-      title: "2",
-      dataIndex: "2",
-      key: "2",
-      render: (_, {item}) => (
-        <div>{item.collection}</div>
-      ),
-    },
-    {
-      title: "3",
-      dataIndex: "3",
-      key: "3",
-      render: (_, {item}) => (
-        <div>{item.collection}</div>
-      ),
-    },
-    {
-      title: "4",
-      dataIndex: "4",
-      key: "4",
-      render: (_, {item}) => (
-        <Button
-              style={{
-                height: 120,
-                borderRadius: 40,
-                borderColor: "white",
-                marginLeft: 30,
-              }}
-              onClick={(event) => {
-                add(item);
-              }}
-            >
-              <div className="imgp">
-                <img src={item.src} alt="logo" style={{ width: 80 }} />
-                <p style={{ color: "black", marginLeft: 0 }}>
-                  <b>{item.function}</b>
-                </p>
-              </div>
-            </Button>
-      ),
-    },
-  ];
+  console.log('preload', props.preload)
+  if(props.cards.size !=0 && !props.preload ){
+    
+    console.log(props.cards)
+    // for (let value of props.cards.values()){
+    //   console.log('preload', value);
+    //   add(value)
+    // }
+    // for(let i = 0; i < props.cards.length; i++){
+    //   console.log('i value', i)
+    //   add(props.cards[i])
+      
+    // }
+
+    props.cards.forEach(function(value, key) {
+      console.log(key + " yop " + value);
+      add(value);
+    })
+    
+    props.setPreload(true)
+  }
+  // const columns = [
+  //   {
+  //     title: "1",
+  //     dataIndex: "1",
+  //     key: "1",
+  //     render: (_, {item}) => (
+  //       <div>{item.collection}</div>
+  //     ),
+  //   },
+  //   {
+  //     title: "2",
+  //     dataIndex: "2",
+  //     key: "2",
+  //     render: (_, {item}) => (
+  //       <div>{item.collection}</div>
+  //     ),
+  //   },
+  //   {
+  //     title: "3",
+  //     dataIndex: "3",
+  //     key: "3",
+  //     render: (_, {item}) => (
+  //       <div>{item.collection}</div>
+  //     ),
+  //   },
+  //   {
+  //     title: "4",
+  //     dataIndex: "4",
+  //     key: "4",
+  //     render: (_, {item}) => (
+  //       <Button
+  //             style={{
+  //               height: 120,
+  //               borderRadius: 40,
+  //               borderColor: "white",
+  //               marginLeft: 30,
+  //             }}
+  //             onClick={(event) => {
+  //               add(item);
+  //             }}
+  //           >
+  //             <div className="imgp">
+  //               <img src={item.src} alt="logo" style={{ width: 80 }} />
+  //               <p style={{ color: "black", marginLeft: 0 }}>
+  //                 <b>{item.function}</b>
+  //               </p>
+  //             </div>
+  //           </Button>
+  //     ),
+  //   },
+  // ];
   const functionButtons = filteredData.map((item, index) => {
 
     return({ 

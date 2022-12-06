@@ -19,8 +19,7 @@ const Forms = forwardRef((props, items) => {
   const [filteredList, setFilteredList] = useState(items);
   const [component, setComponent] = useState("nothing");
 
-  const onChange = (key) => {
-  };
+  const onChange = (key) => {};
 
   //search
   const { Search } = Input;
@@ -31,8 +30,11 @@ const Forms = forwardRef((props, items) => {
   };
   return (
     <>
-
-      <Button className="forms-button" size={'large'} onClick={() => setOpen(true)}>
+      <Button
+        className="forms-button"
+        size={"large"}
+        onClick={() => setOpen(true)}
+      >
         Create New Function
       </Button>
       <Modal
@@ -79,7 +81,8 @@ const Forms = forwardRef((props, items) => {
                       status={props.status}
                       setStatus={props.setStatus}
                       setUpdate={props.setUpdate}
-
+                      cards={props.cards}
+                      setCards={props.setCards}
                     />
                   </span>
                 </>
@@ -97,11 +100,12 @@ const Forms = forwardRef((props, items) => {
                     style={{
                       display: "inline-block",
                       marginLeft: "7%",
-
                     }}
-
                   >
-                    <div className="most-used-functions" style={{ height: 400, overflow: 'auto', minWidth: 400 }}  >
+                    <div
+                      className="most-used-functions"
+                      style={{ height: 400, overflow: "auto", minWidth: 400 }}
+                    >
                       <ListTest
                         input={inputText}
                         forms={props.forms}
@@ -119,6 +123,10 @@ const Forms = forwardRef((props, items) => {
                         setUpdate={props.setUpdate}
                         variables={props.variables}
                         setVariables={props.setVariables}
+                        cards={props.cards}
+                        setCards={props.setCards}
+                        preload={props.preload}
+                        setPreload={props.setPreload}
                       />
                     </div>
                   </span>
