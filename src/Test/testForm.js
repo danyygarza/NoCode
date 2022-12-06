@@ -122,11 +122,12 @@ function Testform(props) {
             let varSet = "";
             let tempSet = ""
             let tempData = Object.values(data);
+            let TestingData = Object.values(data);
             let idx = 1;
             console.log("data", data);
             console.log("item arr", itemType);
-            console.log('variables', props.variables);
-            console.log('obj', Object.values(data));
+            console.log(props.variables);
+            console.log("testing data", TestingData);
             itemType.forEach((element) => {
                 console.log(element);
                 switch (element.key) {
@@ -150,6 +151,7 @@ function Testform(props) {
                         tempCodeArr.push(`"${tempWrite}"`);
                         break;
                     case "path":
+                        console.log(tempData);
                         const tempPath = Object.values(tempData.shift());
                         console.log(tempText);
                         tempCodeArr.push(`"<<<home>>>${tempPath}"`);
@@ -169,6 +171,12 @@ function Testform(props) {
                         console.log(element)
                         varSet = Object.values(tempData.shift());
                         tempCodeArr.push(varSet[0]);
+                        break
+                    case "var":
+                        console.log(element)
+                        tempSet = Object.values(tempData.shift());
+                        tempCodeArr.push(`"${tempSet}"`);
+                        props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
                         break
                     case "get":
                         console.log(element)
@@ -223,6 +231,7 @@ function Testform(props) {
         console.log("inside the render cards");
         const cardArr = [];
         let temp = [];
+        console.log("props", props.data);
         for (let i = 1; i <= Object.values(props.data.templates).length; i++) {
             temp.push(
                 <Col>
@@ -353,7 +362,7 @@ function Testform(props) {
                                     <>
                                         <Col>
                                             <Form.Item
-                                                name={[`${val.Type}${date}`, val.PlaceHolder]}
+                                                name={[`${val.Type}${date}${index}`, val.PlaceHolder]}
                                                 rules={[
                                                     { required: true, message: "Please fill this out" },
                                                 ]}

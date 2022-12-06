@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Row, Col } from 'antd'
 import Frida from '../../components/FRIDA/FRIDA';
 
@@ -14,43 +14,6 @@ import {
 
 import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 const db = getFirestore();
-const azure = require("azure-storage");
-// !testing//
-const arrayBufferToBuffer = require("arraybuffer-to-buffer");
-const bufferToStream = require("buffer-to-stream");
-const enc = new TextEncoder();
-
-class Azure {
-    constructor() {
-        // dotenv.config();
-        this.FileService = azure.createFileService("DefaultEndpointsProtocol=https;AccountName=innotekfilestore;AccountKey=JgoEqRf0ik3Oc+A1hRjM82jpgm3/matY9U2yxeomJGCDIPU+kD0vEAWkGuYsO2Utg4DoON0BFN3jbbmqb1cOjQ==;EndpointSuffix=core.windows.net;");
-    }
-
-    uploadFileFromStream = async (share, path, filename, txt) => {
-        let buffer = arrayBufferToBuffer(enc.encode(txt)); //Convierte el array buffer que entrega la función readZIP a un buffer
-        const readableStream = bufferToStream(buffer); //Convierte el buffer a un stream
-        //La función regresa una promesa que tiene true si es exitosa y el error si falla
-        return new Promise((resolve, reject) => {
-            /*Se utiliza la función para subir un stream a azure storage. Es la que permite subir archivos pesados*/
-            this.FileService.createFileFromStream(
-                share,
-                path,
-                filename,
-                readableStream,
-                enc.encode(txt).byteLength,
-                (err) => {
-                    if (!err) {
-                        console.log("Azure successful");
-                        resolve(true);
-                    } else {
-                        console.log("Azure failed", err);
-                        reject(err);
-                    }
-                }
-            );
-        });
-    };
-};
 
 function Code() {
     const [functions, setFunctions] = useState([]);
@@ -129,21 +92,28 @@ function Code() {
         const final = await genCode(code);
         console.log("from save code", final);
         console.log(locData.state.id);
-        const FileService = new Azure();
         try {
+            const resp = await fetch('http://localhost:8080/api/uploadCode', {
+                method: 'post', headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: locData.state.id, code: final })
+            });
+            const data = await resp.status
+            console.log(data);
+            if (data === 200) {
+                alert("Code has been uploaded");
+            }
+            else {
+                alert("There was an error please try again");
+            }
 
-            await FileService.uploadFileFromStream(
-                'automation',
-                '/Processes/' + `${locData.state.id}` + '/Steps/0',
-                'NoCode.txt', final
-            );
-            alert("Code has been uploaded");
         } catch (e) {
             console.log(e);
+            alert("There was an error please try again");
         }
     }
-
-
 
     return (
         <>
@@ -151,14 +121,12 @@ function Code() {
             <>
                 <Row>
                     <Col offset={8}>
-                        {/* <Button className="saveOutlined" size={'large'} onClick={() => setLocalStorage({ code: code, variables: variables })}>Save</Button> */}
-
                         {/* //!this is the place where all the form will be stored */}
                         <Frida variables={variables} setVariables={setVariables} code={code} setCode={setCode} id={id} setId={setId} value={storage} functions={functions} setFunctions={setFunctions} onChange={e => setLocalStorage(e.target.value)} />
                     </Col>
                 </Row><Row justify='end'>
                     <Col>
-                        <Button onClick={saveCode} style={{marginRight:55}}>
+                        <Button onClick={saveCode} style={{ marginRight: 55 }}>
                             Upload
                         </Button>
                     </Col>
