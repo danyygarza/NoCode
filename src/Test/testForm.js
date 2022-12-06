@@ -361,23 +361,26 @@ function Testform(props) {
       return <>{item}</>;
     });
   };
-
+  
   //! add new line with example blocks function
-  const addCard = (name, index) => {
+  const addCard = (inputs, index) => {
     
     const dataForms = props.data.forms[index + 1];
     const temp = [];
     const itemTypeArr = itemType;
-    console.log('dataforms',props.data)
+    console.log('dataforms',dataForms)
     setSize([...size, Object.values(dataForms).length]);
+    let counter = 0
     Object.values(dataForms).forEach((val, index) => {
       itemTypeArr.push({ key: val.Type, val: val.PlaceHolder });
-      console.log(val);
+      console.log('val',val);
       let itemName = [val.Type + date, val.PlaceHolder];
       let inputName = val.Type + date;
-      if (name != null) {
-        console.log("nameSet", name);
-        itemName = name;
+      if (inputs != null && val.Type != 'word') {
+        console.log("nameSet", name, 'counter: ', counter,'type: ', val.Type);
+        
+        itemName = inputs[counter].name;
+        counter = counter +1
       }
       switch (val.Type) {
         case "text":
@@ -658,22 +661,27 @@ function Testform(props) {
     //   yop: "ypo",
     // });
     if(props.inputs != null){
-    
+
+      console.log('propInputs', props.inputs)
       for(let i = 0; i < props.inputs.length; i++){
         //console.log('inputType',typeof props.inputs[i].value)
         preloadedValues[props.inputs[i].name] = props.inputs[i].value
       }
-      for(let i = 0; i < props.inputs.length; i++){
-        console.log('inputs', i ,props.inputs[i])
-        addCard(props.inputs[i].name,0)
+      // for(let i = 0; i < props.inputs.length; i++){
+      //   console.log('inputs', i ,props.inputs[i])
         
-      }
+      //   addCard(props.inputs[i].name,0)
+        
+        
+      // }
+
+      addCard(props.inputs,0)
       //console.log('namePush', preloadedValues)
       form.setFieldsValue(preloadedValues)
     }
   }, []);
   console.log('namePush', preloadedValues)
-  form.setFieldsValue(preloadedValues)
+  form.setFieldsValue(preloadedValues)  //Pre fills the saved forms with the data recieved
   return (
     <>
       <Card

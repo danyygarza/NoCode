@@ -9,7 +9,8 @@ function SetValueTest() {
   };
 
   let fields = {
-    username2: 'yulo'  }
+    username: 'yulo',
+    password: 'password'  }
   const [form] = Form.useForm();
   form.setFieldsValue(fields)
   return (
@@ -54,7 +55,7 @@ function SetValueTest() {
           },
         ]}
       >
-        <Input.Password />
+        <Input/>
       </Form.Item>
 
       <Form.Item

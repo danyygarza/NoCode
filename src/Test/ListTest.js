@@ -20,6 +20,7 @@ function ListTest(props) {
   //
   const db = getFirestore();
   const add = async (data) => {
+    
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
