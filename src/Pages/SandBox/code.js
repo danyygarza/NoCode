@@ -103,7 +103,8 @@ function Code() {
                   collection: element,
                   group: doc.get("group"),
                   src: doc.get("src"),
-                  inputs: null
+                  inputs: null,
+                  syntax: null,
                 }))
               ),
             ];

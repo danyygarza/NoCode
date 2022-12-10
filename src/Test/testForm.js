@@ -18,6 +18,7 @@ import { PlusOutlined, MinusOutlined, UploadOutlined } from "@ant-design/icons";
 import { useModalForm } from "sunflower-antd";
 import "../App.css";
 import { element } from "prop-types";
+import { PropaneSharp } from "@mui/icons-material";
 
 const buttonWidth = 70;
 const { Meta } = Card;
@@ -36,13 +37,15 @@ function Testform(props) {
   const [tempVar, setTempVar] = useState(new Map());
   const [itemType, setItemType] = useState([]);
   const [options, setOptions] = useState([]);
+  const [syntaxArray, setSyntaxArray] = useState([]);
+  const [propInputs, setPropInputs] = useState(props.inputs);
   const date = new Date();
 
   const handleSearch = (value, options) => {
     let res = [];
     console.log(options);
   };
-  let name = 'woop'
+  let name = "woop";
   const preloadedValues = {};
   // preloadedValues[name] = 'testName'
   // console.log('preloaded', preloadedValues)
@@ -133,25 +136,29 @@ function Testform(props) {
         function: props.function,
         collection: props.collection,
         inputs: [],
+        syntax: [],
       };
       console.log("data", data);
-      console.log("tempData", tempData[1]);
+      console.log("tempData", tempData);
       console.log("item arr", itemType);
+      
       console.log(props.variables);
+      formData.syntax = syntaxArray;
       itemType.forEach((element) => {
-        console.log('elementLog',element);
-        
+        console.log("elementLog", element);
+
         switch (element.key) {
           case "set":
             tempSet = Object.values(tempData.shift());
+
             tempKey = tempKeys.shift();
             tempInput = {
               key: element.key,
               name: tempKey,
-              value: tempSet[0]
+              value: tempSet[0],
             };
             formData.inputs.push(tempInput);
-            console.log('tempInput', tempInput)
+            console.log("tempInput", tempInput);
             tempCodeArr.push(tempSet[0]);
             console.log(props.variables);
             props.variables.get(element.val) === undefined
@@ -200,7 +207,7 @@ function Testform(props) {
               value: tempPath[0],
             };
             formData.inputs.push(tempInput);
-            
+
             console.log(tempText);
             tempCodeArr.push(`"<<<home>>>${tempPath}"`);
             break;
@@ -266,8 +273,8 @@ function Testform(props) {
             // props.variables.get(element.val) === undefined ? props.setVariables(props.variables.set(element.val, [tempSet[0]])) : props.setVariables(props.variables.set(props.variables.get(element.val).push(tempSet[0])));
             break;
           default:
-            console.log('defaultVal', element.val)
-            
+            console.log("defaultVal", element.val);
+
             tempCodeArr.push(element.val);
             // tempKey = tempKeys.shift();
             // tempInput = {
@@ -276,7 +283,7 @@ function Testform(props) {
             //   value: element.val,
             // };
             // formData.inputs.push(tempInput);
-           
+
             break;
         }
       });
@@ -317,6 +324,7 @@ function Testform(props) {
       );
       // console.log(props.status.get(props.id));
       props.setUpdate(true);
+      props.preload();
     },
     form,
   });
@@ -356,36 +364,37 @@ function Testform(props) {
       }
     }
     cardArr.push(<Row gutter={[12, 24]}>{temp}</Row>);
-    
+
     return cardArr.map((item) => {
       return <>{item}</>;
     });
   };
-  
+
   //! add new line with example blocks function
   const addCard = (inputs, index) => {
-    
     const dataForms = props.data.forms[index + 1];
     const temp = [];
     const itemTypeArr = itemType;
-    console.log('dataforms',dataForms)
+    console.log("dataforms", dataForms);
     setSize([...size, Object.values(dataForms).length]);
-    let counter = 0
+    let tempSyntaxArray = syntaxArray;
+    tempSyntaxArray.push(index);
+    setSyntaxArray(tempSyntaxArray);
+    console.log("syntaxArray", syntaxArray);
     Object.values(dataForms).forEach((val, index) => {
       itemTypeArr.push({ key: val.Type, val: val.PlaceHolder });
-      console.log('val',val);
+      console.log("val", val);
       let itemName = [val.Type + date, val.PlaceHolder];
       let inputName = val.Type + date;
-      if (inputs != null && val.Type != 'word') {
-        console.log("nameSet", name, 'counter: ', counter,'type: ', val.Type);
-        
-        itemName = inputs[counter].name;
-        counter = counter +1
+      if (inputs != null && val.Type != "word") {
+        //console.log("nameSet", name, 'counter: ', counter,'type: ', val.Type);
+        let tempInputs = propInputs;
+        itemName = tempInputs.shift().name;
+        setPropInputs(tempInputs);
       }
+
       switch (val.Type) {
         case "text":
-          
-
           temp.push(
             <>
               {
@@ -542,12 +551,12 @@ function Testform(props) {
           break;
         default:
           temp.push(
-            
             <>
               {
                 <>
+                  setItem
                   <Col>
-                  {console.log('defaultCase addCard', itemName)}
+                    {console.log("defaultCase addCard", itemName)}
                     <Form.Item
                       name={itemName}
                       rules={[
@@ -573,9 +582,8 @@ function Testform(props) {
     console.log("Item type arr", itemTypeArr);
     setItemType(itemTypeArr);
     setForms([...forms, temp]);
+    console.log('forms addcard', temp)
   };
-
-  
 
   // const add = () => {
   //   const temp = [];
@@ -640,15 +648,28 @@ function Testform(props) {
   // };
 
   const removeForm = (index) => {
+    console.log(
+      "itype before",
+      itemType,
+      "len: ",
+      Object.values(Object.values(props.data.forms)[key]).length,
+      "values: ",
+      Object.values(props.data.forms)[key]
+    );
     const tempForm = forms;
     const tempArr = itemType;
     tempForm.splice(index, 1);
     console.log(tempArr);
     console.log(Object.values(props.data.forms)[key]);
-    tempArr.splice(index, Object.values(props.data.forms)[key].length);
+    const syntaxLenght = Object.values(Object.values(props.data.forms)[key])
+      .length;
+    const typeIndex =
+      Object.values(Object.values(props.data.forms)[key]).length * index;
+    tempArr.splice(typeIndex, syntaxLenght);
     console.log(tempArr);
     setForms([...tempForm]);
     setItemType([...tempArr]);
+    console.log("itype after", itemType);
   };
 
   useEffect(() => {
@@ -660,28 +681,29 @@ function Testform(props) {
     // form.setFieldsValue({
     //   yop: "ypo",
     // });
-    if(props.inputs != null){
 
-      console.log('propInputs', props.inputs)
-      for(let i = 0; i < props.inputs.length; i++){
+    if (props.inputs != null) {
+      console.log("propCards", props.cards);
+      console.log("propInputs", props.inputs);
+      console.log("syntaxTypes", props.syntaxTypes);
+
+      for (let i = 0; i < props.inputs.length; i++) {
         //console.log('inputType',typeof props.inputs[i].value)
-        preloadedValues[props.inputs[i].name] = props.inputs[i].value
+        preloadedValues[props.inputs[i].name] = props.inputs[i].value;
       }
-      // for(let i = 0; i < props.inputs.length; i++){
-      //   console.log('inputs', i ,props.inputs[i])
-        
-      //   addCard(props.inputs[i].name,0)
-        
-        
-      // }
+      for (let i = 0; i < props.syntaxTypes.length; i++) {
+        //console.log('inputs', i ,props.inputs[i])
 
-      addCard(props.inputs,0)
+        addCard(propInputs, props.syntaxTypes[i]);
+      }
+
+      //addCard(props.inputs,0)
       //console.log('namePush', preloadedValues)
-      form.setFieldsValue(preloadedValues)
+      form.setFieldsValue(preloadedValues);
     }
   }, []);
-  console.log('namePush', preloadedValues)
-  form.setFieldsValue(preloadedValues)  //Pre fills the saved forms with the data recieved
+  console.log("namePush", preloadedValues);
+  form.setFieldsValue(preloadedValues); //Pre fills the saved forms with the data recieved
   return (
     <>
       <Card

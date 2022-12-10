@@ -47,6 +47,8 @@ function ListTest(props) {
               cards={props.cards}
               setCards={props.setCards}
               inputs={data.inputs}
+              syntaxTypes={data.syntax}
+              preload={preload}
             />
           ),
         },
@@ -57,27 +59,22 @@ function ListTest(props) {
       console.log("no such document!");
     }
   };
-  console.log('preload', props.preload)
-  if(props.cards.size !=0 && !props.preload ){
-    
-    console.log(props.cards)
-    // for (let value of props.cards.values()){
-    //   console.log('preload', value);
-    //   add(value)
-    // }
-    // for(let i = 0; i < props.cards.length; i++){
-    //   console.log('i value', i)
-    //   add(props.cards[i])
-      
-    // }
-
+  const preload = () => {
+    console.log('preload cards', props.cards)
+    props.setForms([])
     props.cards.forEach(function(value, key) {
       console.log(key + " yop " + value);
       add(value);
     })
-    
-    props.setPreload(true)
+    console.log('preload done')
   }
+  // console.log('preload', props.preload)
+  // if(props.cards.size !=0 && !props.preload ){
+    
+  //   preload()
+    
+  //   props.setPreload(true)
+  // }
   // const columns = [
   //   {
   //     title: "1",
