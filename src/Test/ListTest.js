@@ -20,7 +20,7 @@ function ListTest(props) {
   //
   const db = getFirestore();
   const add = async (data) => {
-    
+    console.log( 'dataInputs: ',data.inputs)
     const colRef = doc(db, data.collection, data.function);
     const docSnap = await getDoc(colRef);
     if (docSnap.exists()) {
@@ -60,7 +60,8 @@ function ListTest(props) {
     }
   };
   const preload = () => {
-    console.log('preload cards', props.cards)
+    console.log('preload cards ', props.cards.get(0))
+    console.log('preload cards inputs', props.cards.get(0).inputs)
     props.setForms([])
     props.cards.forEach(function(value, key) {
       console.log(key + " yop " + value);

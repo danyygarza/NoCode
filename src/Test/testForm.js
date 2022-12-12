@@ -19,6 +19,7 @@ import { useModalForm } from "sunflower-antd";
 import "../App.css";
 import { element } from "prop-types";
 import { PropaneSharp } from "@mui/icons-material";
+import CompoundedSpace from "antd/lib/space";
 
 const buttonWidth = 70;
 const { Meta } = Card;
@@ -158,7 +159,10 @@ function Testform(props) {
               value: tempSet[0],
             };
             formData.inputs.push(tempInput);
+            
             console.log("tempInput", tempInput);
+            console.log('tempFormData', formData)
+            console.log('formDataInputs', formData.inputs[0])
             tempCodeArr.push(tempSet[0]);
             console.log(props.variables);
             props.variables.get(element.val) === undefined
@@ -317,6 +321,8 @@ function Testform(props) {
       // console.log(tempCodeArr);
       props.setCode(props.code.set(props.id, tempString));
       props.setCards(props.cards.set(props.id, formData));
+      console.log('cardsInputs: ', formData.inputs)
+      console.log('cards: ', props.cards.get(0).inputs[0])
       // console.log(props.code);
       // console.log("prop id", props.id)
       props.setStatus(
@@ -375,6 +381,8 @@ function Testform(props) {
     const dataForms = props.data.forms[index + 1];
     const temp = [];
     const itemTypeArr = itemType;
+    const tempInput = inputs
+    console.log('tempInputs', tempInput)
     console.log("dataforms", dataForms);
     setSize([...size, Object.values(dataForms).length]);
     let tempSyntaxArray = syntaxArray;
@@ -391,6 +399,7 @@ function Testform(props) {
         let tempInputs = propInputs;
         itemName = tempInputs.shift().name;
         setPropInputs(tempInputs);
+        console.log('itemName', itemName)
       }
 
       switch (val.Type) {
@@ -582,7 +591,8 @@ function Testform(props) {
     console.log("Item type arr", itemTypeArr);
     setItemType(itemTypeArr);
     setForms([...forms, temp]);
-    console.log('forms addcard', temp)
+    console.log('temp addcard', temp)
+    console.log('forms addcard', forms)
   };
 
   // const add = () => {
@@ -681,10 +691,10 @@ function Testform(props) {
     // form.setFieldsValue({
     //   yop: "ypo",
     // });
-
-    if (props.inputs != null) {
+    setPropInputs(props.inputs)
+    if (props.inputs != null ) {
       console.log("propCards", props.cards);
-      console.log("propInputs", props.inputs);
+      console.log("propInputs", props.inputs,'id',props.id);
       console.log("syntaxTypes", props.syntaxTypes);
 
       for (let i = 0; i < props.inputs.length; i++) {
@@ -692,7 +702,7 @@ function Testform(props) {
         preloadedValues[props.inputs[i].name] = props.inputs[i].value;
       }
       for (let i = 0; i < props.syntaxTypes.length; i++) {
-        //console.log('inputs', i ,props.inputs[i])
+        console.log('inputs', i ,propInputs[0])
 
         addCard(propInputs, props.syntaxTypes[i]);
       }
@@ -701,6 +711,7 @@ function Testform(props) {
       //console.log('namePush', preloadedValues)
       form.setFieldsValue(preloadedValues);
     }
+    console.log('formsUse', forms)
   }, []);
   console.log("namePush", preloadedValues);
   form.setFieldsValue(preloadedValues); //Pre fills the saved forms with the data recieved

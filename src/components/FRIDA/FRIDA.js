@@ -36,6 +36,10 @@ function Frida(props) {
     const temp = [...forms];
     temp.splice(index, 1);
     setForms(temp);
+
+    const tempCards = [...props.cards];
+    tempCards.splice(index, 1);
+    props.setCards(tempCards);
   };
 
   //! this will create array of refs from size of forms
